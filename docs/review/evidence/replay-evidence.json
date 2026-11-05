@@ -1,0 +1,1330 @@
+[
+  {
+    "step": "login reception_b1",
+    "request": {
+      "method": "POST",
+      "path": "/auth/login",
+      "body": {
+        "username": "reception_b1",
+        "password": "[redacted]",
+        "branch_id": "01a1a67c-9ea8-7702-8105-8d0d7cf2dd92"
+      }
+    },
+    "status": 200,
+    "response": {
+      "access_token": "[redacted]",
+      "access_expires_in": 900,
+      "refresh_token": "[redacted]",
+      "refresh_expires_in": 50400,
+      "user": {
+        "user_id": "01a1a67e-b875-7928-b09e-2d409bb66bec",
+        "full_name": "موظف الاستقبال",
+        "role": "receptionist",
+        "branch_id": "01a1a67c-9ea8-7702-8105-8d0d7cf2dd92",
+        "branch_ids": [
+          "01a1a67c-9ea8-7702-8105-8d0d7cf2dd92"
+        ],
+        "clinic_ids": [
+          "01a1a67e-b726-7c88-bcc2-0a29c78f107a"
+        ],
+        "doctor_id": null,
+        "permissions": [
+          "patients.write",
+          "payments.collect",
+          "queue.manage"
+        ],
+        "must_change_password": "[redacted]",
+        "role_name_ar": "موظف استقبال",
+        "is_system_role": true,
+        "home_section": "reception",
+        "sections": [
+          "reception"
+        ]
+      }
+    }
+  },
+  {
+    "step": "login dr_saad",
+    "request": {
+      "method": "POST",
+      "path": "/auth/login",
+      "body": {
+        "username": "dr_saad",
+        "password": "[redacted]",
+        "branch_id": "01a1a67c-9ea8-7702-8105-8d0d7cf2dd92"
+      }
+    },
+    "status": 200,
+    "response": {
+      "access_token": "[redacted]",
+      "access_expires_in": 900,
+      "refresh_token": "[redacted]",
+      "refresh_expires_in": 50400,
+      "user": {
+        "user_id": "01a1a67e-b985-7a5d-bf34-2e5c0bc7c9e1",
+        "full_name": "د. سعد الباطنية",
+        "role": "doctor",
+        "branch_id": "01a1a67c-9ea8-7702-8105-8d0d7cf2dd92",
+        "branch_ids": [
+          "01a1a67c-9ea8-7702-8105-8d0d7cf2dd92"
+        ],
+        "clinic_ids": [],
+        "doctor_id": "01a1a67e-b9b4-77c2-b525-2d77a16004fa",
+        "permissions": [
+          "clinical.write",
+          "deferrals.grant",
+          "queue.manage"
+        ],
+        "must_change_password": "[redacted]",
+        "role_name_ar": "طبيب",
+        "is_system_role": true,
+        "home_section": "doctor",
+        "sections": [
+          "doctor"
+        ]
+      }
+    }
+  },
+  {
+    "step": "doctor live queue",
+    "request": {
+      "method": "GET",
+      "path": "/queue/live"
+    },
+    "status": 200,
+    "response": {
+      "sessions": [
+        {
+          "session_id": "01a1a680-afe0-7d10-9ea0-952d99ac1999",
+          "doctor_id": "01a1a67e-b9b4-77c2-b525-2d77a16004fa",
+          "doctor_name": "د. سعد الباطنية",
+          "clinic_id": "01a1a67e-b726-7c88-bcc2-0a29c78f107a",
+          "clinic_name": "عيادة الباطنية",
+          "date": "2026-11-06",
+          "start": "08:00",
+          "end": "23:30",
+          "session_status": "open",
+          "avg_consult_minutes_today": null,
+          "delay_minutes": 0,
+          "items": [
+            {
+              "ticket_id": "01a1ad98-0560-7a33-b846-3384f1948f19",
+              "ticket_number": "A-005",
+              "patient_id": "01a1ad98-0533-7ec1-ad49-ab3fcc09a44b",
+              "patient_name": "تدقيق طوارئ",
+              "booking_id": null,
+              "source": "walk_in",
+              "priority": "emergency",
+              "status": "called",
+              "payment_status": "paid",
+              "invoice_id": "01a1ad98-0571-7ee4-a4d2-732033085ffb",
+              "queue_position": null,
+              "estimated_time": "2026-11-06T05:00:00+00:00",
+              "arrived_at": "2026-11-05T21:23:03.690605+00:00",
+              "called_at": "2026-11-05T21:23:10.402598+00:00",
+              "started_at": null,
+              "completed_at": null,
+              "call_acknowledged_at": null,
+              "call_alerts_sent": 4,
+              "on_the_way_at": null,
+              "on_the_way_eta_minutes": null,
+              "is_extra": false,
+              "display_state": null,
+              "display_state_ar": null,
+              "awaiting_services": null,
+              "awaiting_since": null,
+              "returned_at": null,
+              "original_ticket_id": null
+            },
+            {
+              "ticket_id": "01a1add7-09e5-77d7-8b89-f8d04d49a13f",
+              "ticket_number": "A-007",
+              "patient_id": "01a1add7-09e0-7a3b-b027-f05337e99c1b",
+              "patient_name": "طوارئ (تجربة)",
+              "booking_id": null,
+              "source": "walk_in",
+              "priority": "emergency",
+              "status": "arrived",
+              "payment_status": "unpaid",
+              "invoice_id": "01a1add7-09f5-73c5-90de-3aabb1f83908",
+              "queue_position": 1,
+              "estimated_time": "2026-11-06T05:10:00+00:00",
+              "arrived_at": "2026-11-05T22:31:53.620979+00:00",
+              "called_at": null,
+              "started_at": null,
+              "completed_at": null,
+              "call_acknowledged_at": null,
+              "call_alerts_sent": 0,
+              "on_the_way_at": null,
+              "on_the_way_eta_minutes": null,
+              "is_extra": false,
+              "display_state": null,
+              "display_state_ar": null,
+              "awaiting_services": null,
+              "awaiting_since": null,
+              "returned_at": null,
+              "original_ticket_id": null
+            },
+            {
+              "ticket_id": "01a1add7-05c8-7793-8243-37779c464eb5",
+              "ticket_number": "A-006",
+              "patient_id": "01a1add7-0579-782f-958f-b959af240a91",
+              "patient_name": "مراجع عائد (تجربة الجلسة 2)",
+              "booking_id": null,
+              "source": "walk_in",
+              "priority": "returning",
+              "status": "arrived",
+              "payment_status": "paid",
+              "invoice_id": "01a1add7-079c-7b5c-8f6b-a1ec545a34e3",
+              "queue_position": 2,
+              "estimated_time": "2026-11-06T05:20:00+00:00",
+              "arrived_at": "2026-11-05T22:31:52.560567+00:00",
+              "called_at": null,
+              "started_at": "2026-11-05T22:31:53.255312+00:00",
+              "completed_at": null,
+              "call_acknowledged_at": null,
+              "call_alerts_sent": 1,
+              "on_the_way_at": null,
+              "on_the_way_eta_minutes": null,
+              "is_extra": false,
+              "display_state": "returning",
+              "display_state_ar": "عائد بالنتائج",
+              "awaiting_services": null,
+              "awaiting_since": "2026-11-05T22:31:53.510759+00:00",
+              "returned_at": "2026-11-05T22:31:53.664697+00:00",
+              "original_ticket_id": null
+            },
+            {
+              "ticket_id": "01a1ad96-fee3-74fd-a6f7-ea6a365f6c6e",
+              "ticket_number": "A-001",
+              "patient_id": "01a1ad96-b2d5-77d0-96af-1177c023bf9b",
+              "patient_name": "تدقيق مراجع حاجز",
+              "booking_id": null,
+              "source": "walk_in",
+              "priority": "normal",
+              "status": "arrived",
+              "payment_status": "unpaid",
+              "invoice_id": "01a1ad96-ff65-7c8b-a8ef-10b55c8fcc59",
+              "queue_position": 3,
+              "estimated_time": "2026-11-06T05:30:00+00:00",
+              "arrived_at": "2026-11-05T21:21:56.462582+00:00",
+              "called_at": null,
+              "started_at": null,
+              "completed_at": null,
+              "call_acknowledged_at": null,
+              "call_alerts_sent": 0,
+              "on_the_way_at": null,
+              "on_the_way_eta_minutes": null,
+              "is_extra": false,
+              "display_state": "awaiting_payment",
+              "display_state_ar": "حاضر — بانتظار الدفع",
+              "awaiting_services": null,
+              "awaiting_since": null,
+              "returned_at": null,
+              "original_ticket_id": null
+            },
+            {
+              "ticket_id": "01a1ad97-ccac-786e-acc1-27d70769bbc3",
+              "ticket_number": "A-003",
+              "patient_id": "01a1ad97-6faa-7c2e-8a4b-90eefef05191",
+              "patient_name": "تدقيق مراجع حاجز",
+              "booking_id": null,
+              "source": "walk_in",
+              "priority": "normal",
+              "status": "arrived",
+              "payment_status": "unpaid",
+              "invoice_id": "01a1ad97-ccb6-71a4-9cc7-7159fefad5ce",
+              "queue_position": 4,
+              "estimated_time": "2026-11-06T05:30:00+00:00",
+              "arrived_at": "2026-11-05T21:22:49.136982+00:00",
+              "called_at": null,
+              "started_at": null,
+              "completed_at": null,
+              "call_acknowledged_at": null,
+              "call_alerts_sent": 0,
+              "on_the_way_at": null,
+              "on_the_way_eta_minutes": null,
+              "is_extra": false,
+              "display_state": "awaiting_payment",
+              "display_state_ar": "حاضر — بانتظار الدفع",
+              "awaiting_services": null,
+              "awaiting_since": null,
+              "returned_at": null,
+              "original_ticket_id": null
+            },
+            {
+              "ticket_id": "01a1ad98-0537-7b5d-a7e4-8192d1fbf8ab",
+              "ticket_number": "A-004",
+              "patient_id": "01a1ad98-052d-7800-98d9-a82ead67f7bc",
+              "patient_name": "تدقيق مباشر",
+              "booking_id": null,
+              "source": "walk_in",
+              "priority": "normal",
+              "status": "arrived",
+              "payment_status": "paid",
+              "invoice_id": "01a1ad98-054b-76c9-ab88-5b55ff66103e",
+              "queue_position": 5,
+              "estimated_time": "2026-11-06T05:30:00+00:00",
+              "arrived_at": "2026-11-05T21:23:03.619062+00:00",
+              "called_at": null,
+              "started_at": null,
+              "completed_at": null,
+              "call_acknowledged_at": null,
+              "call_alerts_sent": 0,
+              "on_the_way_at": null,
+              "on_the_way_eta_minutes": null,
+              "is_extra": false,
+              "display_state": null,
+              "display_state_ar": null,
+              "awaiting_services": null,
+              "awaiting_since": null,
+              "returned_at": null,
+              "original_ticket_id": null
+            },
+            {
+              "ticket_id": "01a1ad97-6fea-7dc8-9079-286d48c26d6a",
+              "ticket_number": "A-002",
+              "patient_id": "01a1ad97-6faa-7c2e-8a4b-90eefef05191",
+              "patient_name": "تدقيق مراجع حاجز",
+              "booking_id": "01a1ad97-6fb1-7c15-81ea-c8968347632b",
+              "source": "phone",
+              "priority": "normal",
+              "status": "completed",
+              "payment_status": "paid",
+              "invoice_id": "01a1ad97-7054-7317-8a42-9aac6cdba5f4",
+              "queue_position": null,
+              "estimated_time": "2026-11-06T05:10:00+00:00",
+              "arrived_at": "2026-11-05T21:22:25.490436+00:00",
+              "called_at": "2026-11-05T21:22:25.832819+00:00",
+              "started_at": "2026-11-05T21:22:25.861994+00:00",
+              "completed_at": "2026-11-05T21:22:26.084021+00:00",
+              "call_acknowledged_at": null,
+              "call_alerts_sent": 1,
+              "on_the_way_at": null,
+              "on_the_way_eta_minutes": null,
+              "is_extra": false,
+              "display_state": null,
+              "display_state_ar": null,
+              "awaiting_services": null,
+              "awaiting_since": null,
+              "returned_at": null,
+              "original_ticket_id": null
+            }
+          ],
+          "call_policy": {
+            "call_next_by": "both",
+            "auto_call_next": false
+          },
+          "doctor_arrived_at": null,
+          "scheduled_end": "23:30",
+          "extended": false,
+          "registration_closed": false,
+          "allow_extra": true,
+          "capacity_total": 93
+        }
+      ]
+    }
+  },
+  {
+    "step": "create patient مراجع عائد (تجربة الجلسة 2)",
+    "request": {
+      "method": "POST",
+      "path": "/patients",
+      "body": {
+        "full_name": "مراجع عائد (تجربة الجلسة 2)",
+        "phone_number": "07715886193"
+      }
+    },
+    "status": 201,
+    "response": {
+      "patient_id": "01a1add7-e0e2-7a4b-b65a-e65225617606",
+      "file_number": "B1-000030",
+      "full_name": "مراجع عائد (تجربة الجلسة 2)",
+      "phone_number": "07715886193",
+      "possible_duplicates": []
+    }
+  },
+  {
+    "step": "1 phone booking",
+    "request": {
+      "method": "POST",
+      "path": "/bookings",
+      "body": {
+        "patient_id": "01a1add7-e0e2-7a4b-b65a-e65225617606",
+        "session_id": "01a1a680-afe0-7d10-9ea0-952d99ac1999",
+        "visit_kind": "auto"
+      }
+    },
+    "status": 409,
+    "response": {
+      "type": "https://docs.alrahma.local/errors/BRANCH_CLOSED_DAY",
+      "title": "الفرع لا يعمل في هذا اليوم",
+      "status": 409,
+      "detail": "اختر يوماً آخر من أيام دوام الفرع",
+      "code": "BRANCH_CLOSED_DAY",
+      "trace_id": "0HNPRHIQP2UM9:00000003"
+    }
+  },
+  {
+    "step": "2 check-in",
+    "request": {
+      "method": "POST",
+      "path": "/queue/check-in",
+      "body": {
+        "patient_id": "01a1add7-e0e2-7a4b-b65a-e65225617606",
+        "doctor_id": "01a1a67e-b9b4-77c2-b525-2d77a16004fa"
+      }
+    },
+    "status": 201,
+    "response": {
+      "ticket_id": "01a1add7-e192-711c-b581-32613d26f966",
+      "ticket_number": "A-008",
+      "status": "arrived",
+      "queue_position": 6,
+      "estimated_time": "2026-11-06T05:40:00+00:00",
+      "invoice_id": "01a1add7-e296-7dfc-a50c-13cb7b7a84d1",
+      "visit_kind": "new_visit",
+      "amount_due": 3000,
+      "payment_status": "unpaid",
+      "is_extra": false,
+      "issued_date_ar": "6 تشرين الثاني 2026",
+      "issued_time_ar": "1:32 ص",
+      "estimated_time_ar": "8:40 ص",
+      "deposit_credit": 0
+    }
+  },
+  {
+    "step": "3a open shift (may already be open)",
+    "request": {
+      "method": "POST",
+      "path": "/shifts/open",
+      "body": {
+        "opening_float": 0
+      }
+    },
+    "status": 409,
+    "response": {
+      "type": "https://docs.alrahma.local/errors/SHIFT_ALREADY_OPEN",
+      "title": "لديك وردية مفتوحة",
+      "status": 409,
+      "detail": "أغلق الوردية الحالية أولاً",
+      "code": "SHIFT_ALREADY_OPEN",
+      "trace_id": "0HNPRHIQP2UM9:00000004"
+    }
+  },
+  {
+    "step": "3b billable items",
+    "request": {
+      "method": "GET",
+      "path": "/patients/01a1add7-e0e2-7a4b-b65a-e65225617606/billable-items"
+    },
+    "status": 200,
+    "response": {
+      "patient_id": "01a1add7-e0e2-7a4b-b65a-e65225617606",
+      "deposit_credit": 0,
+      "items": [
+        {
+          "invoice_item_id": "01a1add7-e297-7fe9-b378-737d4b16a57e",
+          "invoice_id": "01a1add7-e296-7dfc-a50c-13cb7b7a84d1",
+          "invoice_number": "B1-INV-000031",
+          "service_name": "كشفية باطنية - جديد",
+          "item_type": "new_visit",
+          "department": "clinic",
+          "ordered_by": "د. سعد الباطنية",
+          "ordered_at": "2026-11-05T22:32:49.046518+00:00",
+          "quantity": 1,
+          "price": 3000,
+          "status": "unpaid",
+          "is_current_department": false
+        }
+      ],
+      "total_due": 3000
+    }
+  },
+  {
+    "step": "3c collect consultation",
+    "request": {
+      "method": "POST",
+      "path": "/payments",
+      "body": {
+        "patient_id": "01a1add7-e0e2-7a4b-b65a-e65225617606",
+        "invoice_item_ids": [
+          "01a1add7-e297-7fe9-b378-737d4b16a57e"
+        ],
+        "tenders": [
+          {
+            "method": "cash",
+            "amount": 3000
+          }
+        ]
+      }
+    },
+    "status": 201,
+    "response": {
+      "payment_id": "01a1add7-e3f2-71e7-97ea-7291e6d19858",
+      "shift_id": "01a1add2-ad23-719c-98c7-d0ad9ba02284",
+      "total_paid": 3000,
+      "deposit_used": 0,
+      "receipt": {
+        "receipt_id": "01a1add7-e44b-73e5-a8d5-8e2923ce8b91",
+        "receipt_number": "B1-R-000013",
+        "type": "payment",
+        "issued_at": "2026-11-05T22:32:49.4839188+00:00",
+        "qr_code": "http://localhost:3001/verify/RMCP-JXFL-M7",
+        "print_payload_url": "/receipts/01a1add7-e44b-73e5-a8d5-8e2923ce8b91/print-payload"
+      },
+      "drawer_token": "[redacted]",
+      "open_drawer": true
+    }
+  },
+  {
+    "step": "4a call",
+    "request": {
+      "method": "POST",
+      "path": "/queue/tickets/01a1add7-e192-711c-b581-32613d26f966/call"
+    },
+    "status": 200,
+    "response": {
+      "ticket_id": "01a1add7-e192-711c-b581-32613d26f966",
+      "ticket_number": "A-008",
+      "status": "called",
+      "priority": "normal",
+      "queue_position": null,
+      "estimated_time": "2026-11-06T05:40:00+00:00",
+      "called_at": "2026-11-05T22:32:49.7501118+00:00",
+      "started_at": null,
+      "completed_at": null,
+      "next_ticket": null
+    }
+  },
+  {
+    "step": "4b start",
+    "request": {
+      "method": "POST",
+      "path": "/queue/tickets/01a1add7-e192-711c-b581-32613d26f966/start"
+    },
+    "status": 200,
+    "response": {
+      "ticket_id": "01a1add7-e192-711c-b581-32613d26f966",
+      "ticket_number": "A-008",
+      "status": "in_room",
+      "priority": "normal",
+      "queue_position": null,
+      "estimated_time": "2026-11-06T05:40:00+00:00",
+      "called_at": "2026-11-05T22:32:49.750111+00:00",
+      "started_at": "2026-11-05T22:32:49.8256176+00:00",
+      "completed_at": null,
+      "next_ticket": null
+    }
+  },
+  {
+    "step": "4c lab services",
+    "request": {
+      "method": "GET",
+      "path": "/services?type=lab"
+    },
+    "status": 200,
+    "response": {
+      "items": [
+        {
+          "service_id": "01a1a67e-b7eb-77ed-b8e7-3858b36c6b41",
+          "name": "تحليل دم شامل CBC",
+          "type": "lab",
+          "visit_kind": null,
+          "modality": null,
+          "clinic_id": "01a1a67e-b768-71d2-a077-3b5e477eee42",
+          "price": 30000,
+          "is_commissionable": false,
+          "is_active": true,
+          "updated_at": "2026-11-04T12:18:04.907544+00:00"
+        }
+      ]
+    }
+  },
+  {
+    "step": "4d consultation + lab order + finish_visit",
+    "request": {
+      "method": "POST",
+      "path": "/consultations",
+      "body": {
+        "ticket_id": "01a1add7-e192-711c-b581-32613d26f966",
+        "diagnosis": "تجربة العائد بالنتائج",
+        "lab_orders": [
+          {
+            "service_id": "01a1a67e-b7eb-77ed-b8e7-3858b36c6b41"
+          }
+        ],
+        "finish_visit": true,
+        "call_next": false
+      }
+    },
+    "status": 201,
+    "response": {
+      "consultation_id": "01a1add7-e600-7568-9473-964b14aee012",
+      "ticket_id": "01a1add7-e192-711c-b581-32613d26f966",
+      "ticket_number": "A-008",
+      "patient": {
+        "patient_id": "01a1add7-e0e2-7a4b-b65a-e65225617606",
+        "full_name": "مراجع عائد (تجربة الجلسة 2)",
+        "file_number": "B1-000030",
+        "gender": null,
+        "age": null
+      },
+      "doctor_id": "01a1a67e-b9b4-77c2-b525-2d77a16004fa",
+      "doctor_name": "د. سعد الباطنية",
+      "clinic_name": "عيادة الباطنية",
+      "visit_kind": "new_visit",
+      "diagnosis": "تجربة العائد بالنتائج",
+      "icd10_code": null,
+      "clinical_notes": null,
+      "private_notes": null,
+      "follow_up_after_days": null,
+      "follow_up_date": null,
+      "prescription": null,
+      "orders": [
+        {
+          "order_item_id": "01a1add7-e616-7ca7-a818-740673e23077",
+          "department": "lab",
+          "service_id": "01a1a67e-b7eb-77ed-b8e7-3858b36c6b41",
+          "service_name": "تحليل دم شامل CBC",
+          "note": null,
+          "status": "ordered",
+          "payment_status": "unpaid",
+          "invoice_item_id": "01a1add7-e616-7f15-af84-8242c868c3e1",
+          "price": 30000,
+          "has_critical": false,
+          "result_available": false
+        }
+      ],
+      "addenda": [],
+      "editable_until": "2026-11-06T22:32:49.922059+00:00",
+      "created_at": "2026-11-05T22:32:49.922059+00:00",
+      "updated_at": "2026-11-05T22:32:49.922059+00:00",
+      "queue": {
+        "ticket_id": "01a1add7-e192-711c-b581-32613d26f966",
+        "ticket_number": "A-008",
+        "status": "awaiting_results",
+        "priority": "normal",
+        "queue_position": null,
+        "estimated_time": "2026-11-06T05:40:00+00:00",
+        "called_at": "2026-11-05T22:32:49.750111+00:00",
+        "started_at": "2026-11-05T22:32:49.825617+00:00",
+        "completed_at": null,
+        "next_ticket": null
+      }
+    }
+  },
+  {
+    "step": "5 live queue after finish (awaiting_results)",
+    "request": {
+      "method": "GET",
+      "path": "/queue/live?doctor_id=01a1a67e-b9b4-77c2-b525-2d77a16004fa"
+    },
+    "status": 200,
+    "response": {
+      "session_id": "01a1a680-afe0-7d10-9ea0-952d99ac1999",
+      "doctor_id": "01a1a67e-b9b4-77c2-b525-2d77a16004fa",
+      "doctor_name": "د. سعد الباطنية",
+      "clinic_id": "01a1a67e-b726-7c88-bcc2-0a29c78f107a",
+      "clinic_name": "عيادة الباطنية",
+      "date": "2026-11-06",
+      "start": "08:00",
+      "end": "23:30",
+      "session_status": "open",
+      "avg_consult_minutes_today": null,
+      "delay_minutes": 0,
+      "items": [
+        {
+          "ticket_id": "01a1ad98-0560-7a33-b846-3384f1948f19",
+          "ticket_number": "A-005",
+          "patient_id": "01a1ad98-0533-7ec1-ad49-ab3fcc09a44b",
+          "patient_name": "تدقيق طوارئ",
+          "booking_id": null,
+          "source": "walk_in",
+          "priority": "emergency",
+          "status": "called",
+          "payment_status": "paid",
+          "invoice_id": "01a1ad98-0571-7ee4-a4d2-732033085ffb",
+          "queue_position": null,
+          "estimated_time": "2026-11-06T05:00:00+00:00",
+          "arrived_at": "2026-11-05T21:23:03.690605+00:00",
+          "called_at": "2026-11-05T21:23:10.402598+00:00",
+          "started_at": null,
+          "completed_at": null,
+          "call_acknowledged_at": null,
+          "call_alerts_sent": 4,
+          "on_the_way_at": null,
+          "on_the_way_eta_minutes": null,
+          "is_extra": false,
+          "display_state": null,
+          "display_state_ar": null,
+          "awaiting_services": null,
+          "awaiting_since": null,
+          "returned_at": null,
+          "original_ticket_id": null
+        },
+        {
+          "ticket_id": "01a1add7-09e5-77d7-8b89-f8d04d49a13f",
+          "ticket_number": "A-007",
+          "patient_id": "01a1add7-09e0-7a3b-b027-f05337e99c1b",
+          "patient_name": "طوارئ (تجربة)",
+          "booking_id": null,
+          "source": "walk_in",
+          "priority": "emergency",
+          "status": "arrived",
+          "payment_status": "unpaid",
+          "invoice_id": "01a1add7-09f5-73c5-90de-3aabb1f83908",
+          "queue_position": 1,
+          "estimated_time": "2026-11-06T05:10:00+00:00",
+          "arrived_at": "2026-11-05T22:31:53.620979+00:00",
+          "called_at": null,
+          "started_at": null,
+          "completed_at": null,
+          "call_acknowledged_at": null,
+          "call_alerts_sent": 0,
+          "on_the_way_at": null,
+          "on_the_way_eta_minutes": null,
+          "is_extra": false,
+          "display_state": null,
+          "display_state_ar": null,
+          "awaiting_services": null,
+          "awaiting_since": null,
+          "returned_at": null,
+          "original_ticket_id": null
+        },
+        {
+          "ticket_id": "01a1add7-05c8-7793-8243-37779c464eb5",
+          "ticket_number": "A-006",
+          "patient_id": "01a1add7-0579-782f-958f-b959af240a91",
+          "patient_name": "مراجع عائد (تجربة الجلسة 2)",
+          "booking_id": null,
+          "source": "walk_in",
+          "priority": "returning",
+          "status": "arrived",
+          "payment_status": "paid",
+          "invoice_id": "01a1add7-079c-7b5c-8f6b-a1ec545a34e3",
+          "queue_position": 2,
+          "estimated_time": "2026-11-06T05:20:00+00:00",
+          "arrived_at": "2026-11-05T22:31:52.560567+00:00",
+          "called_at": null,
+          "started_at": "2026-11-05T22:31:53.255312+00:00",
+          "completed_at": null,
+          "call_acknowledged_at": null,
+          "call_alerts_sent": 1,
+          "on_the_way_at": null,
+          "on_the_way_eta_minutes": null,
+          "is_extra": false,
+          "display_state": "returning",
+          "display_state_ar": "عائد بالنتائج",
+          "awaiting_services": null,
+          "awaiting_since": "2026-11-05T22:31:53.510759+00:00",
+          "returned_at": "2026-11-05T22:31:53.664697+00:00",
+          "original_ticket_id": null
+        },
+        {
+          "ticket_id": "01a1ad96-fee3-74fd-a6f7-ea6a365f6c6e",
+          "ticket_number": "A-001",
+          "patient_id": "01a1ad96-b2d5-77d0-96af-1177c023bf9b",
+          "patient_name": "تدقيق مراجع حاجز",
+          "booking_id": null,
+          "source": "walk_in",
+          "priority": "normal",
+          "status": "arrived",
+          "payment_status": "unpaid",
+          "invoice_id": "01a1ad96-ff65-7c8b-a8ef-10b55c8fcc59",
+          "queue_position": 3,
+          "estimated_time": "2026-11-06T05:30:00+00:00",
+          "arrived_at": "2026-11-05T21:21:56.462582+00:00",
+          "called_at": null,
+          "started_at": null,
+          "completed_at": null,
+          "call_acknowledged_at": null,
+          "call_alerts_sent": 0,
+          "on_the_way_at": null,
+          "on_the_way_eta_minutes": null,
+          "is_extra": false,
+          "display_state": "awaiting_payment",
+          "display_state_ar": "حاضر — بانتظار الدفع",
+          "awaiting_services": null,
+          "awaiting_since": null,
+          "returned_at": null,
+          "original_ticket_id": null
+        },
+        {
+          "ticket_id": "01a1ad97-ccac-786e-acc1-27d70769bbc3",
+          "ticket_number": "A-003",
+          "patient_id": "01a1ad97-6faa-7c2e-8a4b-90eefef05191",
+          "patient_name": "تدقيق مراجع حاجز",
+          "booking_id": null,
+          "source": "walk_in",
+          "priority": "normal",
+          "status": "arrived",
+          "payment_status": "unpaid",
+          "invoice_id": "01a1ad97-ccb6-71a4-9cc7-7159fefad5ce",
+          "queue_position": 4,
+          "estimated_time": "2026-11-06T05:30:00+00:00",
+          "arrived_at": "2026-11-05T21:22:49.136982+00:00",
+          "called_at": null,
+          "started_at": null,
+          "completed_at": null,
+          "call_acknowledged_at": null,
+          "call_alerts_sent": 0,
+          "on_the_way_at": null,
+          "on_the_way_eta_minutes": null,
+          "is_extra": false,
+          "display_state": "awaiting_payment",
+          "display_state_ar": "حاضر — بانتظار الدفع",
+          "awaiting_services": null,
+          "awaiting_since": null,
+          "returned_at": null,
+          "original_ticket_id": null
+        },
+        {
+          "ticket_id": "01a1ad98-0537-7b5d-a7e4-8192d1fbf8ab",
+          "ticket_number": "A-004",
+          "patient_id": "01a1ad98-052d-7800-98d9-a82ead67f7bc",
+          "patient_name": "تدقيق مباشر",
+          "booking_id": null,
+          "source": "walk_in",
+          "priority": "normal",
+          "status": "arrived",
+          "payment_status": "paid",
+          "invoice_id": "01a1ad98-054b-76c9-ab88-5b55ff66103e",
+          "queue_position": 5,
+          "estimated_time": "2026-11-06T05:30:00+00:00",
+          "arrived_at": "2026-11-05T21:23:03.619062+00:00",
+          "called_at": null,
+          "started_at": null,
+          "completed_at": null,
+          "call_acknowledged_at": null,
+          "call_alerts_sent": 0,
+          "on_the_way_at": null,
+          "on_the_way_eta_minutes": null,
+          "is_extra": false,
+          "display_state": null,
+          "display_state_ar": null,
+          "awaiting_services": null,
+          "awaiting_since": null,
+          "returned_at": null,
+          "original_ticket_id": null
+        },
+        {
+          "ticket_id": "01a1add7-e192-711c-b581-32613d26f966",
+          "ticket_number": "A-008",
+          "patient_id": "01a1add7-e0e2-7a4b-b65a-e65225617606",
+          "patient_name": "مراجع عائد (تجربة الجلسة 2)",
+          "booking_id": null,
+          "source": "walk_in",
+          "priority": "normal",
+          "status": "awaiting_results",
+          "payment_status": "paid",
+          "invoice_id": "01a1add7-e296-7dfc-a50c-13cb7b7a84d1",
+          "queue_position": null,
+          "estimated_time": "2026-11-06T05:40:00+00:00",
+          "arrived_at": "2026-11-05T22:32:48.901112+00:00",
+          "called_at": "2026-11-05T22:32:49.750111+00:00",
+          "started_at": "2026-11-05T22:32:49.825617+00:00",
+          "completed_at": null,
+          "call_acknowledged_at": null,
+          "call_alerts_sent": 1,
+          "on_the_way_at": null,
+          "on_the_way_eta_minutes": null,
+          "is_extra": false,
+          "display_state": "awaiting_results",
+          "display_state_ar": "بانتظار المختبر",
+          "awaiting_services": [
+            "lab"
+          ],
+          "awaiting_since": "2026-11-05T22:32:50.130149+00:00",
+          "returned_at": null,
+          "original_ticket_id": null
+        },
+        {
+          "ticket_id": "01a1ad97-6fea-7dc8-9079-286d48c26d6a",
+          "ticket_number": "A-002",
+          "patient_id": "01a1ad97-6faa-7c2e-8a4b-90eefef05191",
+          "patient_name": "تدقيق مراجع حاجز",
+          "booking_id": "01a1ad97-6fb1-7c15-81ea-c8968347632b",
+          "source": "phone",
+          "priority": "normal",
+          "status": "completed",
+          "payment_status": "paid",
+          "invoice_id": "01a1ad97-7054-7317-8a42-9aac6cdba5f4",
+          "queue_position": null,
+          "estimated_time": "2026-11-06T05:10:00+00:00",
+          "arrived_at": "2026-11-05T21:22:25.490436+00:00",
+          "called_at": "2026-11-05T21:22:25.832819+00:00",
+          "started_at": "2026-11-05T21:22:25.861994+00:00",
+          "completed_at": "2026-11-05T21:22:26.084021+00:00",
+          "call_acknowledged_at": null,
+          "call_alerts_sent": 1,
+          "on_the_way_at": null,
+          "on_the_way_eta_minutes": null,
+          "is_extra": false,
+          "display_state": null,
+          "display_state_ar": null,
+          "awaiting_services": null,
+          "awaiting_since": null,
+          "returned_at": null,
+          "original_ticket_id": null
+        }
+      ],
+      "call_policy": {
+        "call_next_by": "both",
+        "auto_call_next": false
+      },
+      "doctor_arrived_at": null,
+      "scheduled_end": "23:30",
+      "extended": false,
+      "registration_closed": false,
+      "allow_extra": true,
+      "capacity_total": 93
+    }
+  },
+  {
+    "step": "create patient طوارئ (تجربة)",
+    "request": {
+      "method": "POST",
+      "path": "/patients",
+      "body": {
+        "full_name": "طوارئ (تجربة)",
+        "phone_number": "07717221677"
+      }
+    },
+    "status": 201,
+    "response": {
+      "patient_id": "01a1add7-e71e-7020-80c8-887738ae177b",
+      "file_number": "B1-000031",
+      "full_name": "طوارئ (تجربة)",
+      "phone_number": "07717221677",
+      "possible_duplicates": []
+    }
+  },
+  {
+    "step": "6a emergency patient check-in",
+    "request": {
+      "method": "POST",
+      "path": "/queue/check-in",
+      "body": {
+        "patient_id": "01a1add7-e71e-7020-80c8-887738ae177b",
+        "doctor_id": "01a1a67e-b9b4-77c2-b525-2d77a16004fa"
+      }
+    },
+    "status": 201,
+    "response": {
+      "ticket_id": "01a1add7-e727-7770-bb38-1b98460a451c",
+      "ticket_number": "A-009",
+      "status": "arrived",
+      "queue_position": 6,
+      "estimated_time": "2026-11-06T05:40:00+00:00",
+      "invoice_id": "01a1add7-e73b-7cd6-acf9-000aa017899e",
+      "visit_kind": "new_visit",
+      "amount_due": 3000,
+      "payment_status": "unpaid",
+      "is_extra": false,
+      "issued_date_ar": "6 تشرين الثاني 2026",
+      "issued_time_ar": "1:32 ص",
+      "estimated_time_ar": "8:40 ص",
+      "deposit_credit": 0
+    }
+  },
+  {
+    "step": "6b mark emergency",
+    "request": {
+      "method": "POST",
+      "path": "/queue/tickets/01a1add7-e727-7770-bb38-1b98460a451c/emergency",
+      "body": {
+        "reason": "تجربة ترتيب"
+      }
+    },
+    "status": 200,
+    "response": {
+      "ticket_id": "01a1add7-e727-7770-bb38-1b98460a451c",
+      "priority": "emergency",
+      "position": 2,
+      "affected_tickets": 4
+    }
+  },
+  {
+    "step": "7a check-in same patient again (expects 409 RETURN_OR_NEW_REQUIRED)",
+    "request": {
+      "method": "POST",
+      "path": "/queue/check-in",
+      "body": {
+        "patient_id": "01a1add7-e0e2-7a4b-b65a-e65225617606",
+        "doctor_id": "01a1a67e-b9b4-77c2-b525-2d77a16004fa"
+      }
+    },
+    "status": 409,
+    "response": {
+      "type": "https://docs.alrahma.local/errors/RETURN_OR_NEW_REQUIRED",
+      "title": "المراجع بانتظار نتائج هذا الطبيب",
+      "status": 409,
+      "detail": "اختر «عودة بالنتائج» (visit_mode=return، بلا رسوم) أو «زيارة جديدة» (visit_mode=new)",
+      "code": "RETURN_OR_NEW_REQUIRED",
+      "trace_id": "0HNPRHIQP2UMA:00000009",
+      "ticket_id": "01a1add7-e192-711c-b581-32613d26f966",
+      "ticket_number": "A-008",
+      "ticket_status": "awaiting_results",
+      "session_date": "2026-11-06",
+      "awaiting_since": "2026-11-05T22:32:50.130149+00:00",
+      "free_return_until": null,
+      "pending_services": [
+        "lab"
+      ],
+      "pending_services_ar": [
+        "المختبر"
+      ],
+      "ready_to_return": false,
+      "same_ticket": true,
+      "options": [
+        "return",
+        "new"
+      ],
+      "default": "return"
+    }
+  },
+  {
+    "step": "7b check-in visit_mode=return",
+    "request": {
+      "method": "POST",
+      "path": "/queue/check-in",
+      "body": {
+        "patient_id": "01a1add7-e0e2-7a4b-b65a-e65225617606",
+        "doctor_id": "01a1a67e-b9b4-77c2-b525-2d77a16004fa",
+        "visit_mode": "return"
+      }
+    },
+    "status": 201,
+    "response": {
+      "ticket_id": "01a1add7-e192-711c-b581-32613d26f966",
+      "ticket_number": "A-008",
+      "status": "arrived",
+      "queue_position": 4,
+      "estimated_time": "2026-11-06T05:40:00+00:00",
+      "invoice_id": "01a1add7-e296-7dfc-a50c-13cb7b7a84d1",
+      "visit_kind": "new_visit",
+      "amount_due": 0,
+      "payment_status": "paid",
+      "is_extra": false,
+      "issued_date_ar": "6 تشرين الثاني 2026",
+      "issued_time_ar": "1:32 ص",
+      "estimated_time_ar": "8:40 ص",
+      "deposit_credit": 0
+    }
+  },
+  {
+    "step": "8 live queue after return",
+    "request": {
+      "method": "GET",
+      "path": "/queue/live?doctor_id=01a1a67e-b9b4-77c2-b525-2d77a16004fa"
+    },
+    "status": 200,
+    "response": {
+      "session_id": "01a1a680-afe0-7d10-9ea0-952d99ac1999",
+      "doctor_id": "01a1a67e-b9b4-77c2-b525-2d77a16004fa",
+      "doctor_name": "د. سعد الباطنية",
+      "clinic_id": "01a1a67e-b726-7c88-bcc2-0a29c78f107a",
+      "clinic_name": "عيادة الباطنية",
+      "date": "2026-11-06",
+      "start": "08:00",
+      "end": "23:30",
+      "session_status": "open",
+      "avg_consult_minutes_today": null,
+      "delay_minutes": 0,
+      "items": [
+        {
+          "ticket_id": "01a1ad98-0560-7a33-b846-3384f1948f19",
+          "ticket_number": "A-005",
+          "patient_id": "01a1ad98-0533-7ec1-ad49-ab3fcc09a44b",
+          "patient_name": "تدقيق طوارئ",
+          "booking_id": null,
+          "source": "walk_in",
+          "priority": "emergency",
+          "status": "called",
+          "payment_status": "paid",
+          "invoice_id": "01a1ad98-0571-7ee4-a4d2-732033085ffb",
+          "queue_position": null,
+          "estimated_time": "2026-11-06T05:00:00+00:00",
+          "arrived_at": "2026-11-05T21:23:03.690605+00:00",
+          "called_at": "2026-11-05T21:23:10.402598+00:00",
+          "started_at": null,
+          "completed_at": null,
+          "call_acknowledged_at": null,
+          "call_alerts_sent": 4,
+          "on_the_way_at": null,
+          "on_the_way_eta_minutes": null,
+          "is_extra": false,
+          "display_state": null,
+          "display_state_ar": null,
+          "awaiting_services": null,
+          "awaiting_since": null,
+          "returned_at": null,
+          "original_ticket_id": null
+        },
+        {
+          "ticket_id": "01a1add7-09e5-77d7-8b89-f8d04d49a13f",
+          "ticket_number": "A-007",
+          "patient_id": "01a1add7-09e0-7a3b-b027-f05337e99c1b",
+          "patient_name": "طوارئ (تجربة)",
+          "booking_id": null,
+          "source": "walk_in",
+          "priority": "emergency",
+          "status": "arrived",
+          "payment_status": "unpaid",
+          "invoice_id": "01a1add7-09f5-73c5-90de-3aabb1f83908",
+          "queue_position": 1,
+          "estimated_time": "2026-11-06T05:10:00+00:00",
+          "arrived_at": "2026-11-05T22:31:53.620979+00:00",
+          "called_at": null,
+          "started_at": null,
+          "completed_at": null,
+          "call_acknowledged_at": null,
+          "call_alerts_sent": 0,
+          "on_the_way_at": null,
+          "on_the_way_eta_minutes": null,
+          "is_extra": false,
+          "display_state": null,
+          "display_state_ar": null,
+          "awaiting_services": null,
+          "awaiting_since": null,
+          "returned_at": null,
+          "original_ticket_id": null
+        },
+        {
+          "ticket_id": "01a1add7-e727-7770-bb38-1b98460a451c",
+          "ticket_number": "A-009",
+          "patient_id": "01a1add7-e71e-7020-80c8-887738ae177b",
+          "patient_name": "طوارئ (تجربة)",
+          "booking_id": null,
+          "source": "walk_in",
+          "priority": "emergency",
+          "status": "arrived",
+          "payment_status": "unpaid",
+          "invoice_id": "01a1add7-e73b-7cd6-acf9-000aa017899e",
+          "queue_position": 2,
+          "estimated_time": "2026-11-06T05:20:00+00:00",
+          "arrived_at": "2026-11-05T22:32:50.268518+00:00",
+          "called_at": null,
+          "started_at": null,
+          "completed_at": null,
+          "call_acknowledged_at": null,
+          "call_alerts_sent": 0,
+          "on_the_way_at": null,
+          "on_the_way_eta_minutes": null,
+          "is_extra": false,
+          "display_state": null,
+          "display_state_ar": null,
+          "awaiting_services": null,
+          "awaiting_since": null,
+          "returned_at": null,
+          "original_ticket_id": null
+        },
+        {
+          "ticket_id": "01a1add7-05c8-7793-8243-37779c464eb5",
+          "ticket_number": "A-006",
+          "patient_id": "01a1add7-0579-782f-958f-b959af240a91",
+          "patient_name": "مراجع عائد (تجربة الجلسة 2)",
+          "booking_id": null,
+          "source": "walk_in",
+          "priority": "returning",
+          "status": "arrived",
+          "payment_status": "paid",
+          "invoice_id": "01a1add7-079c-7b5c-8f6b-a1ec545a34e3",
+          "queue_position": 3,
+          "estimated_time": "2026-11-06T05:30:00+00:00",
+          "arrived_at": "2026-11-05T22:31:52.560567+00:00",
+          "called_at": null,
+          "started_at": "2026-11-05T22:31:53.255312+00:00",
+          "completed_at": null,
+          "call_acknowledged_at": null,
+          "call_alerts_sent": 1,
+          "on_the_way_at": null,
+          "on_the_way_eta_minutes": null,
+          "is_extra": false,
+          "display_state": "returning",
+          "display_state_ar": "عائد بالنتائج",
+          "awaiting_services": null,
+          "awaiting_since": "2026-11-05T22:31:53.510759+00:00",
+          "returned_at": "2026-11-05T22:31:53.664697+00:00",
+          "original_ticket_id": null
+        },
+        {
+          "ticket_id": "01a1add7-e192-711c-b581-32613d26f966",
+          "ticket_number": "A-008",
+          "patient_id": "01a1add7-e0e2-7a4b-b65a-e65225617606",
+          "patient_name": "مراجع عائد (تجربة الجلسة 2)",
+          "booking_id": null,
+          "source": "walk_in",
+          "priority": "returning",
+          "status": "arrived",
+          "payment_status": "paid",
+          "invoice_id": "01a1add7-e296-7dfc-a50c-13cb7b7a84d1",
+          "queue_position": 4,
+          "estimated_time": "2026-11-06T05:40:00+00:00",
+          "arrived_at": "2026-11-05T22:32:48.901112+00:00",
+          "called_at": null,
+          "started_at": "2026-11-05T22:32:49.825617+00:00",
+          "completed_at": null,
+          "call_acknowledged_at": null,
+          "call_alerts_sent": 1,
+          "on_the_way_at": null,
+          "on_the_way_eta_minutes": null,
+          "is_extra": false,
+          "display_state": "returning",
+          "display_state_ar": "عائد بالنتائج",
+          "awaiting_services": null,
+          "awaiting_since": "2026-11-05T22:32:50.130149+00:00",
+          "returned_at": "2026-11-05T22:32:50.318945+00:00",
+          "original_ticket_id": null
+        },
+        {
+          "ticket_id": "01a1ad96-fee3-74fd-a6f7-ea6a365f6c6e",
+          "ticket_number": "A-001",
+          "patient_id": "01a1ad96-b2d5-77d0-96af-1177c023bf9b",
+          "patient_name": "تدقيق مراجع حاجز",
+          "booking_id": null,
+          "source": "walk_in",
+          "priority": "normal",
+          "status": "arrived",
+          "payment_status": "unpaid",
+          "invoice_id": "01a1ad96-ff65-7c8b-a8ef-10b55c8fcc59",
+          "queue_position": 5,
+          "estimated_time": "2026-11-06T05:50:00+00:00",
+          "arrived_at": "2026-11-05T21:21:56.462582+00:00",
+          "called_at": null,
+          "started_at": null,
+          "completed_at": null,
+          "call_acknowledged_at": null,
+          "call_alerts_sent": 0,
+          "on_the_way_at": null,
+          "on_the_way_eta_minutes": null,
+          "is_extra": false,
+          "display_state": "awaiting_payment",
+          "display_state_ar": "حاضر — بانتظار الدفع",
+          "awaiting_services": null,
+          "awaiting_since": null,
+          "returned_at": null,
+          "original_ticket_id": null
+        },
+        {
+          "ticket_id": "01a1ad97-ccac-786e-acc1-27d70769bbc3",
+          "ticket_number": "A-003",
+          "patient_id": "01a1ad97-6faa-7c2e-8a4b-90eefef05191",
+          "patient_name": "تدقيق مراجع حاجز",
+          "booking_id": null,
+          "source": "walk_in",
+          "priority": "normal",
+          "status": "arrived",
+          "payment_status": "unpaid",
+          "invoice_id": "01a1ad97-ccb6-71a4-9cc7-7159fefad5ce",
+          "queue_position": 6,
+          "estimated_time": "2026-11-06T05:50:00+00:00",
+          "arrived_at": "2026-11-05T21:22:49.136982+00:00",
+          "called_at": null,
+          "started_at": null,
+          "completed_at": null,
+          "call_acknowledged_at": null,
+          "call_alerts_sent": 0,
+          "on_the_way_at": null,
+          "on_the_way_eta_minutes": null,
+          "is_extra": false,
+          "display_state": "awaiting_payment",
+          "display_state_ar": "حاضر — بانتظار الدفع",
+          "awaiting_services": null,
+          "awaiting_since": null,
+          "returned_at": null,
+          "original_ticket_id": null
+        },
+        {
+          "ticket_id": "01a1ad98-0537-7b5d-a7e4-8192d1fbf8ab",
+          "ticket_number": "A-004",
+          "patient_id": "01a1ad98-052d-7800-98d9-a82ead67f7bc",
+          "patient_name": "تدقيق مباشر",
+          "booking_id": null,
+          "source": "walk_in",
+          "priority": "normal",
+          "status": "arrived",
+          "payment_status": "paid",
+          "invoice_id": "01a1ad98-054b-76c9-ab88-5b55ff66103e",
+          "queue_position": 7,
+          "estimated_time": "2026-11-06T05:50:00+00:00",
+          "arrived_at": "2026-11-05T21:23:03.619062+00:00",
+          "called_at": null,
+          "started_at": null,
+          "completed_at": null,
+          "call_acknowledged_at": null,
+          "call_alerts_sent": 0,
+          "on_the_way_at": null,
+          "on_the_way_eta_minutes": null,
+          "is_extra": false,
+          "display_state": null,
+          "display_state_ar": null,
+          "awaiting_services": null,
+          "awaiting_since": null,
+          "returned_at": null,
+          "original_ticket_id": null
+        },
+        {
+          "ticket_id": "01a1ad97-6fea-7dc8-9079-286d48c26d6a",
+          "ticket_number": "A-002",
+          "patient_id": "01a1ad97-6faa-7c2e-8a4b-90eefef05191",
+          "patient_name": "تدقيق مراجع حاجز",
+          "booking_id": "01a1ad97-6fb1-7c15-81ea-c8968347632b",
+          "source": "phone",
+          "priority": "normal",
+          "status": "completed",
+          "payment_status": "paid",
+          "invoice_id": "01a1ad97-7054-7317-8a42-9aac6cdba5f4",
+          "queue_position": null,
+          "estimated_time": "2026-11-06T05:10:00+00:00",
+          "arrived_at": "2026-11-05T21:22:25.490436+00:00",
+          "called_at": "2026-11-05T21:22:25.832819+00:00",
+          "started_at": "2026-11-05T21:22:25.861994+00:00",
+          "completed_at": "2026-11-05T21:22:26.084021+00:00",
+          "call_acknowledged_at": null,
+          "call_alerts_sent": 1,
+          "on_the_way_at": null,
+          "on_the_way_eta_minutes": null,
+          "is_extra": false,
+          "display_state": null,
+          "display_state_ar": null,
+          "awaiting_services": null,
+          "awaiting_since": null,
+          "returned_at": null,
+          "original_ticket_id": null
+        }
+      ],
+      "call_policy": {
+        "call_next_by": "both",
+        "auto_call_next": false
+      },
+      "doctor_arrived_at": null,
+      "scheduled_end": "23:30",
+      "extended": false,
+      "registration_closed": false,
+      "allow_extra": true,
+      "capacity_total": 93
+    }
+  },
+  {
+    "summary": {
+      "original_ticket_number": "A-008",
+      "returned_ticket_number": "A-008",
+      "same_ticket": true,
+      "amount_due_on_return": 0,
+      "payment_status": "paid",
+      "choice_required_code": "RETURN_OR_NEW_REQUIRED",
+      "status_after_finish": "awaiting_results",
+      "order_after_return": [
+        "1. A-007 emergency ",
+        "2. A-009 emergency ",
+        "3. A-006 returning عائد بالنتائج",
+        "4. A-008 returning عائد بالنتائج",
+        "5. A-001 normal حاضر — بانتظار الدفع",
+        "6. A-003 normal حاضر — بانتظار الدفع",
+        "7. A-004 normal "
+      ]
+    }
+  }
+]
