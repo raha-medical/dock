@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="design_doc_mode" content="canvas">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#EEF3F3;font-family:'Readex Pro',sans-serif;color:#0F2328;-webkit-font-smoothing:antialiased}
+a{color:#0F7A82;text-decoration:none}a:hover{color:#0C5F67;text-decoration:underline}
+*{box-sizing:border-box}
+</style>
+</helmet>
+<div dir="rtl" style="max-width:1320px;margin:0 auto;padding:48px 32px 96px;display:flex;flex-direction:column;gap:72px">
+
+<header data-screen-label="00 Cover" style="background:#0A3A40;border-radius:32px;padding:56px;color:#fff;display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:48px;align-items:center;position:relative;overflow:hidden">
+  <div style="display:flex;flex-direction:column;gap:28px;position:relative">
+    <div style="display:flex;align-items:center;gap:16px">
+      <svg width="64" height="64" viewBox="0 0 64 64"><rect width="64" height="64" rx="20" fill="#1A8A91"></rect><rect x="27" y="14" width="10" height="36" rx="5" fill="#fff"></rect><rect x="14" y="27" width="36" height="10" rx="5" fill="#fff"></rect><circle cx="47" cy="17" r="4" fill="#F2B544"></circle></svg>
+      <div style="display:flex;flex-direction:column">
+        <span style="font-size:26px;font-weight:700">مجمع الرحمة الطبي</span>
+        <span style="font-family:'Space Grotesk';font-size:13px;letter-spacing:.18em;color:#A6D8DA">AL-RAHMA MEDICAL COMPLEX</span>
+      </div>
+    </div>
+    <h1 style="margin:0;font-size:56px;line-height:1.15;font-weight:700;text-wrap:pretty">دليل الهوية البصرية ونظام التصميم</h1>
+    <p style="margin:0;font-size:19px;line-height:1.8;color:#C9E4E5;max-width:560px;text-wrap:pretty">هوية مستمدة من الأخضر المزرق الطبي في المراجع: بطاقات ناعمة الزوايا، أسطح فاتحة هادئة، وشريط تنقل داكن للوحات التشغيل. مصممة RTL أولاً للهاتف والتابلت والحاسوب.</p>
+    <div style="display:flex;gap:10px;flex-wrap:wrap">
+      <span style="padding:8px 14px;border-radius:999px;background:rgba(255,255,255,.1);font-size:14px">الإصدار 2.0 · API v5.0</span>
+      <span style="padding:8px 14px;border-radius:999px;background:rgba(255,255,255,.1);font-size:14px">Light + Dark</span>
+      <span style="padding:8px 14px;border-radius:999px;background:rgba(255,255,255,.1);font-size:14px">PWA · Offline-First</span>
+    </div>
+  </div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;position:relative">
+    <div style="background:#0F7A82;border-radius:24px;height:150px;padding:18px;display:flex;flex-direction:column;justify-content:flex-end"><span style="font-family:'Space Grotesk';font-size:13px;color:#D2ECEC">PRIMARY 600</span><span dir="ltr" style="font-family:'Space Grotesk';font-size:18px;font-weight:600;text-align:right">#0F7A82</span></div>
+    <div style="background:#EAF6F6;color:#0A3A40;border-radius:24px;height:150px;padding:18px;display:flex;flex-direction:column;justify-content:flex-end"><span style="font-family:'Space Grotesk';font-size:13px;color:#3BA1A7">MIST 50</span><span dir="ltr" style="font-family:'Space Grotesk';font-size:18px;font-weight:600;text-align:right">#EAF6F6</span></div>
+    <div style="background:#102C44;border-radius:24px;height:110px;padding:18px;display:flex;flex-direction:column;justify-content:flex-end;border:1px solid rgba(255,255,255,.12)"><span style="font-family:'Space Grotesk';font-size:13px;color:#9FB4C6">NAVY</span><span dir="ltr" style="font-family:'Space Grotesk';font-size:18px;font-weight:600;text-align:right">#102C44</span></div>
+    <div style="background:#F2B544;color:#3D2A05;border-radius:24px;height:110px;padding:18px;display:flex;flex-direction:column;justify-content:flex-end"><span style="font-family:'Space Grotesk';font-size:13px">AMBER</span><span dir="ltr" style="font-family:'Space Grotesk';font-size:18px;font-weight:600;text-align:right">#F2B544</span></div>
+  </div>
+</header>
+
+<section data-screen-label="01 Logo" style="display:flex;flex-direction:column;gap:28px">
+  <div style="display:flex;align-items:baseline;gap:16px"><span style="font-family:'Space Grotesk';font-size:15px;font-weight:600;color:#1A8A91">01</span><h2 style="margin:0;font-size:34px;font-weight:700">الشعار</h2></div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px">
+    <div style="background:#fff;border-radius:24px;padding:40px;display:flex;flex-direction:column;align-items:center;gap:20px;border:1px solid #E3EBEC">
+      <div style="display:flex;align-items:center;gap:14px">
+        <svg width="56" height="56" viewBox="0 0 64 64"><rect width="64" height="64" rx="20" fill="#0F7A82"></rect><rect x="27" y="14" width="10" height="36" rx="5" fill="#fff"></rect><rect x="14" y="27" width="36" height="10" rx="5" fill="#fff"></rect><circle cx="47" cy="17" r="4" fill="#F2B544"></circle></svg>
+        <div style="display:flex;flex-direction:column"><span style="font-size:24px;font-weight:700;color:#0A3A40">مجمع الرحمة الطبي</span><span style="font-family:'Space Grotesk';font-size:11px;letter-spacing:.18em;color:#4F6368;font-weight:600">AL-RAHMA MEDICAL</span></div>
+      </div>
+      <span style="font-size:14px;color:#6B7F84">الأساسي — على خلفية فاتحة</span>
+    </div>
+    <div style="background:#0A3A40;border-radius:24px;padding:40px;display:flex;flex-direction:column;align-items:center;gap:20px">
+      <div style="display:flex;align-items:center;gap:14px">
+        <svg width="56" height="56" viewBox="0 0 64 64"><rect width="64" height="64" rx="20" fill="#1A8A91"></rect><rect x="27" y="14" width="10" height="36" rx="5" fill="#fff"></rect><rect x="14" y="27" width="36" height="10" rx="5" fill="#fff"></rect><circle cx="47" cy="17" r="4" fill="#F2B544"></circle></svg>
+        <div style="display:flex;flex-direction:column"><span style="font-size:24px;font-weight:700;color:#fff">مجمع الرحمة الطبي</span><span style="font-family:'Space Grotesk';font-size:11px;letter-spacing:.18em;color:#A6D8DA">AL-RAHMA MEDICAL</span></div>
+      </div>
+      <span style="font-size:14px;color:#A6D8DA">المعكوس — للشريط الجانبي والوضع الليلي</span>
+    </div>
+    <div style="background:#fff;border-radius:24px;padding:40px;display:flex;flex-direction:column;align-items:center;gap:20px;border:1px solid #E3EBEC">
+      <div style="display:flex;align-items:flex-end;gap:20px">
+        <svg width="72" height="72" viewBox="0 0 64 64"><rect width="64" height="64" rx="20" fill="#0F7A82"></rect><rect x="27" y="14" width="10" height="36" rx="5" fill="#fff"></rect><rect x="14" y="27" width="36" height="10" rx="5" fill="#fff"></rect><circle cx="47" cy="17" r="4" fill="#F2B544"></circle></svg>
+        <svg width="44" height="44" viewBox="0 0 64 64"><rect width="64" height="64" rx="20" fill="#0F7A82"></rect><rect x="27" y="14" width="10" height="36" rx="5" fill="#fff"></rect><rect x="14" y="27" width="36" height="10" rx="5" fill="#fff"></rect><circle cx="47" cy="17" r="4" fill="#F2B544"></circle></svg>
+        <svg width="28" height="28" viewBox="0 0 64 64"><rect width="64" height="64" rx="20" fill="#0F7A82"></rect><rect x="27" y="14" width="10" height="36" rx="5" fill="#fff"></rect><rect x="14" y="27" width="36" height="10" rx="5" fill="#fff"></rect></svg>
+      </div>
+      <span style="font-size:14px;color:#6B7F84">أيقونة التطبيق PWA · 192 / 48 / 16px (النقطة تُحذف تحت 32px)</span>
+    </div>
+  </div>
+  <p style="margin:0;font-size:15px;line-height:1.8;color:#4F6368;max-width:820px">الرمز: صليب طبي بأطراف دائرية داخل مربع بزاوية 31% من عرضه، مع نقطة كهرمانية تمثل "الرحمة" والرعاية. مساحة الأمان حول الشعار تساوي عرض ذراع الصليب. الشعار مؤقت قابل للاستبدال بالشعار الرسمي للمجمع.</p>
+</section>
+
+<section data-screen-label="02 Color" style="display:flex;flex-direction:column;gap:28px">
+  <div style="display:flex;align-items:baseline;gap:16px"><span style="font-family:'Space Grotesk';font-size:15px;font-weight:600;color:#1A8A91">02</span><h2 style="margin:0;font-size:34px;font-weight:700">الألوان</h2></div>
+  <div style="display:flex;flex-direction:column;gap:10px">
+    <span style="font-size:15px;font-weight:600">اللون الأساسي — Teal (من مرجع حجز الطبيب و Cure Connect)</span>
+    <div style="display:grid;grid-template-columns:repeat(11,minmax(0,1fr));border-radius:20px;overflow:hidden">
+      <sc-for list="{{ teal }}" as="c" hint-placeholder-count="11">
+        <div style="background:{{ c.hex }};color:{{ c.fg }};height:132px;padding:12px;display:flex;flex-direction:column;justify-content:flex-end;gap:2px">
+          <span style="font-family:'Space Grotesk';font-size:14px;font-weight:600">{{ c.name }}</span>
+          <span style="font-family:'Space Grotesk';font-size:11px" dir="ltr">{{ c.hex }}</span>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+  <div style="display:flex;flex-direction:column;gap:10px">
+    <span style="font-size:15px;font-weight:600">المحايدات — رمادي مائل للأخضر المزرق</span>
+    <div style="display:grid;grid-template-columns:repeat(9,minmax(0,1fr));border-radius:20px;overflow:hidden;border:1px solid #E3EBEC">
+      <sc-for list="{{ neutral }}" as="c" hint-placeholder-count="9">
+        <div style="background:{{ c.hex }};color:{{ c.fg }};height:96px;padding:12px;display:flex;flex-direction:column;justify-content:flex-end;gap:2px">
+          <span style="font-family:'Space Grotesk';font-size:13px;font-weight:600">{{ c.name }}</span>
+          <span style="font-family:'Space Grotesk';font-size:11px" dir="ltr">{{ c.hex }}</span>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+  <div style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px">
+    <div style="display:flex;flex-direction:column;gap:10px">
+      <span style="font-size:15px;font-weight:600">الألوان الدلالية</span>
+      <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px">
+        <sc-for list="{{ semantic }}" as="c" hint-placeholder-count="5">
+          <div style="background:#fff;border-radius:18px;padding:12px;display:flex;align-items:center;gap:12px;border:1px solid #E3EBEC">
+            <div style="width:48px;height:48px;border-radius:14px;background:{{ c.hex }};flex-shrink:0"></div>
+            <div style="width:24px;height:48px;border-radius:10px;background:{{ c.soft }};flex-shrink:0"></div>
+            <div style="display:flex;flex-direction:column;min-width:0"><span style="font-size:15px;font-weight:600">{{ c.ar }}</span><span style="font-family:'Space Grotesk';font-size:12px;color:#4F6368;unicode-bidi:isolate;direction:ltr;text-align:right;font-weight:600">{{ c.name }} · {{ c.hex }}</span></div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:10px">
+      <span style="font-size:15px;font-weight:600">ألوان الأقسام (department)</span>
+      <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px">
+        <sc-for list="{{ depts }}" as="c" hint-placeholder-count="4">
+          <div style="background:{{ c.soft }};border-radius:18px;padding:16px;display:flex;flex-direction:column;gap:14px;min-height:118px">
+            <div style="width:40px;height:40px;border-radius:12px;background:{{ c.hex }};color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:16px">{{ c.letter }}</div>
+            <div style="display:flex;flex-direction:column"><span style="font-size:16px;font-weight:600;color:{{ c.ink }}">{{ c.ar }}</span><span style="font-family:'Space Grotesk';font-size:12px;color:{{ c.ink }};unicode-bidi:isolate;direction:ltr;text-align:right">{{ c.key }} · {{ c.hex }}</span></div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="03 Themes" style="display:flex;flex-direction:column;gap:28px">
+  <div style="display:flex;align-items:baseline;gap:16px"><span style="font-family:'Space Grotesk';font-size:15px;font-weight:600;color:#1A8A91">03</span><h2 style="margin:0;font-size:34px;font-weight:700">الوضع الفاتح والداكن</h2></div>
+  <div style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px">
+    <div style="background:#F5F8F8;border-radius:28px;padding:28px;display:flex;flex-direction:column;gap:12px;border:1px solid #E3EBEC">
+      <span style="font-size:18px;font-weight:700;color:#0F2328">Light</span>
+      <sc-for list="{{ themeRows }}" as="r" hint-placeholder-count="9">
+        <div style="display:flex;align-items:center;gap:12px;padding:8px 0;border-bottom:1px solid #E3EBEC">
+          <div style="width:36px;height:36px;border-radius:10px;background:{{ r.light }};border:1px solid #D5E0E1;flex-shrink:0"></div>
+          <span style="font-family:'Space Grotesk';font-size:13px;color:#0F2328;flex:1">{{ r.token }}</span>
+          <span style="font-size:13px;color:#4F6368">{{ r.ar }}</span>
+          <span style="font-family:'Space Grotesk';font-size:13px;color:#0F2328;width:76px;text-align:left" dir="ltr">{{ r.light }}</span>
+        </div>
+      </sc-for>
+    </div>
+    <div style="background:#071A1D;border-radius:28px;padding:28px;display:flex;flex-direction:column;gap:12px">
+      <span style="font-size:18px;font-weight:700;color:#E6F1F1">Dark</span>
+      <sc-for list="{{ themeRows }}" as="r" hint-placeholder-count="9">
+        <div style="display:flex;align-items:center;gap:12px;padding:8px 0;border-bottom:1px solid #1D3A3E">
+          <div style="width:36px;height:36px;border-radius:10px;background:{{ r.dark }};border:1px solid #2A4A4E;flex-shrink:0"></div>
+          <span style="font-family:'Space Grotesk';font-size:13px;color:#E6F1F1;flex:1">{{ r.token }}</span>
+          <span style="font-size:13px;color:#8FA8AB">{{ r.ar }}</span>
+          <span style="font-family:'Space Grotesk';font-size:13px;color:#E6F1F1;width:76px;text-align:left" dir="ltr">{{ r.dark }}</span>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="04 Type" style="display:flex;flex-direction:column;gap:28px">
+  <div style="display:flex;align-items:baseline;gap:16px"><span style="font-family:'Space Grotesk';font-size:15px;font-weight:600;color:#1A8A91">04</span><h2 style="margin:0;font-size:34px;font-weight:700">الخطوط</h2></div>
+  <div style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px">
+    <div style="background:#fff;border-radius:24px;padding:32px;display:flex;flex-direction:column;gap:12px;border:1px solid #E3EBEC">
+      <span style="font-size:14px;color:#6B7F84">النصوص العربية والواجهة</span>
+      <span style="font-size:64px;font-weight:700;line-height:1.1;color:#0A3A40">أبجد هوز</span>
+      <span style="font-size:22px;font-weight:600">Readex Pro</span>
+      <span style="font-size:14px;color:#4F6368">300 · 400 · 500 · 600 · 700</span>
+    </div>
+    <div style="background:#fff;border-radius:24px;padding:32px;display:flex;flex-direction:column;gap:12px;border:1px solid #E3EBEC">
+      <span style="font-size:14px;color:#6B7F84">الأرقام، المبالغ، أرقام التذاكر والإيصالات</span>
+      <span style="font-family:'Space Grotesk';font-size:64px;font-weight:600;line-height:1.1;color:#0A3A40">A-104 · 25,000</span>
+      <span style="font-family:'Space Grotesk';font-size:22px;font-weight:600">Space Grotesk</span>
+      <span style="font-size:14px;color:#4F6368">أرقام جدولية tabular-nums في الجداول المالية</span>
+    </div>
+  </div>
+  <div style="background:#fff;border-radius:24px;padding:12px 32px;border:1px solid #E3EBEC">
+    <sc-for list="{{ typeScale }}" as="t" hint-placeholder-count="8">
+      <div style="display:grid;grid-template-columns:150px minmax(0,1fr);gap:24px;align-items:baseline;padding:16px 0;border-bottom:1px solid #EEF2F3">
+        <div style="display:flex;flex-direction:column;gap:2px"><span style="font-family:'Space Grotesk';font-size:13px;font-weight:600;color:#0F7A82">{{ t.name }}</span><span style="font-family:'Space Grotesk';font-size:12px;color:#4F6368;font-weight:600">{{ t.spec }}</span></div>
+        <span style="font-size:{{ t.size }};font-weight:{{ t.weight }};line-height:1.4">{{ t.sample }}</span>
+      </div>
+    </sc-for>
+  </div>
+</section>
+
+<section data-screen-label="05 Shape" style="display:flex;flex-direction:column;gap:28px">
+  <div style="display:flex;align-items:baseline;gap:16px"><span style="font-family:'Space Grotesk';font-size:15px;font-weight:600;color:#1A8A91">05</span><h2 style="margin:0;font-size:34px;font-weight:700">الزوايا، الظلال، المسافات</h2></div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:16px">
+    <sc-for list="{{ radii }}" as="r" hint-placeholder-count="6">
+      <div style="display:flex;flex-direction:column;gap:10px">
+        <div style="height:110px;background:#D2ECEC;border:2px solid #1A8A91;border-radius:{{ r.px }}"></div>
+        <span style="font-family:'Space Grotesk';font-size:14px;font-weight:600">{{ r.name }} · {{ r.px }}</span>
+        <span style="font-size:13px;color:#4F6368;font-weight:600">{{ r.use }}</span>
+      </div>
+    </sc-for>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px;background:#F5F8F8;padding:32px;border-radius:28px">
+    <sc-for list="{{ shadows }}" as="s" hint-placeholder-count="4">
+      <div style="background:#fff;border-radius:20px;height:120px;padding:16px;display:flex;flex-direction:column;justify-content:flex-end;box-shadow:{{ s.css }}">
+        <span style="font-family:'Space Grotesk';font-size:14px;font-weight:600">{{ s.name }}</span>
+        <span style="font-size:12px;color:#4F6368;font-weight:600">{{ s.use }}</span>
+      </div>
+    </sc-for>
+  </div>
+  <div style="display:flex;gap:20px;align-items:flex-end;flex-wrap:wrap">
+    <sc-for list="{{ spacing }}" as="s" hint-placeholder-count="9">
+      <div style="display:flex;flex-direction:column;align-items:center;gap:8px">
+        <div style="width:{{ s.px }};height:{{ s.px }};background:#0F7A82;border-radius:4px"></div>
+        <span style="font-family:'Space Grotesk';font-size:12px;color:#4F6368">{{ s.px }}</span>
+      </div>
+    </sc-for>
+    <span style="font-size:13px;color:#4F6368;margin-inline-start:16px;font-weight:600">شبكة 4px · هوامش الهاتف 20 · التابلت 24 · المكتب 32</span>
+  </div>
+</section>
+
+
+<section data-screen-label="06 Status language" style="display:flex;flex-direction:column;gap:28px">
+  <div style="display:flex;align-items:baseline;gap:16px"><span style="font-family:'Space Grotesk';font-size:15px;font-weight:600;color:#1A8A91">06</span><h2 style="margin:0;font-size:34px;font-weight:700">لغة الحالات</h2></div>
+  <p style="margin:0;font-size:15px;line-height:1.8;color:#4F6368;max-width:860px">كل قيمة enum في عقود الـ API v5 لها لون ثابت في كل الشاشات. الأخضر المزرق للتقدم الطبيعي، الأخضر للاكتمال، الكهرماني لما يحتاج انتباهاً، الأحمر للخطر والمستحقات، والرمادي للحالات المنتهية.</p>
+  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(360px,1fr));gap:12px">
+    <sc-for list="{{ statusGroups }}" as="g" hint-placeholder-count="12">
+      <div style="background:#fff;border-radius:20px;padding:18px;display:flex;flex-direction:column;gap:12px;border:1px solid #E3EBEC">
+        <div style="display:flex;justify-content:space-between;align-items:baseline;gap:8px"><span style="font-size:15px;font-weight:600">{{ g.ar }}</span><span dir="ltr" style="font-family:ui-monospace,Menlo,monospace;font-size:11px;color:#6B7F84;font-weight:600">{{ g.key }}</span></div>
+        <div style="display:flex;gap:6px;flex-wrap:wrap">
+          <sc-for list="{{ g.items }}" as="s" hint-placeholder-count="4">
+            <span style="display:inline-flex;align-items:center;gap:6px;padding:5px 10px;border-radius:999px;background:{{ s.bg }};color:{{ s.fg }};font-size:13px;font-weight:500"><span style="width:6px;height:6px;border-radius:999px;background:{{ s.dot }}"></span>{{ s.ar }}<span dir="ltr" style="font-family:'Space Grotesk';font-size:10px;opacity:.7">{{ s.key }}</span></span>
+          </sc-for>
+        </div>
+      </div>
+    </sc-for>
+  </div>
+</section>
+
+<section data-screen-label="07 Components" style="display:flex;flex-direction:column;gap:28px">
+  <div style="display:flex;align-items:baseline;gap:16px"><span style="font-family:'Space Grotesk';font-size:15px;font-weight:600;color:#1A8A91">07</span><h2 style="margin:0;font-size:34px;font-weight:700">المكونات</h2></div>
+
+  <div style="display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:16px">
+    <div style="background:#fff;border-radius:24px;padding:24px;display:flex;flex-direction:column;gap:16px;border:1px solid #E3EBEC;padding:28px">
+      <div style="display:flex;justify-content:space-between;align-items:baseline;gap:8px"><span style="font-size:15px;font-weight:600;color:#4F6368">الأزرار</span><span dir="ltr" style="font-family:ui-monospace,Menlo,monospace;font-size:11px;color:#6B7F84;font-weight:600"></span></div>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center">
+        <button style="white-space:nowrap;font-family:inherit;font-size:16px;font-weight:600;background:#0F7A82;color:#fff;border:0;border-radius:999px;padding:14px 28px;cursor:pointer" style-hover="background:#0C5F67">تثبيت الحضور</button>
+        <button style="white-space:nowrap;font-family:inherit;font-size:16px;font-weight:600;background:#D2ECEC;color:#0C5F67;border:0;border-radius:999px;padding:14px 24px;cursor:pointer" style-hover="background:#A6D8DA">استدعاء التالي</button>
+        <button style="white-space:nowrap;font-family:inherit;font-size:16px;font-weight:600;background:#fff;color:#0F7A82;border:1.5px solid #0F7A82;border-radius:999px;padding:12.5px 24px;cursor:pointer">إعادة طباعة</button>
+        <button style="white-space:nowrap;font-family:inherit;font-size:16px;font-weight:600;background:#E5484D;color:#fff;border:0;border-radius:999px;padding:14px 24px;cursor:pointer">طوارئ</button>
+        <button style="white-space:nowrap;font-family:inherit;font-size:16px;font-weight:600;background:transparent;color:#4F6368;border:0;border-radius:999px;padding:14px 16px;cursor:pointer" style-hover="background:#EEF2F3">تخطي مؤقت</button>
+        <button style="white-space:nowrap;font-family:inherit;font-size:16px;font-weight:600;background:#EEF2F3;color:#8A9A9E;border:0;border-radius:999px;padding:14px 24px;cursor:not-allowed">استرجاع · غير متاح أوفلاين</button>
+      </div>
+      <div style="display:flex;justify-content:space-between;align-items:baseline;gap:8px"><span style="font-size:15px;font-weight:600;color:#4F6368">طرق الدفع</span><span dir="ltr" style="font-family:ui-monospace,Menlo,monospace;font-size:11px;color:#6B7F84;font-weight:600">tenders[].method</span></div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap">
+        <sc-for list="{{ methods }}" as="m" hint-placeholder-count="4">
+          <div style="display:flex;align-items:center;gap:10px;padding:10px 14px 10px 16px;border-radius:14px;background:{{ m.bg }};border:1.5px solid {{ m.line }}">
+            <div style="width:32px;height:32px;border-radius:10px;background:{{ m.hex }};color:#fff;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700">{{ m.letter }}</div>
+            <div style="display:flex;flex-direction:column"><span style="font-size:14px;font-weight:600;color:{{ m.ink }}">{{ m.ar }}</span><span dir="ltr" style="font-family:'Space Grotesk';font-size:11px;color:{{ m.ink }};text-align:right">{{ m.key }}</span></div>
+          </div>
+        </sc-for>
+      </div>
+      <div style="display:flex;justify-content:space-between;align-items:baseline;gap:8px"><span style="font-size:15px;font-weight:600;color:#4F6368">الحقول</span><span dir="ltr" style="font-family:ui-monospace,Menlo,monospace;font-size:11px;color:#6B7F84;font-weight:600"></span></div>
+      <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px">
+        <label style="display:flex;flex-direction:column;gap:6px"><span style="font-size:14px;font-weight:500">بحث عن مريض</span>
+          <div style="display:flex;align-items:center;gap:8px;background:#F5F8F8;border:1px solid #E3EBEC;border-radius:14px;padding:0 14px;height:48px"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#6B7F84" stroke-width="2"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.5-3.5"></path></svg><span style="font-size:14px;color:#8A9A9E">هاتف، اسم، أو R1-</span></div></label>
+        <label style="display:flex;flex-direction:column;gap:6px"><span style="font-size:14px;font-weight:500">مبلغ نقدي</span>
+          <div style="display:flex;align-items:center;gap:8px;background:#fff;border:2px solid #0F7A82;border-radius:14px;padding:0 14px;height:48px;box-shadow:0 0 0 4px #D2ECEC"><span style="font-family:'Space Grotesk';font-size:18px;font-weight:600;flex:1">40,000</span><span style="font-size:13px;color:#4F6368;font-weight:600">د.ع</span></div></label>
+        <label style="display:flex;flex-direction:column;gap:6px"><span style="font-size:14px;font-weight:500">سبب الطوارئ <span style="color:#E5484D">*</span></span>
+          <div style="display:flex;align-items:center;background:#fff;border:2px solid #E5484D;border-radius:14px;padding:0 14px;height:48px"><span style="font-size:14px;color:#8A9A9E">السبب إلزامي</span></div>
+          <span style="font-size:12px;color:#B4262B">يُسجل في سجل التدقيق</span></label>
+      </div>
+    </div>
+
+    <div style="background:#fff;border-radius:24px;padding:24px;display:flex;flex-direction:column;gap:16px;border:1px solid #E3EBEC;padding:28px">
+      <div style="display:flex;justify-content:space-between;align-items:baseline;gap:8px"><span style="font-size:15px;font-weight:600;color:#4F6368">بطاقة التذكرة</span><span dir="ltr" style="font-family:ui-monospace,Menlo,monospace;font-size:11px;color:#6B7F84;font-weight:600">GET /queue/live</span></div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;font-size:13px;color:#4F6368">
+        <span style="padding:6px 12px;border-radius:10px;background:#F5F8F8">متوسط المعاينة اليوم <b style="font-family:'Space Grotesk';color:#0A3A40">11.5</b> د</span>
+        <span style="padding:6px 12px;border-radius:10px;background:#FDF3E2;color:#8A520B">تأخير <b style="font-family:'Space Grotesk'">+8</b> دقائق</span>
+      </div>
+      <div style="border-radius:20px;background:#F5F8F8;padding:16px;display:flex;flex-direction:column;gap:14px">
+        <div style="display:flex;align-items:center;gap:12px">
+          <div style="width:56px;height:56px;border-radius:16px;background:#0F7A82;color:#fff;display:flex;align-items:center;justify-content:center;font-family:'Space Grotesk';font-weight:700;font-size:15px">A-104</div>
+          <div style="display:flex;flex-direction:column;flex:1;min-width:0"><span style="font-size:16px;font-weight:600">أحمد علي</span><span style="font-size:13px;color:#4F6368;font-weight:600">حضوري · <span style="font-family:'Space Grotesk'">R1-004520</span></span></div>
+          <div style="display:flex;flex-direction:column;align-items:flex-end;gap:4px"><span style="padding:4px 10px;border-radius:999px;background:#EAF6F6;color:#0C5F67;font-size:12px;font-weight:500;white-space:nowrap">وصل</span><span style="padding:4px 10px;border-radius:999px;background:#E6F6EE;color:#157A50;font-size:12px;font-weight:500;white-space:nowrap">مدفوع</span></div>
+        </div>
+        <div style="display:flex;justify-content:space-between;align-items:center;padding-top:12px;border-top:1px dashed #D5E0E1">
+          <span style="font-size:13px;color:#4F6368;font-weight:600">الدخول التقريبي</span>
+          <span style="font-family:'Space Grotesk';font-size:17px;font-weight:600;color:#0A3A40">5:12 م</span>
+        </div>
+        <div style="display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:8px">
+          <button style="white-space:nowrap;font-family:inherit;font-size:14px;font-weight:600;background:#0F7A82;color:#fff;border:0;border-radius:999px;height:42px">استدعاء</button>
+          <button style="white-space:nowrap;font-family:inherit;font-size:14px;font-weight:600;background:#fff;color:#4F6368;border:1px solid #D5E0E1;border-radius:999px;height:42px">تخطي</button>
+          <button style="white-space:nowrap;font-family:inherit;font-size:14px;font-weight:600;background:#FDECEC;color:#B4262B;border:0;border-radius:999px;height:42px">طوارئ</button>
+        </div>
+      </div>
+      <div style="border-radius:16px;border:1.5px solid #E5484D;padding:12px 14px;display:flex;align-items:center;gap:12px;background:#FFF7F7">
+        <div style="width:44px;height:44px;border-radius:12px;background:#E5484D;color:#fff;display:flex;align-items:center;justify-content:center;font-family:'Space Grotesk';font-weight:700;font-size:13px">A-110</div>
+        <div style="display:flex;flex-direction:column;flex:1"><span style="font-size:14px;font-weight:600">كاظم جبار</span><span style="font-size:12px;color:#B4262B">ضيق تنفس حاد · أُعيد جدولة 12 تذكرة</span></div>
+        <span style="padding:4px 10px;border-radius:999px;background:#E5484D;color:#fff;font-size:12px;font-weight:500;white-space:nowrap">طوارئ</span>
+      </div>
+    </div>
+  </div>
+
+  <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px">
+    <div style="background:#fff;border-radius:24px;padding:24px;display:flex;flex-direction:column;gap:16px;border:1px solid #E3EBEC">
+      <div style="display:flex;justify-content:space-between;align-items:baseline;gap:8px"><span style="font-size:15px;font-weight:600;color:#4F6368">سعة الوجبة</span><span dir="ltr" style="font-family:ui-monospace,Menlo,monospace;font-size:11px;color:#6B7F84;font-weight:600">GET /doctors/{id}/schedule</span></div>
+      <div style="display:flex;justify-content:space-between;align-items:baseline"><span style="font-size:16px;font-weight:600">الوجبة المسائية</span><span style="font-family:'Space Grotesk';font-size:14px;color:#4F6368">16:00 – 21:00</span></div>
+      <div dir="ltr" style="font-family:'Space Grotesk';font-size:13px;color:#4F6368;text-align:right;font-weight:600">(21:00 − 16:00) ÷ 10 min = <b style="color:#0A3A40">30</b></div>
+      <div style="display:flex;gap:3px;height:28px">
+        <sc-for list="{{ capacity }}" as="c" hint-placeholder-count="30">
+          <span style="flex:1;border-radius:4px;background:{{ c.bg }}"></span>
+        </sc-for>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+        <div style="display:flex;flex-direction:column;gap:2px;padding:10px 12px;border-radius:12px;background:#EAF6F6"><span style="font-size:12px;color:#4F6368">أونلاين 60%</span><span style="font-family:'Space Grotesk';font-size:18px;font-weight:600;color:#0A3A40">12 / 18</span></div>
+        <div style="display:flex;flex-direction:column;gap:2px;padding:10px 12px;border-radius:12px;background:#F5F8F8"><span style="font-size:12px;color:#4F6368">حضور مباشر</span><span style="font-family:'Space Grotesk';font-size:18px;font-weight:600;color:#0A3A40">5 / 12</span></div>
+      </div>
+    </div>
+    <div style="background:#fff;border-radius:24px;padding:24px;display:flex;flex-direction:column;gap:16px;border:1px solid #E3EBEC">
+      <div style="display:flex;justify-content:space-between;align-items:baseline;gap:8px"><span style="font-size:15px;font-weight:600;color:#4F6368">حصة الطبيب والمجمع</span><span dir="ltr" style="font-family:ui-monospace,Menlo,monospace;font-size:11px;color:#6B7F84;font-weight:600">commission_rate · floor()</span></div>
+      <sc-for list="{{ splits }}" as="s" hint-placeholder-count="3">
+        <div style="display:flex;flex-direction:column;gap:6px">
+          <div style="display:flex;justify-content:space-between;font-size:14px"><span style="font-weight:600">{{ s.ar }}</span><span style="font-family:'Space Grotesk';font-weight:600">{{ s.price }}</span></div>
+          <div style="display:flex;height:10px;border-radius:999px;overflow:hidden;background:#E3EBEC"><span style="width:{{ s.pct }};background:#0F7A82"></span><span style="flex:1;background:#F2B544"></span></div>
+          <div style="display:flex;justify-content:space-between;font-size:12px;color:#4F6368"><span>الطبيب {{ s.rate }} · <span style="font-family:'Space Grotesk'">{{ s.doc }}</span></span><span>المجمع · <span style="font-family:'Space Grotesk'">{{ s.cx }}</span></span></div>
+        </div>
+      </sc-for>
+      <span style="font-size:12px;color:#4F6368;font-weight:600">النسبة محفوظة لحظة إنشاء البند، والكسور لصالح المجمع.</span>
+    </div>
+    <div style="background:#fff;border-radius:24px;padding:24px;display:flex;flex-direction:column;gap:16px;border:1px solid #E3EBEC">
+      <div style="display:flex;justify-content:space-between;align-items:baseline;gap:8px"><span style="font-size:15px;font-weight:600;color:#4F6368">وكيل العتاد المحلي</span><span dir="ltr" style="font-family:ui-monospace,Menlo,monospace;font-size:11px;color:#6B7F84;font-weight:600">localhost:9443/status</span></div>
+      <div style="display:flex;align-items:center;gap:12px;padding:12px;border-radius:14px;background:#F5F8F8">
+        <div style="width:40px;height:40px;border-radius:12px;background:#fff;border:1px solid #E3EBEC;display:flex;align-items:center;justify-content:center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0F7A82" stroke-width="2"><rect x="6" y="3" width="12" height="6"></rect><rect x="4" y="9" width="16" height="8" rx="2"></rect><rect x="7" y="14" width="10" height="7"></rect></svg></div>
+        <div style="display:flex;flex-direction:column;flex:1"><span style="font-size:14px;font-weight:600">الطابعة الحرارية</span><span dir="ltr" style="font-family:'Space Grotesk';font-size:12px;color:#4F6368;text-align:right;font-weight:600">Epson TM-T20III</span></div>
+        <span style="padding:4px 10px;border-radius:999px;background:#FDF3E2;color:#8A520B;font-size:12px;font-weight:500;white-space:nowrap">الورق قليل</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:12px;padding:12px;border-radius:14px;background:#F5F8F8">
+        <div style="width:40px;height:40px;border-radius:12px;background:#fff;border:1px solid #E3EBEC;display:flex;align-items:center;justify-content:center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0F7A82" stroke-width="2"><rect x="3" y="8" width="18" height="12" rx="2"></rect><path d="M9 14h6"></path></svg></div>
+        <div style="display:flex;flex-direction:column;flex:1"><span style="font-size:14px;font-weight:600">درج النقود</span><span style="font-size:12px;color:#4F6368;font-weight:600">لا يُفتح إلا مع إيصال</span></div>
+        <span style="padding:4px 10px;border-radius:999px;background:#E6F6EE;color:#157A50;font-size:12px;font-weight:500;white-space:nowrap">مغلق</span>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px">
+        <div style="display:flex;justify-content:space-between;font-size:13px"><span style="color:#4F6368">كتلة الإيصالات أوفلاين</span><span dir="ltr" style="font-family:'Space Grotesk';font-weight:600">B1-D03-1201 → 1400</span></div>
+        <div style="height:8px;border-radius:999px;background:#E3EBEC;overflow:hidden"><div style="width:18%;height:100%;background:#1A8A91"></div></div>
+        <span style="font-size:12px;color:#4F6368;font-weight:600">مستخدم <span style="font-family:'Space Grotesk'">37</span> من <span style="font-family:'Space Grotesk'">200</span></span>
+      </div>
+    </div>
+  </div>
+
+  <div style="display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr) minmax(0,1fr);gap:16px">
+    <div style="background:#fff;border-radius:24px;padding:24px;display:flex;flex-direction:column;gap:16px;border:1px solid #E3EBEC">
+      <div style="display:flex;justify-content:space-between;align-items:baseline;gap:8px"><span style="font-size:15px;font-weight:600;color:#4F6368">السلة الموحدة · استقبال المختبر</span><span dir="ltr" style="font-family:ui-monospace,Menlo,monospace;font-size:11px;color:#6B7F84;font-weight:600">billable-items?department=lab</span></div>
+      <div style="display:flex;align-items:center;gap:10px"><div style="width:40px;height:40px;border-radius:999px;background:#D2ECEC;color:#0C5F67;display:flex;align-items:center;justify-content:center;font-weight:700">ف</div><div style="display:flex;flex-direction:column;flex:1"><span style="font-size:15px;font-weight:600">فاطمة حسن</span><span style="font-family:'Space Grotesk';font-size:12px;color:#4F6368;font-weight:600">R1-004512 · 07801234567</span></div></div>
+      <div style="display:flex;flex-direction:column;gap:8px">
+        <sc-for list="{{ basket }}" as="b" hint-placeholder-count="3">
+          <div style="display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:14px;border:1.5px solid {{ b.line }};background:{{ b.bg }}">
+            <span style="width:10px;height:10px;border-radius:3px;background:{{ b.hex }};flex-shrink:0"></span>
+            <div style="display:flex;flex-direction:column;flex:1;min-width:0"><span style="font-size:14px;font-weight:600">{{ b.name }}</span><span style="font-size:12px;color:#4F6368;font-weight:600">{{ b.dept }} · {{ b.by }}</span></div>
+            <span style="font-family:'Space Grotesk';font-size:15px;font-weight:600">{{ b.price }}</span>
+          </div>
+        </sc-for>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;font-size:14px;padding-top:4px">
+        <div style="display:flex;justify-content:space-between"><span style="color:#4F6368">البنود المحددة</span><span style="font-family:'Space Grotesk'">65,000</span></div>
+        <div style="display:flex;justify-content:space-between;color:#157A50"><span>رصيد عربون</span><span dir="ltr" style="font-family:'Space Grotesk'">−10,000</span></div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;padding:12px;border-radius:14px;background:#F5F8F8">
+        <div style="display:flex;justify-content:space-between;align-items:center;font-size:14px"><span>نقداً</span><span style="font-family:'Space Grotesk';font-weight:600">40,000</span></div>
+        <div style="display:flex;justify-content:space-between;align-items:center;font-size:14px"><span>POS · زين كاش <span dir="ltr" style="font-family:'Space Grotesk';font-size:11px;color:#4F6368;font-weight:600">TX-883201</span></span><span style="font-family:'Space Grotesk';font-weight:600">15,000</span></div>
+      </div>
+      <div style="display:flex;justify-content:space-between;align-items:baseline"><span style="font-size:15px;color:#4F6368">المطلوب</span><span style="font-family:'Space Grotesk';font-size:26px;font-weight:700;color:#0A3A40">55,000 <span style="font-family:'Readex Pro';font-size:13px;font-weight:500">د.ع</span></span></div>
+      <button style="white-space:nowrap;font-family:inherit;font-size:15px;font-weight:600;background:#0F7A82;color:#fff;border:0;border-radius:999px;height:50px">تحصيل وطباعة الإيصال</button>
+      <span style="font-size:12px;color:#4F6368;text-align:center;font-weight:600">الدرج يُفتح لوجود مبلغ نقدي · B1-R-000915</span>
+    </div>
+
+    <div style="background:#0A3A40;border-radius:24px;padding:24px;display:flex;flex-direction:column;gap:14px;color:#fff">
+      <div style="display:flex;justify-content:space-between;align-items:baseline"><span style="font-size:15px;font-weight:600;color:#A6D8DA">الإغلاق الأعمى · الموظف</span><span dir="ltr" style="font-family:ui-monospace,Menlo,monospace;font-size:11px;color:#6FBFC3">POST /shifts/{id}/close</span></div>
+      <span style="font-size:20px;font-weight:700">أدخل ما عددته بيدك</span>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:6px">
+        <sc-for list="{{ denoms }}" as="d" hint-placeholder-count="5">
+          <div style="display:flex;flex-direction:column;gap:2px;padding:8px 10px;border-radius:12px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12)"><span style="font-family:'Space Grotesk';font-size:12px;color:#A6D8DA">{{ d.v }}</span><span style="font-family:'Space Grotesk';font-size:17px;font-weight:600">× {{ d.n }}</span></div>
+        </sc-for>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px">
+        <span style="font-size:13px;color:#C9E4E5">النقد</span>
+        <div style="display:flex;align-items:center;gap:8px;background:rgba(255,255,255,.1);border:1.5px solid #6FBFC3;border-radius:14px;padding:0 14px;height:50px"><span style="font-family:'Space Grotesk';font-size:20px;font-weight:600;flex:1">450,000</span><span style="font-size:13px;color:#A6D8DA">د.ع</span></div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1.4fr;gap:8px">
+        <div style="display:flex;flex-direction:column;gap:6px"><span style="font-size:13px;color:#C9E4E5">قسائم POS</span><div style="display:flex;align-items:center;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.15);border-radius:14px;padding:0 14px;height:46px;font-family:'Space Grotesk';font-size:17px;font-weight:600">12</div></div>
+        <div style="display:flex;flex-direction:column;gap:6px"><span style="font-size:13px;color:#C9E4E5">مجموع POS</span><div style="display:flex;align-items:center;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.15);border-radius:14px;padding:0 14px;height:46px;font-family:'Space Grotesk';font-size:17px;font-weight:600">180,000</div></div>
+      </div>
+      <div style="display:flex;gap:8px;align-items:center;font-size:12px;color:#A6D8DA"><span style="font-family:'Space Grotesk';letter-spacing:.2em">••••••</span><span>متوقع النظام والفرق لا يظهران للموظف</span></div>
+      <button style="white-space:nowrap;font-family:inherit;font-size:15px;font-weight:600;background:#fff;color:#0A3A40;border:0;border-radius:999px;height:50px;margin-top:auto">إغلاق الوردية</button>
+    </div>
+
+    <div style="background:#fff;border-radius:24px;padding:24px;display:flex;flex-direction:column;gap:16px;border:1px solid #E3EBEC">
+      <div style="display:flex;justify-content:space-between;align-items:baseline;gap:8px"><span style="font-size:15px;font-weight:600;color:#4F6368">المطابقة · المحاسب</span><span dir="ltr" style="font-family:ui-monospace,Menlo,monospace;font-size:11px;color:#6B7F84;font-weight:600">/shifts/{id}/reconciliation</span></div>
+      <div style="display:flex;justify-content:space-between;align-items:center"><div style="display:flex;flex-direction:column"><span style="font-size:15px;font-weight:600">علي حسن · <span style="font-family:'Space Grotesk'">sh_412</span></span><span style="font-family:'Space Grotesk';font-size:12px;color:#4F6368;font-weight:600">14:00 – 22:00 · 47 receipts</span></div><span style="padding:4px 10px;border-radius:999px;background:#FDECEC;color:#B4262B;font-size:12px;font-weight:500;white-space:nowrap">عجز</span></div>
+      <div style="display:flex;flex-direction:column;border-radius:14px;overflow:hidden;border:1px solid #E3EBEC">
+        <div style="display:grid;grid-template-columns:auto 1fr 1fr auto;gap:8px;padding:8px 12px;background:#F5F8F8;font-size:12px;color:#4F6368;font-weight:600"><span>الطريقة</span><span>المتوقع</span><span>المُعلن</span><span>الفرق</span></div>
+        <sc-for list="{{ recon }}" as="r" hint-placeholder-count="3">
+          <div style="display:grid;grid-template-columns:auto 1fr 1fr auto;gap:8px;padding:10px 12px;border-top:1px solid #EEF2F3;font-size:12px;align-items:center"><span style="font-weight:600;white-space:nowrap">{{ r.ar }}</span><span dir="ltr" style="font-family:'Space Grotesk';white-space:nowrap;text-align:right">{{ r.exp }}</span><span dir="ltr" style="font-family:'Space Grotesk';white-space:nowrap;text-align:right">{{ r.dec }}</span><span dir="ltr" style="font-family:'Space Grotesk';font-weight:600;white-space:nowrap;text-align:right;color:{{ r.c }}">{{ r.v }}</span></div>
+        </sc-for>
+      </div>
+      <div style="display:flex;justify-content:space-between;align-items:baseline;padding:12px 14px;border-radius:14px;background:#FDECEC"><span style="font-size:14px;color:#B4262B;font-weight:600">إجمالي الفرق</span><span dir="ltr" style="font-family:'Space Grotesk';font-size:22px;font-weight:700;color:#B4262B">−5,000</span></div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:auto">
+        <button style="white-space:nowrap;font-family:inherit;font-size:14px;font-weight:600;background:#0F7A82;color:#fff;border:0;border-radius:999px;height:44px">قبول</button>
+        <button style="white-space:nowrap;font-family:inherit;font-size:14px;font-weight:600;background:#fff;color:#B4262B;border:1.5px solid #E5484D;border-radius:999px;height:44px">تصعيد</button>
+      </div>
+    </div>
+  </div>
+
+  <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px">
+    <div style="background:#fff;border-radius:24px;padding:24px;display:flex;flex-direction:column;gap:16px;border:1px solid #E3EBEC">
+      <div style="display:flex;justify-content:space-between;align-items:baseline;gap:8px"><span style="font-size:15px;font-weight:600;color:#4F6368">صرف الوصفة · الصيدلي</span><span dir="ltr" style="font-family:ui-monospace,Menlo,monospace;font-size:11px;color:#6B7F84;font-weight:600">RX-7KQ2M9</span></div>
+      <div style="display:flex;justify-content:space-between;align-items:center"><div style="display:flex;flex-direction:column"><span style="font-size:15px;font-weight:600">فاطمة حسن</span><span style="font-size:12px;color:#4F6368;font-weight:600">د. سعد الحيدري · صرف لمرة واحدة</span></div><span style="padding:4px 10px;border-radius:999px;background:#EAF6F6;color:#0C5F67;font-size:12px;font-weight:500;white-space:nowrap">بانتظار الصرف</span></div>
+      <sc-for list="{{ rx }}" as="r" hint-placeholder-count="2">
+        <div style="display:flex;gap:12px;padding:12px;border-radius:14px;background:{{ r.bg }};align-items:flex-start">
+          <div style="width:24px;height:24px;border-radius:7px;background:{{ r.box }};border:2px solid {{ r.boxLine }};color:#fff;display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0">{{ r.mark }}</div>
+          <div style="display:flex;flex-direction:column;gap:2px;flex:1"><span dir="ltr" style="font-family:'Space Grotesk';font-size:15px;font-weight:600;text-align:right">{{ r.drug }}</span><span style="font-size:12px;color:#4F6368">{{ r.sig }}</span><span style="font-size:12px;color:#8A520B">{{ r.reason }}</span></div>
+        </div>
+      </sc-for>
+      <button style="white-space:nowrap;font-family:inherit;font-size:15px;font-weight:600;background:#EF7A2E;color:#fff;border:0;border-radius:999px;height:48px;margin-top:auto">تأكيد الصرف</button>
+    </div>
+    <div style="background:#fff;border-radius:24px;padding:24px;display:flex;flex-direction:column;gap:16px;border:1px solid #E3EBEC">
+      <div style="display:flex;justify-content:space-between;align-items:baseline;gap:8px"><span style="font-size:15px;font-weight:600;color:#4F6368">عمليات تحتاج مراجعة</span><span dir="ltr" style="font-family:ui-monospace,Menlo,monospace;font-size:11px;color:#6B7F84;font-weight:600">POST /sync/batch</span></div>
+      <div style="display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:14px;background:#FDF3E2;color:#8A520B;font-size:13px"><span style="width:8px;height:8px;border-radius:999px;background:#E9A23B"></span>تمت مزامنة 14 عملية · 2 تحتاج مراجعة</div>
+      <sc-for list="{{ syncOps }}" as="o" hint-placeholder-count="4">
+        <div style="display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid #EEF2F3">
+          <div style="display:flex;flex-direction:column;flex:1;min-width:0"><span style="font-size:14px;font-weight:500">{{ o.ar }}</span><span dir="ltr" style="font-family:ui-monospace,Menlo,monospace;font-size:11px;color:#6B7F84;text-align:right;font-weight:600">{{ o.type }} · {{ o.at }}</span></div>
+          <span style="padding:4px 10px;border-radius:999px;background:{{ o.bg }};color:{{ o.fg }};font-size:12px;font-weight:500">{{ o.st }}</span>
+        </div>
+      </sc-for>
+    </div>
+    <div style="background:#fff;border-radius:24px;padding:24px;display:flex;flex-direction:column;gap:16px;border:1px solid #E3EBEC">
+      <div style="display:flex;justify-content:space-between;align-items:baseline;gap:8px"><span style="font-size:15px;font-weight:600;color:#4F6368">إشعار قيمة حرجة</span><span dir="ltr" style="font-family:ui-monospace,Menlo,monospace;font-size:11px;color:#6B7F84;font-weight:600">lab.critical_value</span></div>
+      <div style="display:flex;gap:12px;padding:14px;border-radius:18px;background:#FDECEC;border:1px solid #F6C9CA">
+        <div style="width:40px;height:40px;border-radius:12px;background:#E5484D;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;flex-shrink:0">!</div>
+        <div style="display:flex;flex-direction:column;gap:4px"><span style="font-size:15px;font-weight:700;color:#B4262B">قيمة حرجة</span><span style="font-size:14px">HGB = <b style="font-family:'Space Grotesk'">6.8</b> للمريضة فاطمة حسن</span><span style="font-family:'Space Grotesk';font-size:12px;color:#4F6368;font-weight:600">17:40</span></div>
+      </div>
+      <sc-for list="{{ notes }}" as="n" hint-placeholder-count="3">
+        <div style="display:flex;gap:12px;align-items:center;padding:8px 0;border-bottom:1px solid #EEF2F3">
+          <div style="width:36px;height:36px;border-radius:10px;background:{{ n.bg }};color:{{ n.fg }};display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;flex-shrink:0">{{ n.letter }}</div>
+          <div style="display:flex;flex-direction:column;flex:1"><span style="font-size:14px;font-weight:500">{{ n.ar }}</span><span style="font-size:12px;color:#4F6368;font-weight:600">{{ n.sub }}</span></div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="08 Applications" style="display:flex;flex-direction:column;gap:28px">
+  <div style="display:flex;align-items:baseline;gap:16px"><span style="font-family:'Space Grotesk';font-size:15px;font-weight:600;color:#1A8A91">08</span><h2 style="margin:0;font-size:34px;font-weight:700">التطبيق على الشاشات</h2></div>
+  <div style="display:flex;gap:32px;flex-wrap:wrap;justify-content:center;background:#DCE7E8;border-radius:32px;padding:48px 24px">
+
+    <div style="display:flex;flex-direction:column;gap:12px;align-items:center">
+    <div style="width:375px;height:780px;background:#fff;border-radius:44px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 30px 60px -20px rgba(10,58,64,.35);border:8px solid #fff">
+      <div style="background:#0F7A82;border-radius:32px;height:300px;position:relative;overflow:hidden;flex-shrink:0;background-image:repeating-linear-gradient(135deg,rgba(255,255,255,.05) 0 10px,transparent 10px 20px)">
+        <div style="position:absolute;top:16px;right:24px;left:24px;display:flex;justify-content:space-between;color:#fff;font-family:'Space Grotesk';font-size:14px;font-weight:600"><span>9:41</span><span>●●● 100%</span></div>
+        <div style="position:absolute;top:52px;right:16px;left:16px;display:flex;justify-content:space-between">
+          <div style="width:44px;height:44px;border-radius:999px;background:rgba(255,255,255,.18);display:flex;align-items:center;justify-content:center;color:#fff;font-size:18px">›</div>
+          <div style="width:44px;height:44px;border-radius:999px;background:rgba(255,255,255,.18);display:flex;align-items:center;justify-content:center;color:#fff;font-size:16px">♡</div>
+        </div>
+        <div style="position:absolute;top:120px;left:50%;transform:translateX(-50%);font-family:ui-monospace,monospace;font-size:11px;color:#A6D8DA">[ photo_url ]</div>
+        <div style="position:absolute;bottom:0;right:0;left:0;padding:20px;background:linear-gradient(to top,rgba(10,58,64,.85),transparent);display:flex;flex-direction:column;gap:6px;color:#fff">
+          <span style="font-size:22px;font-weight:700">د. سعد الحيدري</span>
+          <div style="display:flex;gap:8px;align-items:center"><span style="font-size:14px;color:#D2ECEC">باطنية · الفرع الرئيسي</span></div>
+        </div>
+      </div>
+      <div style="margin:-20px 12px 0;padding:28px 12px 14px;background:#EAF6F6;border-radius:0 0 24px 24px;display:grid;grid-template-columns:1fr 1fr;gap:4px">
+        <div style="display:flex;flex-direction:column;align-items:center"><span style="font-family:'Space Grotesk';font-size:17px;font-weight:600;color:#0F7A82">25,000</span><span style="font-size:12px;color:#4F6368">كشف جديد · د.ع</span></div>
+        <div style="display:flex;flex-direction:column;align-items:center"><span style="font-family:'Space Grotesk';font-size:17px;font-weight:600;color:#0F7A82">15,000</span><span style="font-size:12px;color:#4F6368">مراجعة · د.ع</span></div>
+      </div>
+      <div style="padding:16px 16px 0;display:flex;flex-direction:column;gap:12px;flex:1">
+        <span style="font-size:14px;color:#6B7F84">اختر اليوم</span>
+        <div style="display:flex;gap:6px;justify-content:space-between;align-items:center">
+          <sc-for list="{{ days }}" as="d" hint-placeholder-count="5">
+            <div style="width:{{ d.w }};height:{{ d.h }};border-radius:16px;background:{{ d.bg }};color:{{ d.fg }};display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;box-shadow:{{ d.ring }};opacity:{{ d.op }}">
+              <span style="font-family:'Space Grotesk';font-size:18px;font-weight:600">{{ d.n }}</span><span style="font-size:10px">{{ d.dn }}</span>
+            </div>
+          </sc-for>
+        </div>
+        <div style="display:flex;justify-content:space-between;align-items:center;background:#F5F8F8;border-radius:16px;padding:12px 14px">
+          <div style="display:flex;flex-direction:column"><span style="font-size:13px;color:#4F6368;font-weight:600">الوجبة المسائية · تسلسلك</span><span style="font-family:'Space Grotesk';font-size:20px;font-weight:700;color:#0A3A40">#25 · 5:10 م</span></div>
+          <span style="padding:4px 10px;border-radius:999px;background:#E6F6EE;color:#157A50;font-size:12px;font-weight:500;white-space:nowrap">متاح 6</span>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:auto">
+          <button style="white-space:nowrap;font-family:inherit;font-size:15px;font-weight:600;background:#0F7A82;color:#fff;border:0;border-radius:999px;height:52px">ادفع أونلاين</button>
+          <button style="white-space:nowrap;font-family:inherit;font-size:15px;font-weight:600;background:#D2ECEC;color:#0C5F67;border:0;border-radius:999px;height:52px">الدفع في العيادة</button>
+        </div>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);padding:12px 8px 16px;border-top:1px solid #EEF2F3;margin-top:12px">
+        <sc-for list="{{ tabs }}" as="t" hint-placeholder-count="4">
+          <div style="display:flex;flex-direction:column;align-items:center;gap:4px;font-size:11px;color:{{ t.c }};font-weight:{{ t.w }}"><span style="width:22px;height:22px;border-radius:7px;border:2px solid {{ t.c }};background:{{ t.bg }}"></span>{{ t.ar }}</div>
+        </sc-for>
+      </div>
+    </div>
+    <span style="font-size:14px;color:#4F6368">الهاتف · حجز وجبة (فاتح)</span>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:12px;align-items:center">
+    <div style="width:375px;height:780px;background:#071A1D;border-radius:44px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 30px 60px -20px rgba(10,58,64,.5);border:8px solid #0D2427;color:#E6F1F1">
+      <div style="padding:16px 20px 0;display:flex;justify-content:space-between;font-family:'Space Grotesk';font-size:14px;font-weight:600"><span>9:41</span><span>●●● 100%</span></div>
+      <div style="padding:16px 20px;display:flex;flex-direction:column;gap:14px;flex:1">
+        <div style="display:flex;justify-content:space-between;align-items:center"><div style="display:flex;flex-direction:column"><span style="font-size:14px;color:#8FA8AB">حجزي اليوم</span><span style="font-size:20px;font-weight:700">زينب علي</span></div><div style="width:44px;height:44px;border-radius:999px;background:#12302F;display:flex;align-items:center;justify-content:center;position:relative"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#E6F1F1" stroke-width="2"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"></path><path d="M10.3 21a1.9 1.9 0 0 0 3.4 0"></path></svg><span style="position:absolute;top:10px;left:11px;width:8px;height:8px;border-radius:999px;background:#F2B544"></span></div></div>
+        <div style="background:#1A8A91;border-radius:28px;padding:20px;display:flex;flex-direction:column;gap:14px;color:#fff">
+          <div style="display:flex;justify-content:space-between;align-items:center"><span style="font-size:13px;color:#D2ECEC">عيادة الباطنية · الطابق 2</span><span style="padding:4px 10px;border-radius:999px;background:rgba(255,255,255,.2);font-size:12px">انتظار الوصول</span></div>
+          <div style="display:flex;align-items:center;justify-content:space-between;gap:12px">
+            <div style="display:flex;flex-direction:column"><span style="font-size:13px;color:#D2ECEC">رقم التذكرة</span><span style="font-family:'Space Grotesk';font-size:48px;font-weight:700;line-height:1">A-025</span><span style="font-size:13px;color:#D2ECEC;margin-top:6px">الدخول التقريبي <b style="font-family:'Space Grotesk';color:#fff">5:40 م</b></span></div>
+            <div style="width:96px;height:96px;border-radius:16px;background:#fff;display:flex;align-items:center;justify-content:center;flex-shrink:0;background-image:repeating-linear-gradient(45deg,#0A3A40 0 3px,#fff 3px 7px)"><span style="background:#fff;padding:2px 4px;font-family:ui-monospace,monospace;font-size:9px;color:#0A3A40">booking_qr</span></div>
+          </div>
+          <div style="display:flex;gap:4px"><span style="flex:1;height:6px;border-radius:999px;background:#fff"></span><span style="flex:1;height:6px;border-radius:999px;background:#fff"></span><span style="flex:1;height:6px;border-radius:999px;background:#fff"></span><span style="flex:1;height:6px;border-radius:999px;background:rgba(255,255,255,.3)"></span><span style="flex:1;height:6px;border-radius:999px;background:rgba(255,255,255,.3)"></span></div>
+          <span style="font-size:13px">ترتيبك <b style="font-family:'Space Grotesk'">4</b> · امسح الرمز عند الاستقبال</span>
+        </div>
+        <div style="background:#0D2427;border:1px solid #2A5A5E;border-radius:20px;padding:16px;display:flex;flex-direction:column;gap:10px">
+          <div style="display:flex;justify-content:space-between;align-items:center"><span style="font-size:15px;font-weight:600">تقديم موعدك متاح</span><span style="font-family:'Space Grotesk';font-size:12px;color:#F2B544">04:12</span></div>
+          <span style="font-size:13px;line-height:1.7;color:#8FA8AB">توفرت فجوة 20 دقيقة. أول من يقبل يأخذها، ووقتك الجديد 4:30 م.</span>
+          <div style="display:flex;gap:8px"><button style="flex:1;font-family:inherit;font-size:14px;font-weight:600;background:#3FB8BE;color:#062528;border:0;border-radius:999px;height:44px">سأحضر الآن</button><button style="flex:1;font-family:inherit;font-size:14px;font-weight:500;background:transparent;color:#E6F1F1;border:1px solid #2A4A4E;border-radius:999px;height:44px">سألتزم بموعدي</button></div>
+        </div>
+        <div style="background:#0D2427;border:1px solid #1D3A3E;border-radius:20px;padding:12px 14px;display:flex;align-items:center;gap:12px">
+          <div style="width:40px;height:40px;border-radius:12px;background:#2A2150;color:#B9A2F5;display:flex;align-items:center;justify-content:center;font-weight:700">م</div>
+          <div style="display:flex;flex-direction:column;flex:1"><span style="font-size:14px;font-weight:600">تحليل دم شامل CBC</span><span style="font-size:12px;color:#F2B544">غير مدفوع · ادفع لعرض النتيجة</span></div>
+          <span style="color:#3FB8BE;font-size:13px;font-weight:600">ادفع</span>
+        </div>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);padding:12px 8px 16px;border-top:1px solid #1D3A3E;background:#0D2427">
+        <sc-for list="{{ tabsDark }}" as="t" hint-placeholder-count="4">
+          <div style="display:flex;flex-direction:column;align-items:center;gap:4px;font-size:11px;color:{{ t.c }};font-weight:{{ t.w }}"><span style="width:22px;height:22px;border-radius:7px;border:2px solid {{ t.c }};background:{{ t.bg }}"></span>{{ t.ar }}</div>
+        </sc-for>
+      </div>
+    </div>
+    <span style="font-size:14px;color:#4F6368">الهاتف · التذكرة والتقديم الذكي (داكن)</span>
+    </div>
+  </div>
+
+  <div style="display:flex;flex-direction:column;gap:12px;align-items:flex-start;background:#DCE7E8;border-radius:32px;padding:40px 24px;overflow-x:auto">
+    <div style="width:960px;height:540px;flex-shrink:0;margin-inline:auto;background:#062528;border-radius:20px;border:10px solid #111;display:grid;grid-template-columns:1.3fr 1fr;overflow:hidden;color:#fff">
+      <div style="padding:36px;display:flex;flex-direction:column;gap:20px;background:#0A3A40">
+        <div style="display:flex;align-items:center;gap:12px"><svg width="44" height="44" viewBox="0 0 64 64"><rect width="64" height="64" rx="20" fill="#1A8A91"></rect><rect x="27" y="14" width="10" height="36" rx="5" fill="#fff"></rect><rect x="14" y="27" width="36" height="10" rx="5" fill="#fff"></rect><circle cx="47" cy="17" r="4" fill="#F2B544"></circle></svg><div style="display:flex;flex-direction:column"><span style="font-size:22px;font-weight:700">عيادة الباطنية</span><span style="font-size:15px;color:#A6D8DA">د. سعد الحيدري · الطابق 2</span></div></div>
+        <div style="flex:1;display:flex;flex-direction:column;justify-content:center;gap:8px">
+          <span style="font-size:26px;color:#A6D8DA">الرقم الحالي</span>
+          <span style="font-family:'Space Grotesk';font-size:150px;font-weight:700;line-height:1;color:#fff">A-103</span>
+          <span style="font-size:22px;color:#F2B544">تفضل إلى غرفة الطبيب</span>
+        </div>
+      </div>
+      <div style="padding:36px 32px;display:flex;flex-direction:column;gap:14px">
+        <span style="font-size:22px;color:#A6D8DA">التالي</span>
+        <sc-for list="{{ nextUp }}" as="n" hint-placeholder-count="3">
+          <div style="display:flex;align-items:center;justify-content:space-between;padding:18px 22px;border-radius:20px;background:{{ n.bg }}"><span style="font-family:'Space Grotesk';font-size:44px;font-weight:700">{{ n.t }}</span><span style="font-size:18px;color:#A6D8DA">{{ n.label }}</span></div>
+        </sc-for>
+        <span style="margin-top:auto;font-size:14px;color:#6FBFC3">لا تُعرض أسماء المرضى على الشاشة العامة</span>
+      </div>
+    </div>
+    <span style="font-size:14px;color:#4F6368;align-self:center">شاشة الانتظار العامة · 16:9</span>
+  </div>
+
+  <div style="display:flex;flex-direction:column;gap:12px;background:#DCE7E8;border-radius:32px;padding:40px 24px;overflow-x:auto">
+  <div style="min-width:1180px;background:#F5F8F8;border-radius:24px;overflow:hidden;display:grid;grid-template-columns:248px minmax(0,1fr);box-shadow:0 30px 60px -24px rgba(10,58,64,.35)">
+    <aside style="background:#0A3A40;color:#fff;padding:24px 16px;display:flex;flex-direction:column;gap:20px">
+      <div style="display:flex;align-items:center;gap:10px;padding:0 6px"><svg width="40" height="40" viewBox="0 0 64 64"><rect width="64" height="64" rx="20" fill="#1A8A91"></rect><rect x="27" y="14" width="10" height="36" rx="5" fill="#fff"></rect><rect x="14" y="27" width="36" height="10" rx="5" fill="#fff"></rect><circle cx="47" cy="17" r="4" fill="#F2B544"></circle></svg><div style="display:flex;flex-direction:column"><span style="font-size:16px;font-weight:700">مجمع الرحمة</span><span style="font-size:12px;color:#A6D8DA">استقبال عيادة الباطنية</span></div></div>
+      <div style="display:flex;flex-direction:column;gap:6px;padding:12px;border-radius:14px;background:rgba(255,255,255,.07)">
+        <span style="font-size:12px;color:#A6D8DA">الفرع</span>
+        <div style="display:flex;justify-content:space-between;align-items:center"><span style="font-size:14px;font-weight:600">الفرع الرئيسي · بغداد</span><span style="font-size:12px;color:#6FBFC3">⇄</span></div>
+        <span style="font-size:11px;color:#6FBFC3">التبديل غير متاح مع وردية مفتوحة</span>
+      </div>
+      <nav style="display:flex;flex-direction:column;gap:4px">
+        <sc-for list="{{ nav }}" as="n" hint-placeholder-count="6">
+          <div style="display:flex;align-items:center;gap:10px;padding:11px 12px;border-radius:12px;background:{{ n.bg }};color:{{ n.c }};font-size:15px;font-weight:{{ n.w }}"><span style="width:18px;height:18px;border-radius:5px;border:2px solid {{ n.c }}"></span><span style="flex:1">{{ n.ar }}</span><span style="font-family:'Space Grotesk';font-size:12px">{{ n.badge }}</span></div>
+        </sc-for>
+      </nav>
+      <div style="margin-top:auto;display:flex;flex-direction:column;gap:10px">
+        <div style="display:flex;align-items:center;gap:8px;padding:10px 12px;border-radius:12px;background:rgba(233,162,59,.15);color:#F5C77E;font-size:13px"><span style="width:8px;height:8px;border-radius:999px;background:#E9A23B"></span>أوفلاين · 3 عمليات في الصادر</div>
+        <div style="display:flex;align-items:center;gap:10px;padding:6px"><div style="width:36px;height:36px;border-radius:999px;background:#1A8A91;display:flex;align-items:center;justify-content:center;font-weight:700">ع</div><div style="display:flex;flex-direction:column"><span style="font-size:14px;font-weight:600">علي حسن</span><span dir="ltr" style="font-family:'Space Grotesk';font-size:12px;color:#A6D8DA;text-align:right">receptionist</span></div></div>
+      </div>
+    </aside>
+    <main style="padding:24px 28px;display:flex;flex-direction:column;gap:20px">
+      <div style="display:flex;align-items:center;gap:14px">
+        <div style="display:flex;flex-direction:column;flex:1"><span style="font-size:22px;font-weight:700">الطابور والتحصيل</span><span style="font-size:13px;color:#4F6368;font-weight:600">د. سعد الحيدري · الوجبة المسائية</span></div>
+        <div style="display:flex;align-items:center;gap:8px;background:#fff;border:1px solid #E3EBEC;border-radius:999px;padding:0 16px;height:44px;width:280px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#6B7F84" stroke-width="2"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.5-3.5"></path></svg><span style="font-size:14px;color:#8A9A9E">هاتف، اسم، أو رقم الملف</span></div>
+        <div style="display:flex;gap:6px"><span style="padding:4px 10px;border-radius:999px;background:#FDF3E2;color:#8A520B;font-size:12px;font-weight:500;white-space:nowrap">الطابعة · ورق قليل</span><span style="padding:4px 10px;border-radius:999px;background:#E6F6EE;color:#157A50;font-size:12px;font-weight:500;white-space:nowrap">الدرج مغلق</span></div>
+        <button style="white-space:nowrap;font-family:inherit;font-size:15px;font-weight:600;background:#0F7A82;color:#fff;border:0;border-radius:999px;height:44px;padding:0 20px">مسح QR / حضور</button>
+      </div>
+      <div style="background:#0F7A82;border-radius:24px;padding:22px 24px;color:#fff;display:flex;flex-direction:column;gap:16px">
+        <div style="display:flex;justify-content:space-between;align-items:center"><div style="display:flex;flex-direction:column;gap:4px"><span style="font-size:22px;font-weight:700">مساء الخير، علي</span><span style="font-size:14px;color:#D2ECEC">الوردية <span style="font-family:'Space Grotesk'">sh_412</span> مفتوحة منذ 2:00 م</span></div><span style="padding:6px 14px;border-radius:999px;background:rgba(255,255,255,.15);font-size:13px">الاثنين 2 تشرين الثاني 2026</span></div>
+        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px">
+          <sc-for list="{{ heroStats }}" as="s" hint-placeholder-count="4">
+            <div style="background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);border-radius:18px;padding:14px 16px;display:flex;flex-direction:column;gap:4px"><span style="font-size:13px;color:#D2ECEC">{{ s.ar }}</span><span style="font-family:'Space Grotesk';font-size:28px;font-weight:700">{{ s.v }}</span><span style="font-size:12px;color:#A6D8DA">{{ s.sub }}</span></div>
+          </sc-for>
+        </div>
+      </div>
+      <div style="display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:16px">
+        <div style="background:#fff;border-radius:20px;border:1px solid #E3EBEC;overflow:hidden">
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:16px 20px"><span style="font-size:17px;font-weight:700">الطابور الحي</span><span style="font-size:13px;color:#8A520B">تأخير +8 د · متوسط 11.5 د</span></div>
+          <div style="display:grid;grid-template-columns:72px minmax(0,1.3fr) 80px 96px 80px 56px;padding:10px 20px;background:#F5F8F8;font-size:12px;color:#4F6368;font-weight:600"><span>التذكرة</span><span>المريض</span><span>المصدر</span><span>الحالة</span><span>الدفع</span><span>الوقت</span></div>
+          <sc-for list="{{ queue }}" as="q" hint-placeholder-count="6">
+            <div style="display:grid;grid-template-columns:72px minmax(0,1.3fr) 80px 96px 80px 56px;padding:11px 20px;border-top:1px solid #EEF2F3;align-items:center;font-size:14px;background:{{ q.rowBg }}">
+              <span style="font-family:'Space Grotesk';font-weight:600;color:{{ q.tc }}">{{ q.t }}</span>
+              <div style="display:flex;flex-direction:column;min-width:0"><span style="font-weight:600">{{ q.name }}</span><span style="font-size:12px;color:{{ q.prioC }}">{{ q.prio }}</span></div>
+              <span style="font-size:13px;color:#4F6368">{{ q.src }}</span>
+              <span style="justify-self:start;padding:4px 10px;border-radius:999px;background:{{ q.bg }};color:{{ q.fg }};font-size:12px;font-weight:500">{{ q.st }}</span>
+              <span style="justify-self:start;padding:3px 8px;border-radius:6px;background:{{ q.pbg }};color:{{ q.pfg }};font-size:12px">{{ q.pay }}</span>
+              <span style="font-family:'Space Grotesk';font-size:13px;color:#4F6368">{{ q.eta }}</span>
+            </div>
+          </sc-for>
+        </div>
+        <div style="background:#fff;border-radius:20px;border:1px solid #E3EBEC;padding:18px 20px;display:flex;flex-direction:column;gap:12px">
+          <div style="display:flex;justify-content:space-between;align-items:center"><span style="font-size:17px;font-weight:700">سلة المريض</span><span style="padding:4px 10px;border-radius:999px;background:#FDECEC;color:#B4262B;font-size:12px;font-weight:500;white-space:nowrap">A-105 · غير مدفوع</span></div>
+          <div style="display:flex;align-items:center;gap:10px;padding:10px 12px;background:#F5F8F8;border-radius:14px"><div style="width:36px;height:36px;border-radius:999px;background:#D2ECEC;color:#0C5F67;display:flex;align-items:center;justify-content:center;font-weight:700">م</div><div style="display:flex;flex-direction:column"><span style="font-size:14px;font-weight:600">مريم جاسم</span><span style="font-family:'Space Grotesk';font-size:12px;color:#4F6368;font-weight:600">R1-004533 · 07712345678</span></div></div>
+          <sc-for list="{{ bill }}" as="b" hint-placeholder-count="3">
+            <div style="display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:14px;border:1.5px solid {{ b.line }};background:{{ b.bg }}">
+              <span style="width:10px;height:10px;border-radius:3px;background:{{ b.hex }};flex-shrink:0"></span>
+              <div style="display:flex;flex-direction:column;flex:1;min-width:0"><span style="font-size:14px;font-weight:600">{{ b.name }}</span><span style="font-size:12px;color:#4F6368;font-weight:600">{{ b.sub }}</span></div>
+              <span style="font-family:'Space Grotesk';font-size:15px;font-weight:600">{{ b.price }}</span>
+            </div>
+          </sc-for>
+          <span style="font-size:12px;color:#4F6368;font-weight:600">بنود الأقسام الأخرى تُدفع عند تنفيذها، ويمكن تحصيلها هنا إن رغب المريض.</span>
+          <div style="display:flex;justify-content:space-between;align-items:baseline"><span style="font-size:15px;color:#4F6368">المحدد</span><span style="font-family:'Space Grotesk';font-size:26px;font-weight:700;color:#0A3A40">25,000 <span style="font-family:'Readex Pro';font-size:13px;font-weight:500">د.ع</span></span></div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px"><span style="text-align:center;padding:10px;border-radius:12px;background:#D2ECEC;color:#0C5F67;font-size:14px;font-weight:600;border:1.5px solid #1A8A91">نقداً</span><span style="text-align:center;padding:10px;border-radius:12px;border:1px solid #D5E0E1;color:#4F6368;font-size:14px">POS</span></div>
+          <button style="white-space:nowrap;font-family:inherit;font-size:15px;font-weight:600;background:#0F7A82;color:#fff;border:0;border-radius:999px;height:50px">تحصيل وطباعة · <span dir="ltr" style="font-family:'Space Grotesk';font-size:13px">B1-D03-1238</span></button>
+        </div>
+      </div>
+    </main>
+  </div>
+  <span style="font-size:14px;color:#4F6368;text-align:center">المكتب ‎&gt; 1024px · استقبال العيادة (وضع أوفلاين)</span>
+  </div>
+
+  <div style="display:flex;flex-direction:column;gap:12px;align-items:flex-start;background:#DCE7E8;border-radius:32px;padding:40px 24px;overflow-x:auto">
+  <div style="width:1024px;height:720px;flex-shrink:0;margin-inline:auto;background:#F5F8F8;border-radius:32px;border:12px solid #fff;overflow:hidden;display:grid;grid-template-columns:72px 340px minmax(0,1fr);box-shadow:0 30px 60px -24px rgba(10,58,64,.35)">
+    <aside style="background:#0A3A40;display:flex;flex-direction:column;align-items:center;gap:14px;padding:18px 0">
+      <svg width="40" height="40" viewBox="0 0 64 64"><rect width="64" height="64" rx="20" fill="#1A8A91"></rect><rect x="27" y="14" width="10" height="36" rx="5" fill="#fff"></rect><rect x="14" y="27" width="36" height="10" rx="5" fill="#fff"></rect><circle cx="47" cy="17" r="4" fill="#F2B544"></circle></svg>
+      <div style="width:44px;height:44px;border-radius:12px;background:#7C4DDB;margin-top:12px"></div>
+      <div style="width:44px;height:44px;border-radius:12px;border:2px solid #3A6A70"></div>
+      <div style="width:44px;height:44px;border-radius:12px;border:2px solid #3A6A70"></div>
+    </aside>
+    <div style="border-left:1px solid #E3EBEC;background:#fff;padding:20px 16px;display:flex;flex-direction:column;gap:12px">
+      <div style="display:flex;justify-content:space-between;align-items:center"><span style="font-size:18px;font-weight:700">قائمة عمل المختبر</span><span style="font-family:'Space Grotesk';font-size:13px;color:#4F6368;font-weight:600">3</span></div>
+      <div style="display:flex;gap:6px"><span style="padding:4px 10px;border-radius:999px;background:#0F7A82;color:#fff;font-size:12px;font-weight:500;white-space:nowrap">مدفوع</span><span style="padding:4px 10px;border-radius:999px;background:#F1ECFC;color:#45238F;font-size:12px;font-weight:500;white-space:nowrap">سُحبت العينة</span><span style="padding:4px 10px;border-radius:999px;background:#FDF3E2;color:#8A520B;font-size:12px;font-weight:500;white-space:nowrap">قيد التحليل</span></div>
+      <sc-for list="{{ worklist }}" as="w" hint-placeholder-count="3">
+        <div style="display:flex;flex-direction:column;gap:8px;padding:14px;border-radius:16px;border:1.5px solid {{ w.line }};background:{{ w.bg }}">
+          <div style="display:flex;justify-content:space-between;align-items:center"><span dir="ltr" style="font-family:'Space Grotesk';font-size:15px;font-weight:600">{{ w.test }}</span><span style="padding:3px 9px;border-radius:999px;background:{{ w.sbg }};color:{{ w.sfg }};font-size:11px;font-weight:500">{{ w.st }}</span></div>
+          <span style="font-size:14px;font-weight:500">{{ w.name }} · <span style="font-family:'Space Grotesk';font-size:12px;color:#4F6368;font-weight:600">{{ w.file }}</span></span>
+          <span style="font-size:12px;color:#4F6368;font-weight:600">{{ w.by }} · {{ w.note }}</span>
+        </div>
+      </sc-for>
+      <span style="font-size:12px;color:#6B7F84;margin-top:auto;font-weight:600">تظهر البنود المدفوعة أو المؤجلة فقط</span>
+    </div>
+    <div style="padding:22px 24px;display:flex;flex-direction:column;gap:16px">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start"><div style="display:flex;flex-direction:column;gap:2px"><span style="font-size:20px;font-weight:700">تحليل دم شامل CBC</span><span style="font-size:13px;color:#4F6368;font-weight:600">فاطمة حسن · <span style="font-family:'Space Grotesk'">R1-004512</span> · عينة <span style="font-family:'Space Grotesk'">S-26110201</span></span></div><span style="padding:4px 10px;border-radius:999px;background:#FDF3E2;color:#8A520B;font-size:12px;font-weight:500;white-space:nowrap">قيد التحليل</span></div>
+      <div style="display:flex;align-items:center;gap:0">
+        <sc-for list="{{ labFlow }}" as="f" hint-placeholder-count="6">
+          <div style="display:flex;align-items:center;flex:1;gap:0">
+            <div style="display:flex;flex-direction:column;align-items:center;gap:6px;min-width:64px"><span style="width:24px;height:24px;border-radius:999px;background:{{ f.bg }};border:2.5px solid {{ f.line }};color:#fff;font-size:12px;display:flex;align-items:center;justify-content:center">{{ f.mark }}</span><span style="font-size:11px;color:{{ f.c }};font-weight:{{ f.w }};white-space:nowrap">{{ f.ar }}</span></div>
+            <span style="flex:1;height:3px;border-radius:999px;background:{{ f.bar }};margin-bottom:20px"></span>
+          </div>
+        </sc-for>
+      </div>
+      <div style="background:#fff;border-radius:18px;border:1px solid #E3EBEC;overflow:hidden">
+        <div style="display:grid;grid-template-columns:1.4fr 1fr 1fr 1.2fr 1fr;padding:10px 16px;background:#F5F8F8;font-size:12px;color:#4F6368;font-weight:600"><span>البارامتر</span><span>القيمة</span><span>الوحدة</span><span>المرجع</span><span>العلامة</span></div>
+        <sc-for list="{{ labVals }}" as="v" hint-placeholder-count="4">
+          <div style="display:grid;grid-template-columns:1.4fr 1fr 1fr 1.2fr 1fr;padding:10px 16px;border-top:1px solid {{ v.line }};align-items:center;font-size:14px;background:{{ v.rowBg }}">
+            <span dir="ltr" style="font-family:'Space Grotesk';font-weight:600;text-align:right;color:{{ v.c }}">{{ v.code }}</span>
+            <span style="display:flex;align-items:center;height:36px;padding:0 10px;border-radius:10px;border:1.5px solid {{ v.inLine }};background:#fff;font-family:'Space Grotesk';font-weight:600;color:{{ v.c }};width:84px">{{ v.val }}</span>
+            <span dir="ltr" style="font-family:'Space Grotesk';font-size:12px;color:#4F6368;text-align:right;font-weight:600">{{ v.unit }}</span>
+            <span dir="ltr" style="font-family:'Space Grotesk';font-size:12px;color:#4F6368;text-align:right;font-weight:600">{{ v.ref }}</span>
+            <span style="justify-self:start;padding:3px 10px;border-radius:999px;background:{{ v.fbg }};color:{{ v.ffg }};font-size:12px;font-weight:600">{{ v.flag }}</span>
+          </div>
+        </sc-for>
+      </div>
+      <div style="display:flex;align-items:center;gap:12px;padding:12px 14px;border-radius:14px;border:1.5px dashed #A6D8DA;background:#fff">
+        <span style="font-size:14px;color:#4F6368;flex:1">إرفاق PDF أو صورة · حتى 200MB</span>
+        <span dir="ltr" style="font-family:'Space Grotesk';font-size:12px;padding:4px 10px;border-radius:8px;background:#EAF6F6;color:#0C5F67">cbc_report.pdf ✓</span>
+      </div>
+      <div style="display:flex;gap:10px;margin-top:auto;justify-content:flex-end">
+        <button style="white-space:nowrap;font-family:inherit;font-size:15px;font-weight:600;background:#fff;color:#4F6368;border:1px solid #D5E0E1;border-radius:999px;height:48px;padding:0 22px">حفظ مسودة</button>
+        <button style="white-space:nowrap;font-family:inherit;font-size:15px;font-weight:600;background:#7C4DDB;color:#fff;border:0;border-radius:999px;height:48px;padding:0 26px">اعتماد وإرسال النتيجة</button>
+      </div>
+    </div>
+  </div>
+  <span style="font-size:14px;color:#4F6368;align-self:center">التابلت · فني المختبر (لون القسم بنفسجي)</span>
+  </div>
+</section>
+
+<section data-screen-label="09 Tokens" style="display:flex;flex-direction:column;gap:20px">
+  <div style="display:flex;align-items:baseline;gap:16px"><span style="font-family:'Space Grotesk';font-size:15px;font-weight:600;color:#1A8A91">09</span><h2 style="margin:0;font-size:34px;font-weight:700">Design Tokens</h2></div>
+  <p style="margin:0;font-size:15px;color:#4F6368">امتداد tailwind.config — المتغيرات الدلالية تُعرّف كـ CSS variables وتتبدل مع class="dark"، وخريطة status تربط كل enum من عقود v5 بنغمة لونية.</p>
+  <pre dir="ltr" style="margin:0;background:#071A1D;color:#C9E4E5;border-radius:24px;padding:28px;font-family:ui-monospace,Menlo,monospace;font-size:13px;line-height:1.7;overflow-x:auto;white-space:pre">{{ tokensJson }}</pre>
+</section>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    const teal = [["50","#EAF6F6"],["100","#D2ECEC"],["200","#A6D8DA"],["300","#6FBFC3"],["400","#3BA1A7"],["500","#1A8A91"],["600","#0F7A82"],["700","#0C5F67"],["800","#0B4A51"],["900","#0A3A40"],["950","#062528"]].map(([name,hex],i)=>({name,hex,fg:i<4?"#0A3A40":"#fff"}));
+    const neutral = [["0","#FFFFFF"],["25","#F5F8F8"],["50","#EEF2F3"],["100","#E3EBEC"],["200","#D5E0E1"],["400","#8A9A9E"],["500","#6B7F84"],["700","#4F6368"],["900","#0F2328"]].map(([name,hex],i)=>({name,hex,fg:i<6?"#0F2328":"#fff"}));
+    const semantic = [
+      {ar:"نجاح · مكتمل",name:"success",hex:"#1FA971",soft:"#E6F6EE"},
+      {ar:"تنبيه · انتباه",name:"warning",hex:"#E9A23B",soft:"#FDF3E2"},
+      {ar:"خطر · حرج · مستحق",name:"danger",hex:"#E5484D",soft:"#FDECEC"},
+      {ar:"معلومة · أونلاين · آجل",name:"info",hex:"#2F6FDB",soft:"#EAF1FD"},
+      {ar:"تمييز · مؤقت العرض",name:"amber",hex:"#F2B544",soft:"#FEF6E4"},
+      {ar:"شريط التنقل",name:"navy",hex:"#102C44",soft:"#E7EDF3"}];
+    const depts = [
+      {ar:"العيادات",key:"clinic",hex:"#0F7A82",soft:"#EAF6F6",ink:"#0A3A40",letter:"ع"},
+      {ar:"المختبر",key:"lab",hex:"#7C4DDB",soft:"#F1ECFC",ink:"#45238F",letter:"م"},
+      {ar:"الأشعة والسونار",key:"radiology",hex:"#2F6FDB",soft:"#EAF1FD",ink:"#1C468F",letter:"ش"},
+      {ar:"الصيدلية",key:"pharmacy",hex:"#EF7A2E",soft:"#FDEFE5",ink:"#8E3F0C",letter:"ص"}];
+    const deptMap = Object.fromEntries(depts.map(d=>[d.key,d]));
+    const themeRows = [["bg","الخلفية","#F5F8F8","#071A1D"],["surface","البطاقة","#FFFFFF","#0D2427"],["surface-2","سطح ثانوي","#EAF6F6","#12302F"],["border","الحدود","#E3EBEC","#1D3A3E"],["text","النص","#0F2328","#E6F1F1"],["text-muted","نص ثانوي","#6B7F84","#8FA8AB"],["primary","أساسي","#0F7A82","#3FB8BE"],["primary-soft","أساسي ناعم","#D2ECEC","#123F43"],["sidebar","الشريط الجانبي","#0A3A40","#051316"]].map(([token,ar,light,dark])=>({token,ar,light,dark}));
+    const typeScale = [
+      {name:"Display",spec:"40 / 700",size:"40px",weight:700,sample:"رعاية أقرب، انتظار أقل"},
+      {name:"H1",spec:"32 / 700",size:"32px",weight:700,sample:"الطابور والتحصيل"},
+      {name:"H2",spec:"24 / 700",size:"24px",weight:700,sample:"السلة الموحدة"},
+      {name:"H3",spec:"20 / 600",size:"20px",weight:600,sample:"د. سعد الحيدري · باطنية"},
+      {name:"Body L",spec:"17 / 400",size:"17px",weight:400,sample:"يُعاد حساب وقت الدخول التقريبي تلقائياً عند تأخر أي معاينة."},
+      {name:"Body",spec:"15 / 400",size:"15px",weight:400,sample:"المريض المتأخر لا يدفع رسوماً جديدة ويُدرج في أول فجوة متاحة."},
+      {name:"Label",spec:"14 / 500",size:"14px",weight:500,sample:"رقم الملف"},
+      {name:"Caption",spec:"12 / 400",size:"12px",weight:400,sample:"3 عمليات في الصادر بانتظار المزامنة"}];
+    const radii = [{name:"xs",px:"8px",use:"شارات البنود"},{name:"sm",px:"12px",use:"عناصر القائمة"},{name:"md",px:"16px",use:"الحقول، أيام التقويم"},{name:"lg",px:"24px",use:"البطاقات"},{name:"xl",px:"32px",use:"بطاقة Hero، صورة الطبيب"},{name:"pill",px:"999px",use:"الأزرار والحالات"}];
+    const shadows = [{name:"flat",css:"0 0 0 1px #E3EBEC",use:"بطاقات داخل لوحة"},{name:"sm",css:"0 1px 2px rgba(10,58,64,.06), 0 2px 8px rgba(10,58,64,.06)",use:"بطاقات عائمة"},{name:"md",css:"0 8px 24px -6px rgba(10,58,64,.16)",use:"قوائم منسدلة"},{name:"lg",css:"0 24px 48px -12px rgba(10,58,64,.28)",use:"النوافذ المنبثقة"}];
+    const spacing = [4,8,12,16,20,24,32,40,48].map(n=>({px:n+"px"}));
+
+    const T = {
+      teal:["#EAF6F6","#0C5F67","#1A8A91"], tealS:["#0F7A82","#fff","#fff"], info:["#EAF1FD","#2459B8","#2F6FDB"],
+      warn:["#FDF3E2","#8A520B","#E9A23B"], ok:["#E6F6EE","#157A50","#1FA971"], muted:["#EEF2F3","#4F6368","#8A9A9E"],
+      danger:["#FDECEC","#B4262B","#E5484D"], dangerS:["#E5484D","#fff","#fff"], violet:["#F1ECFC","#45238F","#7C4DDB"]};
+    const S = (key,ar,tone)=>({key,ar,tone,bg:T[tone][0],fg:T[tone][1],dot:T[tone][2]});
+    const statusGroups = [
+      {ar:"تذكرة الطابور",key:"ticket.status",items:[S("waiting","انتظار الوصول","info"),S("arrived","وصل","teal"),S("called","تم الاستدعاء","warn"),S("in_room","في الغرفة","tealS"),S("completed","مكتمل","ok"),S("skipped","متخطى مؤقتاً","muted"),S("no_show","غياب","danger"),S("cancelled","ملغى","muted")]},
+      {ar:"الأولوية والمصدر",key:"priority · source",items:[S("normal","عادي","muted"),S("emergency","طوارئ","dangerS"),S("late_reinserted","متأخر أُعيد إدراجه","warn"),S("online","أونلاين","info"),S("walk_in","حضوري","teal"),S("phone","هاتفي","violet")]},
+      {ar:"الفاتورة",key:"invoice.status",items:[S("unpaid","غير مدفوعة","danger"),S("partially_paid","مدفوعة جزئياً","warn"),S("paid","مدفوعة","ok"),S("deferred","آجلة","info"),S("void","ملغاة","muted")]},
+      {ar:"طلب التحليل",key:"lab order",items:[S("ordered","مطلوب","muted"),S("paid","مدفوع","teal"),S("deferred","آجل","info"),S("sample_collected","سُحبت العينة","violet"),S("in_progress","قيد التحليل","warn"),S("resulted","صدرت النتيجة","teal"),S("released","معتمدة","ok")]},
+      {ar:"طلب الأشعة",key:"radiology order",items:[S("ordered","مطلوب","muted"),S("paid","مدفوع","teal"),S("scheduled","مجدول","info"),S("performed","نُفذ","violet"),S("reported","كُتب التقرير","teal"),S("released","معتمد","ok")]},
+      {ar:"علامة النتيجة",key:"flag",items:[S("normal","طبيعي","ok"),S("low","منخفض ↓","warn"),S("high","مرتفع ↑","warn"),S("critical_low","حرج ↓","dangerS"),S("critical_high","حرج ↑","dangerS")]},
+      {ar:"الوجبة",key:"session.status",items:[S("open","متاحة","ok"),S("full","ممتلئة","warn"),S("cancelled","ملغاة","danger"),S("closed","مغلقة","muted")]},
+      {ar:"الوردية والمطابقة",key:"shift · audit_status",items:[S("open","مفتوحة","ok"),S("closed_pending_review","بانتظار المراجعة","warn"),S("reviewed","رُوجعت","teal"),S("MATCHED","مطابق","ok"),S("SHORTAGE","عجز","danger"),S("OVERAGE","زيادة","info")]},
+      {ar:"الوصفة",key:"prescription.status",items:[S("not_dispensed","بانتظار الصرف","teal"),S("dispensed","مصروفة","ok"),S("expired","منتهية","muted")]},
+      {ar:"الدفع الإلكتروني",key:"online_payment.status",items:[S("pending","قيد الانتظار","warn"),S("succeeded","ناجح","ok"),S("failed","فشل","danger"),S("expired","منتهي","muted"),S("refunded","مسترجع","info")]},
+      {ar:"نتيجة المزامنة",key:"sync result",items:[S("applied","طُبقت","ok"),S("duplicate","مكررة","muted"),S("conflict","تعارض","warn"),S("rejected","مرفوضة","danger")]},
+      {ar:"الدفع الآجل",key:"deferral.status",items:[S("active","قائم","info"),S("settled","مسدد","ok"),S("written_off","معفى","muted")]}];
+    const tk = Object.fromEntries(statusGroups[0].items.map(s=>[s.key,s]));
+
+    const methods = [
+      {ar:"نقداً",key:"cash",hex:"#0F7A82",bg:"#EAF6F6",line:"#1A8A91",ink:"#0A3A40",letter:"ن"},
+      {ar:"POS · زين كاش / كي كارد",key:"pos",hex:"#102C44",bg:"#fff",line:"#D5E0E1",ink:"#0F2328",letter:"P"},
+      {ar:"أونلاين · التطبيق",key:"online",hex:"#2F6FDB",bg:"#fff",line:"#D5E0E1",ink:"#0F2328",letter:"@"},
+      {ar:"رصيد المريض",key:"patient_credit",hex:"#1FA971",bg:"#fff",line:"#D5E0E1",ink:"#0F2328",letter:"ر"}];
+    const capacity = Array.from({length:30},(_,i)=>({bg: i<18 ? (i<12?"#0F7A82":"#D2ECEC") : (i<23?"#6FBFC3":"#E3EBEC")}));
+    const splits = [
+      {ar:"كشفية جديد",price:"25,000",rate:"70%",pct:"70%",doc:"17,500",cx:"7,500"},
+      {ar:"كشفية مراجعة",price:"15,000",rate:"60%",pct:"60%",doc:"9,000",cx:"6,000"},
+      {ar:"تحليل CBC",price:"30,000",rate:"0%",pct:"0%",doc:"0",cx:"30,000"}];
+    const B = (name,dk,by,price,cur)=>{const d=deptMap[dk];return {name,dept:d.ar,by,price,hex:d.hex,line:cur?d.hex:"#E3EBEC",bg:cur?d.soft:"#fff"};};
+    const basket = [B("تحليل دم شامل CBC","lab","د. سعد الحيدري","30,000",true),B("سونار بطن","radiology","د. سعد الحيدري","35,000",false)];
+    const denoms = [["25,000",14],["10,000",8],["5,000",4],["1,000",0],["250",0]].map(([v,n])=>({v,n}));
+    const recon = [
+      {ar:"نقداً",exp:"455,000",dec:"450,000",v:"−5,000",c:"#B4262B"},
+      {ar:"POS",exp:"180,000",dec:"180,000",v:"0",c:"#157A50"},
+      {ar:"أونلاين",exp:"125,000",dec:"—",v:"—",c:"#8A9A9E"}];
+    const rx = [
+      {drug:"Augmentin 1g",sig:"1 حبة · مرتين يومياً · 7 أيام · بعد الأكل",reason:"",mark:"✓",box:"#EF7A2E",boxLine:"#EF7A2E",bg:"#FDEFE5"},
+      {drug:"Panadol 500mg",sig:"1 حبة · 3 مرات يومياً · 5 أيام",reason:"لم يُصرف: المريض يملكه",mark:"",box:"#fff",boxLine:"#D5E0E1",bg:"#F5F8F8"}];
+    const O = (ar,type,at,k)=>{const s=statusGroups[10].items.find(x=>x.key===k);return {ar,type,at,st:s.ar,bg:s.bg,fg:s.fg};};
+    const syncOps = [O("تسجيل مريض: فاطمة حسن","patient.create","08:30","applied"),O("حضور A-131","queue.check_in","08:31","applied"),O("تذكرة لحجز أُلغي","queue.check_in","08:44","conflict"),O("دفعة B1-D03-1205","payment.create","08:52","rejected")];
+    const notes = [
+      {ar:"نتيجة جاهزة · CBC",sub:"lab.result_ready",letter:"م",bg:"#F1ECFC",fg:"#7C4DDB"},
+      {ar:"تقرير سونار بطن",sub:"radiology.report_ready",letter:"ش",bg:"#EAF1FD",fg:"#2F6FDB"},
+      {ar:"طلب استرجاع يحتاج اعتماد",sub:"refund.approval_needed",letter:"↺",bg:"#FDF3E2",fg:"#8A520B"}];
+    const days = [
+      {n:"31",dn:"السبت",w:"44px",h:"60px",bg:"#F5F8F8",fg:"#8A9A9E",ring:"none",op:1},
+      {n:"1",dn:"ممتلئة",w:"52px",h:"68px",bg:"#EEF2F3",fg:"#8A9A9E",ring:"none",op:.6},
+      {n:"2",dn:"الاثنين",w:"62px",h:"80px",bg:"#0F7A82",fg:"#fff",ring:"0 0 0 3px #fff, 0 0 0 5px #6FBFC3",op:1},
+      {n:"3",dn:"الثلاثاء",w:"52px",h:"68px",bg:"#EEF2F3",fg:"#4F6368",ring:"none",op:1},
+      {n:"4",dn:"الأربعاء",w:"44px",h:"60px",bg:"#F5F8F8",fg:"#8A9A9E",ring:"none",op:1}];
+    const tab = (ar,on,dark)=>({ar,c:on?(dark?"#3FB8BE":"#0F7A82"):(dark?"#8FA8AB":"#8A9A9E"),w:on?600:400,bg:on?(dark?"#123F43":"#D2ECEC"):"transparent"});
+    const tabs = [tab("الرئيسية",true),tab("حجوزاتي"),tab("النتائج"),tab("حسابي")];
+    const tabsDark = [tab("الرئيسية",false,1),tab("حجوزاتي",true,1),tab("النتائج",false,1),tab("حسابي",false,1)];
+    const nextUp = [{t:"A-104",label:"استعد",bg:"rgba(255,255,255,.1)"},{t:"A-105",label:"",bg:"rgba(255,255,255,.05)"},{t:"A-107",label:"",bg:"rgba(255,255,255,.05)"}];
+    const nv = (ar,badge,on)=>({ar,badge,bg:on?"#1A8A91":"transparent",c:on?"#fff":"#C9E4E5",w:on?600:400});
+    const nav = [nv("الطابور الحي","9",true),nv("حجز وتسجيل",""),nv("التحصيل",""),nv("المرضى",""),nv("الاسترجاعات","1"),nv("مراجعة المزامنة","2"),nv("إغلاق الوردية","")];
+    const heroStats = [
+      {ar:"في الطابور",v:"23",sub:"14 أونلاين · 9 حضوري"},{ar:"بانتظار الوصول",v:"6",sub:"waiting"},
+      {ar:"إيصالات الوردية",v:"47",sub:"بدون عرض مبالغ"},{ar:"الصادر أوفلاين",v:"3",sub:"تُزامن عند الاتصال"}];
+    const P = {paid:["مدفوع","#E6F6EE","#157A50"],unpaid:["غير مدفوع","#FDECEC","#B4262B"],deferred:["آجل","#EAF1FD","#2459B8"]};
+    const q = (t,name,src,s,pay,eta,prio)=>{const m=tk[s],p=P[pay];const em=prio==="emergency";return {t,name,src,st:m.ar,bg:m.bg,fg:m.fg,pay:p[0],pbg:p[1],pfg:p[2],eta,
+      prio:em?"طوارئ":(prio==="late"?"متأخر · أُعيد إدراجه":""),prioC:em?"#B4262B":"#8A520B",rowBg:em?"#FFF7F7":"#fff",tc:em?"#B4262B":"#0A3A40"};};
+    const queue = [
+      q("A-103","حسين محمد","أونلاين","in_room","paid","5:00"),
+      q("A-110","كاظم جبار","حضوري","called","deferred","5:06","emergency"),
+      q("A-104","أحمد علي","حضوري","arrived","paid","5:12"),
+      q("A-105","مريم جاسم","هاتفي","arrived","unpaid","5:24"),
+      q("A-106","سجاد كريم","أونلاين","waiting","paid","5:36"),
+      q("A-101","نور حيدر","أونلاين","arrived","paid","5:48","late"),
+      q("A-102","علي رضا","حضوري","skipped","paid","—")];
+    const bill = [
+      {name:"كشفية الباطنية · جديد",sub:"عيادة الباطنية · أُنشئت عند الحضور",price:"25,000",hex:"#0F7A82",line:"#0F7A82",bg:"#EAF6F6"},
+      {name:"تحليل HbA1c",sub:"المختبر · يُدفع عند التنفيذ",price:"20,000",hex:"#7C4DDB",line:"#E3EBEC",bg:"#fff"}];
+    const W = (test,name,file,by,note,sk,cur)=>{const s=statusGroups[3].items.find(x=>x.key===sk);return {test,name,file,by,note,st:s.ar,sbg:s.bg,sfg:s.fg,line:cur?"#7C4DDB":"#E3EBEC",bg:cur?"#F1ECFC":"#fff"};};
+    const worklist = [W("CBC","فاطمة حسن","R1-004512","د. سعد الحيدري","صائم","in_progress",true),W("Lipid Profile","حسين محمد","R1-004498","د. سعد الحيدري","—","sample_collected"),W("HbA1c","كاظم جبار","R1-004541","طوارئ","تأجيل دفع","deferred")];
+    const flow = ["مدفوع","العينة","قيد التحليل","النتيجة","معتمدة"];
+    const labFlow = flow.map((ar,i)=>({ar,mark:i<2?"✓":"",bg:i<2?"#7C4DDB":"#fff",line:i<=2?"#7C4DDB":"#D5E0E1",c:i<=2?"#45238F":"#8A9A9E",w:i===2?700:500,bar:i<2?"#7C4DDB":(i===flow.length-1?"transparent":"#E3EBEC")}));
+    const LV = (code,val,unit,ref,fk)=>{const f=statusGroups[5].items.find(x=>x.key===fk);const crit=fk.startsWith("critical");return {code,val,unit,ref,flag:f.ar,fbg:f.bg,ffg:f.fg,c:crit?"#B4262B":"#0F2328",rowBg:crit?"#FDECEC":"#fff",line:crit?"#F6C9CA":"#EEF2F3",inLine:crit?"#E5484D":"#D5E0E1"};};
+    const labVals = [LV("WBC","7.5","10^9/L","4.0 – 11.0","normal"),LV("HGB","6.8","g/dL","12.0 – 16.0","critical_low"),LV("PLT","420","10^9/L","150 – 400","high"),LV("RBC","4.6","10^12/L","4.2 – 5.4","normal")];
+
+    const tokens = {
+      fontFamily:{sans:["Readex Pro","sans-serif"],num:["Space Grotesk","sans-serif"]},
+      colors:{teal:Object.fromEntries(teal.map(c=>[c.name,c.hex])),neutral:Object.fromEntries(neutral.map(c=>[c.name,c.hex])),
+        success:"#1FA971",warning:"#E9A23B",danger:"#E5484D",info:"#2F6FDB",amber:"#F2B544",navy:"#102C44",
+        dept:Object.fromEntries(depts.map(d=>[d.key,d.hex])),
+        tone:Object.fromEntries(Object.entries(T).map(([k,v])=>[k,{bg:v[0],fg:v[1],dot:v[2]}]))},
+      cssVars:{":root":Object.fromEntries(themeRows.map(r=>["--"+r.token,r.light])),".dark":Object.fromEntries(themeRows.map(r=>["--"+r.token,r.dark]))},
+      status:Object.fromEntries(statusGroups.map(g=>[g.key,Object.fromEntries(g.items.map(s=>[s.key,s.tone]))])),
+      borderRadius:Object.fromEntries(radii.map(r=>[r.name,r.px])),
+      boxShadow:Object.fromEntries(shadows.map(s=>[s.name,s.css])),
+      screens:{tablet:"640px",desktop:"1024px"}};
+    return {teal,neutral,semantic,depts,themeRows,typeScale,radii,shadows,spacing,statusGroups,methods,capacity,splits,basket,denoms,recon,rx,syncOps,notes,days,tabs,tabsDark,nextUp,nav,heroStats,queue,bill,worklist,labFlow,labVals,
+      tokensJson:"// tailwind.config.js → theme.extend\n"+JSON.stringify(tokens,null,2)};
+  }
+}
+</script>
+</body>
+</html>

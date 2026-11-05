@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<script src="./lucide-icon.js"></script>
+<style>body{margin:0;background:#EEF2F3;font-family:'Readex Pro',sans-serif;color:#0F2328}a{color:#0F7A82}a:hover{color:#0C5F67}</style>
+</helmet>
+<div dir="rtl" style="padding:40px;display:flex;flex-direction:column;gap:40px;max-width:1500px;margin:0 auto">
+  <div style="display:flex;align-items:flex-end;gap:16px;flex-wrap:wrap">
+    <div style="display:flex;flex-direction:column;gap:6px;flex:1;min-width:280px"><span style="font-size:30px;font-weight:700">الشعار المطوّر وشاشة البداية</span><span style="font-size:15px;color:#5A6E73">نفس الفكرة بعد التبسيط: هلال يحتضن عائلة، قلب، يدان، نبض، و3 أوراق بدل 9.</span></div>
+    <button onClick="{{ replay }}" style="display:flex;align-items:center;gap:8px;height:44px;padding:0 20px;border-radius:999px;border:0;background:#163F66;color:#fff;font:600 14px 'Readex Pro'"><lc-icon name="rotate-ccw" size="17"></lc-icon>إعادة الحركة</button>
+  </div>
+
+  <section style="display:flex;flex-direction:column;gap:16px">
+    <span style="font-size:18px;font-weight:700">1 · الشعار: قبل وبعد</span>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px">
+      <div style="background:#fff;border-radius:24px;border:1px solid #E3EBEC;padding:20px;display:flex;flex-direction:column;gap:12px">
+        <span style="font-size:13px;color:#5A6E73;font-weight:600">الأصلي</span>
+        <div style="aspect-ratio:16/10;border-radius:16px;background:#fff url('uploads/pasted-1793629080229-0.png') center/cover"></div>
+        <span style="font-size:13px;color:#5A6E73;line-height:1.7">تدرجات، 9 أوراق، نبض يخرج عن الهلال. يصعب قراءته تحت 48 بكسل.</span>
+      </div>
+      <div style="background:#fff;border-radius:24px;border:1px solid #E3EBEC;padding:28px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px">
+        <dc-import name="Rahma Mark" size="{{ 170 }}" hint-size="170px,170px"></dc-import>
+        <span style="font-size:26px;font-weight:700;color:#163F66">مجمع عيادات الرحمة الطبي</span>
+        <span style="font-family:'Space Grotesk';font-size:13px;letter-spacing:.28em;color:#17A07A;font-weight:600">AL-RAHMA MEDICAL COMPLEX</span>
+      </div>
+      <div style="background:#0B1E2E;border-radius:24px;padding:28px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px">
+        <dc-import name="Rahma Mark" dark="{{ true }}" size="{{ 170 }}" hint-size="170px,170px"></dc-import>
+        <span style="font-size:26px;font-weight:700;color:#F2F7F8">مجمع عيادات الرحمة الطبي</span>
+        <span style="font-family:'Space Grotesk';font-size:13px;letter-spacing:.28em;color:#2BC28E;font-weight:600">AL-RAHMA MEDICAL COMPLEX</span>
+      </div>
+    </div>
+    <div style="background:#fff;border-radius:24px;border:1px solid #E3EBEC;padding:20px 24px;display:flex;align-items:center;gap:28px;flex-wrap:wrap">
+      <span style="font-size:14px;font-weight:600;min-width:160px">أيقونة التطبيق والأحجام الصغيرة</span>
+      <div style="width:96px;height:96px;border-radius:24px;background:#fff;box-shadow:0 0 0 1px #E3EBEC,0 6px 16px rgba(15,35,40,.08);display:flex;align-items:center;justify-content:center"><dc-import name="Rahma Mark" size="{{ 76 }}" hint-size="76px,76px"></dc-import></div>
+      <div style="width:96px;height:96px;border-radius:24px;background:#0B1E2E;display:flex;align-items:center;justify-content:center"><dc-import name="Rahma Mark" dark="{{ true }}" size="{{ 76 }}" hint-size="76px,76px"></dc-import></div>
+      <div style="display:flex;align-items:center;gap:6px"><dc-import name="Rahma Mark" size="{{ 48 }}" hint-size="48px,48px"></dc-import><span style="font-family:'Space Grotesk';font-size:11px;color:#6B7F84;font-weight:600">48</span></div>
+      <div style="display:flex;align-items:center;gap:6px"><dc-import name="Rahma Mark" size="{{ 32 }}" hint-size="32px,32px"></dc-import><span style="font-family:'Space Grotesk';font-size:11px;color:#6B7F84;font-weight:600">32</span></div>
+      <div style="display:flex;align-items:center;gap:6px"><dc-import name="Rahma Mark" size="{{ 20 }}" hint-size="20px,20px"></dc-import><span style="font-family:'Space Grotesk';font-size:11px;color:#6B7F84;font-weight:600">20</span></div>
+    </div>
+  </section>
+
+  <section style="display:flex;flex-direction:column;gap:16px">
+    <span style="font-size:18px;font-weight:700">2 · شاشة البداية للتطبيق: فاتح وداكن</span>
+    <div style="display:flex;gap:32px;flex-wrap:wrap;justify-content:center">
+      <sc-for list="{{ phones }}" as="p" hint-placeholder-count="2">
+        <div style="display:flex;flex-direction:column;align-items:center;gap:12px">
+          <div data-splash="1" style="width:360px;height:760px;border-radius:44px;overflow:hidden;position:relative;background:{{ p.bg }};box-shadow:0 0 0 10px #0F2328,0 24px 60px rgba(15,35,40,.25);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:20px">
+            <div data-sp="glow" style="position:absolute;width:420px;height:420px;border-radius:50%;background:{{ p.glow }};top:150px;left:-30px"></div>
+            <div style="position:relative"><dc-import name="Rahma Mark" dark="{{ p.dark }}" size="{{ 168 }}" hint-size="168px,168px"></dc-import></div>
+            <div style="position:relative;display:flex;flex-direction:column;align-items:center;gap:8px">
+              <span data-sp="title" style="font-size:25px;font-weight:700;color:{{ p.title }}">مجمع عيادات الرحمة الطبي</span>
+              <span data-sp="en" style="font-family:'Space Grotesk';font-size:11.5px;letter-spacing:.3em;color:{{ p.en }};font-weight:600">AL-RAHMA MEDICAL COMPLEX</span>
+            </div>
+            <div style="position:absolute;bottom:64px;width:120px;height:3px;border-radius:3px;background:{{ p.track }};overflow:hidden"><div data-sp="bar" style="width:100%;height:100%;background:{{ p.en }};transform-origin:right center"></div></div>
+          </div>
+          <span style="font-size:13px;color:#5A6E73;font-weight:600">{{ p.label }}</span>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <section style="display:flex;flex-direction:column;gap:16px">
+    <span style="font-size:18px;font-weight:700">3 · شاشة البداية لأنظمة الموظفين: فاتح وداكن</span>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(420px,1fr));gap:20px">
+      <sc-for list="{{ phones }}" as="p" hint-placeholder-count="2">
+        <div data-splash="1" style="aspect-ratio:16/10;border-radius:20px;overflow:hidden;position:relative;background:{{ p.bg }};border:1px solid #DCE5E6;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px">
+          <div data-sp="glow" style="position:absolute;width:520px;height:520px;border-radius:50%;background:{{ p.glow }};top:-60px"></div>
+          <div style="position:relative"><dc-import name="Rahma Mark" dark="{{ p.dark }}" size="{{ 132 }}" hint-size="132px,132px"></dc-import></div>
+          <div style="position:relative;display:flex;flex-direction:column;align-items:center;gap:6px">
+            <span data-sp="title" style="font-size:24px;font-weight:700;color:{{ p.title }}">مجمع عيادات الرحمة الطبي</span>
+            <span data-sp="en" style="font-family:'Space Grotesk';font-size:11px;letter-spacing:.3em;color:{{ p.en }};font-weight:600">AL-RAHMA MEDICAL COMPLEX</span>
+          </div>
+          <div style="position:absolute;bottom:28px;display:flex;align-items:center;gap:8px;font-size:12px;color:{{ p.sub }}"><span data-sp="en" style="display:flex;align-items:center;gap:6px"><lc-icon name="shield-check" size="14"></lc-icon>نظام إدارة المجمع · v5</span></div>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <section style="background:#fff;border-radius:24px;border:1px solid #E3EBEC;padding:20px 24px;display:flex;flex-direction:column;gap:10px">
+    <span style="font-size:16px;font-weight:700">تسلسل الحركة · 3.2 ثانية</span>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px">
+      <sc-for list="{{ steps }}" as="s" hint-placeholder-count="6">
+        <div style="display:flex;flex-direction:column;gap:4px;padding:12px;border-radius:14px;background:#F5F8F8"><span style="font-family:'Space Grotesk';font-size:12px;color:#17A07A;font-weight:600">{{ s.t }}</span><span style="font-size:13px">{{ s.ar }}</span></div>
+      </sc-for>
+    </div>
+  </section>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  componentDidMount() { setTimeout(() => this.run(), 400); }
+  run() {
+    const E = "cubic-bezier(.22,1,.36,1)";
+    document.querySelectorAll('[data-splash]').forEach(root => {
+      const q = (k, fn) => root.querySelectorAll(`[data-sp="${k}"]`).forEach(fn);
+      const a = (el, kf, delay, dur, ease = E) => el.animate(kf, { delay, duration: dur, easing: ease, fill: "both" });
+      const draw = [{ strokeDashoffset: 1 }, { strokeDashoffset: 0 }];
+      q("arc1", el => a(el, draw, 0, 1000));
+      q("arc2", el => a(el, draw, 220, 1000));
+      q("pulse", (el, i) => a(el, draw, 700 + i * 120, 650, "ease-in-out"));
+      q("head", (el, i) => a(el, [{ transform: "scale(0)", opacity: 0 }, { transform: "scale(1)", opacity: 1 }], 1050 + i * 90, 520, "cubic-bezier(.34,1.56,.64,1)"));
+      q("heartL", el => a(el, [{ transform: "translateX(-14px)", opacity: 0 }, { transform: "none", opacity: 1 }], 1200, 600));
+      q("heartR", el => a(el, [{ transform: "translateX(14px)", opacity: 0 }, { transform: "none", opacity: 1 }], 1200, 600));
+      q("child", el => a(el, [{ transform: "scale(0)" }, { transform: "scale(1)" }], 1550, 420, "cubic-bezier(.34,1.56,.64,1)"));
+      q("hand", el => a(el, draw, 1450, 600));
+      q("stem", el => a(el, draw, 1700, 380));
+      q("leaf", (el, i) => a(el, [{ transform: "scale(0)" }, { transform: "scale(1)" }], 1880 + i * 110, 520, "cubic-bezier(.34,1.56,.64,1)"));
+      q("glow", el => a(el, [{ opacity: 0, transform: "scale(.6)" }, { opacity: 1, transform: "scale(1)" }], 900, 1600));
+      q("title", el => a(el, [{ opacity: 0, transform: "translateY(14px)", filter: "blur(6px)" }, { opacity: 1, transform: "none", filter: "blur(0)" }], 2250, 700));
+      q("en", el => a(el, [{ opacity: 0, letterSpacing: ".6em" }, { opacity: 1, letterSpacing: ".3em" }], 2500, 800));
+      q("bar", el => a(el, [{ transform: "scaleX(0)" }, { transform: "scaleX(1)" }], 2600, 900, "ease-in-out"));
+    });
+  }
+  renderVals() {
+    return {
+      replay: () => this.run(),
+      phones: [
+        { label: "الوضع الفاتح", dark: false, bg: "#FFFFFF", glow: "radial-gradient(circle, rgba(23,160,122,.12), rgba(23,160,122,0) 65%)", title: "#163F66", en: "#17A07A", track: "#E6EEEF", sub: "#6B7F84" },
+        { label: "الوضع الداكن", dark: true, bg: "#0B1E2E", glow: "radial-gradient(circle, rgba(43,194,142,.18), rgba(43,194,142,0) 65%)", title: "#F2F7F8", en: "#2BC28E", track: "#1B3346", sub: "#8FA6B2" }
+      ],
+      steps: [
+        { t: "0.0s", ar: "يُرسم الهلال" }, { t: "0.7s", ar: "يمر النبض" }, { t: "1.05s", ar: "تظهر العائلة ويلتقي القلب" },
+        { t: "1.45s", ar: "تحتضن اليدان" }, { t: "1.9s", ar: "تنمو الأوراق" }, { t: "2.25s", ar: "يظهر الاسم ثم يبدأ التحميل" }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="icon" type="image/svg+xml" href="./rahma-mark.svg">
+<script src="./theme.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<script src="./lucide-icon.js"></script>
+<script src="./image-slot.js"></script>
+<style>
+body{margin:0;background:var(--kF5F8F8,#F5F8F8);font-family:'Readex Pro',sans-serif;color:var(--k0F2328,#0F2328);-webkit-font-smoothing:antialiased}
+a{color:var(--k0F7A82,#0F7A82);text-decoration:none}a:hover{color:var(--k0C5F67,#0C5F67)}
+*{box-sizing:border-box}
+button{font-family:inherit;cursor:pointer;white-space:nowrap}
+</style>
+</helmet>
+<div dir="rtl" style="min-height:100vh;display:grid;grid-template-columns:240px minmax(0,1fr);min-width:1280px">
+<aside style="background:var(--k102C44,#102C44);color:#fff;padding:22px 14px;display:flex;flex-direction:column;gap:18px;position:sticky;top:0;height:100vh">
+  <a href="System Hub.dc.html" style="display:flex;align-items:center;gap:10px;padding:0 6px;color:#fff">
+    <dc-import name="Rahma Mark" tone="dark" paper="#102C44" size="{{ 42 }}" hint-size="42px,42px"></dc-import>
+    <div style="display:flex;flex-direction:column"><span style="font-size:16px;font-weight:700">مجمع الرحمة</span><span style="font-size:12px;color:var(--k9FB4C6,#9FB4C6)">المحاسب العام</span></div>
+  </a>
+  <div style="display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:14px;background:rgba(255,255,255,.07)"><lc-icon name="building-2" size="18" color="var(--k9FB4C6,#9FB4C6)"></lc-icon><span style="flex:1;font-size:14px;font-weight:600">كل الفروع</span><lc-icon name="chevrons-up-down" size="15" color="var(--k9FB4C6,#9FB4C6)"></lc-icon></div>
+  <nav style="display:flex;flex-direction:column;gap:2px;overflow:auto;min-height:0;flex:1">
+    <sc-for list="{{ nav }}" as="n" hint-placeholder-count="5">
+      <button onClick="{{ n.go }}" style="display:flex;align-items:center;gap:12px;padding:9px 12px;border-radius:12px;border:0;background:{{ n.bg }};color:{{ n.c }};font-size:15px;font-weight:{{ n.w }};text-align:right"><lc-icon name="{{ n.icon }}" size="19"></lc-icon><span style="flex:1">{{ n.ar }}</span><span style="font-family:'Space Grotesk';font-size:12px;padding:1px 7px;border-radius:999px;background:{{ n.badgeBg }}">{{ n.badge }}</span></button>
+    </sc-for>
+  </nav>
+  <div style="display:flex;align-items:center;gap:10px;padding:6px"><div style="width:38px;height:38px;border-radius:999px;background:var(--k2F6FDB,#2F6FDB);display:flex;align-items:center;justify-content:center;font-weight:700">م</div><div style="display:flex;flex-direction:column;flex:1"><span style="font-size:14px;font-weight:600">منتظر عادل</span><span style="font-size:12px;color:var(--k9FB4C6,#9FB4C6)">محاسب عام</span></div><lc-icon name="log-out" size="18" color="var(--k9FB4C6,#9FB4C6)"></lc-icon></div>
+</aside>
+
+<main style="display:flex;flex-direction:column;min-width:0">
+  <header style="display:flex;align-items:center;gap:14px;padding:16px 28px;background:var(--kFFFFFF,#fff);border-bottom:1px solid var(--kE3EBEC,#E3EBEC);position:sticky;top:0;z-index:2">
+    <div style="display:flex;flex-direction:column;flex:1"><span style="font-size:21px;font-weight:700">{{ title }}</span><span style="font-size:13px;color:var(--k4F6368,#4F6368);font-weight:600">{{ subtitle }}</span></div>
+    <theme-toggle></theme-toggle>
+    <div style="display:flex;align-items:center;gap:8px;padding:0 14px;height:42px;border-radius:999px;background:var(--kF5F8F8,#F5F8F8);border:1px solid var(--kE3EBEC,#E3EBEC);font-size:14px;white-space:nowrap"><lc-icon name="calendar-days" size="17" color="var(--k0F7A82,#0F7A82)"></lc-icon>الاثنين 2 تشرين الثاني 2026</div>
+    <button style="display:flex;align-items:center;gap:6px;padding:0 16px;height:42px;border-radius:999px;border:1px solid var(--kD5E0E1,#D5E0E1);background:var(--kFFFFFF,#fff);color:var(--k0F2328,#0F2328);font-size:14px;font-weight:600"><lc-icon name="file-down" size="16"></lc-icon>تصدير</button>
+  </header>
+  <div style="padding:24px 28px 48px;display:flex;flex-direction:column;gap:18px">
+
+  <sc-if value="{{ isDash }}" hint-placeholder-val="{{ false }}">
+    <div style="display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px">
+      <sc-for list="{{ dashTotals }}" as="k" hint-placeholder-count="5">
+        <div style="display:flex;flex-direction:column;gap:6px;padding:16px;border-radius:18px;background:{{ k.bg }};color:{{ k.fg }}"><span style="display:flex;align-items:center;gap:6px;font-size:13px"><lc-icon name="{{ k.icon }}" size="16"></lc-icon>{{ k.ar }}</span><span style="font-family:'Space Grotesk';font-size:24px;font-weight:700">{{ k.v }}</span><span style="font-size:12px;opacity:.8">الشهر: <span style="font-family:'Space Grotesk'">{{ k.m }}</span></span></div>
+      </sc-for>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px">
+      <sc-for list="{{ dashBranches }}" as="b" hint-placeholder-count="3">
+        <div style="background:var(--kFFFFFF,#fff);border-radius:20px;border:1px solid var(--kE3EBEC,#E3EBEC);padding:18px;display:flex;flex-direction:column;gap:12px;opacity:{{ b.op }}">
+          <div style="display:flex;align-items:center;gap:10px"><span style="width:40px;height:40px;border-radius:12px;background:var(--kEAF6F6,#EAF6F6);color:var(--k0F7A82,#0F7A82);display:flex;align-items:center;justify-content:center"><lc-icon name="building-2" size="19"></lc-icon></span><span style="display:flex;flex-direction:column;flex:1"><span style="font-size:16px;font-weight:700">{{ b.name }}</span><span style="font-size:12px;color:{{ b.sc }}">{{ b.state }}</span></span><lc-icon name="chevron-left" size="18" color="var(--k8A9A9E,#8A9A9E)"></lc-icon></div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+            <sc-for list="{{ b.nums }}" as="n" hint-placeholder-count="4"><div style="display:flex;flex-direction:column;gap:2px;padding:10px;border-radius:12px;background:var(--kF5F8F8,#F5F8F8)"><span style="font-size:11px;color:var(--k4F6368,#4F6368);font-weight:600">{{ n.ar }}</span><span style="font-family:'Space Grotesk';font-size:16px;font-weight:700;color:{{ n.c }}">{{ n.v }}</span></div></sc-for>
+          </div>
+          <div style="display:flex;gap:6px;flex-wrap:wrap"><sc-for list="{{ b.alerts }}" as="a" hint-placeholder-count="3"><span style="display:flex;align-items:center;gap:5px;padding:4px 9px;border-radius:999px;background:{{ a.bg }};color:{{ a.fg }};font-size:12px;font-weight:600"><lc-icon name="{{ a.icon }}" size="13"></lc-icon>{{ a.ar }}</span></sc-for></div>
+        </div>
+      </sc-for>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ isInvoices }}" hint-placeholder-val="{{ false }}">
+    <div style="display:flex;gap:8px;align-items:center">
+      <div style="display:flex;align-items:center;gap:8px;flex:1;max-width:420px;height:44px;padding:0 14px;border-radius:14px;background:var(--kFFFFFF,#fff);border:1px solid var(--kD5E0E1,#D5E0E1)"><lc-icon name="search" size="17" color="var(--k8A9A9E,#8A9A9E)"></lc-icon><span style="font-size:14px;color:var(--k8A9A9E,#8A9A9E)">رقم الفاتورة، رقم الملف، أو اسم المريض</span></div>
+      <sc-for list="{{ invFilters }}" as="f" hint-placeholder-count="5"><button onClick="{{ f.go }}" style="display:flex;align-items:center;gap:5px;padding:0 12px;height:36px;border-radius:999px;border:1px solid {{ f.line }};background:{{ f.bg }};color:{{ f.fg }};font-size:13px;font-weight:500"><lc-icon name="{{ f.icon }}" size="14"></lc-icon>{{ f.ar }}</button></sc-for>
+    </div>
+    <div style="display:grid;grid-template-columns:minmax(0,1fr) 380px;gap:16px;align-items:start">
+      <div style="background:var(--kFFFFFF,#fff);border-radius:20px;border:1px solid var(--kE3EBEC,#E3EBEC);overflow:hidden">
+        <div style="display:grid;grid-template-columns:150px minmax(0,1fr) 80px 110px 110px 120px;padding:10px 18px;background:var(--kF5F8F8,#F5F8F8);font-size:12px;color:var(--k4F6368,#4F6368);font-weight:600"><span>الفاتورة</span><span>المريض</span><span>البنود</span><span>الصافي</span><span>المدفوع</span><span>الحالة</span><span></span></div>
+        <sc-for list="{{ invoices }}" as="i" hint-placeholder-count="6">
+          <button onClick="{{ i.go }}" style="display:grid;grid-template-columns:150px minmax(0,1fr) 80px 110px 110px 120px;width:100%;padding:12px 18px;border:0;border-top:1px solid var(--kEEF2F3,#EEF2F3);background:{{ i.bg }};align-items:center;font-size:14px;text-align:right;color:var(--k0F2328,#0F2328)">
+            <span dir="ltr" style="font-family:'Space Grotesk';font-size:13px;text-align:right">{{ i.no }}</span>
+            <span style="display:flex;flex-direction:column"><span style="font-weight:600">{{ i.patient }}</span><span style="font-family:'Space Grotesk';font-size:11px;color:var(--k6B7F84,#6B7F84);font-weight:600">{{ i.file }}</span></span>
+            <span style="font-family:'Space Grotesk'">{{ i.items }}</span>
+            <span style="font-family:'Space Grotesk';font-weight:700">{{ i.net }}</span>
+            <span style="font-family:'Space Grotesk';color:var(--k4F6368,#4F6368)">{{ i.paid }}</span>
+            <span style="display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:600;color:{{ i.sc }}"><lc-icon name="{{ i.sIcon }}" size="14"></lc-icon>{{ i.st }}</span>
+          </button>
+        </sc-for>
+      </div>
+      <div style="background:var(--kFFFFFF,#fff);border-radius:20px;border:1px solid var(--kE3EBEC,#E3EBEC);padding:18px;display:flex;flex-direction:column;gap:12px;position:sticky;top:96px">
+        <div style="display:flex;align-items:center;gap:10px"><lc-icon name="file-text" size="20" color="var(--k2F6FDB,#2F6FDB)"></lc-icon><span dir="ltr" style="font-family:'Space Grotesk';font-size:16px;font-weight:700;flex:1;text-align:right">{{ inv.no }}</span><span style="display:flex;align-items:center;gap:5px;font-size:12px;font-weight:600;color:{{ inv.sc }}"><lc-icon name="{{ inv.sIcon }}" size="14"></lc-icon>{{ inv.st }}</span></div>
+        <span style="font-size:14px;color:var(--k4F6368,#4F6368)">{{ inv.patient }} · {{ inv.file }}</span>
+        <sc-for list="{{ inv.lines }}" as="l" hint-placeholder-count="2"><div style="display:flex;align-items:center;gap:8px;padding:8px 0;border-bottom:1px solid var(--kEEF2F3,#EEF2F3);font-size:13px"><lc-icon name="{{ l.icon }}" size="15" color="{{ l.c }}"></lc-icon><span style="flex:1">{{ l.ar }}</span><span style="font-family:'Space Grotesk';font-weight:600">{{ l.v }}</span></div></sc-for>
+        <div style="display:flex;align-items:center;gap:8px;font-size:13px;color:var(--k4F6368,#4F6368)"><lc-icon name="badge-percent" size="15"></lc-icon><span style="flex:1">خصم · {{ inv.discReason }}</span><span style="font-family:'Space Grotesk'">{{ inv.disc }}</span></div>
+        <div style="display:flex;align-items:center;font-size:16px;font-weight:700"><span style="flex:1">الصافي</span><span style="font-family:'Space Grotesk'">{{ inv.net }}</span></div>
+        <sc-if value="{{ inv.canVoid }}" hint-placeholder-val="{{ false }}">
+          <div style="display:flex;align-items:center;gap:8px;border:1px solid var(--kD5E0E1,#D5E0E1);border-radius:12px;padding:0 12px;height:42px"><lc-icon name="notebook-pen" size="15" color="var(--k8A9A9E,#8A9A9E)"></lc-icon><span style="font-size:13px">طلب مكرر</span></div>
+          <button style="display:flex;align-items:center;justify-content:center;gap:8px;height:46px;border-radius:999px;border:1.5px solid var(--kE5484D,#E5484D);background:var(--kFFFFFF,#fff);color:var(--kC2373B,#C2373B);font-size:14px;font-weight:600"><lc-icon name="file-x" size="17"></lc-icon>إلغاء الفاتورة</button>
+          <span style="font-size:12px;color:var(--k4F6368,#4F6368);font-weight:600">الإلغاء للفواتير غير المدفوعة فقط. المدفوعة تُعالج بالاسترجاع.</span>
+        </sc-if>
+        <sc-if value="{{ inv.paidNote }}" hint-placeholder-val="{{ true }}"><button style="display:flex;align-items:center;justify-content:center;gap:8px;height:44px;border-radius:999px;border:1px solid var(--kD5E0E1,#D5E0E1);background:var(--kFFFFFF,#fff);color:var(--k0F2328,#0F2328);font-size:14px;font-weight:600"><lc-icon name="printer" size="16"></lc-icon>إعادة طباعة الإيصال</button></sc-if>
+      </div>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ isExpenses }}" hint-placeholder-val="{{ false }}">
+    <div style="display:grid;grid-template-columns:minmax(0,1fr) 380px;gap:16px;align-items:start">
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <div style="display:flex;gap:10px;flex-wrap:wrap">
+          <sc-for list="{{ expCats }}" as="c" hint-placeholder-count="5"><div style="display:flex;align-items:center;gap:10px;padding:12px 14px;border-radius:16px;background:var(--kFFFFFF,#fff);border:1px solid var(--kE3EBEC,#E3EBEC);min-width:150px"><span style="width:34px;height:34px;border-radius:10px;background:var(--kF5F8F8,#F5F8F8);color:var(--k0F7A82,#0F7A82);display:flex;align-items:center;justify-content:center"><lc-icon name="{{ c.icon }}" size="16"></lc-icon></span><span style="display:flex;flex-direction:column"><span style="font-size:12px;color:var(--k4F6368,#4F6368);font-weight:600">{{ c.ar }}</span><span style="font-family:'Space Grotesk';font-size:15px;font-weight:700">{{ c.v }}</span></span></div></sc-for>
+        </div>
+        <div style="background:var(--kFFFFFF,#fff);border-radius:20px;border:1px solid var(--kE3EBEC,#E3EBEC);overflow:hidden">
+          <div style="display:flex;align-items:center;gap:8px;padding:14px 18px"><span style="font-size:16px;font-weight:700;flex:1">مصاريف تشرين الثاني</span><span style="font-size:13px;color:var(--k4F6368,#4F6368);font-weight:600">المجموع <b style="font-family:'Space Grotesk';color:var(--k0F2328,#0F2328)">1,050,000</b></span></div>
+          <sc-for list="{{ expenses }}" as="e" hint-placeholder-count="5">
+            <div style="display:grid;grid-template-columns:36px minmax(0,1fr) 104px 96px 90px 24px;gap:12px;align-items:center;padding:12px 18px;border-top:1px solid var(--kEEF2F3,#EEF2F3);font-size:13px;opacity:{{ e.op }}">
+              <span style="width:36px;height:36px;border-radius:10px;background:var(--kF5F8F8,#F5F8F8);color:var(--k0F7A82,#0F7A82);display:flex;align-items:center;justify-content:center"><lc-icon name="{{ e.icon }}" size="16"></lc-icon></span>
+              <span style="display:flex;flex-direction:column"><span style="font-size:14px;font-weight:600;text-decoration:{{ e.strike }}">{{ e.desc }}</span><span style="font-size:11px;color:var(--k6B7F84,#6B7F84);font-weight:600"><span dir="ltr" style="font-family:'Space Grotesk'">{{ e.no }}</span> · {{ e.payee }} · {{ e.by }}</span></span>
+              <span style="display:flex;align-items:center;gap:5px;color:var(--k4F6368,#4F6368)"><lc-icon name="{{ e.fromIcon }}" size="14"></lc-icon>{{ e.from }}</span>
+              <span style="font-size:12px;color:var(--k4F6368,#4F6368);font-weight:600">{{ e.branch }}</span>
+              <span style="font-family:'Space Grotesk';font-weight:700">{{ e.amt }}</span>
+              <span style="color:var(--k8A9A9E,#8A9A9E)"><lc-icon name="{{ e.act }}" size="16"></lc-icon></span>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+      <div style="background:var(--kFFFFFF,#fff);border-radius:20px;border:1px solid var(--kE3EBEC,#E3EBEC);padding:18px;display:flex;flex-direction:column;gap:12px;position:sticky;top:96px">
+        <span style="display:flex;align-items:center;gap:8px;font-size:16px;font-weight:700"><lc-icon name="receipt-text" size="19" color="var(--k0F7A82,#0F7A82)"></lc-icon>مصروف جديد</span>
+        <span style="font-size:13px;color:var(--k4F6368,#4F6368)">التصنيف</span>
+        <div style="display:flex;flex-wrap:wrap;gap:6px"><sc-for list="{{ expPick }}" as="c" hint-placeholder-count="6"><button onClick="{{ c.go }}" style="display:flex;align-items:center;gap:5px;padding:0 10px;height:32px;border-radius:999px;border:1.5px solid {{ c.line }};background:{{ c.bg }};color:{{ c.fg }};font-size:12px;font-weight:600"><lc-icon name="{{ c.icon }}" size="13"></lc-icon>{{ c.ar }}</button></sc-for></div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+          <div style="display:flex;align-items:center;gap:8px;border:1px solid var(--kD5E0E1,#D5E0E1);border-radius:12px;padding:0 12px;height:44px"><lc-icon name="banknote" size="15" color="var(--k8A9A9E,#8A9A9E)"></lc-icon><span style="font-family:'Space Grotesk';font-size:15px;font-weight:600">75,000</span></div>
+          <div style="display:flex;align-items:center;gap:8px;border:1px solid var(--kD5E0E1,#D5E0E1);border-radius:12px;padding:0 12px;height:44px"><lc-icon name="calendar" size="15" color="var(--k8A9A9E,#8A9A9E)"></lc-icon><span style="font-family:'Space Grotesk';font-size:14px">2026-11-02</span></div>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px;border:1px solid var(--kD5E0E1,#D5E0E1);border-radius:12px;padding:0 12px;height:44px"><lc-icon name="notebook-pen" size="15" color="var(--k8A9A9E,#8A9A9E)"></lc-icon><span style="font-size:14px">تصليح جهاز التكييف</span></div>
+        <div style="display:flex;align-items:center;gap:8px;border:1px solid var(--kD5E0E1,#D5E0E1);border-radius:12px;padding:0 12px;height:44px"><lc-icon name="store" size="15" color="var(--k8A9A9E,#8A9A9E)"></lc-icon><span style="font-size:14px">ورشة النور</span></div>
+        <span style="font-size:13px;color:var(--k4F6368,#4F6368)">يُدفع من</span>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px"><sc-for list="{{ paidFrom }}" as="p" hint-placeholder-count="2"><button onClick="{{ p.go }}" style="display:flex;flex-direction:column;align-items:flex-start;gap:4px;padding:10px 12px;border-radius:14px;border:1.5px solid {{ p.line }};background:{{ p.bg }};color:{{ p.fg }};text-align:right"><lc-icon name="{{ p.icon }}" size="18"></lc-icon><span style="font-size:13px;font-weight:700">{{ p.ar }}</span><span style="font-size:11px;color:var(--k4F6368,#4F6368);white-space:normal;font-weight:600">{{ p.hint }}</span></button></sc-for></div>
+        <button style="display:flex;align-items:center;justify-content:center;gap:8px;height:48px;border-radius:999px;border:0;background:var(--k0F7A82,#0F7A82);color:#fff;font-size:15px;font-weight:600"><lc-icon name="{{ expBtnIcon }}" size="17"></lc-icon>{{ expBtn }}</button>
+      </div>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ isSettle }}" hint-placeholder-val="{{ false }}">
+    <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px">
+      <sc-for list="{{ settleBranches }}" as="b" hint-placeholder-count="3">
+        <div style="background:var(--kFFFFFF,#fff);border-radius:20px;border:1px solid var(--kE3EBEC,#E3EBEC);padding:18px;display:flex;flex-direction:column;gap:10px">
+          <span style="display:flex;align-items:center;gap:8px;font-size:16px;font-weight:700"><lc-icon name="building-2" size="18" color="var(--k0F7A82,#0F7A82)"></lc-icon>{{ b.name }}</span>
+          <sc-for list="{{ b.rows }}" as="r" hint-placeholder-count="4"><div style="display:flex;align-items:center;gap:8px;font-size:13px"><lc-icon name="{{ r.icon }}" size="14" color="var(--k8A9A9E,#8A9A9E)"></lc-icon><span style="flex:1;color:var(--k4F6368,#4F6368)">{{ r.ar }}</span><span style="font-family:'Space Grotesk';font-weight:600">{{ r.v }}</span></div></sc-for>
+          <div style="display:flex;align-items:center;gap:8px;padding:10px 12px;border-radius:12px;background:{{ b.nbg }};color:{{ b.nfg }}"><lc-icon name="{{ b.nIcon }}" size="16"></lc-icon><span style="flex:1;font-size:13px;font-weight:600">{{ b.nAr }}</span><span style="font-family:'Space Grotesk';font-size:16px;font-weight:700">{{ b.net }}</span></div>
+        </div>
+      </sc-for>
+    </div>
+    <div style="background:var(--kFFFFFF,#fff);border-radius:20px;border:1px solid var(--kE3EBEC,#E3EBEC);padding:18px;display:flex;flex-direction:column;gap:10px">
+      <span style="display:flex;align-items:center;gap:8px;font-size:16px;font-weight:700"><lc-icon name="arrow-left-right" size="18" color="var(--k2F6FDB,#2F6FDB)"></lc-icon>تحويلات مطلوبة</span>
+      <sc-for list="{{ flows }}" as="f" hint-placeholder-count="2">
+        <div style="display:grid;grid-template-columns:minmax(0,1fr) 60px minmax(0,1fr) 140px 90px;align-items:center;gap:10px;padding:12px 14px;border-radius:14px;background:var(--kF5F8F8,#F5F8F8);font-size:14px">
+          <span style="display:flex;align-items:center;gap:8px;font-weight:600"><lc-icon name="wallet" size="16" color="var(--kB86E0A,#B86E0A)"></lc-icon>{{ f.from }}</span>
+          <lc-icon name="arrow-left" size="20" color="var(--k2F6FDB,#2F6FDB)"></lc-icon>
+          <span style="display:flex;align-items:center;gap:8px;font-weight:600"><lc-icon name="hand-heart" size="16" color="var(--k1FA971,#1FA971)"></lc-icon>{{ f.to }}</span>
+          <span style="font-family:'Space Grotesk';font-size:17px;font-weight:700">{{ f.amt }}</span>
+          <span style="font-size:12px;color:var(--k4F6368,#4F6368);font-weight:600">{{ f.n }} حركات</span>
+        </div>
+      </sc-for>
+      <span style="display:flex;align-items:center;gap:6px;font-size:12px;color:var(--k4F6368,#4F6368);font-weight:600"><lc-icon name="info" size="14"></lc-icon>رصيد المريض واحد في كل الفروع؛ الفرع الذي قبض الرصيد يحوّل للفرع الذي قدّم الخدمة. مجموع الأرصدة غير المستخدمة: <b style="font-family:'Space Grotesk'">165,000</b></span>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ isNoShows }}" hint-placeholder-val="{{ false }}">
+    <div style="display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:10px">
+      <sc-for list="{{ nsStats }}" as="k" hint-placeholder-count="6"><div style="display:flex;flex-direction:column;gap:4px;padding:14px;border-radius:16px;background:var(--kFFFFFF,#fff);border:1px solid var(--kE3EBEC,#E3EBEC)"><lc-icon name="{{ k.icon }}" size="18" color="{{ k.c }}"></lc-icon><span style="font-family:'Space Grotesk';font-size:24px;font-weight:700">{{ k.v }}</span><span style="font-size:12px;color:var(--k4F6368,#4F6368);font-weight:600">{{ k.ar }}</span></div></sc-for>
+    </div>
+    <div style="background:var(--kFFFFFF,#fff);border-radius:20px;border:1px solid var(--kE3EBEC,#E3EBEC);padding:18px;display:flex;flex-direction:column;gap:10px;max-width:760px">
+      <span style="display:flex;align-items:center;gap:8px;font-size:16px;font-weight:700"><lc-icon name="user-x" size="18" color="var(--kE5484D,#E5484D)"></lc-icon>الغياب حسب الطبيب</span>
+      <sc-for list="{{ nsDocs }}" as="d" hint-placeholder-count="3">
+        <div style="display:grid;grid-template-columns:44px minmax(0,1fr) minmax(0,1.4fr) 40px;gap:12px;align-items:center">
+          <div style="width:40px;height:40px;border-radius:12px;overflow:hidden;background:var(--kD2ECEC,#D2ECEC)"><image-slot id="{{ d.photo }}" shape="rounded" radius="12" placeholder="د" style="width:40px;height:40px"></image-slot></div>
+          <span style="display:flex;flex-direction:column"><span style="font-size:14px;font-weight:600">{{ d.name }}</span><span style="font-size:12px;color:var(--k4F6368,#4F6368);font-weight:600">{{ d.clinic }}</span></span>
+          <div style="height:10px;border-radius:99px;background:var(--kF5F8F8,#F5F8F8);overflow:hidden"><div style="height:100%;width:{{ d.w }};background:var(--kE5484D,#E5484D);border-radius:99px"></div></div>
+          <span style="font-family:'Space Grotesk';font-weight:700">{{ d.n }}</span>
+        </div>
+      </sc-for>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ isAudit }}" hint-placeholder-val="{{ false }}">
+    <div style="display:flex;gap:8px;flex-wrap:wrap">
+      <sc-for list="{{ auditFilters }}" as="f" hint-placeholder-count="5"><span style="display:flex;align-items:center;gap:6px;padding:0 12px;height:38px;border-radius:12px;background:var(--kFFFFFF,#fff);border:1px solid var(--kD5E0E1,#D5E0E1);font-size:13px;color:var(--k4F6368,#4F6368);white-space:nowrap"><lc-icon name="{{ f.icon }}" size="15"></lc-icon>{{ f.ar }}<lc-icon name="chevron-down" size="14" color="var(--k8A9A9E,#8A9A9E)"></lc-icon></span></sc-for>
+    </div>
+    <div style="background:var(--kFFFFFF,#fff);border-radius:20px;border:1px solid var(--kE3EBEC,#E3EBEC);overflow:hidden">
+      <sc-for list="{{ auditLog }}" as="a" hint-placeholder-count="7">
+        <div style="display:grid;grid-template-columns:40px 190px minmax(0,1fr) 140px 120px 70px;gap:12px;align-items:center;padding:12px 18px;border-top:1px solid var(--kEEF2F3,#EEF2F3);font-size:13px">
+          <span style="width:36px;height:36px;border-radius:10px;background:var(--kF5F8F8,#F5F8F8);color:{{ a.c }};display:flex;align-items:center;justify-content:center"><lc-icon name="{{ a.icon }}" size="16"></lc-icon></span>
+          <span dir="ltr" style="font-family:'Space Grotesk';font-size:12px;color:{{ a.c }};text-align:right;font-weight:600">{{ a.action }}</span>
+          <span style="font-size:14px">{{ a.ar }}</span>
+          <span style="color:var(--k4F6368,#4F6368)">{{ a.by }}</span>
+          <span style="font-size:12px;color:var(--k4F6368,#4F6368);font-weight:600">{{ a.branch }}</span>
+          <span style="font-family:'Space Grotesk';font-size:12px;color:var(--k6B7F84,#6B7F84);font-weight:600">{{ a.at }}</span>
+        </div>
+      </sc-for>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ isShifts }}" hint-placeholder-val="{{ true }}">
+    <div style="display:grid;grid-template-columns:minmax(0,1fr) 440px;gap:16px;align-items:start">
+      <div style="background:var(--kFFFFFF,#fff);border-radius:20px;border:1px solid var(--kE3EBEC,#E3EBEC);overflow:hidden">
+        <div style="display:flex;align-items:center;gap:8px;padding:14px 18px"><span style="font-size:17px;font-weight:700;flex:1">ورديات اليوم</span>
+          <sc-for list="{{ shiftFilters }}" as="f" hint-placeholder-count="3"><span style="display:flex;align-items:center;gap:5px;padding:5px 10px;border-radius:999px;background:{{ f.bg }};color:{{ f.fg }};font-size:12px"><lc-icon name="{{ f.icon }}" size="13"></lc-icon>{{ f.ar }}</span></sc-for>
+        </div>
+        <sc-for list="{{ shifts }}" as="s" hint-placeholder-count="5">
+          <button onClick="{{ s.go }}" style="display:flex;align-items:center;gap:12px;width:100%;padding:12px 18px;border:0;border-top:1px solid var(--kEEF2F3,#EEF2F3);background:{{ s.rowBg }};text-align:right;color:var(--k0F2328,#0F2328);box-shadow:{{ s.ring }}">
+            <div style="width:40px;height:40px;border-radius:12px;background:{{ s.pbg }};color:{{ s.pfg }};display:flex;align-items:center;justify-content:center"><lc-icon name="{{ s.pIcon }}" size="19"></lc-icon></div>
+            <span style="display:flex;flex-direction:column;flex:1"><span style="font-size:14px;font-weight:600">{{ s.cashier }} · {{ s.point }}</span><span style="font-size:12px;color:var(--k4F6368,#4F6368);font-weight:600"><span style="font-family:'Space Grotesk'">{{ s.id }} · {{ s.time }}</span> · {{ s.branch }}</span></span>
+            <span dir="ltr" style="font-family:'Space Grotesk';font-size:14px;font-weight:700;color:{{ s.vc }};min-width:70px;text-align:right">{{ s.var }}</span>
+            <span style="display:inline-flex;align-items:center;gap:5px;padding:4px 10px;border-radius:999px;background:{{ s.abg }};color:{{ s.afg }};font-size:12px;font-weight:500;min-width:96px;justify-content:center"><lc-icon name="{{ s.aIcon }}" size="13"></lc-icon>{{ s.audit }}</span>
+          </button>
+        </sc-for>
+      </div>
+      <div style="background:var(--kFFFFFF,#fff);border-radius:20px;border:1px solid var(--kE3EBEC,#E3EBEC);padding:20px;display:flex;flex-direction:column;gap:14px;position:sticky;top:96px">
+        <div style="display:flex;align-items:center;gap:10px"><lc-icon name="scale" size="22" color="var(--kT102C44,#102C44)"></lc-icon><div style="display:flex;flex-direction:column;flex:1"><span style="font-size:17px;font-weight:700">مطابقة {{ cur.cashier }}</span><span style="font-size:12px;color:var(--k4F6368,#4F6368);font-weight:600"><span style="font-family:'Space Grotesk'">{{ cur.id }}</span> · {{ cur.point }} · {{ cur.time }}</span></div><span style="display:inline-flex;align-items:center;gap:5px;padding:5px 12px;border-radius:999px;background:{{ cur.abg }};color:{{ cur.afg }};font-size:13px;font-weight:600"><lc-icon name="{{ cur.aIcon }}" size="14"></lc-icon>{{ cur.audit }}</span></div>
+        <div style="display:flex;flex-direction:column;border-radius:14px;overflow:hidden;border:1px solid var(--kE3EBEC,#E3EBEC)">
+          <div style="display:grid;grid-template-columns:auto 1fr 1fr auto;gap:10px;padding:8px 12px;background:var(--kF5F8F8,#F5F8F8);font-size:12px;color:var(--k4F6368,#4F6368);font-weight:600"><span style="width:80px">الطريقة</span><span>المتوقع</span><span>المُعلن</span><span style="width:64px">الفرق</span></div>
+          <sc-for list="{{ recon }}" as="r" hint-placeholder-count="3">
+            <div style="display:grid;grid-template-columns:auto 1fr 1fr auto;gap:10px;padding:10px 12px;border-top:1px solid var(--kEEF2F3,#EEF2F3);font-size:13px;align-items:center"><span style="display:flex;align-items:center;gap:6px;width:80px;font-weight:600"><lc-icon name="{{ r.icon }}" size="15" color="var(--k0F7A82,#0F7A82)"></lc-icon>{{ r.ar }}</span><span dir="ltr" style="font-family:'Space Grotesk';text-align:right">{{ r.exp }}</span><span dir="ltr" style="font-family:'Space Grotesk';text-align:right">{{ r.dec }}</span><span dir="ltr" style="font-family:'Space Grotesk';font-weight:700;width:64px;text-align:right;color:{{ r.c }}">{{ r.v }}</span></div>
+          </sc-for>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:8px;padding:12px 14px;border-radius:14px;background:var(--kF5F8F8,#F5F8F8);font-size:13px">
+          <span style="font-weight:600;margin-bottom:2px">تفصيل الدرج</span>
+          <sc-for list="{{ drawer }}" as="d" hint-placeholder-count="4"><div style="display:flex;align-items:center;gap:8px"><lc-icon name="{{ d.icon }}" size="14" color="var(--k6B7F84,#6B7F84)"></lc-icon><span style="flex:1;color:var(--k4F6368,#4F6368)">{{ d.ar }}</span><span dir="ltr" style="font-family:'Space Grotesk';font-weight:{{ d.w }}">{{ d.v }}</span></div></sc-for>
+        </div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap">
+          <span style="display:flex;align-items:center;gap:5px;padding:5px 10px;border-radius:10px;background:var(--kF5F8F8,#F5F8F8);font-size:12px;color:var(--k4F6368,#4F6368)"><lc-icon name="receipt" size="13"></lc-icon>إيصالات <b style="font-family:'Space Grotesk'">47</b></span>
+          <span style="display:flex;align-items:center;gap:5px;padding:5px 10px;border-radius:10px;background:var(--kF5F8F8,#F5F8F8);font-size:12px;color:var(--k4F6368,#4F6368)"><lc-icon name="undo-2" size="13"></lc-icon>استرجاع <b style="font-family:'Space Grotesk'">1</b></span>
+          <span style="display:flex;align-items:center;gap:5px;padding:5px 10px;border-radius:10px;background:var(--kFDF3E2,#FDF3E2);font-size:12px;color:var(--k8A520B,#8A520B)"><lc-icon name="printer" size="13"></lc-icon>إعادة طباعة <b style="font-family:'Space Grotesk'">2</b></span>
+          <span style="display:flex;align-items:center;gap:5px;padding:5px 10px;border-radius:10px;background:var(--kF5F8F8,#F5F8F8);font-size:12px;color:var(--k4F6368,#4F6368)"><lc-icon name="archive" size="13"></lc-icon>فتح درج بدون إيصال <b style="font-family:'Space Grotesk'">0</b></span>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:6px"><span style="font-size:13px;font-weight:500">ملاحظة المراجعة</span><div style="border:1px solid var(--kD5E0E1,#D5E0E1);border-radius:12px;padding:10px 12px;font-size:14px;min-height:44px">العجز يُخصم من الموظف</div></div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+          <button style="display:flex;align-items:center;justify-content:center;gap:8px;height:48px;border-radius:999px;border:0;background:var(--k0F7A82,#0F7A82);color:#fff;font-size:15px;font-weight:600"><lc-icon name="check-check" size="18"></lc-icon>قبول</button>
+          <button style="display:flex;align-items:center;justify-content:center;gap:8px;height:48px;border-radius:999px;border:1.5px solid var(--kE5484D,#E5484D);background:var(--kFFFFFF,#fff);color:var(--kB4262B,#B4262B);font-size:15px;font-weight:600"><lc-icon name="arrow-up-from-line" size="18"></lc-icon>تصعيد</button>
+        </div>
+      </div>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ isRefunds }}" hint-placeholder-val="{{ false }}">
+    <div style="display:flex;flex-direction:column;gap:12px;max-width:980px">
+      <sc-for list="{{ refunds }}" as="r" hint-placeholder-count="3">
+        <div style="display:flex;align-items:center;gap:14px;padding:16px 18px;border-radius:20px;background:var(--kFFFFFF,#fff);border:1px solid var(--kE3EBEC,#E3EBEC)">
+          <div style="width:46px;height:46px;border-radius:14px;background:{{ r.dsoft }};color:{{ r.dhex }};display:flex;align-items:center;justify-content:center"><lc-icon name="{{ r.dIcon }}" size="22"></lc-icon></div>
+          <div style="display:flex;flex-direction:column;gap:3px;flex:1"><span style="font-size:15px;font-weight:700">{{ r.item }} · {{ r.patient }}</span><span style="display:flex;align-items:center;gap:6px;font-size:13px;color:var(--k4F6368,#4F6368)"><lc-icon name="message-square-quote" size="14"></lc-icon>{{ r.reason }}</span><span style="font-size:12px;color:var(--k4F6368,#4F6368);font-weight:600">طلبه {{ r.by }} · <span style="display:inline-flex;align-items:center;gap:4px"><lc-icon name="{{ r.mIcon }}" size="12"></lc-icon>{{ r.method }}</span></span></div>
+          <div style="display:flex;flex-direction:column;align-items:flex-end;gap:2px"><span style="font-family:'Space Grotesk';font-size:20px;font-weight:700">{{ r.amt }}</span><span style="display:flex;align-items:center;gap:4px;font-size:12px;color:var(--k8A520B,#8A520B)"><lc-icon name="shield-alert" size="13"></lc-icon>فوق حد 50,000</span></div>
+          <button style="display:flex;align-items:center;gap:6px;padding:0 16px;height:42px;border-radius:999px;border:0;background:var(--k0F7A82,#0F7A82);color:#fff;font-size:14px;font-weight:600"><lc-icon name="check" size="16"></lc-icon>اعتماد</button>
+          <button style="display:flex;align-items:center;gap:6px;padding:0 14px;height:42px;border-radius:999px;border:1px solid var(--kD5E0E1,#D5E0E1);background:var(--kFFFFFF,#fff);color:var(--kB4262B,#B4262B);font-size:14px;font-weight:600"><lc-icon name="x" size="16"></lc-icon>رفض</button>
+        </div>
+      </sc-for>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ isDeferrals }}" hint-placeholder-val="{{ false }}">
+    <div style="display:flex;align-items:center;gap:16px;padding:20px;border-radius:22px;background:var(--k102C44,#102C44);color:#fff">
+      <div style="width:56px;height:56px;border-radius:16px;background:rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center"><lc-icon name="hand-coins" size="28"></lc-icon></div>
+      <div style="display:flex;flex-direction:column;flex:1"><span style="font-size:14px;color:var(--k9FB4C6,#9FB4C6)">إجمالي الذمم القائمة</span><span style="font-family:'Space Grotesk';font-size:32px;font-weight:700">485,000 <span style="font-family:'Readex Pro';font-size:15px;font-weight:500">د.ع</span></span></div>
+      <sc-for list="{{ defStats }}" as="d" hint-placeholder-count="3"><div style="display:flex;flex-direction:column;align-items:center;gap:2px;padding:10px 18px;border-radius:14px;background:rgba(255,255,255,.07)"><lc-icon name="{{ d.icon }}" size="18" color="{{ d.c }}"></lc-icon><span style="font-family:'Space Grotesk';font-size:18px;font-weight:700">{{ d.v }}</span><span style="font-size:12px;color:var(--k9FB4C6,#9FB4C6)">{{ d.ar }}</span></div></sc-for>
+    </div>
+    <div style="background:var(--kFFFFFF,#fff);border-radius:20px;border:1px solid var(--kE3EBEC,#E3EBEC);overflow:hidden">
+      <div style="display:grid;grid-template-columns:minmax(0,1.4fr) 120px 1fr 110px 110px 110px 120px 40px;padding:10px 18px;background:var(--kF5F8F8,#F5F8F8);font-size:12px;color:var(--k4F6368,#4F6368);font-weight:600"><span>المريض</span><span>السبب</span><span>منحه</span><span>المبلغ</span><span>المتبقي</span><span>الاستحقاق</span><span>الحالة</span></div>
+      <sc-for list="{{ deferrals }}" as="d" hint-placeholder-count="4">
+        <div style="display:grid;grid-template-columns:minmax(0,1.4fr) 120px 1fr 110px 110px 110px 120px 40px;padding:12px 18px;border-top:1px solid var(--kEEF2F3,#EEF2F3);align-items:center;font-size:14px">
+          <span style="display:flex;flex-direction:column"><span style="font-weight:600">{{ d.name }}</span><span style="font-family:'Space Grotesk';font-size:12px;color:var(--k4F6368,#4F6368);font-weight:600">{{ d.file }}</span></span>
+          <span style="display:flex;align-items:center;gap:5px;font-size:13px;color:{{ d.rc }}"><lc-icon name="{{ d.rIcon }}" size="15"></lc-icon>{{ d.reason }}</span>
+          <span style="display:flex;align-items:center;gap:8px;font-size:13px"><span style="width:28px;height:28px;border-radius:999px;overflow:hidden;background:var(--kD2ECEC,#D2ECEC);flex-shrink:0"><image-slot id="{{ d.photo }}" shape="circle" placeholder="د" style="width:28px;height:28px"></image-slot></span>{{ d.by }}</span>
+          <span style="font-family:'Space Grotesk'">{{ d.amt }}</span>
+          <span style="font-family:'Space Grotesk';font-weight:700">{{ d.rem }}</span>
+          <span style="font-family:'Space Grotesk';font-size:13px;color:{{ d.dc }}">{{ d.due }}</span>
+          <span style="justify-self:start;display:inline-flex;align-items:center;gap:5px;padding:4px 10px;border-radius:999px;background:{{ d.sbg }};color:{{ d.sfg }};font-size:12px"><lc-icon name="{{ d.sIcon }}" size="13"></lc-icon>{{ d.st }}</span>
+          <span style="color:var(--k8A9A9E,#8A9A9E);justify-self:end"><lc-icon name="{{ d.woIcon }}" size="16"></lc-icon></span>
+        </div>
+      </sc-for>
+      <div style="display:flex;align-items:center;gap:6px;padding:10px 18px;border-top:1px solid var(--kEEF2F3,#EEF2F3);font-size:12px;color:var(--k4F6368,#4F6368);font-weight:600"><lc-icon name="badge-x" size="14"></lc-icon>الإعفاء النهائي للمدير العام فقط بسبب إلزامي، والبنود المعفاة لا تُحصّل بعده. التسديد على دفعات عبر التحصيل، والآجل يُغلق تلقائياً عند السداد.</div>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ isRevenue }}" hint-placeholder-val="{{ false }}">
+    <div style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px">
+      <sc-for list="{{ kpis }}" as="k" hint-placeholder-count="4">
+        <div style="background:var(--kFFFFFF,#fff);border-radius:20px;border:1px solid var(--kE3EBEC,#E3EBEC);padding:18px;display:flex;flex-direction:column;gap:10px">
+          <div style="display:flex;align-items:center;gap:8px"><span style="width:40px;height:40px;border-radius:12px;background:{{ k.bg }};color:{{ k.fg }};display:flex;align-items:center;justify-content:center"><lc-icon name="{{ k.icon }}" size="20"></lc-icon></span><span style="font-size:14px;color:var(--k4F6368,#4F6368)">{{ k.ar }}</span></div>
+          <span style="font-family:'Space Grotesk';font-size:26px;font-weight:700">{{ k.v }}</span>
+          <span style="font-size:12px;color:var(--k4F6368,#4F6368);font-weight:600">{{ k.sub }}</span>
+        </div>
+      </sc-for>
+    </div>
+    <div style="display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:16px">
+      <div style="background:var(--kFFFFFF,#fff);border-radius:20px;border:1px solid var(--kE3EBEC,#E3EBEC);padding:20px;display:flex;flex-direction:column;gap:14px">
+        <span style="display:flex;align-items:center;gap:8px;font-size:16px;font-weight:700"><lc-icon name="chart-column" size="19" color="var(--k0F7A82,#0F7A82)"></lc-icon>صافي الإيراد حسب القسم</span>
+        <sc-for list="{{ byDept }}" as="d" hint-placeholder-count="3">
+          <div style="display:flex;flex-direction:column;gap:6px">
+            <div style="display:flex;align-items:center;gap:8px;font-size:14px"><lc-icon name="{{ d.icon }}" size="16" color="{{ d.hex }}"></lc-icon><span style="flex:1;font-weight:600">{{ d.ar }}</span><span style="font-size:12px;color:var(--kB4262B,#B4262B)">{{ d.ref }}</span><span style="font-family:'Space Grotesk';font-weight:700">{{ d.net }}</span></div>
+            <div style="height:12px;border-radius:999px;background:var(--kEEF2F3,#EEF2F3);overflow:hidden"><div style="width:{{ d.pct }};height:100%;background:{{ d.hex }};border-radius:999px"></div></div>
+          </div>
+        </sc-for>
+      </div>
+      <div style="background:var(--kFFFFFF,#fff);border-radius:20px;border:1px solid var(--kE3EBEC,#E3EBEC);padding:20px;display:flex;flex-direction:column;gap:14px">
+        <span style="display:flex;align-items:center;gap:8px;font-size:16px;font-weight:700"><lc-icon name="wallet" size="19" color="var(--k0F7A82,#0F7A82)"></lc-icon>حسب طريقة الدفع</span>
+        <div style="display:flex;height:18px;border-radius:999px;overflow:hidden"><span style="width:64%;background:var(--k0F7A82,#0F7A82)"></span><span style="width:21%;background:var(--k102C44,#102C44)"></span><span style="width:15%;background:var(--k2F6FDB,#2F6FDB)"></span></div>
+        <sc-for list="{{ byMethod }}" as="m" hint-placeholder-count="3">
+          <div style="display:flex;align-items:center;gap:10px;font-size:14px"><span style="width:12px;height:12px;border-radius:4px;background:{{ m.hex }}"></span><lc-icon name="{{ m.icon }}" size="16" color="var(--k4F6368,#4F6368)"></lc-icon><span style="flex:1">{{ m.ar }}</span><span style="font-family:'Space Grotesk';font-weight:600">{{ m.v }}</span><span style="font-family:'Space Grotesk';font-size:12px;color:var(--k4F6368,#4F6368);width:36px;text-align:left;font-weight:600">{{ m.p }}</span></div>
+        </sc-for>
+      </div>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ isEarnings }}" hint-placeholder-val="{{ false }}">
+    <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px">
+      <sc-for list="{{ earnings }}" as="e" hint-placeholder-count="3">
+        <div style="background:var(--kFFFFFF,#fff);border-radius:22px;border:1px solid var(--kE3EBEC,#E3EBEC);overflow:hidden;display:flex;flex-direction:column">
+          <div style="display:flex;align-items:center;gap:14px;padding:16px;background:var(--kEAF6F6,#EAF6F6)">
+            <div style="width:72px;height:72px;border-radius:20px;overflow:hidden;background:var(--kD2ECEC,#D2ECEC);flex-shrink:0"><image-slot id="{{ e.photo }}" shape="rounded" radius="20" placeholder="صورة" style="width:72px;height:72px"></image-slot></div>
+            <div style="display:flex;flex-direction:column;gap:3px"><span style="font-size:16px;font-weight:700">{{ e.name }}</span><span style="display:flex;align-items:center;gap:5px;font-size:13px;color:var(--k4F6368,#4F6368)"><lc-icon name="{{ e.icon }}" size="14" color="var(--k0F7A82,#0F7A82)"></lc-icon>{{ e.spec }}</span><span style="display:flex;align-items:center;gap:5px;font-size:12px;color:var(--k4F6368,#4F6368);font-weight:600"><lc-icon name="percent" size="12"></lc-icon>{{ e.rates }}</span></div>
+          </div>
+          <div style="padding:16px;display:flex;flex-direction:column;gap:10px;font-size:14px">
+            <div style="display:flex;align-items:center;gap:8px"><lc-icon name="user-plus" size="15" color="var(--k6B7F84,#6B7F84)"></lc-icon><span style="flex:1;color:var(--k4F6368,#4F6368)">كشف جديد</span><span style="font-family:'Space Grotesk'">{{ e.newN }}</span></div>
+            <div style="display:flex;align-items:center;gap:8px"><lc-icon name="repeat" size="15" color="var(--k6B7F84,#6B7F84)"></lc-icon><span style="flex:1;color:var(--k4F6368,#4F6368)">مراجعة</span><span style="font-family:'Space Grotesk'">{{ e.fuN }}</span></div>
+            <div style="display:flex;align-items:center;gap:8px"><lc-icon name="syringe" size="15" color="var(--k6B7F84,#6B7F84)"></lc-icon><span style="flex:1;color:var(--k4F6368,#4F6368)">إجراءات</span><span style="font-family:'Space Grotesk'">{{ e.procN }}</span></div>
+            <div style="height:1px;background:var(--kEEF2F3,#EEF2F3)"></div>
+            <div style="display:flex;align-items:baseline;gap:8px"><lc-icon name="hand-coins" size="16" color="var(--k0F7A82,#0F7A82)"></lc-icon><span style="flex:1;font-weight:600">حصة الطبيب</span><span style="font-family:'Space Grotesk';font-size:20px;font-weight:700;color:var(--k0F7A82,#0F7A82)">{{ e.share }}</span></div>
+            <div style="display:flex;align-items:baseline;gap:8px"><lc-icon name="building-2" size="16" color="var(--k6B7F84,#6B7F84)"></lc-icon><span style="flex:1;color:var(--k4F6368,#4F6368)">حصة المجمع</span><span style="font-family:'Space Grotesk';font-weight:600">{{ e.cx }}</span></div>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </sc-if>
+
+  </div>
+</main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { screen: "dash", sel: 0, inv: 0, invF: "all", expCat: "maintenance", paidFrom: "treasury" };
+  renderVals() {
+    const st = this.state, set = p => this.setState(p);
+    const screens = [["dash","لوحة الفروع","layout-dashboard","","اليوم ومنذ بداية الشهر · كل الفروع"],["shifts","مطابقة الورديات","scale","3","بانتظار المراجعة من كل نقاط التحصيل"],["refunds","اعتماد الاسترجاع","undo-2","2","طلبات فوق حد صلاحية الاستقبال"],["deferrals","الذمم الآجلة","hand-coins","","الدفع الآجل بصلاحية الطبيب أو المدير"],["revenue","الإيراد اليومي","chart-column","","حسب القسم وطريقة الدفع"],["earnings","أرباح الأطباء","percent","","تشرين الثاني 2026"],["invoices","الفواتير","file-text","","بحث، تفاصيل، وإلغاء غير المدفوعة"],["expenses","المصاريف","receipt-text","","من درج الوردية أو صندوق الفرع"],["settle","تسويات الفروع","arrow-left-right","","أرصدة المرضى بين الفروع"],["noshows","الغياب والحظر","user-x","","تشرين الثاني 2026 · كل الفروع"],["audit","سجل التدقيق","scroll-text","","آخر 30 يوماً"]];
+    const cur0 = screens.find(s=>s[0]===st.screen);
+    const nav = screens.map(([k,ar,icon,badge])=>{const on=k===st.screen;return {ar,icon,badge,badgeBg:badge?(on?"rgba(255,255,255,.25)":"var(--kE5484D,#E5484D)"):"transparent",bg:on?"var(--k2F6FDB,#2F6FDB)":"transparent",c:on?"#fff":"#C6D3DF",w:on?600:400,go:()=>set({screen:k})};});
+    const A = {SHORTAGE:["عجز","var(--kFDECEC,#FDECEC)","var(--kB4262B,#B4262B)","trending-down"],OVERAGE:["زيادة","var(--kEAF1FD,#EAF1FD)","var(--k2459B8,#2459B8)","trending-up"],MATCHED:["مطابق","var(--kE6F6EE,#E6F6EE)","var(--k157A50,#157A50)","circle-check"],OPEN:["مفتوحة","var(--kEEF2F3,#EEF2F3)","var(--k4F6368,#4F6368)","clock"]};
+    const PT = {clinic:["استقبال العيادة","stethoscope","var(--kEAF6F6,#EAF6F6)","var(--k0F7A82,#0F7A82)"],lab:["استقبال المختبر","flask-conical","var(--kF1ECFC,#F1ECFC)","var(--k7C4DDB,#7C4DDB)"],radiology:["استقبال الأشعة","scan-line","var(--kEAF1FD,#EAF1FD)","var(--k2F6FDB,#2F6FDB)"]};
+    const raw = [
+      ["sh_412","علي حسن","clinic","14:00–22:00","الفرع الرئيسي","SHORTAGE","−5,000",[["455,000","450,000","−5,000"],["180,000","180,000","0"],["125,000","—","—"]]],
+      ["sh_409","سارة كريم","lab","14:00–22:00","الفرع الرئيسي","MATCHED","0",[["310,000","310,000","0"],["95,000","95,000","0"],["40,000","—","—"]]],
+      ["sh_410","حيدر صالح","radiology","14:00–22:00","الفرع الرئيسي","OVERAGE","+2,000",[["198,000","200,000","+2,000"],["60,000","60,000","0"],["0","—","—"]]],
+      ["sh_388","زينب حسين","clinic","08:00–14:00","فرع كربلاء","MATCHED","0",[["240,000","240,000","0"],["70,000","70,000","0"],["55,000","—","—"]]],
+      ["sh_415","مصطفى جاسم","clinic","16:00–","فرع كربلاء","OPEN","—",[["—","—","—"],["—","—","—"],["—","—","—"]]]];
+    const shifts = raw.map((r,i)=>{const a=A[r[5]],p=PT[r[2]],on=i===st.sel;return {id:r[0],cashier:r[1],point:p[0],pIcon:p[1],pbg:p[2],pfg:p[3],time:r[3],branch:r[4],audit:a[0],abg:a[1],afg:a[2],aIcon:a[3],var:r[6],vc:r[5]==="SHORTAGE"?"var(--kB4262B,#B4262B)":(r[5]==="OVERAGE"?"var(--k2459B8,#2459B8)":"var(--k157A50,#157A50)"),rowBg:on?"var(--kF5F9FF,#F5F9FF)":"var(--kFFFFFF,#fff)",ring:on?"inset -3px 0 0 #2F6FDB":"none",go:()=>set({sel:i}),lines:r[7]};});
+    const cur = shifts[st.sel];
+    const vcol = v => v.startsWith("−")?"var(--kB4262B,#B4262B)":(v.startsWith("+")?"var(--k2459B8,#2459B8)":(v==="0"?"var(--k157A50,#157A50)":"var(--k8A9A9E,#8A9A9E)"));
+    const recon = [["نقداً","banknote"],["POS","credit-card"],["أونلاين","globe"]].map(([ar,icon],i)=>({ar,icon,exp:cur.lines[i][0],dec:cur.lines[i][1],v:cur.lines[i][2],c:vcol(cur.lines[i][2])}));
+    const drawer = [{ar:"الفكة الافتتاحية",v:"50,000",icon:"coins",w:500},{ar:"نقد مقبوض",v:"440,000",icon:"arrow-down-to-line",w:500},{ar:"استرجاع نقدي",v:"−30,000",icon:"undo-2",w:500},{ar:"مصاريف من الدرج (1)",v:"−5,000",icon:"receipt-text",w:500},{ar:"عمليات POS: النظام 12 / المعلن 12",v:"مطابق",icon:"credit-card",w:500},{ar:"المتوقع في الدرج",v:"455,000",icon:"archive",w:700}];
+    const shiftFilters = [["بانتظار المراجعة","hourglass",true],["رُوجعت","circle-check"],["مفتوحة","clock"]].map(([ar,icon,on])=>({ar,icon,bg:on?"var(--k102C44,#102C44)":"var(--kF5F8F8,#F5F8F8)",fg:on?"#fff":"var(--k4F6368,#4F6368)"}));
+    const refunds = [
+      {item:"مفراس صدر",patient:"نور حيدر",reason:"تغيير الطبيب للطلب قبل التنفيذ",by:"علي حسن",method:"نقداً من الدرج",mIcon:"banknote",amt:"90,000",dIcon:"scan",dsoft:"var(--kEAF1FD,#EAF1FD)",dhex:"var(--k2F6FDB,#2F6FDB)"},
+      {item:"رنين ركبة",patient:"سجاد كريم",reason:"المريض سافر · طلب إرجاع للبطاقة",by:"حيدر صالح",method:"عكس الدفع الإلكتروني",mIcon:"globe",amt:"150,000",dIcon:"magnet",dsoft:"var(--kEAF1FD,#EAF1FD)",dhex:"var(--k2F6FDB,#2F6FDB)"},
+      {item:"سونار بطن (نُفذ)",patient:"أمل جواد",reason:"إعادة الفحص لخلل في الجهاز",by:"حيدر صالح",method:"رصيد للمريض",mIcon:"piggy-bank",amt:"35,000",dIcon:"audio-waveform",dsoft:"var(--kEAF1FD,#EAF1FD)",dhex:"var(--k2F6FDB,#2F6FDB)"}];
+    const R = {emergency:["طارئة","siren","var(--kB4262B,#B4262B)"],humanitarian:["إنسانية","heart-handshake","var(--k7C4DDB,#7C4DDB)"],other:["أخرى","circle-ellipsis","var(--k4F6368,#4F6368)"]};
+    const DS = {active:["قائم","var(--kEAF1FD,#EAF1FD)","var(--k2459B8,#2459B8)","hourglass"],settled:["مسدد","var(--kE6F6EE,#E6F6EE)","var(--k157A50,#157A50)","circle-check"],written_off:["معفى","var(--kEEF2F3,#EEF2F3)","var(--k4F6368,#4F6368)","eraser"]};
+    const deferrals = [
+      ["فاطمة حسن","B1-004512","humanitarian","د. سعد الحيدري","doc-photo-saad","65,000","65,000","30-11-2026","active"],
+      ["كاظم جبار","B1-004541","emergency","د. سعد الحيدري","doc-photo-saad","20,000","20,000","15-11-2026","active"],
+      ["حيدر كامل","B2-000871","emergency","د. هدى الربيعي","doc-photo-huda","400,000","400,000","01-11-2026","active"],
+      ["أم علي","B1-002004","humanitarian","د. علي الموسوي","doc-photo-ali","45,000","0","20-10-2026","settled"]].map(([name,file,r,by,photo,amt,rem,due,s])=>{const rr=R[r],ss=DS[s];return {name,file,reason:rr[0],rIcon:rr[1],rc:rr[2],by,photo,amt,rem,due,dc:due==="01-11-2026"?"var(--kB4262B,#B4262B)":"var(--k4F6368,#4F6368)",st:ss[0],sbg:ss[1],sfg:ss[2],sIcon:ss[3]};});
+    deferrals.forEach(x=>{x.woIcon = x.rem==="0"?"circle-check":"badge-x";}); const defStats = [{ar:"قائمة",v:"12",icon:"hourglass",c:"#9FC0F2"},{ar:"متأخرة",v:"3",icon:"calendar-x",c:"var(--kF08A8D,#F08A8D)"},{ar:"سُددت هذا الشهر",v:"9",icon:"circle-check",c:"#7FDBB2"}];
+    const kpis = [
+      {ar:"صافي اليوم",v:"2,480,000",sub:"بعد الاسترجاع",icon:"wallet",bg:"var(--kEAF6F6,#EAF6F6)",fg:"var(--k0F7A82,#0F7A82)"},
+      {ar:"استرجاع",v:"30,000",sub:"بند واحد",icon:"undo-2",bg:"var(--kFDECEC,#FDECEC)",fg:"var(--kE5484D,#E5484D)"},
+      {ar:"آجل جديد",v:"65,000",sub:"حالة إنسانية",icon:"hand-coins",bg:"var(--kEAF1FD,#EAF1FD)",fg:"var(--k2F6FDB,#2F6FDB)"},
+      {ar:"فروقات الورديات",v:"−3,000",sub:"عجز 5,000 · زيادة 2,000",icon:"scale",bg:"var(--kFDF3E2,#FDF3E2)",fg:"var(--kE9A23B,#E9A23B)"}];
+    const byDept = [{ar:"العيادات",icon:"stethoscope",hex:"var(--k0F7A82,#0F7A82)",net:"1,250,000",ref:"",pct:"100%"},{ar:"المختبر",icon:"flask-conical",hex:"var(--k7C4DDB,#7C4DDB)",net:"810,000",ref:"استرجاع 30,000",pct:"65%"},{ar:"الأشعة والسونار",icon:"scan-line",hex:"var(--k2F6FDB,#2F6FDB)",net:"420,000",ref:"",pct:"34%"}];
+    const byMethod = [{ar:"نقداً",icon:"banknote",hex:"var(--k0F7A82,#0F7A82)",v:"1,580,000",p:"64%"},{ar:"POS",icon:"credit-card",hex:"var(--kT102C44,#102C44)",v:"520,000",p:"21%"},{ar:"أونلاين",icon:"globe",hex:"var(--k2F6FDB,#2F6FDB)",v:"380,000",p:"15%"}];
+    const earnings = [
+      {name:"د. سعد الحيدري",spec:"باطنية",icon:"stethoscope",photo:"doc-photo-saad",rates:"70% جديد · 60% مراجعة",newN:"142",fuN:"96",procN:"4",share:"3,410,500",cx:"1,739,500"},
+      {name:"د. هدى الربيعي",spec:"باطنية",icon:"stethoscope",photo:"doc-photo-huda",rates:"65% جديد · 55% مراجعة",newN:"118",fuN:"71",procN:"0",share:"2,503,750",cx:"1,442,500"},
+      {name:"د. علي الموسوي",spec:"قلبية",icon:"heart-pulse",photo:"doc-photo-ali",rates:"70% جديد · 60% مراجعة",newN:"64",fuN:"40",procN:"12",share:"2,236,000",cx:"1,104,000"}];
+    const K = (ar,icon,v,m,bg,fg)=>({ar,icon,v,m,bg,fg});
+    const dashTotals = [K("الإيراد الصافي","trending-up","2,480,000","4,070,000","var(--k102C44,#102C44)","#fff"),K("النقد الداخل","banknote","2,100,000","3,900,000","var(--kFFFFFF,#fff)","var(--k0F2328,#0F2328)"),K("المصاريف","receipt-text","150,000","900,000","var(--kFFFFFF,#fff)","var(--k0F2328,#0F2328)"),K("الصافي بعد المصاريف","wallet","2,330,000","3,170,000","var(--kE6F6EE,#E6F6EE)","var(--k157A50,#157A50)"),K("الدفعات","receipt","96","180","var(--kFFFFFF,#fff)","var(--k0F2328,#0F2328)")];
+    const AL = (ar,icon,kind)=>({ar,icon,bg:{r:"var(--kFDECEC,#FDECEC)",a:"var(--kFDF3E2,#FDF3E2)",b:"var(--kEAF1FD,#EAF1FD)"}[kind],fg:{r:"var(--kB4262B,#B4262B)",a:"var(--k8A520B,#8A520B)",b:"var(--k1F56B5,#1F56B5)"}[kind]});
+    const N = (ar,v,c)=>({ar,v,c:c||"var(--k0F2328,#0F2328)"});
+    const dashBranches = [
+      {name:"الفرع الرئيسي",state:"مفتوح · 120 حجز · 85 أُنجز",sc:"var(--k157A50,#157A50)",op:1,nums:[N("الإيراد اليوم","2,480,000"),N("المصاريف","150,000"),N("الصافي","2,330,000","var(--k157A50,#157A50)"),N("غياب","7")],alerts:[AL("3 ورديات مفتوحة","clock","b"),AL("2 بانتظار المراجعة","scale","a"),AL("عجز −5,000","trending-down","r"),AL("استرجاع 60,000","undo-2","a"),AL("دين متأخر 1","calendar-x","r")]},
+      {name:"فرع الكرادة",state:"مغلق اليوم · صيانة المبنى",sc:"var(--k8A520B,#8A520B)",op:.85,nums:[N("الإيراد اليوم","0"),N("المصاريف","75,000"),N("الصافي","−75,000","var(--kB4262B,#B4262B)"),N("غياب","0")],alerts:[AL("دين قائم 400,000","hand-coins","a")]},
+      {name:"فرع المنصور",state:"افتتاح قريباً",sc:"var(--k1F56B5,#1F56B5)",op:.85,nums:[N("الإيراد اليوم","0"),N("المصاريف","1,000,000"),N("الصافي","−1,000,000","var(--kB4262B,#B4262B)"),N("غياب","0")],alerts:[]}];
+    const IS = {paid:["مدفوعة","circle-check","var(--k157A50,#157A50)"],unpaid:["غير مدفوعة","circle-dashed","var(--k8A520B,#8A520B)"],partially_paid:["مدفوعة جزئياً","circle-dot","var(--k2F6FDB,#2F6FDB)"],deferred:["آجلة","hourglass","var(--k7C4DDB,#7C4DDB)"],void:["ملغاة","file-x","var(--k8A9A9E,#8A9A9E)"]};
+    const IV = [["B1-INV-012044","فاطمة حسن","B1-004512",2,"90,000","90,000","paid",[["فحص شامل","flask-conical","var(--k7C4DDB,#7C4DDB)","100,000"]],"10,000","موظف في المجمع"],["B1-INV-012051","كرار سعدي","B1-004530",1,"35,000","0","unpaid",[["سونار بطن","audio-waveform","var(--k2F6FDB,#2F6FDB)","35,000"]],"0","—"],["B1-INV-012048","نور حيدر","B1-003901",3,"75,000","40,000","partially_paid",[["CBC","flask-conical","var(--k7C4DDB,#7C4DDB)","30,000"],["مفراس صدر","scan","var(--k2F6FDB,#2F6FDB)","45,000"]],"0","—"],["B1-INV-012039","حيدر كامل","B2-000871",4,"400,000","0","deferred",[["إجراء طارئ","syringe","var(--kEF7A2E,#EF7A2E)","400,000"]],"0","—"],["B1-INV-012030","زهراء جواد","B1-003318",1,"20,000","0","void",[["HbA1c","droplet","var(--k7C4DDB,#7C4DDB)","20,000"]],"0","—"]];
+    const invF = [["all","الكل","list"],["unpaid","غير مدفوعة","circle-dashed"],["partially_paid","جزئية","circle-dot"],["deferred","آجلة","hourglass"],["void","ملغاة","file-x"]];
+    const invFilters = invF.map(([k,ar,icon])=>{const on=st.invF===k;return {ar,icon,bg:on?"var(--kB0F2328,#0F2328)":"var(--kFFFFFF,#fff)",fg:on?"#fff":"var(--k4F6368,#4F6368)",line:on?"var(--k0F2328,#0F2328)":"var(--kE3EBEC,#E3EBEC)",go:()=>set({invF:k,inv:IV.findIndex(x=>k==="all"||x[6]===k)})};});
+    const invoices = IV.map((x,i)=>({x,i})).filter(({x})=>st.invF==="all"||x[6]===st.invF).map(({x,i})=>{const s=IS[x[6]];return {no:x[0],patient:x[1],file:x[2],items:String(x[3]),net:x[4],paid:x[5],st:s[0],sIcon:s[1],sc:s[2],bg:i===st.inv?"var(--kF4F8FD,#F4F8FD)":"var(--kFFFFFF,#fff)",go:()=>set({inv:i})};});
+    const ix = IV[Math.max(0,st.inv)], is = IS[ix[6]];
+    const inv = {no:ix[0],patient:ix[1],file:ix[2],net:ix[4],st:is[0],sIcon:is[1],sc:is[2],disc:ix[8],discReason:ix[9],lines:ix[7].map(([ar,icon,c,v])=>({ar,icon,c,v})),canVoid:ix[6]==="unpaid",paidNote:ix[6]==="paid"||ix[6]==="partially_paid"};
+    const EC = [["rent","إيجار","house"],["salaries","رواتب","users-round"],["power","كهرباء ومولدة","zap"],["maintenance","صيانة","wrench"],["supplies","مستلزمات","package"],["other","أخرى","ellipsis"]];
+    const ECM = Object.fromEntries(EC.map(c=>[c[0],c]));
+    const expCats = [["rent","1,000,000"],["maintenance","75,000"],["power","—"],["supplies","—"],["salaries","—"]].map(([k,v])=>({ar:ECM[k][1],icon:ECM[k][2],v}));
+    const E = (no,cat,desc,payee,by,from,branch,amt,voided)=>({no,desc,payee,by,branch,amt,icon:ECM[cat][2],from:from==="shift_cash"?"درج الوردية":"الصندوق",fromIcon:from==="shift_cash"?"archive":"landmark",op:voided?.55:1,strike:voided?"line-through":"none",act:voided?"ban":"file-x"});
+    const expenses = [E("B1-EXP-000123","maintenance","تصليح جهاز التكييف","ورشة النور","علي حسن","treasury","الفرع الرئيسي","75,000"),E("B1-EXP-000122","supplies","قفازات وكمامات","—","علي حسن","shift_cash","الفرع الرئيسي","5,000"),E("B3-EXP-000004","rent","إيجار تشرين الثاني","مالك العقار","منتظر عادل","treasury","فرع المنصور","1,000,000"),E("B1-EXP-000121","supplies","سُجل مرتين","—","علي حسن","treasury","الفرع الرئيسي","5,000",true)];
+    const expPick = EC.map(([k,ar,icon])=>{const on=st.expCat===k;return {ar,icon,line:on?"var(--k0F7A82,#0F7A82)":"var(--kE3EBEC,#E3EBEC)",bg:on?"var(--kEAF6F6,#EAF6F6)":"var(--kFFFFFF,#fff)",fg:on?"var(--k0C5F67,#0C5F67)":"var(--k4F6368,#4F6368)",go:()=>set({expCat:k})};});
+    const paidFrom = [["treasury","الصندوق","landmark","صندوق الفرع أو البنك، لا يمس الأدراج"],["shift_cash","درج الوردية","archive","يُطرح من متوقع الدرج ويفتحه"]].map(([k,ar,icon,hint])=>{const on=st.paidFrom===k;return {ar,icon,hint,line:on?"var(--k0F7A82,#0F7A82)":"var(--kE3EBEC,#E3EBEC)",bg:on?"var(--kEAF6F6,#EAF6F6)":"var(--kFFFFFF,#fff)",fg:on?"var(--k0C5F67,#0C5F67)":"var(--k4F6368,#4F6368)",go:()=>set({paidFrom:k})};});
+    const SR = (ar,icon,v)=>({ar,icon,v});
+    const settleBranches = [["فرع الكرادة","250,000","90,000","0","60,000","−60,000",false,"140,000"],["فرع المنصور","40,000","75,000","60,000","0","+60,000",true,"25,000"],["الفرع الرئيسي","120,000","120,000","0","0","0",null,"0"]].map(([name,rec,used,from,by,net,pos,held])=>({name,net,rows:[SR("أرصدة قُبضت","wallet",rec),SR("أرصدة استُخدمت","receipt",used),SR("من فروع أخرى","log-in",from),SR("استخدمتها فروع أخرى","log-out",by),SR("أرصدة معلقة","hourglass",held)],nAr:pos===null?"لا تسوية":(pos?"له عند الفروع":"عليه تحويله"),nIcon:pos===null?"equal":(pos?"arrow-down-left":"arrow-up-right"),nbg:pos===null?"var(--kF5F8F8,#F5F8F8)":(pos?"var(--kE6F6EE,#E6F6EE)":"var(--kFDF3E2,#FDF3E2)"),nfg:pos===null?"var(--k4F6368,#4F6368)":(pos?"var(--k157A50,#157A50)":"var(--k8A520B,#8A520B)")}));
+    const flows = [{from:"فرع الكرادة",to:"فرع المنصور",amt:"60,000",n:"4"}];
+    const nsStats = [["حالات غياب","user-x","var(--kE5484D,#E5484D)","42"],["مرضى مختلفون","users-round","var(--k4F6368,#4F6368)","39"],["حُظروا","ban","var(--kE5484D,#E5484D)","5"],["فُك حظرهم","shield-check","var(--k1FA971,#1FA971)","3"],["بعربون","banknote","var(--k0F7A82,#0F7A82)","2"],["محظورون الآن","shield-alert","var(--kB86E0A,#B86E0A)","9"]].map(([ar,icon,c,v])=>({ar,icon,c,v}));
+    const nsDocs = [["د. سعد الحيدري","عيادة الباطنية","doc-photo-saad",12],["د. هدى الربيعي","عيادة الباطنية","doc-photo-huda",9],["د. علي الموسوي","عيادة القلبية","doc-photo-ali",6]].map(([name,clinic,photo,n])=>({name,clinic,photo,n:String(n),w:(n/12*100)+"%"}));
+    const auditFilters = [["الفرع: كل الفروع","building-2"],["المستخدم","user-round"],["العملية","activity"],["نوع السجل","database"],["آخر 30 يوماً","calendar-range"]].map(([ar,icon])=>({ar,icon}));
+    const AU = (action,ar,by,branch,at,icon,c)=>({action,ar,by,branch,at,icon,c});
+    const auditLog = [AU("REFUND_CREATED","استرجاع 30,000 · فحص شامل","علي حسن","الفرع الرئيسي","17:20","undo-2","var(--kE9A23B,#E9A23B)"),AU("DEFERRAL_GRANTED","آجل 65,000 · فاطمة حسن","د. سعد الحيدري","الفرع الرئيسي","17:05","hand-coins","var(--k7C4DDB,#7C4DDB)"),AU("EXPENSE_VOIDED","إلغاء مصروف B1-EXP-000121 · سُجل مرتين","منتظر عادل","الفرع الرئيسي","16:52","file-x","var(--kE5484D,#E5484D)"),AU("PRICE_CHANGED","سونار بطن 30,000 ← 35,000","مدير الفرع","الفرع الرئيسي","15:12","tags","var(--k2F6FDB,#2F6FDB)"),AU("SHIFT_REVIEWED","مطابقة وردية sh_412 · عجز مقبول","منتظر عادل","الفرع الرئيسي","14:40","scale","var(--k0F7A82,#0F7A82)"),AU("BRANCH_CLOSED","إغلاق فرع الكرادة · صيانة","د. كريم الساعدي","فرع الكرادة","09:00","lock","var(--kB86E0A,#B86E0A)"),AU("SETTINGS_CHANGED","الإعداد العام: مدة صلاحية الوصفة 30","د. كريم الساعدي","عام","08:30","settings-2","var(--k4F6368,#4F6368)")];
+    const isShiftCash = st.paidFrom==="shift_cash";
+    return {isDash:st.screen==="dash",isInvoices:st.screen==="invoices",isExpenses:st.screen==="expenses",isSettle:st.screen==="settle",isNoShows:st.screen==="noshows",isAudit:st.screen==="audit",
+      dashTotals,dashBranches,invFilters,invoices,inv,expCats,expenses,expPick,paidFrom,expBtn:isShiftCash?"تسجيل وفتح الدرج":"تسجيل المصروف",expBtnIcon:isShiftCash?"archive":"check",settleBranches,flows,nsStats,nsDocs,auditFilters,auditLog,
+      nav,title:cur0[1],subtitle:cur0[4],isShifts:st.screen==="shifts",isRefunds:st.screen==="refunds",isDeferrals:st.screen==="deferrals",isRevenue:st.screen==="revenue",isEarnings:st.screen==="earnings",
+      shifts,cur,recon,drawer,shiftFilters,refunds,deferrals,defStats,kpis,byDept,byMethod,earnings};
+  }
+}
+</script>
+</body>
+</html>

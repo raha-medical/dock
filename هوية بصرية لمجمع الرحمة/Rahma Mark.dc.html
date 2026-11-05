@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<svg ref="{{ svgRef }}" viewBox="0 0 200 200" width="{{ size }}" height="{{ size }}" style="display:block;overflow:visible;flex-shrink:0">
+  <path data-sp="arc1" d="M141 33 A82 82 0 1 0 162.8 156.7" pathLength="1" fill="none" stroke="{{ navy }}" stroke-width="13" stroke-linecap="round" style="stroke-dasharray:1"></path>
+  <path data-sp="arc2" d="M118.1 36.4 A70 70 0 1 0 163.4 133.6" pathLength="1" fill="none" stroke="{{ green }}" stroke-width="5" stroke-linecap="round" style="stroke-dasharray:1"></path>
+  <g transform="translate(100 108) scale(1.04) translate(-100 -108)"><path data-sp="pulse" d="M44 120 H58 L63 106 L69 132 L74 120 H79" pathLength="1" fill="none" stroke="{{ navy }}" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" style="stroke-dasharray:1"></path>
+  <path data-sp="pulse" d="M121 120 H127 L132 108 L137 130 L142 120 H156" pathLength="1" fill="none" stroke="{{ green }}" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" style="stroke-dasharray:1"></path>
+  <path data-sp="stem" d="M100 82 V68" pathLength="1" fill="none" stroke="{{ green }}" stroke-width="3.5" stroke-linecap="round" style="stroke-dasharray:1"></path>
+  <path data-sp="leaf" d="M100 44 C109 53 109 64 100 71 C91 64 91 53 100 44 Z" fill="{{ green }}" style="transform-box:fill-box;transform-origin:50% 100%"></path>
+  <path data-sp="leaf" d="M99 75 C92 65 80 63 73 67 C79 76 91 78 99 75 Z" fill="{{ green }}" style="transform-box:fill-box;transform-origin:100% 80%"></path>
+  <path data-sp="leaf" d="M101 75 C108 65 120 63 127 67 C121 76 109 78 101 75 Z" fill="{{ green }}" style="transform-box:fill-box;transform-origin:0% 80%"></path>
+  <circle data-sp="head" cx="87" cy="93" r="9.5" fill="{{ navy }}" style="transform-box:fill-box;transform-origin:center"></circle>
+  <circle data-sp="head" cx="113" cy="93" r="9.5" fill="{{ green }}" style="transform-box:fill-box;transform-origin:center"></circle>
+  <path data-sp="heartL" d="M100 152 C82 140 71 127 72 115 C73 104 88 101 100 112 Z" fill="{{ navy }}" style="transform-box:fill-box;transform-origin:100% 50%"></path>
+  <path data-sp="heartR" d="M100 152 C118 140 129 127 128 115 C127 104 112 101 100 112 Z" fill="{{ green }}" style="transform-box:fill-box;transform-origin:0% 50%"></path>
+  <circle data-sp="child" cx="100" cy="128" r="6.5" fill="{{ paper }}" style="transform-box:fill-box;transform-origin:center"></circle>
+  <path data-sp="hand" d="M58 132 C66 150 82 160 98 160" pathLength="1" fill="none" stroke="{{ navy }}" stroke-width="6" stroke-linecap="round" style="stroke-dasharray:1"></path>
+  <path data-sp="hand" d="M142 132 C134 150 118 160 102 160" pathLength="1" fill="none" stroke="{{ green }}" stroke-width="6" stroke-linecap="round" style="stroke-dasharray:1"></path></g>
+</svg>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:240,&quot;height&quot;:240},&quot;tone&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;auto&quot;,&quot;light&quot;,&quot;dark&quot;,&quot;white&quot;],&quot;default&quot;:&quot;auto&quot;,&quot;tsType&quot;:&quot;'auto'|'light'|'dark'|'white'&quot;},&quot;dark&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;},&quot;size&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:160,&quot;tsType&quot;:&quot;number&quot;},&quot;animate&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;},&quot;delay&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:0,&quot;tsType&quot;:&quot;number&quot;},&quot;paper&quot;:{&quot;editor&quot;:null,&quot;tsType&quot;:&quot;string&quot;}}">
+class Component extends DCLogic {
+  svgRef = React.createRef();
+  componentDidMount() {
+    if (!this.props.animate) return;
+    const svg = this.svgRef.current; if (!svg) return;
+    const run = () => {
+      const E = "cubic-bezier(.22,1,.36,1)", B = "cubic-bezier(.34,1.56,.64,1)", d0 = +(this.props.delay ?? 0);
+      const q = (k, fn) => svg.querySelectorAll(`[data-sp="${k}"]`).forEach(fn);
+      const a = (el, kf, delay, dur, ease = E) => el.animate(kf, { delay: d0 + delay, duration: dur, easing: ease, fill: "both" });
+      const draw = [{ strokeDashoffset: 1 }, { strokeDashoffset: 0 }];
+      q("arc1", el => a(el, draw, 0, 1000)); q("arc2", el => a(el, draw, 220, 1000));
+      q("pulse", (el, i) => a(el, draw, 700 + i * 120, 650, "ease-in-out"));
+      q("head", (el, i) => a(el, [{ transform: "scale(0)", opacity: 0 }, { transform: "scale(1)", opacity: 1 }], 1050 + i * 90, 520, B));
+      q("heartL", el => a(el, [{ transform: "translateX(-14px)", opacity: 0 }, { transform: "none", opacity: 1 }], 1200, 600));
+      q("heartR", el => a(el, [{ transform: "translateX(14px)", opacity: 0 }, { transform: "none", opacity: 1 }], 1200, 600));
+      q("child", el => a(el, [{ transform: "scale(0)" }, { transform: "scale(1)" }], 1550, 420, B));
+      q("hand", el => a(el, draw, 1450, 600)); q("stem", el => a(el, draw, 1700, 380));
+      q("leaf", (el, i) => a(el, [{ transform: "scale(0)" }, { transform: "scale(1)" }], 1880 + i * 110, 520, B));
+    };
+    if ("IntersectionObserver" in window) {
+      this.io = new IntersectionObserver(es => { if (es[0].isIntersecting) { run(); this.io.disconnect(); } }, { threshold: 0.3 });
+      this.io.observe(svg);
+    } else run();
+  }
+  componentWillUnmount() { this.io && this.io.disconnect(); }
+  renderVals() {
+    const p = this.props, t = p.dark === true ? "dark" : p.dark === false ? "light" : (p.tone ?? "auto");
+    const C = {
+      light: ["#163F66", "#17A07A", "#FFFFFF"],
+      dark: ["#E6F0F2", "#2BC28E", "#0B1E2E"],
+      white: ["#FFFFFF", "#FFFFFF", "#0F7A82"],
+      auto: ["var(--kM163F66,#163F66)", "var(--kM17A07A,#17A07A)", "var(--kFFFFFF,#FFFFFF)"]
+    }[t] || [];
+    return { svgRef: this.svgRef, size: p.size ?? 160, navy: C[0], green: C[1], paper: p.paper ?? C[2] };
+  }
+}
+</script>
+</body>
+</html>

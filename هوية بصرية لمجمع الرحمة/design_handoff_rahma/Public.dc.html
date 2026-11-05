@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="icon" type="image/svg+xml" href="./rahma-mark.svg">
+<script src="./theme.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<script src="./lucide-icon.js"></script>
+<script src="./image-slot.js"></script>
+<style>
+body{margin:0;background:var(--kF5F8F8,#F5F8F8);font-family:'Readex Pro',sans-serif;color:var(--k0F2328,#0F2328);-webkit-font-smoothing:antialiased}
+a{color:var(--k0F7A82,#0F7A82);text-decoration:none}a:hover{color:var(--k0C5F67,#0C5F67)}
+*{box-sizing:border-box}
+button{font-family:inherit;cursor:pointer;white-space:nowrap}
+</style>
+</helmet>
+<div dir="rtl" style="display:flex;flex-direction:column">
+
+<section data-screen-label="Landing" style="display:flex;flex-direction:column">
+  <nav style="display:flex;align-items:center;gap:20px;padding:16px 40px;background:var(--kFFFFFF,#fff);border-bottom:1px solid var(--kE3EBEC,#E3EBEC);flex-wrap:wrap">
+    <a href="System Hub.dc.html" style="display:flex;align-items:center;gap:10px;color:var(--kT0A3A40,#0A3A40)"><span style="width:44px;height:44px;border-radius:14px;background:var(--k0F7A82,#0F7A82);color:#fff;display:flex;align-items:center;justify-content:center"><lc-icon name="hospital" size="24"></lc-icon></span><span style="font-size:19px;font-weight:700">مجمع الرحمة الطبي</span></a>
+    <div style="flex:1"></div>
+    <theme-toggle></theme-toggle>
+    <div style="display:flex;align-items:center;gap:4px;padding:4px;border-radius:999px;background:var(--kF5F8F8,#F5F8F8)">
+      <sc-for list="{{ branches }}" as="b" hint-placeholder-count="2">
+        <button onClick="{{ b.go }}" style="display:flex;align-items:center;gap:6px;padding:0 14px;height:36px;border-radius:999px;border:0;background:{{ b.bg }};color:{{ b.fg }};font-size:14px;font-weight:600;box-shadow:{{ b.sh }}"><lc-icon name="map-pin" size="15"></lc-icon>{{ b.ar }}</button>
+      </sc-for>
+    </div>
+    <a href="Patient App.dc.html" style="display:flex;align-items:center;gap:8px;padding:0 20px;height:44px;border-radius:999px;background:var(--k0F7A82,#0F7A82);color:#fff;font-size:15px;font-weight:600"><lc-icon name="calendar-plus" size="18"></lc-icon>احجز موعداً</a>
+  </nav>
+
+  <div style="padding:32px 40px;display:grid;grid-template-columns:repeat(auto-fit,minmax(360px,1fr));gap:24px;align-items:stretch;max-width:1360px;margin:0 auto;width:100%">
+    <div style="background:var(--k0A3A40,#0A3A40);border-radius:32px;padding:44px;color:#fff;display:flex;flex-direction:column;gap:22px;justify-content:center">
+      <span style="display:flex;align-items:center;gap:8px;font-size:14px;color:#A6D8DA"><lc-icon name="map-pin" size="16"></lc-icon>{{ branchLine }}</span>
+      <h1 style="margin:0;font-size:48px;line-height:1.2;font-weight:700;text-wrap:pretty">احجز دورك، وتابعه من هاتفك حتى لحظة دخولك</h1>
+      <p style="margin:0;font-size:18px;line-height:1.8;color:#C9E4E5;max-width:520px">عيادات، مختبر، أشعة وسونار، وصيدلية في مكان واحد. وقت دخولك التقريبي يتحدث تلقائياً.</p>
+      <div style="display:flex;gap:10px;flex-wrap:wrap">
+        <a href="Patient App.dc.html" style="display:flex;align-items:center;gap:8px;padding:0 24px;height:54px;border-radius:999px;background:var(--kFFFFFF,#fff);color:var(--kT0A3A40,#0A3A40);font-size:16px;font-weight:700"><lc-icon name="calendar-plus" size="19"></lc-icon>احجز الآن</a>
+        <a href="#" style="display:flex;align-items:center;gap:8px;padding:0 22px;height:54px;border-radius:999px;border:1.5px solid rgba(255,255,255,.35);color:#fff;font-size:15px;font-weight:600"><lc-icon name="phone" size="18"></lc-icon>اتصل بالاستقبال</a>
+      </div>
+    </div>
+    <div style="border-radius:32px;overflow:hidden;min-height:380px;position:relative;background:var(--kD2ECEC,#D2ECEC)">
+      <image-slot id="landing-hero" shape="rect" placeholder="صورة المجمع أو فريق الأطباء" style="position:absolute;inset:0;width:100%;height:100%"></image-slot>
+      <div style="position:absolute;bottom:18px;right:18px;left:18px;display:flex;align-items:center;gap:12px;padding:14px 16px;border-radius:20px;background:var(--kFFFFFF,#fff);pointer-events:none">
+        <span style="width:44px;height:44px;border-radius:14px;background:var(--k0F7A82,#0F7A82);color:#fff;display:flex;align-items:center;justify-content:center"><lc-icon name="radio" size="22"></lc-icon></span>
+        <div style="display:flex;flex-direction:column;flex:1"><span style="font-size:13px;color:var(--k4F6368,#4F6368);font-weight:600">الطابور الآن · عيادة الباطنية</span><span style="font-size:15px;font-weight:700">يُخدم <span style="font-family:'Space Grotesk'">A-103</span> · التالي <span style="font-family:'Space Grotesk'">A-104</span></span></div>
+        <span style="display:flex;align-items:center;gap:5px;font-size:13px;color:var(--k157A50,#157A50)"><lc-icon name="timer" size="15"></lc-icon>~12 د</span>
+      </div>
+    </div>
+  </div>
+
+  <div style="padding:8px 40px 32px;max-width:1360px;margin:0 auto;width:100%;display:flex;flex-direction:column;gap:18px">
+    <span style="font-size:26px;font-weight:700">خدماتنا</span>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px">
+      <sc-for list="{{ services }}" as="s" hint-placeholder-count="4">
+        <div style="background:var(--kFFFFFF,#fff);border-radius:24px;border:1px solid var(--kE3EBEC,#E3EBEC);padding:22px;display:flex;flex-direction:column;gap:12px">
+          <span style="width:52px;height:52px;border-radius:16px;background:{{ s.soft }};color:{{ s.hex }};display:flex;align-items:center;justify-content:center"><lc-icon name="{{ s.icon }}" size="26"></lc-icon></span>
+          <span style="font-size:19px;font-weight:700">{{ s.ar }}</span>
+          <span style="font-size:14px;line-height:1.7;color:var(--k4F6368,#4F6368)">{{ s.desc }}</span>
+          <div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:auto"><sc-for list="{{ s.tags }}" as="t" hint-placeholder-count="3"><span style="display:flex;align-items:center;gap:4px;padding:4px 10px;border-radius:999px;background:var(--kF5F8F8,#F5F8F8);font-size:12px;color:var(--k4F6368,#4F6368)"><lc-icon name="{{ t.icon }}" size="12"></lc-icon>{{ t.ar }}</span></sc-for></div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+
+  <div style="padding:8px 40px 48px;max-width:1360px;margin:0 auto;width:100%;display:flex;flex-direction:column;gap:18px">
+    <div style="display:flex;align-items:center;gap:10px"><span style="font-size:26px;font-weight:700;flex:1">أطباؤنا</span><a href="Patient App.dc.html" style="display:flex;align-items:center;gap:6px;font-size:14px;font-weight:600">كل الأطباء<lc-icon name="arrow-left" size="16"></lc-icon></a></div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px">
+      <sc-for list="{{ docs }}" as="d" hint-placeholder-count="4">
+        <div style="background:var(--kFFFFFF,#fff);border-radius:24px;border:1px solid var(--kE3EBEC,#E3EBEC);overflow:hidden;display:flex;flex-direction:column">
+          <div style="height:220px;background:var(--kD2ECEC,#D2ECEC);position:relative"><image-slot id="{{ d.photo }}" shape="rect" placeholder="صورة الطبيب" style="position:absolute;inset:0;width:100%;height:100%"></image-slot></div>
+          <div style="padding:16px;display:flex;flex-direction:column;gap:6px">
+            <span style="font-size:17px;font-weight:700">{{ d.name }}</span>
+            <span style="display:flex;align-items:center;gap:6px;font-size:13px;color:var(--k4F6368,#4F6368)"><lc-icon name="{{ d.icon }}" size="15" color="var(--k0F7A82,#0F7A82)"></lc-icon>{{ d.spec }}</span>
+            <span style="display:flex;align-items:center;gap:6px;font-size:13px;color:var(--k4F6368,#4F6368);font-weight:600"><lc-icon name="calendar-clock" size="14"></lc-icon>{{ d.days }}</span>
+            <div style="display:flex;align-items:center;gap:8px;margin-top:6px"><span style="font-family:'Space Grotesk';font-size:16px;font-weight:700;color:var(--k0F7A82,#0F7A82);flex:1">{{ d.price }} <span style="font-family:'Readex Pro';font-size:12px;font-weight:600;color:var(--k4F6368,#4F6368)">د.ع</span></span><a href="Patient App.dc.html" style="display:flex;align-items:center;gap:6px;padding:0 14px;height:38px;border-radius:999px;background:var(--kD2ECEC,#D2ECEC);color:var(--k0C5F67,#0C5F67);font-size:13px;font-weight:600"><lc-icon name="calendar-plus" size="15"></lc-icon>احجز</a></div>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+
+  <footer style="background:var(--k0A3A40,#0A3A40);color:#C9E4E5;padding:28px 40px;display:flex;gap:28px;flex-wrap:wrap;align-items:center">
+    <span style="display:flex;align-items:center;gap:8px;font-size:15px;font-weight:600;color:#fff"><lc-icon name="hospital" size="20"></lc-icon>مجمع الرحمة الطبي</span>
+    <span style="display:flex;align-items:center;gap:6px;font-size:14px"><lc-icon name="map-pin" size="15"></lc-icon>بغداد: الرئيسي، الكرادة، المنصور</span>
+    <span style="display:flex;align-items:center;gap:6px;font-size:14px"><lc-icon name="clock" size="15"></lc-icon>يومياً 9 ص – 9 م</span>
+    <span style="display:flex;align-items:center;gap:6px;font-size:14px"><lc-icon name="shield-check" size="15"></lc-icon>تحقق من إيصالك بمسح رمز QR</span>
+  </footer>
+</section>
+
+<section data-screen-label="Waiting display" style="padding:40px;background:var(--kDCE7E8,#DCE7E8);display:flex;flex-direction:column;gap:12px;overflow-x:auto">
+  <span style="font-size:15px;font-weight:600;color:var(--k4F6368,#4F6368);display:flex;align-items:center;gap:8px"><lc-icon name="monitor" size="18"></lc-icon>شاشة الانتظار العامة · 1280×720 · بدون أسماء المرضى</span>
+  <div style="width:1280px;height:720px;flex-shrink:0;border-radius:20px;border:12px solid #111;overflow:hidden;display:grid;grid-template-columns:1.25fr 1fr;background:var(--k062528,#062528);color:#fff">
+    <div style="background:var(--k0A3A40,#0A3A40);padding:44px;display:flex;flex-direction:column;gap:24px">
+      <div style="display:flex;align-items:center;gap:16px">
+        <div style="width:88px;height:88px;border-radius:24px;overflow:hidden;background:var(--k1A8A91,#1A8A91);border:3px solid rgba(255,255,255,.2)"><image-slot id="doc-photo-saad" shape="rounded" radius="22" placeholder="د" style="width:82px;height:82px"></image-slot></div>
+        <div style="display:flex;flex-direction:column;gap:4px"><span style="font-size:30px;font-weight:700">عيادة الباطنية</span><span style="display:flex;align-items:center;gap:8px;font-size:20px;color:#A6D8DA"><lc-icon name="stethoscope" size="20"></lc-icon>د. سعد الحيدري · الطابق 2</span></div>
+      </div>
+      <div style="flex:1;display:flex;flex-direction:column;justify-content:center;gap:10px">
+        <span style="display:flex;align-items:center;gap:10px;font-size:30px;color:#A6D8DA"><lc-icon name="megaphone" size="32"></lc-icon>الرقم الحالي</span>
+        <span style="font-family:'Space Grotesk';font-size:200px;font-weight:700;line-height:1">A-103</span>
+        <span style="display:flex;align-items:center;gap:10px;font-size:28px;color:#F2B544"><lc-icon name="door-open" size="30"></lc-icon>تفضل إلى غرفة الطبيب</span>
+      </div>
+    </div>
+    <div style="padding:44px 40px;display:flex;flex-direction:column;gap:16px">
+      <span style="display:flex;align-items:center;gap:10px;font-size:28px;color:#A6D8DA"><lc-icon name="list-ordered" size="28"></lc-icon>التالي</span>
+      <sc-for list="{{ nextUp }}" as="n" hint-placeholder-count="3">
+        <div style="display:flex;align-items:center;justify-content:space-between;padding:22px 28px;border-radius:24px;background:{{ n.bg }}"><span style="font-family:'Space Grotesk';font-size:60px;font-weight:700">{{ n.t }}</span><span style="display:flex;align-items:center;gap:8px;font-size:22px;color:#A6D8DA"><lc-icon name="{{ n.icon }}" size="22"></lc-icon>{{ n.label }}</span></div>
+      </sc-for>
+      <span style="margin-top:auto;display:flex;align-items:center;gap:8px;font-size:18px;color:var(--k6FBFC3,#6FBFC3)"><lc-icon name="smartphone" size="20"></lc-icon>تابع دورك من تطبيق المجمع</span>
+    </div>
+  </div>
+</section>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { branch: "main" };
+  renderVals() {
+    const st = this.state;
+    const branches = [["main","الفرع الرئيسي"],["krb","فرع الكرادة"]].map(([k,ar])=>{const on=st.branch===k;return {ar,bg:on?"var(--kFFFFFF,#fff)":"transparent",fg:on?"var(--k0F7A82,#0F7A82)":"var(--k6B7F84,#6B7F84)",sh:on?"0 1px 3px rgba(10,58,64,.15)":"none",go:()=>this.setState({branch:k})};});
+    const T = (ar,icon)=>({ar,icon});
+    const services = [
+      {ar:"العيادات",icon:"stethoscope",hex:"var(--k0F7A82,#0F7A82)",soft:"var(--kEAF6F6,#EAF6F6)",desc:"حجز بالتسلسل ووقت دخول تقريبي يتحدث مباشرة.",tags:[T("باطنية","stethoscope"),T("قلبية","heart-pulse"),T("أطفال","baby")]},
+      {ar:"المختبر",icon:"flask-conical",hex:"var(--k7C4DDB,#7C4DDB)",soft:"var(--kF1ECFC,#F1ECFC)",desc:"نتائج التحاليل تصلك في التطبيق فور اعتمادها.",tags:[T("CBC","droplet"),T("هرمونات","activity"),T("زرع","microscope")]},
+      {ar:"الأشعة والسونار",icon:"scan-line",hex:"var(--k2F6FDB,#2F6FDB)",soft:"var(--kEAF1FD,#EAF1FD)",desc:"أشعة سينية، سونار، مفراس ورنين مع تقرير مكتوب.",tags:[T("سونار","audio-waveform"),T("مفراس","scan"),T("رنين","magnet")]},
+      {ar:"الصيدلية",icon:"pill",hex:"var(--kEF7A2E,#EF7A2E)",soft:"var(--kFDEFE5,#FDEFE5)",desc:"اصرف وصفتك الإلكترونية بمسح الرمز من هاتفك.",tags:[T("وصفة إلكترونية","scan-barcode"),T("صرف موثق","package-check")]}];
+    const docs = [
+      {name:"د. سعد الحيدري",spec:"باطنية",icon:"stethoscope",photo:"doc-photo-saad",days:"السبت – الأربعاء · مساءً",price:"25,000"},
+      {name:"د. هدى الربيعي",spec:"باطنية",icon:"stethoscope",photo:"doc-photo-huda",days:"الأحد – الخميس · مساءً",price:"25,000"},
+      {name:"د. علي الموسوي",spec:"قلبية",icon:"heart-pulse",photo:"doc-photo-ali",days:"السبت، الاثنين، الأربعاء",price:"35,000"},
+      {name:"د. مريم الخفاجي",spec:"أطفال",icon:"baby",photo:"doc-photo-maryam",days:"يومياً · صباحاً",price:"20,000"}];
+    const nextUp = [{t:"A-104",label:"استعد",icon:"bell-ring",bg:"rgba(255,255,255,.12)"},{t:"A-105",label:"",icon:"hourglass",bg:"rgba(255,255,255,.05)"},{t:"A-107",label:"",icon:"hourglass",bg:"rgba(255,255,255,.05)"}];
+    return {branches,branchLine:st.branch==="main"?"الفرع الرئيسي · بغداد":"فرع الكرادة",services,docs,nextUp};
+  }
+}
+</script>
+</body>
+</html>

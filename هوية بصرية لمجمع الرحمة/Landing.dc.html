@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="icon" type="image/svg+xml" href="./rahma-mark.svg">
+<script src="./theme.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<script src="./lucide-icon.js"></script>
+<script src="./image-slot.js"></script>
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--kFFFFFF,#fff);font-family:'Readex Pro',sans-serif;color:var(--k0F2328,#0F2328);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:var(--k17A07A,#17A07A);text-decoration:none}a:hover{color:var(--k0C5F67,#0C5F67)}
+*{box-sizing:border-box}
+button{font-family:inherit;cursor:pointer}
+@media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important}}
+</style>
+</helmet>
+<div dir="rtl" style="display:flex;flex-direction:column;min-width:0">
+
+<nav data-screen-label="Nav" style="position:sticky;top:0;z-index:20;display:flex;align-items:center;gap:20px;padding:12px clamp(20px,4vw,56px);background:var(--kFFFFFF,#fff);border-bottom:1px solid var(--kEEF2F3,#EEF2F3);flex-wrap:nowrap">
+  <a href="#top" style="display:flex;align-items:center;gap:12px;flex-shrink:0;color:var(--kM163F66,#163F66)">
+    <dc-import name="Rahma Mark" size="{{ 46 }}" hint-size="46px,46px"></dc-import>
+    <span style="display:flex;flex-direction:column;line-height:1.25"><span style="font-size:17px;font-weight:700">مجمع عيادات الرحمة الطبي</span><span style="font-family:'Space Grotesk';font-size:9.5px;letter-spacing:.28em;font-weight:600;color:#17A07A">AL-RAHMA MEDICAL COMPLEX</span></span>
+  </a>
+  <div style="display:flex;align-items:center;gap:2px;flex-wrap:nowrap;overflow-x:auto;min-width:0;flex:1 1 auto;justify-content:center;scrollbar-width:none">
+    <sc-for list="{{ navLinks }}" as="l" hint-placeholder-count="5">
+      <a href="{{ l.href }}" style="padding:8px clamp(6px,0.9vw,12px);border-radius:999px;font-size:clamp(13px,1.15vw,15px);font-weight:600;white-space:nowrap;color:var(--k4F6368,#4F6368)" style-hover="background:var(--kF5F8F8,#F5F8F8);color:var(--k0F2328,#0F2328)">{{ l.ar }}</a>
+    </sc-for>
+  </div>
+  <theme-toggle></theme-toggle>
+  <a href="Patient App.dc.html" style="display:flex;align-items:center;gap:8px;padding:0 22px;height:46px;border-radius:999px;background:#17A07A;color:#fff;font-size:15px;font-weight:600;white-space:nowrap;flex-shrink:0" style-hover="background:#128A68;color:#fff"><lc-icon name="calendar-plus" size="18"></lc-icon>احجز موعداً</a>
+</nav>
+
+<section id="top" data-screen-label="Hero" style="position:relative;padding:clamp(28px,4vw,56px) clamp(20px,4vw,56px) 0;max-width:1440px;margin:0 auto;width:100%">
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,460px),1fr));gap:clamp(24px,4vw,56px);align-items:center">
+    <div style="display:flex;flex-direction:column;gap:24px;padding:12px 0">
+      <span data-reveal="1" style="align-self:flex-start;display:flex;align-items:center;gap:8px;padding:8px 14px 8px 8px;border-radius:999px;background:var(--kEAF6F6,#EAF6F6);color:var(--k0C5F67,#0C5F67);font-size:14px;font-weight:600"><span style="display:flex;align-items:center;gap:6px;padding:4px 10px;border-radius:999px;background:#17A07A;color:#fff;font-size:12px">4 فروع</span>عيادات، مختبر، أشعة وصيدلية تحت سقف واحد</span>
+      <h1 data-reveal="2" style="margin:0;font-size:clamp(38px,5.2vw,68px);line-height:1.18;font-weight:700;color:var(--kM163F66,#163F66);text-wrap:balance">رعاية تحتضن العائلة، <span style="color:#17A07A">وموعد</span> يحترم وقتك</h1>
+      <p data-reveal="3" style="margin:0;font-size:clamp(17px,1.4vw,20px);line-height:1.85;color:var(--k4F6368,#4F6368);max-width:560px;text-wrap:pretty">احجز من هاتفك، وتابع دورك لحظة بلحظة حتى يُنادى رقمك. نتائج التحاليل والأشعة ووصفتك الإلكترونية تصلك في التطبيق، وتُصرف من صيدلية أي فرع.</p>
+      <div data-reveal="4" style="display:flex;gap:12px;flex-wrap:wrap">
+        <a href="Patient App.dc.html" style="display:flex;align-items:center;gap:10px;padding:0 28px;height:58px;border-radius:999px;background:var(--kB163F66,#163F66);color:var(--kFFFFFF,#fff);font-size:17px;font-weight:700" style-hover="transform:translateY(-2px);box-shadow:0 14px 30px -12px rgba(22,63,102,.6);color:var(--kFFFFFF,#fff)"><lc-icon name="calendar-plus" size="20"></lc-icon>احجز موعدك الآن</a>
+        <a href="#branches" style="display:flex;align-items:center;gap:10px;padding:0 24px;height:58px;border-radius:999px;border:1.5px solid var(--kD5E0E1,#D5E0E1);color:var(--k0F2328,#0F2328);font-size:16px;font-weight:600" style-hover="border-color:#17A07A;color:var(--k0F2328,#0F2328)"><lc-icon name="map-pin" size="19" color="#17A07A"></lc-icon>أقرب فرع لك</a>
+      </div>
+      <div data-reveal="5" style="display:flex;gap:28px;flex-wrap:wrap;padding-top:8px">
+        <sc-for list="{{ promises }}" as="p" hint-placeholder-count="3">
+          <span style="display:flex;align-items:center;gap:10px;font-size:14px;font-weight:600;color:var(--k4F6368,#4F6368)"><span style="width:36px;height:36px;border-radius:12px;background:var(--kF5F8F8,#F5F8F8);display:flex;align-items:center;justify-content:center;color:#17A07A"><lc-icon name="{{ p.icon }}" size="18"></lc-icon></span>{{ p.ar }}</span>
+        </sc-for>
+      </div>
+    </div>
+
+    <div data-reveal="2" style="position:relative;min-height:clamp(440px,48vw,620px)">
+      <div style="position:absolute;inset:0 0 0 8%;border-radius:40px;overflow:hidden;background:var(--kE6F1F1,#E6F1F1)">
+        <image-slot id="landing-hero-photo" shape="rect" placeholder="صورة رئيسية: طبيب مع عائلة، أو واجهة المجمع" style="position:absolute;inset:0;width:100%;height:100%"></image-slot>
+      </div>
+      <div data-float="1" style="position:absolute;top:28px;left:0;display:flex;align-items:center;gap:12px;padding:14px 16px;border-radius:22px;background:var(--kFFFFFF,#fff);box-shadow:0 20px 44px -18px rgba(22,63,102,.35);pointer-events:none;min-width:250px">
+        <span style="position:relative;width:46px;height:46px;border-radius:14px;background:#17A07A;color:#fff;display:flex;align-items:center;justify-content:center"><lc-icon name="radio" size="22"></lc-icon><span data-ping="1" style="position:absolute;inset:-4px;border-radius:17px;border:2px solid #17A07A"></span></span>
+        <span style="display:flex;flex-direction:column;gap:2px"><span style="font-size:12px;font-weight:600;color:var(--k4F6368,#4F6368)">الطابور الآن · الباطنية</span><span style="font-size:16px;font-weight:700">يُخدم <span data-ticker="1" style="font-family:'Space Grotesk';color:var(--kM163F66,#163F66)">A-103</span></span></span>
+      </div>
+      <div data-float="2" style="position:absolute;bottom:36px;right:-8px;display:flex;align-items:center;gap:12px;padding:14px 16px;border-radius:22px;background:var(--kFFFFFF,#fff);box-shadow:0 20px 44px -18px rgba(22,63,102,.35);pointer-events:none">
+        <span style="width:46px;height:46px;border-radius:14px;background:var(--kF1ECFC,#F1ECFC);color:var(--k7C4DDB,#7C4DDB);display:flex;align-items:center;justify-content:center"><lc-icon name="flask-conical" size="22"></lc-icon></span>
+        <span style="display:flex;flex-direction:column;gap:2px"><span style="font-size:12px;font-weight:600;color:var(--k4F6368,#4F6368)">إشعار من التطبيق</span><span style="font-size:15px;font-weight:700">نتيجة التحليل جاهزة</span></span>
+        <lc-icon name="badge-check" size="20" color="#17A07A"></lc-icon>
+      </div>
+      <div data-float="3" style="position:absolute;bottom:-26px;left:12%;width:112px;height:112px;border-radius:32px;background:var(--kFFFFFF,#fff);box-shadow:0 20px 44px -18px rgba(22,63,102,.4);display:flex;align-items:center;justify-content:center;pointer-events:none">
+        <dc-import name="Rahma Mark" size="{{ 84 }}" animate="{{ true }}" delay="{{ 300 }}" hint-size="84px,84px"></dc-import>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="Departments marquee" style="margin-top:72px;padding:22px 0;background:var(--kF5F8F8,#F5F8F8);border-block:1px solid var(--kEEF2F3,#EEF2F3);overflow:hidden" dir="ltr">
+  <div data-marquee="1" style="display:flex;gap:14px;width:max-content">
+    <sc-for list="{{ marquee }}" as="m" hint-placeholder-count="12">
+      <span dir="rtl" style="display:flex;align-items:center;gap:10px;padding:10px 20px;border-radius:999px;background:var(--kFFFFFF,#fff);border:1px solid var(--kE3EBEC,#E3EBEC);font-size:16px;font-weight:600;white-space:nowrap"><lc-icon name="{{ m.icon }}" size="18" color="{{ m.c }}"></lc-icon>{{ m.ar }}</span>
+    </sc-for>
+  </div>
+</section>
+
+<section id="about" data-screen-label="Identity" style="padding:clamp(64px,8vw,120px) clamp(20px,4vw,56px);max-width:1440px;margin:0 auto;width:100%">
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:clamp(32px,5vw,72px);align-items:center">
+    <div data-reveal="1" style="position:relative;aspect-ratio:1;max-width:520px;width:100%;justify-self:center;border-radius:48px;background:var(--kF5F8F8,#F5F8F8);display:flex;align-items:center;justify-content:center;overflow:hidden">
+      <div data-glow="1" style="position:absolute;width:80%;height:80%;border-radius:50%;background:radial-gradient(circle, rgba(23,160,122,.18), rgba(23,160,122,0) 65%)"></div>
+      <div style="position:relative"><dc-import name="Rahma Mark" size="{{ 300 }}" animate="{{ true }}" hint-size="300px,300px"></dc-import></div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:22px">
+      <span data-reveal="1" style="font-size:14px;font-weight:700;color:#17A07A;letter-spacing:.04em">من نحن</span>
+      <h2 data-reveal="2" style="margin:0;font-size:clamp(30px,3.6vw,48px);line-height:1.25;font-weight:700;color:var(--kM163F66,#163F66);text-wrap:balance">شعارنا يحكي ما نؤمن به</h2>
+      <p data-reveal="3" style="margin:0;font-size:18px;line-height:1.9;color:var(--k4F6368,#4F6368);text-wrap:pretty">هلال يحتضن عائلة، وقلب يجمعها، ويدان تحميانها، ونبض لا يتوقف. هذا ما نقدمه في كل فرع: طب يعامل المريض كفرد من العائلة، ونظام يجعل الزيارة أوضح وأسرع.</p>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin-top:6px">
+        <sc-for list="{{ values }}" as="v" hint-placeholder-count="4">
+          <div data-reveal="4" style="display:flex;gap:14px;padding:18px;border-radius:22px;border:1px solid var(--kE3EBEC,#E3EBEC);background:var(--kFFFFFF,#fff)">
+            <span style="width:44px;height:44px;flex-shrink:0;border-radius:14px;background:{{ v.soft }};color:{{ v.c }};display:flex;align-items:center;justify-content:center"><lc-icon name="{{ v.icon }}" size="21"></lc-icon></span>
+            <span style="display:flex;flex-direction:column;gap:4px"><span style="font-size:16px;font-weight:700">{{ v.ar }}</span><span style="font-size:14px;line-height:1.7;color:var(--k4F6368,#4F6368)">{{ v.d }}</span></span>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="services" data-screen-label="Services" style="padding:0 clamp(20px,4vw,56px) clamp(64px,8vw,120px);max-width:1440px;margin:0 auto;width:100%;display:flex;flex-direction:column;gap:32px">
+  <div style="display:flex;align-items:flex-end;gap:20px;flex-wrap:wrap">
+    <div style="display:flex;flex-direction:column;gap:10px;flex:1;min-width:280px">
+      <span data-reveal="1" style="font-size:14px;font-weight:700;color:#17A07A">خدماتنا</span>
+      <h2 data-reveal="2" style="margin:0;font-size:clamp(30px,3.6vw,48px);line-height:1.25;font-weight:700;color:var(--kM163F66,#163F66)">كل ما تحتاجه زيارتك، في مكان واحد</h2>
+    </div>
+    <p data-reveal="3" style="margin:0;max-width:440px;font-size:16px;line-height:1.8;color:var(--k4F6368,#4F6368)">من الكشف إلى التحليل إلى الدواء، بفاتورة واحدة وإيصال موثّق برمز QR.</p>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:18px">
+    <sc-for list="{{ services }}" as="s" hint-placeholder-count="4">
+      <article data-reveal="3" style="display:flex;flex-direction:column;border-radius:32px;overflow:hidden;background:var(--kF5F8F8,#F5F8F8);border:1px solid var(--kEEF2F3,#EEF2F3)" style-hover="transform:translateY(-4px);box-shadow:0 24px 50px -24px rgba(22,63,102,.35)">
+        <div style="position:relative;height:220px;background:{{ s.soft }}">
+          <image-slot id="{{ s.photo }}" shape="rect" placeholder="{{ s.ph }}" style="position:absolute;inset:0;width:100%;height:100%"></image-slot>
+          <span style="position:absolute;top:16px;right:16px;width:52px;height:52px;border-radius:16px;background:var(--kFFFFFF,#fff);color:{{ s.c }};display:flex;align-items:center;justify-content:center;box-shadow:0 8px 20px -8px rgba(0,0,0,.25);pointer-events:none"><lc-icon name="{{ s.icon }}" size="25"></lc-icon></span>
+        </div>
+        <div style="padding:22px;display:flex;flex-direction:column;gap:10px;flex:1">
+          <span style="font-size:22px;font-weight:700">{{ s.ar }}</span>
+          <span style="font-size:15px;line-height:1.8;color:var(--k4F6368,#4F6368)">{{ s.desc }}</span>
+          <div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:auto;padding-top:6px"><sc-for list="{{ s.tags }}" as="t" hint-placeholder-count="3"><span style="padding:5px 12px;border-radius:999px;background:var(--kFFFFFF,#fff);font-size:13px;font-weight:600;color:var(--k4F6368,#4F6368)">{{ t }}</span></sc-for></div>
+        </div>
+      </article>
+    </sc-for>
+  </div>
+</section>
+
+<section id="journey" data-screen-label="Journey" style="background:#0E2A45;color:#fff;padding:clamp(64px,8vw,120px) clamp(20px,4vw,56px)">
+  <div style="max-width:1440px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:clamp(32px,5vw,72px);align-items:center">
+    <div style="display:flex;flex-direction:column;gap:28px">
+      <span data-reveal="1" style="font-size:14px;font-weight:700;color:#2BC28E">رحلتك معنا</span>
+      <h2 data-reveal="2" style="margin:0;font-size:clamp(30px,3.6vw,48px);line-height:1.25;font-weight:700;text-wrap:balance">من الحجز حتى الدواء، كل خطوة واضحة على هاتفك</h2>
+      <div style="display:flex;flex-direction:column;position:relative">
+        <div style="position:absolute;top:24px;bottom:24px;right:23px;width:2px;background:rgba(255,255,255,.12)"><div data-line="1" style="width:100%;height:100%;background:#2BC28E;transform-origin:top center"></div></div>
+        <sc-for list="{{ steps }}" as="s" hint-placeholder-count="4">
+          <div data-reveal="3" style="position:relative;display:flex;gap:18px;padding:12px 0">
+            <span style="width:48px;height:48px;flex-shrink:0;border-radius:999px;background:#163F66;border:2px solid #2BC28E;color:#fff;display:flex;align-items:center;justify-content:center"><lc-icon name="{{ s.icon }}" size="21"></lc-icon></span>
+            <span style="display:flex;flex-direction:column;gap:4px;padding-top:4px"><span style="font-size:19px;font-weight:700">{{ s.ar }}</span><span style="font-size:15px;line-height:1.8;color:#C6D3DF">{{ s.d }}</span></span>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+    <div data-reveal="2" style="position:relative;display:flex;justify-content:center">
+      <div style="position:absolute;width:min(520px,90%);aspect-ratio:1;border-radius:50%;background:radial-gradient(circle, rgba(43,194,142,.25), rgba(43,194,142,0) 65%);top:50%;left:50%;transform:translate(-50%,-50%)"></div>
+      <div data-float="2" style="position:relative;width:300px;height:620px;border-radius:44px;border:9px solid #071827;background:#0B1E2E;overflow:hidden;box-shadow:0 40px 80px -30px rgba(0,0,0,.6)">
+        <image-slot id="landing-app-screen" shape="rect" placeholder="لقطة من تطبيق المريض: التذكرة والطابور" style="position:absolute;inset:0;width:100%;height:100%"></image-slot>
+      </div>
+      <div data-float="1" style="position:absolute;top:70px;right:max(0px,calc(50% - 250px));display:flex;flex-direction:column;align-items:center;gap:2px;padding:14px 18px;border-radius:22px;background:#17A07A;color:#fff;box-shadow:0 20px 40px -16px rgba(0,0,0,.5);pointer-events:none"><span style="font-size:12px;font-weight:600">رقمك</span><span style="font-family:'Space Grotesk';font-size:30px;font-weight:700;line-height:1">A-107</span><span style="font-size:12px;font-weight:600">أمامك 3</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="branches" data-screen-label="Branches" style="padding:clamp(64px,8vw,120px) clamp(20px,4vw,56px);max-width:1440px;margin:0 auto;width:100%;display:flex;flex-direction:column;gap:28px">
+  <div style="display:flex;align-items:flex-end;gap:20px;flex-wrap:wrap">
+    <div style="display:flex;flex-direction:column;gap:10px;flex:1;min-width:280px">
+      <span data-reveal="1" style="font-size:14px;font-weight:700;color:#17A07A">فروعنا</span>
+      <h2 data-reveal="2" style="margin:0;font-size:clamp(30px,3.6vw,48px);line-height:1.25;font-weight:700;color:var(--kM163F66,#163F66)">ملفك واحد في كل الفروع</h2>
+    </div>
+    <p data-reveal="3" style="margin:0;max-width:440px;font-size:16px;line-height:1.8;color:var(--k4F6368,#4F6368)">سجلك الطبي ووصفتك ورصيدك تنتقل معك. احجز في أي فرع، واصرف وصفتك من أي صيدلية تابعة للمجمع.</p>
+  </div>
+  <div style="display:flex;gap:8px;flex-wrap:wrap">
+    <sc-for list="{{ branchTabs }}" as="b" hint-placeholder-count="4">
+      <button onClick="{{ b.go }}" style="display:flex;align-items:center;gap:8px;padding:0 18px;height:46px;border-radius:999px;border:1.5px solid {{ b.line }};background:{{ b.bg }};color:{{ b.fg }};font-size:15px;font-weight:600"><lc-icon name="map-pin" size="16"></lc-icon>{{ b.ar }}<span style="width:8px;height:8px;border-radius:999px;background:{{ b.dot }}"></span></button>
+    </sc-for>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,440px),1fr));gap:18px">
+    <div style="position:relative;min-height:440px;border-radius:32px;overflow:hidden;background:var(--kE6F1F1,#E6F1F1)">
+      <image-slot id="{{ br.photo }}" shape="rect" placeholder="{{ br.ph }}" style="position:absolute;inset:0;width:100%;height:100%"></image-slot>
+      <span style="position:absolute;top:18px;right:18px;display:flex;align-items:center;gap:6px;padding:8px 14px;border-radius:999px;background:var(--kFFFFFF,#fff);color:{{ br.stC }};font-size:14px;font-weight:700;pointer-events:none"><span style="width:8px;height:8px;border-radius:999px;background:{{ br.stC }}"></span>{{ br.st }}</span>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:18px;padding:clamp(22px,3vw,36px);border-radius:32px;background:var(--kF5F8F8,#F5F8F8)">
+      <div style="display:flex;align-items:center;gap:14px">
+        <dc-import name="Rahma Mark" size="{{ 52 }}" hint-size="52px,52px"></dc-import>
+        <span style="display:flex;flex-direction:column;gap:2px"><span style="font-size:26px;font-weight:700;color:var(--kM163F66,#163F66)">{{ br.ar }}</span><span style="font-size:15px;font-weight:600;color:var(--k4F6368,#4F6368)">{{ br.city }}</span></span>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px">
+        <sc-for list="{{ br.facts }}" as="f" hint-placeholder-count="3">
+          <div style="display:flex;align-items:center;gap:12px;padding:14px;border-radius:18px;background:var(--kFFFFFF,#fff)"><lc-icon name="{{ f.icon }}" size="20" color="#17A07A"></lc-icon><span style="display:flex;flex-direction:column"><span style="font-size:12px;font-weight:600;color:var(--k6B7F84,#6B7F84)">{{ f.k }}</span><span style="font-size:15px;font-weight:700">{{ f.v }}</span></span></div>
+        </sc-for>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:10px">
+        <span style="font-size:15px;font-weight:700">الأقسام في هذا الفرع</span>
+        <div style="display:flex;gap:8px;flex-wrap:wrap"><sc-for list="{{ br.depts }}" as="d" hint-placeholder-count="6"><span style="display:flex;align-items:center;gap:6px;padding:8px 14px;border-radius:999px;background:var(--kFFFFFF,#fff);border:1px solid var(--kE3EBEC,#E3EBEC);font-size:14px;font-weight:600"><lc-icon name="{{ d.icon }}" size="15" color="{{ d.c }}"></lc-icon>{{ d.ar }}</span></sc-for></div>
+      </div>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:auto">
+        <a href="Patient App.dc.html" style="display:flex;align-items:center;gap:8px;padding:0 22px;height:50px;border-radius:999px;background:#17A07A;color:#fff;font-size:15px;font-weight:600" style-hover="background:#128A68;color:#fff"><lc-icon name="calendar-plus" size="18"></lc-icon>احجز في {{ br.ar }}</a>
+        <a href="#" style="display:flex;align-items:center;gap:8px;padding:0 20px;height:50px;border-radius:999px;border:1.5px solid var(--kD5E0E1,#D5E0E1);color:var(--k0F2328,#0F2328);font-size:15px;font-weight:600"><lc-icon name="navigation" size="17" color="#17A07A"></lc-icon>الاتجاهات</a>
+        <a href="#" style="display:flex;align-items:center;gap:8px;padding:0 20px;height:50px;border-radius:999px;border:1.5px solid var(--kD5E0E1,#D5E0E1);color:var(--k0F2328,#0F2328);font-size:15px;font-weight:600"><lc-icon name="phone" size="17" color="#17A07A"></lc-icon>اتصل</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="doctors" data-screen-label="Doctors" style="padding:0 clamp(20px,4vw,56px) clamp(64px,8vw,120px);max-width:1440px;margin:0 auto;width:100%;display:flex;flex-direction:column;gap:28px">
+  <div style="display:flex;align-items:flex-end;gap:20px;flex-wrap:wrap">
+    <div style="display:flex;flex-direction:column;gap:10px;flex:1;min-width:280px">
+      <span data-reveal="1" style="font-size:14px;font-weight:700;color:#17A07A">أطباؤنا</span>
+      <h2 data-reveal="2" style="margin:0;font-size:clamp(30px,3.6vw,48px);line-height:1.25;font-weight:700;color:var(--kM163F66,#163F66)">نخبة من الاختصاصيين</h2>
+    </div>
+    <a href="Patient App.dc.html" style="display:flex;align-items:center;gap:8px;font-size:16px;font-weight:600">كل الأطباء والمواعيد<lc-icon name="arrow-left" size="18"></lc-icon></a>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,250px),1fr));gap:18px">
+    <sc-for list="{{ docs }}" as="d" hint-placeholder-count="4">
+      <article data-reveal="3" style="display:flex;flex-direction:column;gap:14px" style-hover="transform:translateY(-4px)">
+        <div style="position:relative;aspect-ratio:4/5;border-radius:28px;overflow:hidden;background:var(--kE6F1F1,#E6F1F1)">
+          <image-slot id="{{ d.photo }}" shape="rect" placeholder="صورة الطبيب" style="position:absolute;inset:0;width:100%;height:100%"></image-slot>
+          <span style="position:absolute;bottom:14px;right:14px;display:flex;align-items:center;gap:6px;padding:7px 12px;border-radius:999px;background:var(--kFFFFFF,#fff);font-size:13px;font-weight:600;pointer-events:none"><lc-icon name="{{ d.icon }}" size="14" color="#17A07A"></lc-icon>{{ d.spec }}</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:10px">
+          <span style="display:flex;flex-direction:column;gap:2px;flex:1"><span style="font-size:18px;font-weight:700">{{ d.name }}</span><span style="font-size:14px;font-weight:600;color:var(--k4F6368,#4F6368)">{{ d.days }}</span></span>
+          <a href="Patient App.dc.html" title="احجز" style="width:46px;height:46px;border-radius:999px;background:var(--kEAF6F6,#EAF6F6);color:var(--k0C5F67,#0C5F67);display:flex;align-items:center;justify-content:center"><lc-icon name="calendar-plus" size="19"></lc-icon></a>
+        </div>
+      </article>
+    </sc-for>
+  </div>
+</section>
+
+<section id="app" data-screen-label="App CTA" style="padding:0 clamp(20px,4vw,56px) clamp(64px,8vw,120px);max-width:1440px;margin:0 auto;width:100%">
+  <div data-reveal="2" style="position:relative;overflow:hidden;border-radius:40px;background:#17A07A;color:#fff;padding:clamp(32px,5vw,64px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,380px),1fr));gap:32px;align-items:center">
+    <div style="position:absolute;left:-60px;bottom:-80px;opacity:.14;pointer-events:none"><dc-import name="Rahma Mark" tone="white" paper="#17A07A" size="{{ 380 }}" hint-size="380px,380px"></dc-import></div>
+    <div style="position:relative;display:flex;flex-direction:column;gap:18px">
+      <h2 style="margin:0;font-size:clamp(30px,3.6vw,46px);line-height:1.25;font-weight:700;text-wrap:balance">حمّل تطبيق الرحمة، وتابع العائلة كلها من رقم واحد</h2>
+      <p style="margin:0;font-size:17px;line-height:1.85;color:#E6F6EE;max-width:520px">ادخل برقم هاتفك فقط. أضف أفراد عائلتك، واحجز لهم، وتلقَّ تنبيه «تفضل للدخول» ونتائجهم ووصفاتهم في مكان واحد.</p>
+      <div style="display:flex;gap:10px;flex-wrap:wrap">
+        <a href="Patient App.dc.html" style="display:flex;align-items:center;gap:10px;padding:0 22px;height:56px;border-radius:16px;background:#0E2A45;color:#fff" style-hover="color:#fff;transform:translateY(-2px)"><lc-icon name="smartphone" size="22"></lc-icon><span style="display:flex;flex-direction:column;line-height:1.2"><span style="font-size:11px;opacity:.8">حمّله من</span><span style="font-family:'Space Grotesk';font-size:16px;font-weight:600">App Store</span></span></a>
+        <a href="Patient App.dc.html" style="display:flex;align-items:center;gap:10px;padding:0 22px;height:56px;border-radius:16px;background:#0E2A45;color:#fff" style-hover="color:#fff;transform:translateY(-2px)"><lc-icon name="play" size="22"></lc-icon><span style="display:flex;flex-direction:column;line-height:1.2"><span style="font-size:11px;opacity:.8">حمّله من</span><span style="font-family:'Space Grotesk';font-size:16px;font-weight:600">Google Play</span></span></a>
+      </div>
+    </div>
+    <div style="position:relative;display:flex;gap:12px;flex-wrap:wrap;justify-content:center">
+      <sc-for list="{{ appFeats }}" as="f" hint-placeholder-count="4">
+        <span style="display:flex;align-items:center;gap:10px;padding:14px 18px;border-radius:20px;background:rgba(255,255,255,.14);font-size:15px;font-weight:600"><lc-icon name="{{ f.icon }}" size="20"></lc-icon>{{ f.ar }}</span>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<footer data-screen-label="Footer" style="background:#0E2A45;color:#C6D3DF;padding:clamp(40px,5vw,72px) clamp(20px,4vw,56px) 28px">
+  <div style="max-width:1440px;margin:0 auto;display:flex;flex-direction:column;gap:36px">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:32px">
+      <div style="display:flex;flex-direction:column;gap:14px;grid-column:span 1">
+        <div style="display:flex;align-items:center;gap:12px"><dc-import name="Rahma Mark" tone="dark" paper="#0E2A45" size="{{ 58 }}" hint-size="58px,58px"></dc-import><span style="display:flex;flex-direction:column;line-height:1.3"><span style="font-size:18px;font-weight:700;color:#fff">مجمع عيادات الرحمة الطبي</span><span style="font-family:'Space Grotesk';font-size:10px;letter-spacing:.28em;font-weight:600;color:#2BC28E">AL-RAHMA MEDICAL COMPLEX</span></span></div>
+        <span style="font-size:14px;line-height:1.8">رعاية تحتضن العائلة.</span>
+      </div>
+      <sc-for list="{{ footCols }}" as="c" hint-placeholder-count="3">
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <span style="font-size:15px;font-weight:700;color:#fff">{{ c.ar }}</span>
+          <sc-for list="{{ c.items }}" as="i" hint-placeholder-count="4"><a href="{{ i.href }}" style="display:flex;align-items:center;gap:8px;font-size:14px;color:#C6D3DF" style-hover="color:#2BC28E"><lc-icon name="{{ i.icon }}" size="15"></lc-icon>{{ i.ar }}</a></sc-for>
+        </div>
+      </sc-for>
+    </div>
+    <div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap;padding-top:22px;border-top:1px solid rgba(255,255,255,.1);font-size:13px">
+      <span style="flex:1">© 2026 مجمع عيادات الرحمة الطبي</span>
+      <span style="display:flex;align-items:center;gap:6px"><lc-icon name="shield-check" size="15" color="#2BC28E"></lc-icon>تحقق من أي إيصال بمسح رمز QR</span>
+      <a href="System Hub.dc.html" style="display:flex;align-items:center;gap:6px;color:#C6D3DF" style-hover="color:#2BC28E"><lc-icon name="key-round" size="15"></lc-icon>دخول الموظفين</a>
+    </div>
+  </div>
+</footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { branch: "main" };
+  componentDidMount() {
+    const motion = !(window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches);
+    if (!motion) return;
+    const E = "cubic-bezier(.22,1,.36,1)";
+    this.check = () => {
+      const h = window.innerHeight || document.documentElement.clientHeight;
+      document.querySelectorAll("[data-rv='1']").forEach(el => {
+        const r = el.getBoundingClientRect();
+        if (r.top < h * 0.94 && r.bottom > 0) { el.setAttribute("data-rv", "2"); const an = el.__rv; if (an) { an.onfinish = () => an.cancel(); an.play(); } }
+      });
+    };
+    this.io = { observe: () => {}, disconnect: () => {} };
+    this.observe();
+    addEventListener("scroll", this.check, { passive: true, capture: true });
+    addEventListener("resize", this.check);
+    requestAnimationFrame(() => requestAnimationFrame(this.check));
+    this.mo = new MutationObserver(() => { this.observe(); this.check(); });
+    this.mo.observe(document.body, { childList: true, subtree: true });
+    document.querySelectorAll("[data-float]").forEach(el => {
+      const k = +el.dataset.float;
+      el.animate([{ transform: "translateY(0)" }, { transform: `translateY(${k % 2 ? -12 : 10}px)` }, { transform: "translateY(0)" }], { duration: 5200 + k * 700, iterations: Infinity, easing: "ease-in-out", delay: k * 400 });
+    });
+    document.querySelectorAll("[data-ping]").forEach(el => el.animate([{ transform: "scale(.9)", opacity: .9 }, { transform: "scale(1.35)", opacity: 0 }], { duration: 1800, iterations: Infinity, easing: "ease-out" }));
+    document.querySelectorAll("[data-glow]").forEach(el => el.animate([{ transform: "scale(.85)", opacity: .7 }, { transform: "scale(1.08)", opacity: 1 }, { transform: "scale(.85)", opacity: .7 }], { duration: 6000, iterations: Infinity, easing: "ease-in-out" }));
+    document.querySelectorAll("[data-marquee]").forEach(el => el.animate([{ transform: "translateX(0)" }, { transform: "translateX(-50%)" }], { duration: 42000, iterations: Infinity, easing: "linear" }));
+    const line = document.querySelector("[data-line]");
+    if (line) { const lo = new IntersectionObserver(es => { if (es[0].isIntersecting) { line.animate([{ transform: "scaleY(0)" }, { transform: "scaleY(1)" }], { duration: 1600, easing: E, fill: "both" }); lo.disconnect(); } }, { threshold: .3 }); lo.observe(line); }
+    let n = 103;
+    this.tick = setInterval(() => {
+      const t = document.querySelector("[data-ticker]"); if (!t) return;
+      n = n >= 112 ? 103 : n + 1;
+      t.animate([{ opacity: 1, transform: "none" }, { opacity: 0, transform: "translateY(-8px)" }], { duration: 250, easing: "ease-in" }).onfinish = () => {
+        t.textContent = "A-" + n;
+        t.animate([{ opacity: 0, transform: "translateY(8px)" }, { opacity: 1, transform: "none" }], { duration: 300, easing: E });
+      };
+    }, 3200);
+  }
+  observe() {
+    const E = "cubic-bezier(.22,1,.36,1)";
+    document.querySelectorAll("[data-reveal]:not([data-rv])").forEach(el => {
+      el.setAttribute("data-rv", "1");
+      const i = +el.dataset.reveal || 1;
+      const an = el.animate([{ opacity: 0, transform: "translateY(28px)" }, { opacity: 1, transform: "none" }], { duration: 900, delay: (i - 1) * 110, easing: E, fill: "both" });
+      an.pause(); el.__rv = an;
+      this.io.observe(el);
+    });
+  }
+  componentWillUnmount() { removeEventListener("scroll", this.check, { capture: true }); removeEventListener("resize", this.check); this.mo && this.mo.disconnect(); clearInterval(this.tick); }
+  renderVals() {
+    const st = this.state;
+    const C = { teal: ["var(--k0F7A82,#0F7A82)", "var(--kEAF6F6,#EAF6F6)"], violet: ["var(--k7C4DDB,#7C4DDB)", "var(--kF1ECFC,#F1ECFC)"], blue: ["var(--k2F6FDB,#2F6FDB)", "var(--kEAF1FD,#EAF1FD)"], orange: ["var(--kEF7A2E,#EF7A2E)", "var(--kFDEFE5,#FDEFE5)"], red: ["var(--kE5484D,#E5484D)", "var(--kFDECEC,#FDECEC)"], green: ["#17A07A", "var(--kE6F6EE,#E6F6EE)"] };
+    const navLinks = [["من نحن", "#about"], ["الخدمات", "#services"], ["رحلتك", "#journey"], ["الفروع", "#branches"], ["الأطباء", "#doctors"]].map(([ar, href]) => ({ ar, href }));
+    const promises = [["حجز من الهاتف", "smartphone"], ["دور مباشر", "radio"], ["نتائج في التطبيق", "file-heart"]].map(([ar, icon]) => ({ ar, icon }));
+    const D = [["الباطنية", "stethoscope", "teal"], ["القلبية", "heart-pulse", "red"], ["الأطفال", "baby", "orange"], ["النسائية", "flower-2", "violet"], ["العظام", "bone", "blue"], ["الجلدية", "hand", "orange"], ["الأنف والأذن", "ear", "teal"], ["العيون", "eye", "blue"], ["الأسنان", "smile", "green"], ["المختبر", "flask-conical", "violet"], ["السونار", "audio-waveform", "blue"], ["المفراس والرنين", "scan", "blue"], ["الصيدلية", "pill", "orange"]];
+    const md = D.map(([ar, icon, c]) => ({ ar, icon, c: C[c][0] }));
+    const marquee = [...md, ...md];
+    const values = [
+      { ar: "رعاية العائلة", d: "ملف لكل فرد، وكلها تحت رقم هاتف واحد.", icon: "users", c: C.green[0], soft: C.green[1] },
+      { ar: "وقتك محترم", d: "تعرف وقت دخولك التقريبي، ونخبرك عندما يقترب دورك.", icon: "timer", c: C.teal[0], soft: C.teal[1] },
+      { ar: "شفافية في الفاتورة", d: "أسعار معلنة وإيصال موثّق برمز QR.", icon: "receipt", c: C.blue[0], soft: C.blue[1] },
+      { ar: "سجل طبي واحد", d: "تاريخك ونتائجك متاحة لطبيبك في أي فرع.", icon: "folder-heart", c: C.violet[0], soft: C.violet[1] }];
+    const services = [
+      { ar: "العيادات التخصصية", icon: "stethoscope", c: C.teal[0], soft: C.teal[1], photo: "landing-svc-clinics", ph: "صورة عيادة أو طبيب أثناء المعاينة", desc: "حجز بالتسلسل، ووقت دخول تقريبي يتحدث مباشرة، ومراجعة مجدولة بعد الزيارة.", tags: ["باطنية", "قلبية", "أطفال", "نسائية"] },
+      { ar: "المختبر", icon: "flask-conical", c: C.violet[0], soft: C.violet[1], photo: "landing-svc-lab", ph: "صورة المختبر أو سحب عينة", desc: "عينات مُعلّمة بباركود، ونتائج تصلك في التطبيق فور اعتمادها.", tags: ["CBC", "هرمونات", "فيتامينات"] },
+      { ar: "الأشعة والسونار", icon: "scan-line", c: C.blue[0], soft: C.blue[1], photo: "landing-svc-radiology", ph: "صورة جهاز الأشعة أو السونار", desc: "أشعة سينية، سونار، مفراس ورنين، مع تقرير مكتوب وصور تحمّلها من هاتفك.", tags: ["سونار", "مفراس", "رنين"] },
+      { ar: "الصيدلية", icon: "pill", c: C.orange[0], soft: C.orange[1], photo: "landing-svc-pharmacy", ph: "صورة الصيدلية", desc: "وصفتك إلكترونية برمز واحد، تُصرف من صيدلية أي فرع خلال مدة صلاحيتها.", tags: ["وصفة إلكترونية", "صرف موثّق"] }];
+    const steps = [
+      { ar: "احجز", d: "اختر الفرع والطبيب واليوم، وادفع العربون أو ادفع عند الوصول.", icon: "calendar-plus" },
+      { ar: "تابع دورك", d: "تنبيه عندما يقترب دورك، ودعوة للحضور المبكر إن تقدّم الطبيب.", icon: "radio" },
+      { ar: "ادخل", d: "تنبيه «تفضل للدخول» برقمك والغرفة والطابق، وتؤكد بزر «أنا قادم».", icon: "door-open" },
+      { ar: "نتائجك ودواؤك", d: "التحاليل والأشعة والوصفة في التطبيق، وتُصرف من أي صيدلية تابعة.", icon: "file-heart" }];
+    const dept = k => D.filter(d => k.includes(d[0])).map(([ar, icon, c]) => ({ ar, icon, c: C[c][0] }));
+    const B = {
+      main: { ar: "الفرع الرئيسي", city: "بغداد", photo: "landing-branch-main", open: true, depts: dept(["الباطنية", "القلبية", "الأطفال", "النسائية", "المختبر", "السونار", "المفراس والرنين", "الصيدلية"]) },
+      krd: { ar: "فرع الكرادة", city: "بغداد · الكرادة", photo: "landing-branch-krd", open: true, depts: dept(["الباطنية", "الأطفال", "الجلدية", "الأسنان", "المختبر", "السونار", "الصيدلية"]) },
+      mns: { ar: "فرع المنصور", city: "بغداد · المنصور", photo: "landing-branch-mns", open: true, depts: dept(["الباطنية", "العظام", "العيون", "الأنف والأذن", "المختبر", "الصيدلية"]) },
+      krb: { ar: "فرع كربلاء", city: "كربلاء", photo: "landing-branch-krb", open: false, depts: dept(["الباطنية", "النسائية", "الأطفال", "المختبر", "السونار", "الصيدلية"]) }};
+    const b = B[st.branch];
+    const br = { ...b, ph: "صورة واجهة " + b.ar, st: b.open ? "مفتوح الآن" : "مغلق الآن · يفتح 9 ص", stC: b.open ? "#17A07A" : "var(--kE5484D,#E5484D)",
+      facts: [{ k: "أوقات العمل", v: "يومياً 9 ص – 9 م", icon: "clock" }, { k: "الأقسام", v: b.depts.length + " أقسام", icon: "layout-grid" }, { k: "الدفع", v: "نقداً، بطاقة، أونلاين", icon: "credit-card" }] };
+    const branchTabs = Object.entries(B).map(([k, v]) => { const on = st.branch === k; return { ar: v.ar, go: () => this.setState({ branch: k }), line: on ? "#17A07A" : "var(--kE3EBEC,#E3EBEC)", bg: on ? "var(--kE6F6EE,#E6F6EE)" : "var(--kFFFFFF,#fff)", fg: on ? "var(--k157A50,#157A50)" : "var(--k4F6368,#4F6368)", dot: v.open ? "#17A07A" : "var(--kB8C4C6,#B8C4C6)" }; });
+    const docs = [
+      { name: "د. سعد الحيدري", spec: "باطنية", icon: "stethoscope", photo: "doc-photo-saad", days: "السبت – الأربعاء · مساءً" },
+      { name: "د. هدى الربيعي", spec: "باطنية", icon: "stethoscope", photo: "doc-photo-huda", days: "الأحد – الخميس · مساءً" },
+      { name: "د. علي الموسوي", spec: "قلبية", icon: "heart-pulse", photo: "doc-photo-ali", days: "السبت، الاثنين، الأربعاء" },
+      { name: "د. مريم الخفاجي", spec: "أطفال", icon: "baby", photo: "doc-photo-maryam", days: "يومياً · صباحاً" }];
+    const appFeats = [["حجز لكل العائلة", "users"], ["تنبيه تفضل للدخول", "bell-ring"], ["نتائج ووصفات", "file-heart"], ["دفع إلكتروني", "credit-card"]].map(([ar, icon]) => ({ ar, icon }));
+    const L = (ar, icon, href) => ({ ar, icon, href: href || "#" });
+    const footCols = [
+      { ar: "المجمع", items: [L("من نحن", "info", "#about"), L("الخدمات", "layout-grid", "#services"), L("الأطباء", "stethoscope", "#doctors"), L("التطبيق", "smartphone", "#app")] },
+      { ar: "الفروع", items: Object.entries(B).map(([k, v]) => L(v.ar, "map-pin", "#branches")) },
+      { ar: "تواصل", items: [L("الاستقبال", "phone"), L("واتساب", "message-circle"), L("يومياً 9 ص – 9 م", "clock")] }];
+    return { navLinks, promises, marquee, values, services, steps, branchTabs, br, docs, appFeats, footCols };
+  }
+}
+</script>
+</body>
+</html>

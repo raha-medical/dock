@@ -1,0 +1,27 @@
+# tool and test outputs (regenerated on every run)
+tools/*/out/
+tools/agent-simulator/state.json
+node_modules/
+.cache/
+test-results/
+playwright-report/
+coverage/
+*.log
+
+# temporary design files
+**/tmp/
+
+# secrets and keys (.env.example files stay tracked)
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+DEV_ACCOUNTS*.txt
+
+# OS / editor files
+Thumbs.db
+desktop.ini
+.DS_Store
+.vs/
+.idea/

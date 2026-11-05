@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="icon" type="image/svg+xml" href="./rahma-mark.svg">
+<script src="./theme.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<script src="./lucide-icon.js"></script>
+<style>
+body{margin:0;background:var(--kF5F8F8,#F5F8F8);font-family:'Readex Pro',sans-serif;color:var(--k0F2328,#0F2328);-webkit-font-smoothing:antialiased}
+a{color:var(--k0F7A82,#0F7A82);text-decoration:none}a:hover{color:var(--k0C5F67,#0C5F67)}
+*{box-sizing:border-box}
+button{font-family:inherit;cursor:pointer}
+</style>
+</helmet>
+<div dir="rtl" style="max-width:1240px;margin:0 auto;padding:36px 28px 80px;display:flex;flex-direction:column;gap:28px">
+  <header style="display:flex;align-items:center;gap:16px;flex-wrap:wrap">
+    <a href="System Hub.dc.html" style="width:52px;height:52px;border-radius:16px;background:var(--k0F7A82,#0F7A82);color:#fff;display:flex;align-items:center;justify-content:center"><lc-icon name="file-check-2" size="26"></lc-icon></a>
+    <div style="display:flex;flex-direction:column;gap:2px;flex:1;min-width:260px"><span style="font-size:28px;font-weight:700">مطابقة عقود v5 مع الواجهات</span><span style="font-size:14px;font-weight:600;color:var(--k4F6368,#4F6368)">النسخة النهائية 02-11-2026 مقارنة بالنسخة السابقة · كل endpoint والشاشة التي يظهر فيها</span></div>
+    <theme-toggle label=""></theme-toggle>
+  </header>
+
+  <section style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px">
+    <sc-for list="{{ stats }}" as="s" hint-placeholder-count="4">
+      <div style="display:flex;flex-direction:column;gap:6px;padding:18px;border-radius:20px;background:var(--kFFFFFF,#fff);border:1px solid var(--kE3EBEC,#E3EBEC)">
+        <span style="display:flex;align-items:center;gap:8px;font-size:13px;font-weight:600;color:var(--k4F6368,#4F6368)"><lc-icon name="{{ s.icon }}" size="16" color="{{ s.c }}"></lc-icon>{{ s.ar }}</span>
+        <span style="font-family:'Space Grotesk';font-size:32px;font-weight:700;line-height:1">{{ s.v }}</span>
+        <span style="font-size:12px;font-weight:600;color:var(--k6B7F84,#6B7F84)">{{ s.sub }}</span>
+      </div>
+    </sc-for>
+  </section>
+
+  <section style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.3fr);gap:16px;align-items:start">
+    <div style="background:var(--kFFFFFF,#fff);border-radius:20px;border:1px solid var(--kE3EBEC,#E3EBEC);padding:20px;display:flex;flex-direction:column;gap:12px">
+      <span style="display:flex;align-items:center;gap:8px;font-size:18px;font-weight:700"><lc-icon name="git-compare" size="19" color="var(--k0F7A82,#0F7A82)"></lc-icon>ما تغيّر في العقد</span>
+      <sc-for list="{{ changes }}" as="c" hint-placeholder-count="8">
+        <div style="display:flex;gap:10px;padding:8px 0;border-bottom:1px solid var(--kEEF2F3,#EEF2F3)">
+          <span dir="ltr" style="font-family:'Space Grotesk';font-size:12px;font-weight:700;color:var(--k0C5F67,#0C5F67);min-width:28px;text-align:right">§{{ c.sec }}</span>
+          <span style="display:flex;flex-direction:column;gap:2px;flex:1"><span style="font-size:14px;font-weight:700">{{ c.t }}</span><span style="font-size:13px;line-height:1.7;color:var(--k4F6368,#4F6368)">{{ c.d }}</span></span>
+        </div>
+      </sc-for>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <span style="display:flex;align-items:center;gap:8px;font-size:18px;font-weight:700"><lc-icon name="layout-panel-top" size="19" color="var(--k0F7A82,#0F7A82)"></lc-icon>ما أُضيف لكل شاشة</span>
+      <sc-for list="{{ gaps }}" as="g" hint-placeholder-count="6">
+        <a href="{{ g.href }}" style="display:flex;flex-direction:column;gap:8px;padding:16px 18px;border-radius:18px;background:var(--kFFFFFF,#fff);border:1px solid var(--kE3EBEC,#E3EBEC);color:var(--k0F2328,#0F2328)">
+          <span style="display:flex;align-items:center;gap:10px"><span style="width:36px;height:36px;border-radius:11px;background:{{ g.soft }};color:{{ g.hex }};display:flex;align-items:center;justify-content:center"><lc-icon name="{{ g.icon }}" size="18"></lc-icon></span><span style="font-size:16px;font-weight:700;flex:1">{{ g.ar }}</span><span style="font-size:12px;font-weight:600;color:var(--k0F7A82,#0F7A82);display:flex;align-items:center;gap:4px">فتح الشاشة<lc-icon name="arrow-left" size="14"></lc-icon></span></span>
+          <sc-for list="{{ g.items }}" as="i" hint-placeholder-count="3"><span style="display:flex;gap:8px;font-size:13px;line-height:1.7;color:var(--k4F6368,#4F6368)"><lc-icon name="plus" size="14" color="var(--k1FA971,#1FA971)"></lc-icon><span style="flex:1">{{ i }}</span></span></sc-for>
+        </a>
+      </sc-for>
+    </div>
+  </section>
+
+  <section style="display:flex;flex-direction:column;gap:12px">
+    <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
+      <span style="font-size:20px;font-weight:700;flex:1;min-width:220px">جدول التغطية · endpoint ← شاشة</span>
+      <sc-for list="{{ filters }}" as="f" hint-placeholder-count="10"><button onClick="{{ f.go }}" style="display:flex;align-items:center;gap:6px;padding:0 12px;height:34px;border-radius:999px;border:1px solid {{ f.line }};background:{{ f.bg }};color:{{ f.fg }};font-size:13px;font-weight:600">{{ f.ar }}<span style="font-family:'Space Grotesk';font-size:11px;opacity:.8">{{ f.n }}</span></button></sc-for>
+    </div>
+    <div style="background:var(--kFFFFFF,#fff);border-radius:20px;border:1px solid var(--kE3EBEC,#E3EBEC);overflow:hidden">
+      <div style="display:grid;grid-template-columns:44px minmax(0,1.5fr) 150px minmax(0,1.4fr) 70px;gap:12px;padding:12px 18px;background:var(--kF5F8F8,#F5F8F8);font-size:12px;font-weight:700;color:var(--k4F6368,#4F6368)"><span>القسم</span><span>Endpoint</span><span>الشاشة</span><span>أين يظهر</span><span>الحالة</span></div>
+      <sc-for list="{{ rows }}" as="r" hint-placeholder-count="12">
+        <div style="display:grid;grid-template-columns:44px minmax(0,1.5fr) 150px minmax(0,1.4fr) 70px;gap:12px;align-items:center;padding:10px 18px;border-top:1px solid var(--kEEF2F3,#EEF2F3);font-size:13px">
+          <span style="font-family:'Space Grotesk';font-weight:700;color:var(--k4F6368,#4F6368)">{{ r.sec }}</span>
+          <span dir="ltr" style="display:flex;align-items:center;gap:8px;justify-content:flex-end;min-width:0"><span style="font-family:'Space Grotesk';font-size:13px;font-weight:600;overflow-wrap:anywhere;text-align:right">{{ r.path }}</span><span style="font-family:'Space Grotesk';font-size:11px;font-weight:700;padding:2px 7px;border-radius:6px;background:{{ r.mbg }};color:{{ r.mfg }}">{{ r.m }}</span></span>
+          <span style="display:flex;flex-wrap:wrap;gap:4px"><sc-for list="{{ r.screens }}" as="s" hint-placeholder-count="1"><span style="display:inline-flex;align-items:center;gap:4px;padding:3px 8px;border-radius:999px;background:{{ s.soft }};color:{{ s.ink }};font-size:12px;font-weight:600"><lc-icon name="{{ s.icon }}" size="12"></lc-icon>{{ s.ar }}</span></sc-for></span>
+          <span style="line-height:1.6;color:var(--k4F6368,#4F6368)">{{ r.where }}</span>
+          <span style="justify-self:start;padding:3px 8px;border-radius:6px;background:{{ r.nbg }};color:{{ r.nfg }};font-size:11px;font-weight:700">{{ r.nt }}</span>
+        </div>
+      </sc-for>
+    </div>
+    <span style="display:flex;align-items:flex-start;gap:8px;font-size:13px;line-height:1.7;font-weight:600;color:var(--k4F6368,#4F6368)"><lc-icon name="info" size="16" color="var(--k0F7A82,#0F7A82)"></lc-icon>«خلفي» تعني أن الـ endpoint يُستدعى تلقائياً بلا زر أو شاشة (تجديد الجلسة، الـ Webhook، تسجيل جهاز الإشعارات، لقطة الأوفلاين). كل ما عداه له عنصر واضح في الشاشة المذكورة.</span>
+  </section>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { f: "all" };
+  renderVals() {
+    const st = this.state, set = p => this.setState(p);
+    const SC = {
+      R:["الاستقبال","concierge-bell","var(--k0C5F67,#0C5F67)","var(--kEAF6F6,#EAF6F6)","Reception.dc.html"],
+      D:["الطبيب","stethoscope","var(--k0C5F67,#0C5F67)","var(--kEAF6F6,#EAF6F6)","Doctor.dc.html"],
+      L:["المختبر والأشعة","microscope","var(--k45238F,#45238F)","var(--kF1ECFC,#F1ECFC)","Diagnostics.dc.html"],
+      P:["الصيدلية","pill","var(--kC25A14,#C25A14)","var(--kFDEFE5,#FDEFE5)","Pharmacy.dc.html"],
+      A:["المحاسب","calculator","var(--k1C468F,#1C468F)","var(--kEAF1FD,#EAF1FD)","Accountant.dc.html"],
+      M:["الإدارة","shield-check","var(--k1C468F,#1C468F)","var(--kEAF1FD,#EAF1FD)","Admin.dc.html"],
+      T:["تطبيق المريض","smartphone","var(--k1C468F,#1C468F)","var(--kEAF1FD,#EAF1FD)","Patient App.dc.html"],
+      S:["دخول الموظفين","key-round","var(--k4F6368,#4F6368)","var(--kEEF2F3,#EEF2F3)","Staff Login.dc.html"],
+      W:["شاشة الانتظار","monitor","var(--k1C468F,#1C468F)","var(--kEAF1FD,#EAF1FD)","Public.dc.html"],
+      X:["خلفي","cpu","var(--k4F6368,#4F6368)","var(--kEEF2F3,#EEF2F3)",""]};
+    const RAW = `1|POST /auth/login|S|نموذج الدخول وحالات الخطأ والقفل
+1|POST /auth/refresh|X|تجديد الجلسة تلقائياً في كل واجهات الموظفين
+1|POST /auth/logout|S|تسجيل الخروج أسفل القائمة الجانبية لكل دور
+1|POST /auth/switch-branch|S|اختيار الفرع بعد الدخول، ومقفل مع وردية مفتوحة في الاستقبال
+1|GET /auth/me|S|بيانات المستخدم وفروعه بعد الدخول
+1|POST /auth/change-password|S|تغيير كلمة المرور
+1|POST /patient-auth/otp/request|T|01 · إرسال الرمز وإعادة الإرسال|n
+1|POST /patient-auth/otp/verify|T|01 · الرمز، المحاولات المتبقية، شارة الوضع التجريبي 000000|n
+1|POST /patient-auth/refresh|X|تجديد جلسة التطبيق تلقائياً|n
+1|POST /patient-auth/logout|T|09 · تسجيل الخروج|n
+1|GET /me/patients|T|09 · ملفات الحساب، و05a فلتر أفراد العائلة|n
+1|POST /me/patients|T|09 · إضافة فرد بملف جديد|n
+1|PATCH /me/patients/{patient_id}|T|09 · تغيير صلة القرابة|n
+2|GET /users|M|المستخدمون والصلاحيات · الجدول
+2|POST /users|M|موظف جديد مع كلمة مرور مؤقتة
+2|GET /users/{user_id}|M|المستخدمون · فتح الموظف
+2|PATCH /users/{user_id}|M|المستخدمون · أيقونة التعديل
+2|POST /users/{user_id}/disable|M|المستخدمون · أيقونة التعطيل
+2|POST /users/{user_id}/enable|M|المستخدمون · أيقونة التفعيل للمعطّل
+2|POST /users/{user_id}/reset-password|M|المستخدمون · أيقونة المفتاح
+2|GET /roles|M|شرائح الأدوار وصلاحيات كل دور
+3|GET /branches|M|الفروع · بطاقات الفروع وحالتها
+3|GET /branches/{branch_id}|M|الفروع · تفاصيل الفرع
+3|POST /branches|M|زر فرع جديد
+3|PATCH /branches/{branch_id}|M|الفروع · تعديل وإيقاف
+3|GET /branches/{branch_id}/overview|M|الفروع · ما بداخل الفرع وتنبيهات الإعداد
+3|GET /branches/{branch_id}/closures|M|الفروع · سجل الإغلاق
+3|POST /branches/{branch_id}/closures|M|الفروع · إغلاق الفرع مؤقتاً بسبب
+3|POST /branches/{branch_id}/closures/{closure_id}/end|M|الفروع · إعادة الفتح
+3|GET /branches/{branch_id}/clinics|M|الأقسام والعيادات · القائمة
+3|GET /clinics/{clinic_id}|M|الأقسام والعيادات · تفاصيل القسم
+3|POST /branches/{branch_id}/clinics|M|الأقسام والعيادات · قسم جديد
+3|PATCH /clinics/{clinic_id}|M|الأقسام والعيادات · تعديل
+3|GET /clinics/{clinic_id}/closures|M|الأقسام والعيادات · سجل الإغلاق
+3|POST /clinics/{clinic_id}/closures|M|الأقسام والعيادات · إغلاق مؤقت
+3|POST /clinics/{clinic_id}/closures/{closure_id}/end|M|الأقسام والعيادات · إعادة الفتح
+3|GET /branches/{branch_id}/settings|M|الإعدادات · تبويب الفرع، ومنها 7 مفاتيح جديدة|n
+3|PATCH /branches/{branch_id}/settings|M|الإعدادات · تخصيص وإرجاع للعامة، اختيار «من يستدعي» ومفتاح الاستدعاء التلقائي|n
+3|GET /settings|M|الإعدادات · الإعداد العام|n
+3|PATCH /settings|M|الإعدادات · حفظ التغييرات|n
+3|GET /lookups|M|قوائم الاختيار · التصنيفات
+3|GET /lookups/{category}|M|قوائم الاختيار · القيم
+3|POST /lookups/{category}|M|قيمة جديدة
+3|PATCH /lookups/{category}/{lookup_id}|M|قوائم الاختيار · إخفاء وإظهار
+3|GET /services|M|الخدمات والأسعار
+3|POST /services|M|خدمة جديدة
+3|PATCH /services/{service_id}|M|الخدمات · أيقونة التعديل
+3|GET /doctors|M|الأطباء والجداول · القائمة
+3|GET /doctors/{doctor_id}|M|الأطباء · ملف الطبيب
+3|PUT /doctors/{doctor_id}/photo|M|الأطباء · رفع الصورة
+3|DELETE /doctors/{doctor_id}/photo|M|الأطباء · حذف الصورة
+3|GET /doctors/{doctor_id}/commissions|M|الأطباء · النسب السارية والقادمة
+3|POST /doctors/{doctor_id}/commissions|M|الأطباء · نسبة جديدة من تاريخ
+3|GET /doctors/{doctor_id}/schedule|M|الأطباء · جدول الأسبوع
+3|PUT /doctors/{doctor_id}/schedule|M|الأطباء · حفظ الجدول
+3|GET /doctors/{doctor_id}/sessions|M|الأطباء · الوجبات القادمة
+3|POST /doctors/{doctor_id}/sessions/{date}/cancel|M|الأطباء · إلغاء الوجبة
+3|GET /devices|M|الأجهزة والشاشات · القائمة
+3|POST /devices|M|الأجهزة · تسجيل جهاز جديد
+3|POST /devices/{device_id}/display-key|M|الأجهزة · مفتاح جديد للشاشة
+4|POST /patients|R|حضور وتسجيل · مريض جديد وحضور مباشر
+4|GET /patients/search|R|البحث في الشريط العلوي وحضور وتسجيل
+4|GET /patients/{patient_id}|R|بطاقة المريض في التحصيل والاسترجاع
+4|PATCH /patients/{patient_id}|R|حضور وتسجيل · زر تعديل البيانات بجانب كل نتيجة|n
+4|POST /patients/merge|M|دمج الملفات والتدقيق
+4|GET /patients/{patient_id}/ban-status|R|نتيجة بحث «محظور» وشاشة فك الحظر
+4|POST /patients/{patient_id}/unban|R|فك الحظر · نقد أو POS أو إعفاء
+4|GET /patients/{patient_id}/history|D|سجل المريض · الفرع، الملاحظات السريرية، القيم الحرجة، الملاحق|n
+5|GET /public/branches|T|01b · الفروع وحالتها
+5|GET /public/branches/{branch_id}|T|01c · الواجهة الرئيسية للفرع
+5|GET /public/branches/{branch_id}/doctors|T|02 · الأطباء المتاحون
+5|GET /public/doctors/{doctor_id}/availability|T|03 · الأيام والوجبة والتسلسل
+5|POST /bookings|T,R|03 · لمن الحجز وخيارات الدفع الثلاثة · الاستقبال: الحجز الهاتفي|n
+5|GET /bookings|R|حضور وتسجيل · حالة الحجز في نتائج البحث
+5|GET /bookings/my|T|05a · القادمة والسابقة وفلتر العائلة|n
+5|GET /bookings/{booking_id}|T|02 · بطاقة «تذكرتي» ← 05
+5|POST /bookings/{booking_id}/cancel|T|05a و05 · إلغاء الحجز|n
+6|POST /online-payments|T|04 عربون الحجز، 06 دفع نتيجة مقفلة، 07 عربون فك الحظر|n
+6|GET /online-payments/{online_payment_id}|T|04c · تأكيد الدفع والإيصال B1-O|n
+6|POST /webhooks/payments/{provider}|X|من البوابة إلى السيرفر
+6|GET /sandbox/pay/{online_payment_id}|T|04b · صفحة البوابة التجريبية|n
+6|POST /sandbox/pay/{online_payment_id}|T|04b · زرا نجاح وفشل|n
+7|GET /queue/live|R,D|الطابور الحي وطابوري · سياسة الاستدعاء، «قادم»، «في الطريق»|n
+7|GET /public/displays/{display_id}/queue|W|شاشة الانتظار العامة بدون أسماء
+7|POST /queue/check-in|R|تثبيت الحضور ومسح رمز الحجز
+7|POST /queue/call-next|R,D|زر «استدعاء التالي» حسب سياسة الفرع|n
+7|POST /queue/tickets/{ticket_id}/call|R|استدعاء وإعادة استدعاء التذكرة المحددة|n
+7|POST /queue/tickets/{ticket_id}/start|D|«دخل · بدء المعاينة» في قائمة طابوري|n
+7|POST /queue/tickets/{ticket_id}/complete|D,R|«إنهاء فقط» و«إنهاء واستدعاء التالي»|n
+7|POST /queue/tickets/{ticket_id}/no-show|R|غياب نهائي وتخطي مؤقت
+7|POST /queue/tickets/{ticket_id}/emergency|R,D|طوارئ
+7|POST /queue/tickets/{ticket_id}/late-arrival|R|وصل متأخراً
+7|POST /queue/sessions/{session_id}/fast-forward-offers|R|بطاقة الفجوة، ووضع «دعوة مبكرة» بالوقت والعدد والصلاحية|n
+7|POST /fast-forward-offers/{offer_id}/respond|T|05 · «في الطريق» مع وقت الوصول|n
+7|POST /me/queue-tickets/{ticket_id}/acknowledge-call|T|05b · زر «أنا قادم»|n
+7|GET /me/queue-tickets|T|05a · طابوري اليوم، ويشمل الحضور المباشر|n
+8|GET /patients/{patient_id}/billable-items|R|التحصيل · السلة الموحدة
+8|POST /invoices|R|طلب مباشر · فاتورة يدوية بخصم
+8|GET /invoices/{invoice_id}|A|الفواتير · التفاصيل
+8|GET /invoices|A|الفواتير · البحث
+8|POST /invoices/{invoice_id}/void|A|الفواتير · إلغاء الفاتورة غير المدفوعة
+8|POST /invoice-items/{invoice_item_id}/refunds|R|الاسترجاع · استرجاع بند
+8|GET /refunds|R,A|طلبات الاسترجاع اليوم · اعتماد الاسترجاع
+8|GET /refunds/{refund_id}|A|اعتماد الاسترجاع · التفاصيل
+8|POST /refunds/{refund_id}/approve|A|اعتماد الاسترجاع · اعتماد
+8|POST /refunds/{refund_id}/reject|A|اعتماد الاسترجاع · رفض
+9|POST /payments|R|التحصيل · تحصيل وطباعة مع رصيد العربون
+9|GET /receipts/{receipt_id}/print-payload|R|معاينة الإيصال قبل الطباعة
+9|POST /receipts/{receipt_id}/reprint|R|نسخة مكررة لإيصال سابق
+9|GET /public/receipts/verify/{code}|S|التحقق العام من الإيصال عبر QR
+10|POST /shifts/open|R|الوردية · فتح وردية ونقطة التحصيل
+10|GET /shifts/current|R|الوردية · الوردية الحالية
+10|POST /shifts/{shift_id}/close|R|الوردية · الإغلاق الأعمى
+10|GET /shifts/{shift_id}/reconciliation|A|مطابقة الورديات
+10|POST /shifts/{shift_id}/review|A|مطابقة الورديات · قبول أو تصعيد
+10|GET /shifts|A|ورديات اليوم
+11|POST /consultations|D|المعاينة · «حفظ» و«حفظ وإنهاء» مع «واستدعاء التالي»|n
+11|GET /consultations/{consultation_id}|D|سجل المريض · تفاصيل الزيارة|n
+11|GET /consultations|D|فتح المعاينة لتذكرة المريض الحالي|n
+11|PATCH /consultations/{consultation_id}|D|سجل المريض · «تعديل المعاينة» حتى نهاية نافذة التعديل|n
+11|POST /consultations/{consultation_id}/orders|D|سجل المريض · «إضافة تحليل أو أشعة»|n
+11|POST /consultations/{consultation_id}/addenda|D|سجل المريض · «إضافة ملحق» وعرض الملاحق|n
+11|POST /medical-orders|R|طلب مباشر · ورقة طبيب خارجي مع اسم الطبيب المحيل|n
+11|POST /medical-orders/{order_item_id}/cancel|R|طلب مباشر · «إلغاء الطلب» غير المدفوع|n
+11|GET /me/patients/{patient_id}/visits|T|06 · النتائج والوصفات، موعد المراجعة، زر الدفع|n
+12|GET /lab/worklist|L|قائمة العمل · «كل المفتوح» من كل الأيام، المعتمدة اليوم، البحث، الطبيب المحيل|n
+12|POST /lab/orders/{order_item_id}/collect-sample|L|«سحب العينة وطباعة باركود تلقائي»|n
+12|POST /lab/orders/{order_item_id}/start|L|«بدء التحليل»|n
+12|GET /lab/tests/{service_id}/template|L,M|جدول القيم والمدى المرجعي · محرر القالب|n
+12|PUT /lab/tests/{service_id}/template|M|الخدمات والأسعار · قالب التحليل وحدوده الحرجة|n
+12|PUT /lab/orders/{order_item_id}/result|L|مسودة، اعتماد، مرفقات، وتعديل نتيجة معتمدة بسبب|n
+12|GET /lab/orders/{order_item_id}/result|D,T|إشعار القيمة الحرجة وسجل المريض · 06 تحاليل
+13|GET /radiology/worklist|L|قائمة عمل الأشعة وفلتر النوع
+13|POST /radiology/orders/{order_item_id}/schedule|L|جدولة وإعادة جدولة مع الغرفة|n
+13|POST /radiology/orders/{order_item_id}/performed|L|«تم التنفيذ»|n
+13|PUT /radiology/orders/{order_item_id}/report|L|التقرير، المسودة، الاعتماد، التعديل بسبب|n
+13|GET /radiology/orders/{order_item_id}/report|D,T|سجل المريض · 06 أشعة
+13|POST /files/upload-url|L|رفع ملف مع شريط التقدم
+13|POST /files/{file_id}/complete|L|علامة stored على الملف المرفوع
+13|GET /files/{file_id}/download-url|L,T|عرض الصور والمرفقات · تحميل التقرير PDF
+14|POST /deferrals|D,R|«تنفيذ الطلبات قبل الدفع» · حالة «آجل» في الطابور
+14|GET /deferrals|A|الذمم الآجلة
+14|GET /deferrals/{deferral_id}|A|الذمم الآجلة · التفاصيل
+14|POST /deferrals/{deferral_id}/write-off|A|الذمم الآجلة · الإعفاء النهائي
+15|GET /pharmacy/prescriptions/{prescription_code}|P|المسح · المريض والتشخيص والفرع وتاريخ الانتهاء|n
+15|POST /pharmacy/prescriptions/{prescription_id}/dispense|P|صرف، بديل، سبب عدم الصرف
+15|GET /pharmacy/dispensed|P|«سجل الصرف اليوم» وتبويباته|n
+15|GET /me/patients/{patient_id}/prescriptions|T|06 · الوصفات وصلاحيتها في أي فرع|n
+16|GET localhost/status|R|شارات الطابعة والدرج في الشريط العلوي
+16|POST localhost/print/receipt|R|«تحصيل وطباعة الإيصال»
+16|POST localhost/print/ticket|R|«طباعة التذكرة»
+16|GET localhost/events|R|المزامنة · وكيل العتاد
+17|POST /devices/{device_id}/receipt-blocks|R|المزامنة · كتلة الإيصالات
+17|POST /devices/{device_id}/receipt-blocks/{block_id}/return|R|الوردية · «أُعيدت أرقام الإيصالات غير المستخدمة»|n
+17|POST /sync/batch|R|المزامنة · الصادر ونتائجه
+17|GET /sync/snapshot|X|تحميل البيانات للعمل أوفلاين
+18|GET /me/notifications|D,R,T|جرس الإشعارات · 08 الإشعارات بالأنواع الجديدة|n
+18|POST /me/notifications/{notification_id}/read|T|08 · فتح الإشعار
+18|POST /me/notifications/read-all|T|08 · تعليم الكل كمقروء|n
+18|POST /me/devices|X|تسجيل الجهاز للإشعارات عند الدخول
+18|DELETE /me/devices/{push_token}|X|عند تسجيل الخروج|n
+18|GET /sandbox/messages|M|الرسائل التجريبية|n
+19|GET /reports/branch-settlements|A|تسويات الفروع
+19|GET /reports/dashboard|A|لوحة الفروع
+19|GET /reports/daily-revenue|A|الإيراد اليومي
+19|GET /reports/doctor-earnings|A|أرباح الأطباء
+19|GET /reports/no-shows|A|الغياب
+19|GET /reports/audit-logs|A,M|سجل التدقيق
+20|POST /expenses|A|المصاريف · مصروف جديد
+20|GET /expenses|A|المصاريف · القائمة
+20|GET /expenses/{expense_id}|A|المصاريف · التفاصيل
+20|POST /expenses/{expense_id}/void|A|المصاريف · إلغاء
+21|GET /admin/backups/status|M|النسخ الاحتياطي · الحالة والجدول|n
+21|GET /admin/backups|M|النسخ الاحتياطي · سجل التشغيل والفلاتر|n
+21|POST /admin/backups/run|M|النسخ الاحتياطي · «طلب النسخة» حسب النوع|n`;
+    const MC = {GET:["var(--kEAF1FD,#EAF1FD)","var(--k1C468F,#1C468F)"],POST:["var(--kE6F6EE,#E6F6EE)","var(--k157A50,#157A50)"],PUT:["var(--kFDF3E2,#FDF3E2)","var(--k8A520B,#8A520B)"],PATCH:["var(--kFDF3E2,#FDF3E2)","var(--k8A520B,#8A520B)"],DELETE:["var(--kFDECEC,#FDECEC)","var(--kB4262B,#B4262B)"]};
+    const all = RAW.split("\n").map(l=>{const [sec,ep,sc,where,n]=l.split("|");const [m,...p]=ep.split(" ");return {sec,m,path:p.join(" "),sc:sc.split(","),where,isNew:n==="n"};});
+    const rows = all.filter(r=>st.f==="all"||(st.f==="new"?r.isNew:r.sc.includes(st.f))).map(r=>({sec:r.sec,m:r.m,path:r.path,where:r.where,mbg:MC[r.m][0],mfg:MC[r.m][1],
+      screens:r.sc.map(k=>({ar:SC[k][0],icon:SC[k][1],ink:SC[k][2],soft:SC[k][3]})),
+      nt:r.sc.includes("X")?"خلفي":(r.isNew?"أُضيف":"مغطّى"),nbg:r.sc.includes("X")?"var(--kEEF2F3,#EEF2F3)":(r.isNew?"var(--kE6F6EE,#E6F6EE)":"var(--kEAF6F6,#EAF6F6)"),nfg:r.sc.includes("X")?"var(--k4F6368,#4F6368)":(r.isNew?"var(--k157A50,#157A50)":"var(--k0C5F67,#0C5F67)")}));
+    const cnt = k => all.filter(r=>k==="all"||(k==="new"?r.isNew:r.sc.includes(k))).length;
+    const filters = [["all","الكل"],["new","الجديد"],...Object.entries(SC).map(([k,v])=>[k,v[0]])].map(([k,ar])=>{const on=st.f===k;return {ar,n:String(cnt(k)),bg:on?"var(--kB0F2328,#0F2328)":"var(--kFFFFFF,#fff)",fg:on?"#fff":"var(--k4F6368,#4F6368)",line:on?"var(--k0F2328,#0F2328)":"var(--kE3EBEC,#E3EBEC)",go:()=>set({f:k})};});
+    const bg = all.filter(r=>r.sc.includes("X")).length;
+    const stats = [
+      {ar:"كل الـ endpoints",v:String(all.length),sub:"في 21 قسماً",icon:"plug",c:"var(--k0F7A82,#0F7A82)"},
+      {ar:"لها عنصر في الواجهات",v:String(all.length-bg),sub:"زر أو شاشة أو حقل واضح",icon:"layout-panel-top",c:"var(--k1FA971,#1FA971)"},
+      {ar:"خلفية بلا شاشة",v:String(bg),sub:"تُستدعى تلقائياً",icon:"cpu",c:"var(--k6B7F84,#6B7F84)"},
+      {ar:"جديد أو متغيّر وأُضيف",v:String(all.filter(r=>r.isNew).length),sub:"منذ النسخة السابقة من العقد",icon:"sparkles",c:"var(--kE9A23B,#E9A23B)"}];
+    const changes = [
+      ["1","مصادقة المريض","رمز تجريبي ثابت 000000، المحاولات المتبقية، تجديد وخروج، وإدارة ملفات العائلة (/me/patients)."],
+      ["5","الحجز من التطبيق","حجوزاتي القادمة والسابقة، إلغاء المريض، وحالة «عربون مدفوع»."],
+      ["6","الدفع الإلكتروني","بوابة تجريبية بصفحة نجاح/فشل، إيصال B1-O بعد التأكيد، ودفع فاتورة النتائج المقفلة."],
+      ["7","الطابور","سياسة الاستدعاء لكل فرع، استدعاء التالي، إنهاء واستدعاء التالي، «أنا قادم»، طابوري اليوم، ودعوة الحضور المبكر و«في الطريق»."],
+      ["11","العيادة","كائن معاينة كامل، نافذة التعديل، إضافة طلبات لاحقاً، الملاحق، «حفظ وإنهاء»، والطلب المباشر من الاستقبال بورقة طبيب خارجي."],
+      ["12–13","المختبر والأشعة","بدء التحليل، قالب التحليل وحدوده الحرجة، باركود تلقائي، تعديل نتيجة معتمدة بسبب، الطبيب المحيل، وغرفة الأشعة."],
+      ["15","الصيدلية","سجل الصرف، التشخيص والفرع وتاريخ الانتهاء على الوصفة، ووصفات المريض في التطبيق."],
+      ["17","الأوفلاين","إعادة أرقام الإيصالات غير المستخدمة عند إغلاق الوردية."],
+      ["18","الإشعارات","أنواع جديدة (إرجاع، رصيد، تذكير بالحضور المبكر، اقترب دورك، تفضل للدخول، فشل النسخ)، حذف جهاز الإشعارات، والرسائل التجريبية، و6 إعدادات جديدة."],
+      ["21","النسخ الاحتياطي","قسم جديد للمدير العام: الحالة، سجل التشغيل، وطلب نسخة."]].map(([sec,t,d])=>({sec,t,d}));
+    const G = (k,items)=>({ar:SC[k][0],icon:SC[k][1],hex:SC[k][2],soft:SC[k][3],href:SC[k][4],items});
+    const gaps = [
+      G("R",["شريط سياسة الاستدعاء وزر «استدعاء التالي»، و«إعادة استدعاء» و«إنهاء واستدعاء التالي» في إجراءات التذكرة","علامتا «قادم» و«في الطريق» في الطابور الحي","وضع «دعوة مبكرة» في بطاقة التقديم الذكي","شاشة «طلب مباشر»: ورقة طبيب خارجي مع الطبيب المحيل، وإلغاء الطلب غير المدفوع","الحجز الهاتفي، وزر تعديل بيانات المريض"]),
+      G("D",["شريط سياسة الاستدعاء، «إنهاء فقط» و«إنهاء واستدعاء التالي»، و«دخل · بدء المعاينة»","«حفظ وإنهاء» مع خيار «واستدعاء التالي»، ووقت انتهاء نافذة التعديل","سجل المريض: الملاحظات، القيم الحرجة، الملاحق، تعديل المعاينة، وإضافة طلب لاحقاً"]),
+      G("L",["أزرار حسب الحالة: سحب العينة بباركود تلقائي، بدء التحليل، جدولة، تم التنفيذ","فلتر «كل المفتوح» و«معتمدة اليوم»، والطبيب المحيل للطلب المباشر","مرفقات نتيجة المختبر، وتعديل نتيجة معتمدة بسبب إلزامي"]),
+      G("P",["«سجل الصرف اليوم»، والتشخيص والفرع والجنس والعمر وتاريخ انتهاء الوصفة"]),
+      G("T",["شارة الرمز التجريبي والمحاولات المتبقية","لمن الحجز، وخيارات الدفع الثلاثة (كامل، عربون، بالعيادة)","البوابة التجريبية وتأكيد الدفع بالإيصال","حجوزاتي وطابوري اليوم، تنبيه «تفضل للدخول» بزر «أنا قادم»، «اقترب دورك»، و«في الطريق»","الإشعارات بالأنواع الجديدة، وحسابي والعائلة"]),
+      G("M",["7 إعدادات جديدة بينها «من يستدعي المرضى» والاستدعاء التلقائي","محرر قالب التحليل","شاشة النسخ الاحتياطي، وشاشة الرسائل التجريبية"])];
+    return {stats,changes,gaps,filters,rows};
+  }
+}
+</script>
+</body>
+</html>

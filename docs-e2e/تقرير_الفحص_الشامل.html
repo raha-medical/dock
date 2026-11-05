@@ -1,0 +1,324 @@
+<title>فحص مجمع الرحمة الشامل</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600&family=Readex+Pro:wght@500;600;700&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+/* Layout: one reading column with a sticky section index on wide screens; clinic teal on a cool off-white, navy for structure. */
+:root{
+  --bg:#F3F6F6; --surface:#FFFFFF; --ink:#13262F; --muted:#56707A; --line:#D6E1E2;
+  --teal:#0E6E6C; --teal-soft:#DDEFEE; --navy:#14324A;
+  --ok:#1D7A46; --ok-soft:#E1F2E8; --warn:#9A5B00; --warn-soft:#FBEFD9; --bad:#A3322A; --bad-soft:#F8E3E1;
+  --f-display:"Readex Pro","IBM Plex Sans Arabic",Tahoma,sans-serif;
+  --f-body:"IBM Plex Sans Arabic",Tahoma,"Segoe UI",sans-serif;
+  --f-mono:"IBM Plex Mono",Consolas,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0E1719; --surface:#152226; --ink:#E4EEEF; --muted:#94AAB0; --line:#27393E;
+  --teal:#4FC0BB; --teal-soft:#16393A; --navy:#A9C7DA;
+  --ok:#5FCB8B; --ok-soft:#173527; --warn:#E8B45A; --warn-soft:#3A2D14; --bad:#F08A80; --bad-soft:#3C1E1B; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0E1719; --surface:#152226; --ink:#E4EEEF; --muted:#94AAB0; --line:#27393E;
+  --teal:#4FC0BB; --teal-soft:#16393A; --navy:#A9C7DA;
+  --ok:#5FCB8B; --ok-soft:#173527; --warn:#E8B45A; --warn-soft:#3A2D14; --bad:#F08A80; --bad-soft:#3C1E1B; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.8;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.wrap{max-width:1080px;margin:0 auto;padding-block:40px 80px;display:grid;grid-template-columns:220px minmax(0,1fr);gap:40px}
+nav.toc{position:sticky;top:calc(env(safe-area-inset-top,0px) + 24px);align-self:start;display:flex;flex-direction:column;gap:2px;font-size:14px}
+nav.toc a{color:var(--muted);text-decoration:none;padding:6px 12px;border-inline-start:2px solid var(--line)}
+nav.toc a:hover,nav.toc a:focus-visible{color:var(--teal);border-color:var(--teal);outline:none}
+main{min-width:0;display:flex;flex-direction:column;gap:56px}
+header.top{display:flex;flex-direction:column;gap:12px}
+.eyebrow{font-family:var(--f-display);font-size:13px;letter-spacing:.04em;color:var(--teal);font-weight:600}
+h1{font-family:var(--f-display);font-size:clamp(28px,4vw,40px);line-height:1.3;margin:0;text-wrap:balance;color:var(--navy)}
+h2{font-family:var(--f-display);font-size:24px;margin:0 0 6px;color:var(--navy);text-wrap:balance}
+h3{font-family:var(--f-display);font-size:18px;margin:0;color:var(--ink)}
+p{margin:0;max-width:68ch}
+.lede{color:var(--muted);font-size:17px}
+.meta{font-size:14px;color:var(--muted)}
+section{display:flex;flex-direction:column;gap:18px;scroll-margin-top:24px}
+.status{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.st{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:14px 16px;display:flex;flex-direction:column;gap:4px}
+.st b{font-family:var(--f-display);font-size:22px;font-variant-numeric:tabular-nums}
+.st span{font-size:13px;color:var(--muted)}
+.st.ok b{color:var(--ok)} .st.warn b{color:var(--warn)}
+.pill{display:inline-block;font-size:12.5px;font-weight:600;padding:1px 10px;border-radius:999px;white-space:nowrap}
+.pill.ok{background:var(--ok-soft);color:var(--ok)} .pill.warn{background:var(--warn-soft);color:var(--warn)} .pill.bad{background:var(--bad-soft);color:var(--bad)} .pill.info{background:var(--teal-soft);color:var(--teal)}
+.tbl{overflow-x:auto;border:1px solid var(--line);border-radius:10px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;font-size:14.5px;min-width:560px}
+th,td{text-align:start;padding:10px 14px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-family:var(--f-display);font-weight:600;font-size:13px;color:var(--muted);background:var(--bg)}
+tr:last-child td{border-bottom:0}
+td.n{font-variant-numeric:tabular-nums;color:var(--muted);width:2.5em}
+code,.mono{font-family:var(--f-mono);font-size:.88em;direction:ltr;unicode-bidi:isolate;background:var(--teal-soft);color:var(--teal);padding:0 5px;border-radius:4px}
+.dept{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:20px 22px;display:flex;flex-direction:column;gap:12px}
+.dept-h{display:flex;flex-wrap:wrap;align-items:baseline;gap:8px 14px}
+.dept-h .who{font-size:13.5px;color:var(--muted)}
+.dept ul{margin:0;padding-inline-start:20px;display:flex;flex-direction:column;gap:4px}
+.dept li{max-width:72ch}
+.dept li b{font-weight:600}
+.grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+ol.flow{list-style:none;margin:0;padding:0;counter-reset:s;display:flex;flex-direction:column}
+ol.flow>li{counter-increment:s;display:grid;grid-template-columns:44px minmax(0,1fr);gap:14px;padding-bottom:22px;position:relative}
+ol.flow>li::before{content:counter(s);font-family:var(--f-display);font-weight:700;font-size:15px;width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:var(--teal);color:var(--surface);z-index:1}
+ol.flow>li::after{content:"";position:absolute;inset-inline-start:16px;top:34px;bottom:0;width:2px;background:var(--line)}
+ol.flow>li:last-child::after{display:none}
+.flow h3{margin-bottom:4px}
+.flow .role{font-size:13px;color:var(--teal);font-weight:600}
+.flow p{color:var(--ink)}
+.flow .sys{color:var(--muted);font-size:14.5px;margin-top:4px}
+.find{border-inline-start:4px solid var(--line);background:var(--surface);border-radius:0 10px 10px 0;padding:14px 18px;display:flex;flex-direction:column;gap:6px}
+.find.bad{border-color:var(--bad)} .find.warn{border-color:var(--warn)} .find.info{border-color:var(--teal)}
+.find h3{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.find p{font-size:15px}
+pre{margin:0;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:14px 16px;overflow-x:auto;font-family:var(--f-mono);font-size:13.5px;line-height:1.7;direction:ltr;text-align:left}
+@media (max-width:860px){.wrap{grid-template-columns:minmax(0,1fr)}nav.toc{display:none}.status{grid-template-columns:repeat(2,minmax(0,1fr))}.grid2{grid-template-columns:minmax(0,1fr)}}
+@media (prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
+html{scroll-behavior:smooth}
+</style>
+
+<div dir="rtl" lang="ar">
+<div class="wrap">
+<nav class="toc" aria-label="أقسام التقرير">
+  <a href="#summary">الخلاصة</a>
+  <a href="#env">بيئة التشغيل</a>
+  <a href="#e2e">نتيجة الفحص الشامل</a>
+  <a href="#depts">الأقسام ووظائفها</a>
+  <a href="#scenario">سيناريو يوم كامل</a>
+  <a href="#findings">الملاحظات والمشاكل</a>
+  <a href="#rerun">إعادة التشغيل</a>
+</nav>
+
+<main>
+<header class="top" id="summary">
+  <div class="eyebrow">مجمع الرحمة الطبي · فحص من البداية للنهاية</div>
+  <h1>تقرير التشغيل والفحص الشامل</h1>
+  <p class="lede">شُغّل النظام كاملاً على حاسبة التطوير (قاعدة البيانات، الخادم، الواجهة، ومحاكي الطابعة والدرج)، ثم مرّ مريضان بكل الأقسام عبر المتصفح بحسابات الأدوار الحقيقية: من الحجز في التطبيق حتى اعتماد المحاسب للوردية.</p>
+  <p class="meta">4 نوفمبر 2026 · الفرع الرئيسي B1 · قاعدة بيانات جديدة <span class="mono">alrahma_db</span></p>
+  <div class="status">
+    <div class="st ok"><b>نجح</b><span>المسار الكامل لمريضين عبر 8 أقسام</span></div>
+    <div class="st ok"><b>48 / 48</b><span>شاشة فُتحت ببياناتها بلا خطأ API</span></div>
+    <div class="st warn"><b>4 / 84</b><span>اختبارات آلية نجحت. الباقي فشل بسبب نقص .NET 8 لا بسبب الكود</span></div>
+    <div class="st warn"><b>7</b><span>ملاحظات: ثلاث مشاكل في الواجهة أُصلحت، والباقي بيئة وتفاصيل</span></div>
+  </div>
+</header>
+
+<section id="env">
+  <h2>بيئة التشغيل</h2>
+  <p>السكربت <code>start-native.bat</code> يفترض PostgreSQL 16 على المنفذ 5432 و.NET 8. هذه الحاسبة مختلفة، لذلك شُغّلت الخدمات يدوياً بنفس إعدادات السكربت مع تعديل المنفذ والإصدار:</p>
+  <div class="tbl"><table>
+    <thead><tr><th>الخدمة</th><th>العنوان</th><th>ملاحظة</th></tr></thead>
+    <tbody>
+      <tr><td>قاعدة البيانات</td><td><code>localhost:5433</code></td><td>PostgreSQL 15. المنفذ 5432 عليه PostgreSQL 9.6 وهو أقدم من أن يشغّل المخطط (لا يدعم <code>gen_random_uuid</code>). المخطط والترحيلات 001–008 طُبقت بنجاح (61 جدولاً).</td></tr>
+      <tr><td>الخادم API</td><td><code>localhost:8088</code></td><td>يعمل على .NET 10 بخيار <code>DOTNET_ROLL_FORWARD=Major</code>. Swagger مفعّل.</td></tr>
+      <tr><td>الواجهة</td><td><code>localhost:3000</code></td><td>Next.js بوضع التطوير، مع <code>.env.local</code> الموجود كما هو.</td></tr>
+      <tr><td>محاكي الوكيل</td><td><code>localhost:9443</code></td><td>يحفظ الإيصالات والتذاكر والملصقات في <code>tools/agent-simulator/out</code>.</td></tr>
+    </tbody>
+  </table></div>
+  <p>الإعداد الأولي (العيادات، الخدمات والأسعار، قالب تحليل CBC، الموظفون الستة، جدول الطبيب ونسبه، حاسبة الاستقبال وشاشة الانتظار) أُدخل عبر نفس نداءات الـ API التي تستخدمها شاشات الإدارة، ثم فُحصت شاشات الإدارة لتأكيد ظهوره. أسماء المستخدمين مطابقة لملف <code>DEV_ACCOUNTS.local.txt</code>.</p>
+</section>
+
+<section id="e2e">
+  <h2>نتيجة الفحص الشامل</h2>
+  <p>كل خطوة نُفذت من المتصفح بالدور المذكور، وتأكدت نتيجتها من الشاشة التالية أو من قاعدة البيانات أو من سجل المحاكي.</p>
+  <div class="tbl"><table>
+    <thead><tr><th></th><th>الخطوة</th><th>الدور</th><th>ما تأكد</th><th>النتيجة</th></tr></thead>
+    <tbody>
+      <tr><td class="n">1</td><td>الدخول وتغيير كلمة المرور المؤقتة</td><td>المدير</td><td>إجبار تغيير كلمة المرور قبل أي شاشة</td><td><span class="pill ok">نجح</span></td></tr>
+      <tr><td class="n">2</td><td>فتح شاشات الإدارة الـ 11</td><td>المدير</td><td>الفرع وأقسامه، الموظفون، الطبيب وجدوله (سعة 93)، الأسعار، الأجهزة، سجل التدقيق</td><td><span class="pill ok">نجح</span></td></tr>
+      <tr><td class="n">3</td><td>تسجيل بالهاتف ورمز OTP وإنشاء ملف</td><td>المريض</td><td>الرمز وصل لـ «الرسائل التجريبية» وكان عشوائياً</td><td><span class="pill ok">نجح</span></td></tr>
+      <tr><td class="n">4</td><td>حجز اليوم ودفع إلكتروني تجريبي</td><td>المريض</td><td>الحجز «محجوز · مدفوع»، دوره #1</td><td><span class="pill ok">نجح</span></td></tr>
+      <tr><td class="n">5</td><td>فتح وردية بفكة 50,000</td><td>الاستقبال</td><td>استُلمت كتلة إيصالات أوفلاين B1-D01-1…200. ظهرت مشكلة حقل المبلغ وأُصلحت</td><td><span class="pill warn">نجح مع ملاحظة</span></td></tr>
+      <tr><td class="n">6</td><td>مسح رمز الحجز وتثبيت الحضور</td><td>الاستقبال</td><td>تذكرة A-001 مدفوعة، طُبعت عبر المحاكي</td><td><span class="pill ok">نجح</span></td></tr>
+      <tr><td class="n">7</td><td>مريضة جديدة حضور مباشر</td><td>الاستقبال</td><td>ملف B1-000002 وتذكرة A-002 بمبلغ 25,000</td><td><span class="pill ok">نجح</span></td></tr>
+      <tr><td class="n">8</td><td>تحصيل نقدي وطباعة إيصال</td><td>الاستقبال</td><td>B1-R-000001 طُبع، والدرج فُتح بتوكن موقّع من الخادم</td><td><span class="pill ok">نجح</span></td></tr>
+      <tr><td class="n">9</td><td>استدعاء، دخل، معاينة كاملة</td><td>الطبيب</td><td>تشخيص K29.7، وصفة RX-5PBZ23، طلب CBC وسونار (70,000 بنداً غير مدفوع)</td><td><span class="pill ok">نجح</span></td></tr>
+      <tr><td class="n">10</td><td>حفظ وإنهاء واستدعاء التالي</td><td>الطبيب</td><td>A-001 مكتمل، A-002 استُدعيت ووصلها SMS «تفضل للدخول»</td><td><span class="pill ok">نجح</span></td></tr>
+      <tr><td class="n">11</td><td>تحصيل التحليل والسونار POS</td><td>الاستقبال</td><td>B1-R-000002 بلا فتح الدرج</td><td><span class="pill ok">نجح</span></td></tr>
+      <tr><td class="n">12</td><td>سحب العينة، ملصق، تحليل، نتيجة، اعتماد</td><td>المختبر</td><td>باركود S-261104-0001، WBC «حرج منخفض»، إشعار قيمة حرجة للطبيب</td><td><span class="pill ok">نجح</span></td></tr>
+      <tr><td class="n">13</td><td>تنفيذ السونار وكتابة التقرير واعتماده</td><td>الأشعة</td><td>الحالة «التقرير معتمد»، إشعار «تقرير جاهز»</td><td><span class="pill ok">نجح</span></td></tr>
+      <tr><td class="n">14</td><td>صرف الوصفة ثم محاولة صرفها مرة ثانية</td><td>الصيدلية</td><td>الصرف الثاني مرفوض مع اسم الصيدلانية ووقت الصرف الأول</td><td><span class="pill ok">نجح</span></td></tr>
+      <tr><td class="n">15</td><td>إغلاق أعمى للوردية</td><td>الاستقبال</td><td>إعلان 75,000 نقداً و70,000 POS، بلا عرض المتوقع للموظف</td><td><span class="pill ok">نجح</span></td></tr>
+      <tr><td class="n">16</td><td>مطابقة الوردية واعتمادها</td><td>المحاسب</td><td>«مطابق»: المتوقع = المعلن، الفرق 0</td><td><span class="pill ok">نجح</span></td></tr>
+      <tr><td class="n">17</td><td>تقارير الإيراد وأرباح الأطباء</td><td>المحاسب</td><td>صافي 120,000 (عيادات 50k، مختبر 30k، أشعة 40k). حصة الطبيب 35,000 = 70% × 2 × 25,000</td><td><span class="pill ok">نجح</span></td></tr>
+      <tr><td class="n">18</td><td>نتائج المريض في التطبيق</td><td>المريض</td><td>التشخيص، موعد المراجعة، الوصفة «صُرفت»، نتيجة التحليل وتقرير السونار. الملاحظات الخاصة لا تظهر</td><td><span class="pill ok">نجح</span></td></tr>
+      <tr><td class="n">19</td><td>التحقق من الإيصال</td><td>عام</td><td>رمز حقيقي: «إيصال صحيح» بالمبلغ والفرع. رمز مزيف: «إيصال غير صحيح»</td><td><span class="pill ok">نجح</span></td></tr>
+      <tr><td class="n">20</td><td>شاشة الانتظار والموقع التعريفي</td><td>عام</td><td>الشاشة تعمل بمفتاحها وبلا أسماء مرضى. الموقع يفتح</td><td><span class="pill ok">نجح</span></td></tr>
+    </tbody>
+  </table></div>
+  <p><b>الاختبارات الآلية:</b> شُغّلت الـ 84 على نسخة منفصلة من الخادم. نجح 4 وفشل 80، وكلها تفشل في نفس السطر: دخول المدير داخل خادم الاختبار. السبب أن خادم الاختبار من حزم .NET 8 يعمل هنا على .NET 10، فيرمي <code>PipeWriter.UnflushedBytes</code> عند كتابة أي رد JSON. الخادم الحقيقي على Kestrel غير متأثر، والدليل أن كل خطوات الجدول أعلاه نجحت عليه. الحل تثبيت .NET 8 SDK ثم إعادة <code>run-tests.bat</code>.</p>
+</section>
+
+<section id="depts">
+  <h2>الأقسام ووظائفها</h2>
+  <p>لكل دور واجهة خاصة، والخادم يرفض أي عملية خارج صلاحية الدور حتى لو فُتح الرابط يدوياً. الأرقام بين القوسين عدد الشاشات.</p>
+
+  <div class="dept">
+    <div class="dept-h"><h3>الإدارة (11)</h3><span class="who">المدير العام ومدير الفرع · <code>/staff/admin</code></span></div>
+    <p>تجهيز المجمع وإدارته: ما يُبنى هنا تستخدمه كل الأقسام الأخرى.</p>
+    <ul>
+      <li><b>المستخدمون والصلاحيات:</b> إنشاء موظف بدور وفرع وعيادة، وكلمة مؤقتة تظهر مرة واحدة. تعطيل وتفعيل وإعادة تعيين كلمة المرور.</li>
+      <li><b>الفروع:</b> بيانات الفرع وموقعه، ملخص ما بداخله، تنبيهات «ما ينقصه ليعمل»، وإغلاق الفرع كاملاً لسفر أو صيانة مع تحويل المدفوع رصيداً.</li>
+      <li><b>الأقسام والعيادات:</b> عيادة طبيب، مختبر، أشعة وسونار، صيدلية، مع الطابق والإغلاق المؤقت.</li>
+      <li><b>الأطباء والجداول:</b> الصورة، الوجبات الأسبوعية وسعتها، إعدادات كل طبيب (مدة وسعر المراجعة، العربون، مهلة التأخر، الإضافي)، النسب بتاريخ سريانها، وإلغاء وجبة يوم.</li>
+      <li><b>الخدمات والأسعار:</b> كشفية جديد ومراجعة، تحاليل وقوالب نتائجها، أشعة بنوع الجهاز، إجراءات. تغيير السعر لا يمس الفواتير السابقة.</li>
+      <li><b>دمج الملفات والتدقيق:</b> دمج ملف مريض مكرر، وسجل كل العمليات الحساسة.</li>
+      <li><b>الأجهزة والشاشات:</b> رمز لكل حاسبة استقبال ومفتاح لكل شاشة انتظار.</li>
+      <li><b>قوائم الاختيار، الإعدادات، النسخ الاحتياطي، الرسائل التجريبية:</b> القوائم المنسدلة، قيم الحظر والمراجعة والاسترجاع، حالة النسخ، وما كان سيُرسل SMS في الوضع التجريبي.</li>
+    </ul>
+  </div>
+
+  <div class="dept">
+    <div class="dept-h"><h3>الاستقبال (8)</h3><span class="who">موظف الاستقبال · <code>/staff/reception</code></span></div>
+    <p>نقطة دخول المريض وصندوق المال. يعمل حتى بلا إنترنت ويزامن لاحقاً.</p>
+    <ul>
+      <li><b>الطابور الحي:</b> طابور كل طبيب لحظياً، السعة والتأخير، «الطبيب وصل»، تمديد اليوم، إغلاق التسجيل، الاستدعاء، الطوارئ، الغياب، ودعوة المرضى للحضور المبكر عند وجود فجوة.</li>
+      <li><b>حضور وتسجيل:</b> مسح رمز الحجز، البحث عن مريض، أو مريض جديد حضور مباشر مع طباعة التذكرة. نوع الكشفية يحدده الخادم.</li>
+      <li><b>التحصيل:</b> سلة موحدة لكل ما على المريض (كشفية، تحليل، أشعة)، نقداً أو POS أو مختلط، وطباعة إيصال بـ QR. النقد وحده يفتح الدرج.</li>
+      <li><b>طلب مباشر:</b> تحليل أو أشعة بورقة طبيب خارجي، أو فاتورة يدوية بخصم.</li>
+      <li><b>الاسترجاع وفك الحظر:</b> استرجاع كلي أو جزئي بسبب إلزامي، وفك حظر الغائب بعربون أو إعفاء.</li>
+      <li><b>الوردية:</b> فتح بالفكة ونقطة التحصيل، وإغلاق أعمى: الموظف يعد النقد ولا يرى المتوقع.</li>
+      <li><b>المزامنة:</b> العمليات المحفوظة أوفلاين والمرفوضة منها.</li>
+    </ul>
+  </div>
+
+  <div class="grid2">
+    <div class="dept">
+      <div class="dept-h"><h3>الطبيب (4)</h3><span class="who"><code>/staff/doctor</code></span></div>
+      <ul>
+        <li><b>طابوري:</b> المرضى الواصلون، الاستدعاء، «دخل»، والإنهاء مع استدعاء التالي.</li>
+        <li><b>المعاينة:</b> تشخيص وICD-10، ملاحظات، وصفة، طلب تحاليل وأشعة تذهب للسلة، ملاحظات خاصة لا يراها المريض، وموعد المراجعة.</li>
+        <li><b>سجل المريض والإشعارات:</b> الزيارات السابقة والنتائج، وتنبيه القيم الحرجة.</li>
+      </ul>
+    </div>
+    <div class="dept">
+      <div class="dept-h"><h3>المختبر (1)</h3><span class="who"><code>/staff/lab</code></span></div>
+      <ul>
+        <li>قائمة عمل بالطلبات المدفوعة فقط.</li>
+        <li>سحب العينة يولد باركود ويطبع الملصق تلقائياً.</li>
+        <li>إدخال النتائج على القالب مع تلوين المرجع والقيم الحرجة، الاعتماد، طباعة A4.</li>
+        <li>تعديل نتيجة معتمدة يحتاج سبباً ويُسجل ويُشعر الطبيب.</li>
+      </ul>
+    </div>
+    <div class="dept">
+      <div class="dept-h"><h3>الأشعة والسونار (2)</h3><span class="who"><code>/staff/radiology</code></span></div>
+      <ul>
+        <li>قائمة العمل: جدولة اختيارية بغرفة ووقت، تم التنفيذ، الموجودات والانطباع، الاعتماد والطباعة.</li>
+        <li>مواعيد اليوم حسب الغرفة.</li>
+      </ul>
+    </div>
+    <div class="dept">
+      <div class="dept-h"><h3>الصيدلية (2)</h3><span class="who"><code>/staff/pharmacy</code></span></div>
+      <ul>
+        <li>صرف وصفة بمسح كودها، مع بديل أو سبب عدم الصرف. صالحة في أي فرع حتى انتهائها، ولا تُصرف مرتين.</li>
+        <li>سجل المصروف اليوم.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="dept">
+    <div class="dept-h"><h3>المحاسب (11)</h3><span class="who">المحاسب والمدير · <code>/staff/accountant</code></span></div>
+    <ul>
+      <li><b>لوحة الفروع:</b> صافي اليوم والشهر، المرضى، وما يحتاج تدخلاً.</li>
+      <li><b>مطابقة الورديات:</b> المتوقع مقابل المعلن لكل طريقة دفع، ثم اعتماد أو تصعيد.</li>
+      <li><b>اعتماد الاسترجاع والذمم الآجلة:</b> ما فوق حد الاستقبال، والدفع المؤجل بصلاحية الطبيب أو المدير.</li>
+      <li><b>الإيراد اليومي وأرباح الأطباء:</b> حسب القسم وطريقة الدفع، وحصة كل طبيب والمجمع.</li>
+      <li><b>الفواتير، المصاريف، تسويات الفروع، الغياب والحظر، سجل التدقيق.</b></li>
+    </ul>
+  </div>
+
+  <div class="grid2">
+    <div class="dept">
+      <div class="dept-h"><h3>تطبيق المريض</h3><span class="who"><code>/patient</code></span></div>
+      <ul>
+        <li>دخول برقم الهاتف ورمز OTP، وملفات العائلة على نفس الرقم.</li>
+        <li>اختيار الفرع والطبيب واليوم، الدور المتوقع والوقت التقريبي، الدفع كاملاً أو عربوناً أو في الاستقبال.</li>
+        <li>حجوزاتي برمز QR، طابوري لحظياً، نتائجي (تحاليل، تقارير، وصفات بـ QR للصيدلية).</li>
+      </ul>
+    </div>
+    <div class="dept">
+      <div class="dept-h"><h3>الشاشات العامة</h3><span class="who"><code>/display</code> · <code>/</code> · <code>/verify</code></span></div>
+      <ul>
+        <li><b>شاشة الانتظار:</b> الرقم الحالي والتالي لكل طبيب، بلا أسماء، بمفتاح جهاز.</li>
+        <li><b>الموقع التعريفي:</b> الفروع والأطباء ورابط الحجز.</li>
+        <li><b>التحقق من الإيصال:</b> رمز الإيصال يكشف المزور.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="dept">
+    <div class="dept-h"><h3>وكيل الطباعة والدرج</h3><span class="who">محاكٍ الآن · <code>tools/agent-simulator</code></span></div>
+    <p>برنامج على حاسبة الاستقبال يطبع التذاكر والإيصالات والملصقات ويفتح درج النقد. الدرج لا يفتح إلا بتوكن من الخادم صالح 60 ثانية ولمرة واحدة، أو برقم من كتلة إيصالات موقّعة عند انقطاع الإنترنت. البرنامج الحقيقي لم يُبنَ بعد، والمحاكي ينفذ نفس العقد.</p>
+  </div>
+</section>
+
+<section id="scenario">
+  <h2>سيناريو يوم كامل في المجمع</h2>
+  <p>هذا هو المسار الذي نُفذ في الفحص، مكتوباً كما يعيشه المجمع. الترتيب هنا حقيقي: كل خطوة تعتمد على ما قبلها.</p>
+  <ol class="flow">
+    <li><div><span class="role">المدير · مرة واحدة</span><h3>تجهيز الفرع</h3><p>يضيف عيادة الباطنية والمختبر والأشعة والصيدلية، والخدمات بأسعارها، والموظفين، وجدول د. سعد (08:00–23:30، 10 دقائق للمريض) ونسبه 70% للجديد و60% للمراجعة. يسجل حاسبة الاستقبال وشاشة الانتظار.</p><p class="sys">النظام يولد وجبات الطبيب لأسبوعين: سعة 93 مريضاً يومياً، 55 منها للحجز الإلكتروني.</p></div></li>
+    <li><div><span class="role">المريض · من البيت</span><h3>الحجز والدفع من التطبيق</h3><p>أحمد يدخل برقمه ورمز SMS، ينشئ ملفه، يختار د. سعد واليوم، ويدفع الكشفية 25,000 إلكترونياً.</p><p class="sys">يحصل على دور #1 ووقت تقريبي ورمز QR للحجز.</p></div></li>
+    <li><div><span class="role">الاستقبال · بداية الدوام</span><h3>فتح الوردية</h3><p>الموظف يستلم الفكة ويفتح وردية على نقطة «استقبال عام».</p><p class="sys">النظام يحجز كتلة 200 رقم إيصال موقّعة للعمل إذا انقطع الإنترنت.</p></div></li>
+    <li><div><span class="role">الاستقبال</span><h3>وصول المرضى</h3><p>أحمد يعرض رمز الحجز فيُمسح ويُثبت حضوره، ولا يدفع لأنه دفع مسبقاً. فاطمة تأتي بلا حجز، فيُفتح لها ملف وتُطبع تذكرتها A-002 وتدفع 25,000 نقداً.</p><p class="sys">الإيصال يُطبع بـ QR، والدرج يُفتح بتوكن من الخادم. تصل فاطمة رسالة «اقترب دورك».</p></div></li>
+    <li><div><span class="role">الطبيب</span><h3>المعاينة</h3><p>د. سعد يستدعي A-001، يضغط «دخل»، يكتب التشخيص والوصفة، ويطلب CBC وسونار بطن، ثم «حفظ وإنهاء» فيُستدعى التالي.</p><p class="sys">المريض غير المدفوع لا يدخل الغرفة. الطلبات تُضاف بنوداً غير مدفوعة في سلة أحمد (70,000).</p></div></li>
+    <li><div><span class="role">الاستقبال</span><h3>تحصيل الفحوصات</h3><p>أحمد يعود للاستقبال فيرى كل ما عليه في سلة واحدة، ويدفع 70,000 بالبطاقة.</p><p class="sys">إيصال ثانٍ بلا فتح الدرج. الطلبات تظهر الآن في المختبر والأشعة.</p></div></li>
+    <li><div><span class="role">المختبر والأشعة</span><h3>الفحوصات والنتائج</h3><p>فنية المختبر تسحب العينة ويُطبع ملصقها، ثم تدخل النتائج وتعتمدها. أخصائي الأشعة ينفذ السونار ويكتب التقرير ويعتمده.</p><p class="sys">قيمة WBC الحرجة ترسل تنبيهاً فورياً للطبيب. المريض يرى النتيجة والتقرير في تطبيقه.</p></div></li>
+    <li><div><span class="role">الصيدلية</span><h3>صرف الدواء</h3><p>الصيدلانية تمسح كود الوصفة RX-5PBZ23 وتؤكد الصرف.</p><p class="sys">أي محاولة صرف ثانية في أي فرع تُرفض مع اسم من صرفها ومتى.</p></div></li>
+    <li><div><span class="role">الاستقبال · نهاية الدوام</span><h3>الإغلاق الأعمى</h3><p>الموظف يعد النقد في الدرج (3 × 25,000) ويدخل مجموع قسائم POS، دون أن يرى ما يتوقعه النظام.</p><p class="sys">أرقام الإيصالات غير المستخدمة تُعاد من الكتلة، ويصل المحاسب إشعار.</p></div></li>
+    <li><div><span class="role">المحاسب</span><h3>المطابقة والتقارير</h3><p>المحاسب يرى الوردية «مطابقة» ويعتمدها، ثم يراجع الإيراد حسب القسم وطريقة الدفع وحصة كل طبيب.</p><p class="sys">اليوم: 120,000 صافي، 35,000 للطبيب، 85,000 للمجمع. كل عملية في سجل التدقيق.</p></div></li>
+  </ol>
+</section>
+
+<section id="findings">
+  <h2>الملاحظات والمشاكل</h2>
+  <div class="find warn">
+    <h3><span class="pill warn">بيئة</span>الاختبارات الآلية تحتاج .NET 8</h3>
+    <p>المثبت على الحاسبة .NET 10 فقط. الخادم الحقيقي يعمل عليه، لكن خادم الاختبار يفشل (80 من 84). ثبّت .NET 8 SDK ثم شغّل <code>run-tests.bat</code> للحصول على نتيجة حقيقية.</p>
+  </div>
+  <div class="find warn">
+    <h3><span class="pill warn">بيئة</span><code>start-native.bat</code> لا يناسب هذه الحاسبة</h3>
+    <p>يبحث عن PostgreSQL 16 في <code>C:\Program Files\PostgreSQL\16</code> على المنفذ 5432. هنا الإصدار 15 على 5433، و5432 مشغول بإصدار 9.6 قديم. يحتاج السكربت متغيرين للمسار والمنفذ أو تثبيت PostgreSQL 16.</p>
+  </div>
+  <div class="find info">
+    <h3><span class="pill ok">أُصلح</span>الصيدلية كانت تستورد مكوناً غير مُصدَّر</h3>
+    <p><code>pharmacy.tsx</code> كان يستورد <code>CameraScanner</code> من <code>checkin-screen.tsx</code> والمكون غير مُصدَّر، ويمرر له عنواناً لا يقبله. صار المكون مُصدَّراً ويقبل عنواناً اختيارياً (الافتراضي «مسح رمز الحجز»، والصيدلية تعرض «مسح رمز الوصفة»). فحص الأنواع للواجهة كاملة صار نظيفاً بلا أي خطأ، والصفحتان تُبنيان بلا تحذير. لم يُفتح الماسح نفسه لأن متصفح الفحص لا يدعم <code>BarcodeDetector</code>، ويُفحص على هاتف أندرويد.</p>
+  </div>
+  <div class="find info">
+    <h3><span class="pill ok">أُصلح</span>حقل المبلغ كان يقبل أرقاماً خيالية بصمت</h3>
+    <p>كانت الكتابة في حقل «الفكة المستلمة» تُلحق الأرقام بالقيمة الجاهزة 50,000، فتحولت إلى 1,000,000,000 وفُتحت الوردية بها. الإصلاح من طبقتين: <code>MoneyInput</code> يحدد القيمة عند التركيز فتستبدلها الكتابة (في كل شاشات المال)، وفتح وردية بفكة فوق 5,000,000 يحتاج ضغطة تأكيد ثانية مع تحذير. فُحص الإصلاح في المتصفح: الكتابة أعطت 75,000، وفكة المليار أوقفها التحذير ولم تُفتح الوردية. إن ضغط الموظف مرة ثانية داخل حقل مركّز أصلاً فالكتابة تُلحق كالسابق، والتحذير هو ما يمسكها.</p>
+  </div>
+  <div class="find info">
+    <h3><span class="pill ok">أُصلح</span>وقت موعد الأشعة الافتراضي كان بتوقيت غرينتش</h3>
+    <p>كان الحقل يعرض الآن + 30 دقيقة بتوقيت UTC، أي قبل ساعتين ونصف في بغداد. صار يعرض الوقت المحلي + 30 دقيقة، ويُحفظ نفس اللحظة الصحيحة (فُحص في المتصفح: 16:41 محلياً = 13:41 UTC). <code>components/radiology/radiology.tsx</code>.</p>
+  </div>
+  <div class="find info">
+    <h3><span class="pill info">ملاحظة</span>تفاصيل صغيرة في الاستخدام</h3>
+    <p>زر Enter في حقل رمز OTP بتطبيق المريض لا يرسل الرمز ويلزم الضغط على «تأكيد». «متوسط المعاينة» بقي «—» بعد معاينتين. مؤشر التأخير أظهر +440 دقيقة قبل ضغط «الطبيب وصل»، وهو منطقي لأن الوجبة تبدأ 08:00، لكنه قد يربك الموظف. طلب أو اثنان يعودان 404 في وحدة تحكم المتصفح على بعض الشاشات دون أثر ظاهر.</p>
+  </div>
+  <div class="find info">
+    <h3><span class="pill info">لم يُفحص</span>ما يحتاج أجهزة حقيقية</h3>
+    <p>مسح QR بكاميرا هاتف، الطباعة الفعلية على طابعة حرارية وA4، رفع الملفات (يحتاج MinIO)، النسخ الاحتياطي (يحتاج pgBackRest)، والعمل أوفلاين بقطع الشبكة فعلياً.</p>
+  </div>
+</section>
+
+<section id="rerun">
+  <h2>إعادة التشغيل</h2>
+  <p>الخدمات الأربع تعمل الآن. لتشغيلها لاحقاً على هذه الحاسبة بدون السكربت (من مجلد <code>alrahma_midical</code>، مع ضبط كلمة سر postgres في متغير <code>PGPW</code>):</p>
+<pre>REM الخادم
+set DOTNET_ROLL_FORWARD=Major
+set ASPNETCORE_ENVIRONMENT=Development
+set ConnectionStrings__Default=Host=localhost;Port=5433;Database=alrahma_db;Username=postgres;Password=%PGPW%
+set Jwt__SigningKey=<JWT_SIGNING_KEY من .env>
+set Drawer__KeyFile=%CD%\DB\keys\drawer-es256.pem
+cd alrahma-backend-final && dotnet run --project src\AlRahma.Api --urls http://localhost:8088
+
+REM المحاكي
+node tools\agent-simulator\agent-sim.mjs
+
+REM الواجهة
+cd alrahma-frontend && npx next dev -p 3000</pre>
+  <p>بيانات الفحص (المريضان والفواتير والوردية) باقية في القاعدة. لبدء نظيف احذف <code>alrahma_db</code> وأعد تطبيق المخطط والترحيلات.</p>
+</section>
+</main>
+</div>
+</div>

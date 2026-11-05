@@ -1,0 +1,29 @@
+(h) => {
+  const ms = h.indexOf('<script type="text/x-dc"');
+  let tpl = h.slice(0, ms), js = h.slice(ms);
+  const norm = x => { x = x.slice(1).toUpperCase(); return x.length === 3 ? x.split('').map(c => c + c).join('') : x; };
+  const v = (hex, ctx) => {
+    const n = norm(hex);
+    if (n === 'FFFFFF' && ctx === 't') return hex;
+    if ((n === '0A3A40' || n === '062528') && ctx === 't') return 'var(--kT' + n + ',' + hex + ')';
+    if (n === '102C44' && ctx === 't') return 'var(--kT102C44,' + hex + ')';
+    if (n === '0F2328' && ctx === 'b') return 'var(--kB0F2328,' + hex + ')';
+    return 'var(--k' + n + ',' + hex + ')';
+  };
+  tpl = tpl.replace(/(?<![\w(,-])#(?:[0-9A-Fa-f]{6}|[fF]{3})\b/g, (m, off, s) => {
+    const pre = s.slice(Math.max(0, off - 80), off);
+    if (/--k\w*,\s*$/.test(pre)) return m;
+    const prop = (pre.match(/([a-z-]+)\s*[:=]\s*"?[^;:"]*$/) || [])[1] || '';
+    const ctx = /^(background|background-color)$/.test(prop) ? 'b' : /border|outline|shadow/.test(prop) ? 'l' : 't';
+    return v(m, ctx);
+  });
+  js = js.replace(/"(#(?:[0-9A-Fa-f]{6}|[fF]{3}))"/g, (m, hex, off, s) => {
+    const pre = s.slice(Math.max(0, off - 140), off);
+    const seg = pre.split(/[,{(;]\s*(?=[A-Za-z_]\w*\s*:)/).pop();
+    const key = (seg.match(/^([A-Za-z_]\w*)\s*:/) || [])[1] || '';
+    const ctx = /bg|Bg|back|soft|ibg|fill/.test(key) ? 'b' : /line|border|ring/i.test(key) ? 'l' : 't';
+    return '"' + v(hex, ctx) + '"';
+  });
+  if (!tpl.includes('theme.js')) tpl = tpl.replace('<helmet>', '<helmet>\n<script src="./theme.js"></script>');
+  return tpl + js;
+}

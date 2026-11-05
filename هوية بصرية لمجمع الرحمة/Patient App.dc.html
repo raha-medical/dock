@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="icon" type="image/svg+xml" href="./rahma-mark.svg">
+<script src="./theme.js"></script>
+<meta name="design_doc_mode" content="canvas">
+<link href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<script src="./lucide-icon.js"></script>
+<script src="./image-slot.js"></script>
+<style>
+body{margin:0;background:var(--kDCE7E8,#DCE7E8);font-family:'Readex Pro',sans-serif;color:var(--k0F2328,#0F2328);-webkit-font-smoothing:antialiased}
+a{color:var(--k0F7A82,#0F7A82);text-decoration:none}a:hover{color:var(--k0C5F67,#0C5F67)}
+*{box-sizing:border-box}
+button{font-family:inherit;cursor:pointer;white-space:nowrap}
+</style>
+</helmet>
+<div dir="rtl" style="padding:40px;display:flex;flex-direction:column;gap:28px">
+  <div style="display:flex;align-items:center;gap:14px">
+    <a href="System Hub.dc.html" style="width:48px;height:48px;border-radius:14px;background:var(--k0F7A82,#0F7A82);color:#fff;display:flex;align-items:center;justify-content:center"><lc-icon name="smartphone" size="24"></lc-icon></a>
+    <div style="display:flex;flex-direction:column"><span style="font-size:26px;font-weight:700">تطبيق المريض</span><span style="font-size:14px;color:var(--k4F6368,#4F6368)">الدخول برمز التحقق، الحجز بالوجبة والتسلسل، الدفع، التذكرة، النتائج والوصفات</span></div>
+  </div>
+  <div style="display:flex"><theme-toggle label=""></theme-toggle></div>
+  <div style="display:flex;gap:28px;flex-wrap:wrap;align-items:flex-start">
+
+  <div style="display:flex;flex-direction:column;gap:10px;align-items:center">
+  <div data-screen-label="01 OTP" style="width:360px;height:760px;background:var(--kFFFFFF,#fff);border-radius:44px;border:8px solid var(--kFFFFFF,#fff);overflow:hidden;display:flex;flex-direction:column;box-shadow:0 30px 60px -24px rgba(10,58,64,.35)">
+    <div style="height:300px;background:var(--k0F7A82,#0F7A82);border-radius:32px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;color:#fff;flex-shrink:0">
+      <div style="width:104px;height:104px;border-radius:32px;background:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 12px 30px -10px rgba(0,0,0,.3)"><dc-import name="Rahma Mark" tone="light" animate="{{ true }}" size="{{ 84 }}" hint-size="84px,84px"></dc-import></div>
+      <span style="font-size:24px;font-weight:700">مجمع الرحمة الطبي</span>
+      <span style="font-size:14px;color:#D2ECEC">احجز دورك وتابعه من هاتفك</span>
+    </div>
+    <div style="padding:24px 20px;display:flex;flex-direction:column;gap:16px;flex:1">
+      <span style="font-size:20px;font-weight:700">أدخل رمز التحقق</span>
+      <span style="display:flex;align-items:center;gap:6px;font-size:14px;color:var(--k4F6368,#4F6368)"><lc-icon name="message-square-lock" size="16" color="var(--k0F7A82,#0F7A82)"></lc-icon>أرسلنا رمزاً إلى <span dir="ltr" style="font-family:'Space Grotesk';font-weight:600">0780 123 4567</span></span>
+      <div dir="ltr" style="display:grid;grid-template-columns:repeat(6,1fr);gap:8px">
+        <sc-for list="{{ otp }}" as="d" hint-placeholder-count="6"><span style="height:54px;border-radius:14px;border:2px solid {{ d.line }};display:flex;align-items:center;justify-content:center;font-family:'Space Grotesk';font-size:22px;font-weight:700;background:{{ d.bg }}">{{ d.v }}</span></sc-for>
+      </div>
+      <span style="display:flex;align-items:center;gap:6px;font-size:13px;color:var(--k4F6368,#4F6368);font-weight:600"><lc-icon name="timer" size="15"></lc-icon>إعادة الإرسال بعد <span style="font-family:'Space Grotesk'">0:42</span></span>
+      <span style="display:flex;align-items:center;gap:6px;font-size:13px;font-weight:600;color:var(--kB4262B,#B4262B)"><lc-icon name="circle-alert" size="15"></lc-icon>الرمز غير صحيح · بقيت <span style="font-family:'Space Grotesk'">3</span> محاولات</span>
+      <span style="display:flex;align-items:center;gap:8px;padding:10px 12px;border-radius:14px;background:var(--kFEF6E4,#FEF6E4);color:var(--k8A520B,#8A520B);font-size:12px;font-weight:600"><lc-icon name="flask-round" size="15"></lc-icon><span style="flex:1">وضع تجريبي: لا تُرسل رسالة، الرمز ثابت</span><span dir="ltr" style="font-family:'Space Grotesk';font-size:14px;letter-spacing:.1em">000000</span></span>
+      <button style="margin-top:auto;display:flex;align-items:center;justify-content:center;gap:8px;height:54px;border-radius:999px;border:0;background:var(--k0F7A82,#0F7A82);color:#fff;font-size:16px;font-weight:600"><lc-icon name="log-in" size="19"></lc-icon>دخول</button>
+    </div>
+  </div>
+  <span style="font-size:13px;color:var(--k4F6368,#4F6368)">01 · الدخول برمز التحقق</span>
+  </div>
+
+  <div style="display:flex;flex-direction:column;gap:10px;align-items:center">
+  <div data-screen-label="01b Branches" style="width:360px;height:760px;background:var(--kF5F8F8,#F5F8F8);border-radius:44px;border:8px solid var(--kFFFFFF,#fff);overflow:hidden;display:flex;flex-direction:column;box-shadow:0 30px 60px -24px rgba(10,58,64,.35)">
+    <div style="padding:18px 16px;display:flex;flex-direction:column;gap:14px;flex:1;overflow:hidden">
+      <div style="display:flex;flex-direction:column;gap:2px"><span style="font-size:20px;font-weight:700">اختر الفرع</span><span style="font-size:13px;color:var(--k4F6368,#4F6368);font-weight:600">فروع مجمع الرحمة وحالة كل فرع اليوم</span></div>
+      <div style="display:flex;gap:6px"><span style="display:flex;align-items:center;gap:5px;padding:0 12px;height:34px;border-radius:999px;background:var(--kB0F2328,#0F2328);color:#fff;font-size:12px;font-weight:600"><lc-icon name="map-pin" size="13"></lc-icon>بغداد</span><span style="display:flex;align-items:center;padding:0 12px;height:34px;border-radius:999px;background:var(--kFFFFFF,#fff);font-size:12px;color:var(--k4F6368,#4F6368)">كربلاء</span><span style="margin-inline-start:auto;display:flex;align-items:center;gap:5px;padding:0 12px;height:34px;border-radius:999px;background:var(--kFFFFFF,#fff);font-size:12px;color:var(--k0F7A82,#0F7A82);font-weight:600"><lc-icon name="locate-fixed" size="13"></lc-icon>الأقرب</span></div>
+      <sc-for list="{{ pBranches }}" as="b" hint-placeholder-count="3">
+        <div style="display:flex;flex-direction:column;gap:10px;padding:14px;border-radius:22px;background:var(--kFFFFFF,#fff);opacity:{{ b.op }};border:1.5px solid {{ b.line }}">
+          <div style="display:flex;align-items:center;gap:12px"><span style="width:46px;height:46px;border-radius:15px;background:{{ b.ibg }};color:{{ b.ifg }};display:flex;align-items:center;justify-content:center"><lc-icon name="{{ b.icon }}" size="22"></lc-icon></span><span style="display:flex;flex-direction:column;flex:1"><span style="font-size:16px;font-weight:700">{{ b.name }}</span><span style="display:flex;align-items:center;gap:4px;font-size:12px;color:var(--k4F6368,#4F6368);font-weight:600"><lc-icon name="map-pin" size="12"></lc-icon>{{ b.addr }}</span></span><lc-icon name="chevron-left" size="18" color="var(--k8A9A9E,#8A9A9E)"></lc-icon></div>
+          <span style="display:flex;align-items:center;gap:6px;padding:6px 10px;border-radius:10px;background:{{ b.sBg }};color:{{ b.sFg }};font-size:12px;font-weight:600"><lc-icon name="{{ b.sIcon }}" size="13"></lc-icon>{{ b.status }}</span>
+          <div style="display:flex;align-items:center;gap:10px;font-size:12px;color:var(--k4F6368,#4F6368)"><span style="display:flex;gap:4px"><sc-for list="{{ b.depts }}" as="d" hint-placeholder-count="3"><span style="width:26px;height:26px;border-radius:8px;background:{{ d.bg }};color:{{ d.fg }};display:flex;align-items:center;justify-content:center"><lc-icon name="{{ d.icon }}" size="14"></lc-icon></span></sc-for></span><span style="display:flex;align-items:center;gap:4px;margin-inline-start:auto"><lc-icon name="stethoscope" size="13" color="var(--k8A9A9E,#8A9A9E)"></lc-icon>{{ b.docs }} طبيب</span></div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+  <span style="font-size:13px;color:var(--k4F6368,#4F6368)">01b · الفروع</span>
+  </div>
+
+  <div style="display:flex;flex-direction:column;gap:10px;align-items:center">
+  <div data-screen-label="01c Branch Home" style="width:360px;height:760px;background:var(--kF5F8F8,#F5F8F8);border-radius:44px;border:8px solid var(--kFFFFFF,#fff);overflow:hidden;display:flex;flex-direction:column;box-shadow:0 30px 60px -24px rgba(10,58,64,.35)">
+    <div style="height:180px;flex-shrink:0;position:relative;border-radius:32px;overflow:hidden;background:var(--k0F7A82,#0F7A82)">
+      <image-slot id="branch-photo-b1" shape="rect" placeholder="صورة واجهة الفرع" style="position:absolute;inset:0;width:100%;height:100%"></image-slot>
+      <div style="position:absolute;inset:auto 0 0 0;padding:14px 16px;background:linear-gradient(0deg,rgba(7,26,29,.8),transparent);color:#fff;display:flex;flex-direction:column;gap:2px;pointer-events:none"><span style="font-size:19px;font-weight:700">الفرع الرئيسي</span><span style="display:flex;align-items:center;gap:5px;font-size:12px"><lc-icon name="clock" size="12"></lc-icon>السبت - الخميس، 9 ص - 9 م</span></div>
+    </div>
+    <div style="padding:14px 16px;display:flex;flex-direction:column;gap:12px;flex:1;overflow:hidden">
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px">
+        <span style="display:flex;flex-direction:column;align-items:center;gap:4px;padding:10px 0;border-radius:14px;background:var(--kFFFFFF,#fff);font-size:11px;color:var(--k4F6368,#4F6368)"><lc-icon name="phone" size="17" color="var(--k0F7A82,#0F7A82)"></lc-icon>اتصال</span>
+        <span style="display:flex;flex-direction:column;align-items:center;gap:4px;padding:10px 0;border-radius:14px;background:var(--kFFFFFF,#fff);font-size:11px;color:var(--k4F6368,#4F6368)"><lc-icon name="navigation" size="17" color="var(--k0F7A82,#0F7A82)"></lc-icon>الموقع</span>
+        <span style="display:flex;flex-direction:column;align-items:center;gap:4px;padding:10px 0;border-radius:14px;background:var(--kFFFFFF,#fff);font-size:11px;color:var(--k4F6368,#4F6368)"><lc-icon name="arrow-left-right" size="17" color="var(--k0F7A82,#0F7A82)"></lc-icon>تغيير الفرع</span>
+      </div>
+      <span style="font-size:15px;font-weight:700">الأقسام</span>
+      <sc-for list="{{ pDepts }}" as="d" hint-placeholder-count="3">
+        <div style="display:flex;flex-direction:column;gap:6px;padding:12px;border-radius:18px;background:var(--kFFFFFF,#fff)">
+          <span style="display:flex;align-items:center;gap:8px;font-size:14px;font-weight:700;color:{{ d.fg }}"><lc-icon name="{{ d.icon }}" size="17"></lc-icon>{{ d.ar }}</span>
+          <sc-for list="{{ d.clinics }}" as="c" hint-placeholder-count="2"><span style="display:flex;align-items:center;gap:8px;font-size:12px"><span style="flex:1">{{ c.name }} · الطابق {{ c.floor }}</span><span style="display:flex;align-items:center;gap:4px;color:{{ c.c }};font-weight:600"><lc-icon name="{{ c.icon }}" size="12"></lc-icon>{{ c.st }}</span></span></sc-for>
+        </div>
+      </sc-for>
+      <span style="font-size:15px;font-weight:700">الاختصاصات</span>
+      <div style="display:flex;gap:6px;flex-wrap:wrap"><sc-for list="{{ pSpecs }}" as="s" hint-placeholder-count="4"><span style="display:flex;align-items:center;gap:5px;padding:0 10px;height:32px;border-radius:999px;background:var(--kFFFFFF,#fff);font-size:12px"><lc-icon name="{{ s.icon }}" size="13" color="var(--k0F7A82,#0F7A82)"></lc-icon>{{ s.ar }}<span style="font-family:'Space Grotesk';color:var(--k8A9A9E,#8A9A9E)">{{ s.n }}</span></span></sc-for></div>
+    </div>
+  </div>
+  <span style="font-size:13px;color:var(--k4F6368,#4F6368)">01c · الواجهة الرئيسية للفرع</span>
+  </div>
+
+  <div style="display:flex;flex-direction:column;gap:10px;align-items:center">
+  <div data-screen-label="02 Home" style="width:360px;height:760px;background:var(--kF5F8F8,#F5F8F8);border-radius:44px;border:8px solid var(--kFFFFFF,#fff);overflow:hidden;display:flex;flex-direction:column;box-shadow:0 30px 60px -24px rgba(10,58,64,.35)">
+    <div style="padding:18px 16px 0;display:flex;flex-direction:column;gap:14px;flex:1;overflow:hidden">
+      <div style="display:flex;align-items:center;gap:10px"><div style="display:flex;flex-direction:column;flex:1"><span style="font-size:13px;color:var(--k4F6368,#4F6368);font-weight:600">أهلاً</span><span style="font-size:19px;font-weight:700">زينب علي</span></div>
+        <div style="display:flex;align-items:center;gap:6px;padding:8px 12px;border-radius:999px;background:var(--kFFFFFF,#fff);font-size:12px;font-weight:600"><lc-icon name="map-pin" size="14" color="var(--k0F7A82,#0F7A82)"></lc-icon>الفرع الرئيسي<lc-icon name="chevron-down" size="14"></lc-icon></div>
+        <div style="position:relative;width:40px;height:40px;border-radius:999px;background:var(--kFFFFFF,#fff);display:flex;align-items:center;justify-content:center"><lc-icon name="bell" size="18"></lc-icon><span style="position:absolute;top:9px;left:10px;width:7px;height:7px;border-radius:999px;background:var(--kF2B544,#F2B544)"></span></div></div>
+      <div style="display:flex;align-items:center;gap:12px;padding:14px;border-radius:22px;background:var(--k0F7A82,#0F7A82);color:#fff">
+        <div style="width:52px;height:52px;border-radius:16px;background:rgba(255,255,255,.15);display:flex;flex-direction:column;align-items:center;justify-content:center"><span style="font-size:10px;color:#D2ECEC">تذكرتي</span><span style="font-family:'Space Grotesk';font-size:14px;font-weight:700">A-025</span></div>
+        <div style="display:flex;flex-direction:column;flex:1"><span style="font-size:14px;font-weight:600">د. سعد الحيدري · اليوم</span><span style="display:flex;align-items:center;gap:5px;font-size:12px;color:#D2ECEC"><lc-icon name="clock" size="13"></lc-icon>الدخول التقريبي <span style="font-family:'Space Grotesk'">5:40 م</span> · ترتيبك 4</span></div>
+        <lc-icon name="chevron-left" size="20"></lc-icon>
+      </div>
+      <div style="display:flex;align-items:center;gap:8px;background:var(--kFFFFFF,#fff);border-radius:16px;padding:0 14px;height:46px"><lc-icon name="search" size="17" color="var(--k6B7F84,#6B7F84)"></lc-icon><span style="font-size:14px;color:var(--k8A9A9E,#8A9A9E)">ابحث عن طبيب أو تخصص</span></div>
+      <div style="display:flex;gap:8px;overflow:hidden">
+        <sc-for list="{{ specs }}" as="s" hint-placeholder-count="5">
+          <div style="display:flex;flex-direction:column;align-items:center;gap:6px;min-width:62px"><span style="width:54px;height:54px;border-radius:18px;background:{{ s.bg }};color:{{ s.fg }};display:flex;align-items:center;justify-content:center"><lc-icon name="{{ s.icon }}" size="24"></lc-icon></span><span style="font-size:11px;font-weight:500">{{ s.ar }}</span></div>
+        </sc-for>
+      </div>
+      <span style="font-size:16px;font-weight:700">الأطباء المتاحون</span>
+      <sc-for list="{{ docs }}" as="d" hint-placeholder-count="3">
+        <div style="display:flex;align-items:center;gap:12px;padding:10px;border-radius:20px;background:var(--kFFFFFF,#fff)">
+          <div style="width:64px;height:64px;border-radius:18px;overflow:hidden;flex-shrink:0;background:var(--kD2ECEC,#D2ECEC)"><image-slot id="{{ d.photo }}" shape="rounded" radius="18" placeholder="صورة" style="width:64px;height:64px"></image-slot></div>
+          <div style="display:flex;flex-direction:column;gap:3px;flex:1;min-width:0"><span style="font-size:15px;font-weight:700">{{ d.name }}</span><span style="display:flex;align-items:center;gap:4px;font-size:12px;color:var(--k4F6368,#4F6368)"><lc-icon name="{{ d.icon }}" size="13" color="var(--k0F7A82,#0F7A82)"></lc-icon>{{ d.spec }}</span><span style="display:flex;align-items:center;gap:4px;font-size:12px;color:{{ d.availC }}"><lc-icon name="calendar-check" size="13"></lc-icon>{{ d.avail }}</span></div>
+          <div style="display:flex;flex-direction:column;align-items:flex-end"><span style="font-family:'Space Grotesk';font-size:14px;font-weight:700;color:var(--k0F7A82,#0F7A82)">{{ d.price }}</span><span style="font-size:10px;color:var(--k4F6368,#4F6368);font-weight:600">د.ع</span></div>
+        </div>
+      </sc-for>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);padding:10px 8px 14px;background:var(--kFFFFFF,#fff);border-top:1px solid var(--kEEF2F3,#EEF2F3)">
+      <sc-for list="{{ tabsHome }}" as="t" hint-placeholder-count="4">
+        <div style="display:flex;flex-direction:column;align-items:center;gap:3px;font-size:11px;color:{{ t.c }};font-weight:{{ t.w }}"><span style="width:44px;height:30px;border-radius:999px;background:{{ t.bg }};display:flex;align-items:center;justify-content:center"><lc-icon name="{{ t.icon }}" size="19"></lc-icon></span>{{ t.ar }}</div>
+      </sc-for>
+    </div>
+  </div>
+  <span style="font-size:13px;color:var(--k4F6368,#4F6368)">02 · الرئيسية والأطباء</span>
+  </div>
+
+  <div style="display:flex;flex-direction:column;gap:10px;align-items:center">
+  <div data-screen-label="03 Booking" style="width:360px;height:760px;background:var(--kFFFFFF,#fff);border-radius:44px;border:8px solid var(--kFFFFFF,#fff);overflow:hidden;display:flex;flex-direction:column;box-shadow:0 30px 60px -24px rgba(10,58,64,.35)">
+    <div style="height:250px;border-radius:32px;position:relative;overflow:hidden;flex-shrink:0;background:var(--k0F7A82,#0F7A82)">
+      <image-slot id="doc-photo-saad-hero" shape="rect" placeholder="صورة الطبيب" style="position:absolute;inset:0;width:100%;height:100%"></image-slot>
+      <div style="position:absolute;top:14px;right:14px;left:14px;display:flex;justify-content:space-between;pointer-events:none">
+        <span style="width:42px;height:42px;border-radius:999px;background:rgba(255,255,255,.85);display:flex;align-items:center;justify-content:center;color:var(--kT0A3A40,#0A3A40)"><lc-icon name="chevron-right" size="20"></lc-icon></span>
+        <span style="width:42px;height:42px;border-radius:999px;background:rgba(255,255,255,.85);display:flex;align-items:center;justify-content:center;color:var(--kT0A3A40,#0A3A40)"><lc-icon name="share-2" size="18"></lc-icon></span>
+      </div>
+      <div style="position:absolute;bottom:0;right:0;left:0;padding:40px 18px 16px;background:linear-gradient(to top,rgba(10,58,64,.92),transparent);color:#fff;display:flex;align-items:flex-end;gap:10px;pointer-events:none">
+        <div style="display:flex;flex-direction:column;gap:4px;flex:1"><span style="font-size:22px;font-weight:700">د. سعد الحيدري</span><span style="display:flex;align-items:center;gap:5px;font-size:13px;color:#D2ECEC"><lc-icon name="stethoscope" size="14"></lc-icon>باطنية · الطابق 2</span></div>
+        <span style="width:42px;height:42px;border-radius:999px;background:rgba(255,255,255,.9);color:var(--k0F7A82,#0F7A82);display:flex;align-items:center;justify-content:center"><lc-icon name="phone" size="18"></lc-icon></span>
+      </div>
+    </div>
+    <div style="margin:-18px 12px 0;padding:26px 10px 12px;background:var(--kEAF6F6,#EAF6F6);border-radius:0 0 22px 22px;display:grid;grid-template-columns:repeat(3,1fr)">
+      <div style="display:flex;flex-direction:column;align-items:center;gap:2px"><lc-icon name="user-plus" size="17" color="var(--k0F7A82,#0F7A82)"></lc-icon><span style="font-family:'Space Grotesk';font-size:14px;font-weight:700">25,000</span><span style="font-size:11px;color:var(--k4F6368,#4F6368)">كشف جديد</span></div>
+      <div style="display:flex;flex-direction:column;align-items:center;gap:2px"><lc-icon name="repeat" size="17" color="var(--k0F7A82,#0F7A82)"></lc-icon><span style="font-family:'Space Grotesk';font-size:14px;font-weight:700">15,000</span><span style="font-size:11px;color:var(--k4F6368,#4F6368)">مراجعة</span></div>
+      <div style="display:flex;flex-direction:column;align-items:center;gap:2px"><lc-icon name="timer" size="17" color="var(--k0F7A82,#0F7A82)"></lc-icon><span style="font-family:'Space Grotesk';font-size:14px;font-weight:700">10 د</span><span style="font-size:11px;color:var(--k4F6368,#4F6368)">للمريض</span></div>
+    </div>
+    <div style="padding:14px 16px 16px;display:flex;flex-direction:column;gap:12px;flex:1">
+      <span style="display:flex;align-items:center;gap:6px;font-size:14px;font-weight:600"><lc-icon name="calendar-days" size="16" color="var(--k0F7A82,#0F7A82)"></lc-icon>اختر اليوم</span>
+      <div style="display:flex;gap:6px;justify-content:space-between;align-items:center">
+        <sc-for list="{{ days }}" as="d" hint-placeholder-count="5">
+          <button onClick="{{ d.go }}" style="width:{{ d.w }};height:{{ d.h }};border-radius:16px;border:0;background:{{ d.bg }};color:{{ d.fg }};display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;box-shadow:{{ d.ring }};opacity:{{ d.op }}">
+            <span style="font-family:'Space Grotesk';font-size:18px;font-weight:600">{{ d.n }}</span><span style="font-size:10px">{{ d.dn }}</span>
+          </button>
+        </sc-for>
+      </div>
+      <div style="display:flex;align-items:center;gap:12px;padding:12px 14px;border-radius:18px;background:var(--kF5F8F8,#F5F8F8)">
+        <lc-icon name="{{ sess.icon }}" size="22" color="{{ sess.ic }}"></lc-icon>
+        <div style="display:flex;flex-direction:column;flex:1"><span style="font-size:13px;color:var(--k4F6368,#4F6368);font-weight:600">{{ sess.label }}</span><span style="font-family:'Space Grotesk';font-size:19px;font-weight:700;color:var(--kT0A3A40,#0A3A40)">{{ sess.main }}</span></div>
+        <span style="padding:4px 10px;border-radius:999px;background:{{ sess.bg }};color:{{ sess.fg }};font-size:12px;font-weight:600">{{ sess.chip }}</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:6px"><span style="font-size:12px;font-weight:600;color:var(--k4F6368,#4F6368)">لمن الحجز؟</span><sc-for list="{{ forWho }}" as="w" hint-placeholder-count="2"><span style="display:flex;align-items:center;gap:4px;padding:0 10px;height:30px;border-radius:999px;background:{{ w.bg }};color:{{ w.fg }};font-size:12px;font-weight:600"><lc-icon name="{{ w.icon }}" size="13"></lc-icon>{{ w.ar }}</span></sc-for></div>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-top:auto">
+        <sc-for list="{{ payOpts }}" as="p" hint-placeholder-count="3">
+          <button style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;height:62px;border-radius:16px;border:1.5px solid {{ p.line }};background:{{ p.bg }};color:{{ p.fg }};font-size:12px;font-weight:600"><lc-icon name="{{ p.icon }}" size="17"></lc-icon>{{ p.ar }}<span style="font-family:'Space Grotesk';font-size:11px;opacity:.85">{{ p.amt }}</span></button>
+        </sc-for>
+      </div>
+      <button style="display:flex;align-items:center;justify-content:center;gap:6px;height:50px;border-radius:999px;border:0;background:var(--k0F7A82,#0F7A82);color:#fff;font-size:15px;font-weight:600"><lc-icon name="calendar-check" size="17"></lc-icon>احجز #25 وادفع العربون</button>
+    </div>
+  </div>
+  <span style="font-size:13px;color:var(--k4F6368,#4F6368)">03 · الطبيب وحجز الوجبة</span>
+  </div>
+
+  <div style="display:flex;flex-direction:column;gap:10px;align-items:center">
+  <div data-screen-label="04 Payment" style="width:360px;height:760px;background:var(--kF5F8F8,#F5F8F8);border-radius:44px;border:8px solid var(--kFFFFFF,#fff);overflow:hidden;display:flex;flex-direction:column;box-shadow:0 30px 60px -24px rgba(10,58,64,.35)">
+    <div style="padding:18px 16px;display:flex;flex-direction:column;gap:14px;flex:1">
+      <div style="display:flex;align-items:center;gap:10px"><span style="width:40px;height:40px;border-radius:999px;background:var(--kFFFFFF,#fff);display:flex;align-items:center;justify-content:center"><lc-icon name="chevron-right" size="20"></lc-icon></span><span style="font-size:18px;font-weight:700">تأكيد الحجز والدفع</span></div>
+      <div style="display:flex;align-items:center;gap:12px;padding:12px;border-radius:20px;background:var(--kFFFFFF,#fff)">
+        <div style="width:56px;height:56px;border-radius:16px;overflow:hidden;background:var(--kD2ECEC,#D2ECEC)"><image-slot id="doc-photo-saad" shape="rounded" radius="16" placeholder="صورة" style="width:56px;height:56px"></image-slot></div>
+        <div style="display:flex;flex-direction:column;flex:1"><span style="font-size:15px;font-weight:700">د. سعد الحيدري</span><span style="font-size:12px;color:var(--k4F6368,#4F6368);font-weight:600">الاثنين 2 نوفمبر · مسائية</span></div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:10px;padding:14px;border-radius:20px;background:var(--kFFFFFF,#fff);font-size:14px">
+        <div style="display:flex;align-items:center;gap:8px"><lc-icon name="hash" size="16" color="var(--k0F7A82,#0F7A82)"></lc-icon><span style="flex:1;color:var(--k4F6368,#4F6368)">التسلسل</span><span style="font-family:'Space Grotesk';font-weight:700">#25</span></div>
+        <div style="display:flex;align-items:center;gap:8px"><lc-icon name="clock" size="16" color="var(--k0F7A82,#0F7A82)"></lc-icon><span style="flex:1;color:var(--k4F6368,#4F6368)">الدخول التقريبي</span><span style="font-family:'Space Grotesk';font-weight:700">5:10 م</span></div>
+        <div style="display:flex;align-items:center;gap:8px"><lc-icon name="user-plus" size="16" color="var(--k0F7A82,#0F7A82)"></lc-icon><span style="flex:1;color:var(--k4F6368,#4F6368)">الغرض</span><span>عربون الحجز</span></div>
+        <div style="display:flex;align-items:center;gap:8px"><lc-icon name="building-2" size="16" color="var(--k0F7A82,#0F7A82)"></lc-icon><span style="flex:1;color:var(--k4F6368,#4F6368)">المتبقي بالعيادة</span><span style="font-family:'Space Grotesk'">20,000</span></div>
+        <div style="height:1px;background:var(--kEEF2F3,#EEF2F3)"></div>
+        <div style="display:flex;align-items:baseline"><span style="flex:1;font-weight:600">المطلوب الآن</span><span style="font-family:'Space Grotesk';font-size:24px;font-weight:700">5,000</span><span style="font-size:12px;color:var(--k4F6368,#4F6368);margin-inline-start:4px;font-weight:600">د.ع</span></div>
+      </div>
+      <span style="font-size:14px;font-weight:600">بوابة الدفع</span>
+      <sc-for list="{{ gateways }}" as="g" hint-placeholder-count="2">
+        <div style="display:flex;align-items:center;gap:12px;padding:12px 14px;border-radius:16px;background:var(--kFFFFFF,#fff);border:1.5px solid {{ g.line }}">
+          <span style="width:40px;height:40px;border-radius:12px;background:{{ g.bg }};color:{{ g.fg }};display:flex;align-items:center;justify-content:center"><lc-icon name="{{ g.icon }}" size="20"></lc-icon></span>
+          <span style="flex:1;font-size:14px;font-weight:600">{{ g.ar }}</span>
+          <span style="width:22px;height:22px;border-radius:999px;border:2px solid {{ g.line }};display:flex;align-items:center;justify-content:center"><span style="width:10px;height:10px;border-radius:999px;background:{{ g.dot }}"></span></span>
+        </div>
+      </sc-for>
+      <span style="display:flex;align-items:flex-start;gap:6px;font-size:12px;line-height:1.6;color:var(--k4F6368,#4F6368);font-weight:600"><lc-icon name="shield-check" size="15"></lc-icon>يُعتمد الدفع بعد تأكيد البوابة. صلاحية العملية 15 دقيقة. الإلغاء قبل الموعد بساعتين يحوّل المبلغ إلى رصيد.</span>
+      <button style="margin-top:auto;display:flex;align-items:center;justify-content:center;gap:8px;height:54px;border-radius:999px;border:0;background:var(--k0F7A82,#0F7A82);color:#fff;font-size:16px;font-weight:600"><lc-icon name="lock" size="18"></lc-icon>ادفع 5,000 د.ع</button>
+    </div>
+  </div>
+  <span style="font-size:13px;color:var(--k4F6368,#4F6368)">04 · الدفع الإلكتروني</span>
+  </div>
+
+  <div style="display:flex;flex-direction:column;gap:10px;align-items:center">
+  <div data-screen-label="04b Sandbox Gateway" style="width:360px;height:760px;background:var(--kF5F8F8,#F5F8F8);border-radius:44px;border:8px solid var(--kFFFFFF,#fff);overflow:hidden;display:flex;flex-direction:column;box-shadow:0 30px 60px -24px rgba(10,58,64,.35)">
+    <div style="display:flex;align-items:center;gap:10px;padding:14px 16px;background:var(--kFFFFFF,#fff);border-bottom:1px solid var(--kE3EBEC,#E3EBEC)">
+      <lc-icon name="x" size="20" color="var(--k4F6368,#4F6368)"></lc-icon>
+      <span style="flex:1;display:flex;align-items:center;gap:6px;justify-content:center;height:34px;border-radius:10px;background:var(--kF5F8F8,#F5F8F8);font-size:12px;color:var(--k4F6368,#4F6368)"><lc-icon name="lock" size="13" color="var(--k157A50,#157A50)"></lc-icon><span dir="ltr" style="font-family:'Space Grotesk'">/sandbox/pay/op_331</span></span>
+      <lc-icon name="rotate-cw" size="18" color="var(--k4F6368,#4F6368)"></lc-icon>
+    </div>
+    <div style="padding:22px 18px;display:flex;flex-direction:column;align-items:center;gap:14px;flex:1;text-align:center">
+      <span style="display:flex;align-items:center;gap:6px;padding:6px 12px;border-radius:999px;background:var(--kFEF6E4,#FEF6E4);color:var(--k8A520B,#8A520B);font-size:12px;font-weight:600"><lc-icon name="flask-round" size="14"></lc-icon>بوابة تجريبية · لا يُخصم مال حقيقي</span>
+      <div style="width:84px;height:84px;border-radius:26px;background:var(--kEAF6F6,#EAF6F6);color:var(--k0F7A82,#0F7A82);display:flex;align-items:center;justify-content:center;margin-top:10px"><lc-icon name="credit-card" size="40"></lc-icon></div>
+      <span style="font-size:15px;color:var(--k4F6368,#4F6368)">عربون حجز · د. سعد الحيدري</span>
+      <span style="font-family:'Space Grotesk';font-size:40px;font-weight:700;line-height:1">5,000 <span style="font-size:16px;color:var(--k6B7F84,#6B7F84)">IQD</span></span>
+      <span style="display:flex;align-items:center;gap:6px;font-size:13px;color:var(--k4F6368,#4F6368);font-weight:600"><lc-icon name="timer" size="15"></lc-icon>تنتهي العملية خلال <b style="font-family:'Space Grotesk';color:var(--k0F2328,#0F2328)">14:21</b></span>
+      <div style="width:100%;display:flex;flex-direction:column;gap:10px;margin-top:auto">
+        <button style="display:flex;align-items:center;justify-content:center;gap:8px;height:54px;border-radius:999px;border:0;background:var(--k1FA971,#1FA971);color:#fff;font-size:16px;font-weight:700"><lc-icon name="circle-check" size="19"></lc-icon>نجاح الدفع</button>
+        <button style="display:flex;align-items:center;justify-content:center;gap:8px;height:50px;border-radius:999px;border:1.5px solid var(--kF6C9CA,#F6C9CA);background:var(--kFFFFFF,#fff);color:var(--kB4262B,#B4262B);font-size:15px;font-weight:600"><lc-icon name="circle-x" size="18"></lc-icon>فشل الدفع</button>
+      </div>
+      <span style="font-size:12px;line-height:1.6;color:var(--k4F6368,#4F6368);font-weight:600">عند ربط بوابة حقيقية تظهر صفحتها هنا بنفس التدفق.</span>
+    </div>
+  </div>
+  <span style="font-size:13px;color:var(--k4F6368,#4F6368)">04b · صفحة البوابة التجريبية</span>
+  </div>
+
+  <div style="display:flex;flex-direction:column;gap:10px;align-items:center">
+  <div data-screen-label="04c Payment Receipt" style="width:360px;height:760px;background:var(--kF5F8F8,#F5F8F8);border-radius:44px;border:8px solid var(--kFFFFFF,#fff);overflow:hidden;display:flex;flex-direction:column;box-shadow:0 30px 60px -24px rgba(10,58,64,.35)">
+    <div style="padding:30px 18px 18px;display:flex;flex-direction:column;align-items:center;gap:12px;flex:1">
+      <div style="width:80px;height:80px;border-radius:999px;background:var(--kE6F6EE,#E6F6EE);color:var(--k1FA971,#1FA971);display:flex;align-items:center;justify-content:center"><lc-icon name="badge-check" size="42"></lc-icon></div>
+      <span style="font-size:21px;font-weight:700">تم دفع العربون</span>
+      <span style="font-size:13px;color:var(--k4F6368,#4F6368);text-align:center;line-height:1.7">أكدت البوابة الدفع. حجزك #25 مع د. سعد الحيدري ثابت، والمتبقي يُدفع عند الوصول.</span>
+      <div style="width:100%;background:var(--kFFFFFF,#fff);border-radius:6px;padding:18px 16px;display:flex;flex-direction:column;gap:9px;border-top:6px solid var(--k0F7A82,#0F7A82);box-shadow:0 12px 28px -12px rgba(10,58,64,.25);margin-top:6px">
+        <div style="display:flex;justify-content:space-between;font-size:13px"><span style="color:var(--k4F6368,#4F6368)">رقم الإيصال</span><span dir="ltr" style="font-family:'Space Grotesk';font-weight:700">B1-O-000045</span></div>
+        <div style="display:flex;justify-content:space-between;font-size:13px"><span style="color:var(--k4F6368,#4F6368)">النوع</span><span>دفع إلكتروني</span></div>
+        <div style="display:flex;justify-content:space-between;font-size:13px"><span style="color:var(--k4F6368,#4F6368)">الغرض</span><span>عربون حجز</span></div>
+        <div style="display:flex;justify-content:space-between;font-size:13px"><span style="color:var(--k4F6368,#4F6368)">حالة الحجز</span><span style="color:var(--k157A50,#157A50);font-weight:600">عربون مدفوع</span></div>
+        <div style="height:1px;border-top:1px dashed var(--kD5E0E1,#D5E0E1)"></div>
+        <div style="display:flex;justify-content:space-between;align-items:baseline"><span style="font-weight:600">المبلغ</span><span style="font-family:'Space Grotesk';font-size:22px;font-weight:700">5,000</span></div>
+        <div style="display:flex;align-items:center;gap:12px;padding-top:4px"><div style="width:64px;height:64px;border:1px solid var(--k0F2328,#0F2328);display:flex;align-items:center;justify-content:center"><lc-icon name="qr-code" size="50" stroke="1.4"></lc-icon></div><span style="font-size:11px;line-height:1.6;color:var(--k4F6368,#4F6368);flex:1">رمز التحقق من أصالة الإيصال</span></div>
+      </div>
+      <button style="width:100%;margin-top:auto;display:flex;align-items:center;justify-content:center;gap:8px;height:52px;border-radius:999px;border:0;background:var(--k0F7A82,#0F7A82);color:#fff;font-size:15px;font-weight:600"><lc-icon name="ticket" size="18"></lc-icon>عرض حجزي</button>
+    </div>
+  </div>
+  <span style="font-size:13px;color:var(--k4F6368,#4F6368)">04c · تأكيد الدفع والإيصال</span>
+  </div>
+
+  <div style="display:flex;flex-direction:column;gap:10px;align-items:center">
+  <div data-screen-label="05a My Bookings" style="width:360px;height:760px;background:var(--kF5F8F8,#F5F8F8);border-radius:44px;border:8px solid var(--kFFFFFF,#fff);overflow:hidden;display:flex;flex-direction:column;box-shadow:0 30px 60px -24px rgba(10,58,64,.35)">
+    <div style="padding:18px 16px 0;display:flex;flex-direction:column;gap:12px;flex:1;overflow:hidden">
+      <span style="font-size:19px;font-weight:700">حجوزاتي</span>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:4px;padding:4px;border-radius:14px;background:var(--kFFFFFF,#fff)">
+        <span style="display:flex;align-items:center;justify-content:center;height:36px;border-radius:10px;background:var(--k0F7A82,#0F7A82);color:#fff;font-size:13px;font-weight:600">القادمة</span>
+        <span style="display:flex;align-items:center;justify-content:center;height:36px;font-size:13px;font-weight:600;color:var(--k4F6368,#4F6368)">السابقة</span>
+      </div>
+      <div style="display:flex;gap:6px"><sc-for list="{{ famChips }}" as="f" hint-placeholder-count="3"><span style="display:flex;align-items:center;padding:0 12px;height:30px;border-radius:999px;background:{{ f.bg }};color:{{ f.fg }};font-size:12px;font-weight:600">{{ f.ar }}</span></sc-for></div>
+      <span style="display:flex;align-items:center;gap:6px;font-size:14px;font-weight:700"><lc-icon name="list-ordered" size="16" color="var(--k0F7A82,#0F7A82)"></lc-icon>طابوري اليوم</span>
+      <sc-for list="{{ myTickets }}" as="t" hint-placeholder-count="2">
+        <div style="display:flex;align-items:center;gap:12px;padding:12px;border-radius:18px;background:var(--kFFFFFF,#fff)">
+          <span style="width:54px;height:54px;border-radius:16px;background:{{ t.bg }};color:{{ t.fg }};display:flex;align-items:center;justify-content:center;font-family:'Space Grotesk';font-size:14px;font-weight:700">{{ t.no }}</span>
+          <span style="display:flex;flex-direction:column;flex:1;gap:2px;min-width:0"><span style="font-size:14px;font-weight:700">{{ t.who }} · {{ t.doc }}</span><span style="font-size:12px;color:var(--k4F6368,#4F6368)">{{ t.meta }}</span><span style="display:flex;align-items:center;gap:4px;font-size:12px;font-weight:600;color:{{ t.sc }}"><lc-icon name="{{ t.sIcon }}" size="13"></lc-icon>{{ t.st }}</span></span>
+        </div>
+      </sc-for>
+      <span style="display:flex;align-items:center;gap:6px;font-size:14px;font-weight:700"><lc-icon name="calendar-check" size="16" color="var(--k0F7A82,#0F7A82)"></lc-icon>الحجوزات القادمة</span>
+      <sc-for list="{{ myBookings }}" as="b" hint-placeholder-count="2">
+        <div style="display:flex;flex-direction:column;gap:8px;padding:12px;border-radius:18px;background:var(--kFFFFFF,#fff)">
+          <div style="display:flex;align-items:center;gap:10px"><span style="display:flex;flex-direction:column;align-items:center;justify-content:center;width:48px;height:48px;border-radius:14px;background:var(--kEAF6F6,#EAF6F6);color:var(--k0C5F67,#0C5F67)"><span style="font-family:'Space Grotesk';font-size:16px;font-weight:700;line-height:1">{{ b.day }}</span><span style="font-size:10px">{{ b.mon }}</span></span><span style="display:flex;flex-direction:column;flex:1"><span style="font-size:14px;font-weight:700">{{ b.doc }}</span><span style="font-size:12px;color:var(--k4F6368,#4F6368)">{{ b.who }} · <span style="font-family:'Space Grotesk'">{{ b.seq }}</span></span></span></div>
+          <div style="display:flex;align-items:center;gap:8px"><span style="display:flex;align-items:center;gap:4px;padding:4px 10px;border-radius:999px;background:{{ b.pbg }};color:{{ b.pfg }};font-size:12px;font-weight:600"><lc-icon name="{{ b.pIcon }}" size="13"></lc-icon>{{ b.pay }}</span><button style="margin-inline-start:auto;display:flex;align-items:center;gap:5px;padding:0 12px;height:32px;border-radius:999px;border:1px solid var(--kF6C9CA,#F6C9CA);background:var(--kFFFFFF,#fff);color:var(--kB4262B,#B4262B);font-size:12px;font-weight:600"><lc-icon name="calendar-x" size="13"></lc-icon>إلغاء</button></div>
+        </div>
+      </sc-for>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);padding:10px 8px 14px;background:var(--kFFFFFF,#fff);border-top:1px solid var(--kEEF2F3,#EEF2F3)">
+      <sc-for list="{{ tabsBook }}" as="t" hint-placeholder-count="4">
+        <div style="display:flex;flex-direction:column;align-items:center;gap:3px;font-size:11px;color:{{ t.c }};font-weight:{{ t.w }}"><span style="width:44px;height:30px;border-radius:999px;background:{{ t.bg }};display:flex;align-items:center;justify-content:center"><lc-icon name="{{ t.icon }}" size="19"></lc-icon></span>{{ t.ar }}</div>
+      </sc-for>
+    </div>
+  </div>
+  <span style="font-size:13px;color:var(--k4F6368,#4F6368)">05a · حجوزاتي وطابوري اليوم</span>
+  </div>
+
+  <div style="display:flex;flex-direction:column;gap:10px;align-items:center">
+  <div data-screen-label="05 Ticket" style="width:360px;height:760px;background:var(--k071A1D,#071A1D);border-radius:44px;border:8px solid var(--k0D2427,#0D2427);overflow:hidden;display:flex;flex-direction:column;color:#E6F1F1;box-shadow:0 30px 60px -24px rgba(10,58,64,.5)">
+    <div style="padding:18px 16px;display:flex;flex-direction:column;gap:14px;flex:1">
+      <div style="display:flex;align-items:center;gap:10px"><span style="font-size:18px;font-weight:700;flex:1">تذكرتي</span><span style="display:flex;align-items:center;gap:5px;padding:6px 10px;border-radius:999px;background:var(--k12302F,#12302F);font-size:12px;color:#7FDBB2"><lc-icon name="radio" size="13"></lc-icon>مباشر</span></div>
+      <div style="display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:16px;background:var(--k2A2410,#2A2410);border:1px solid var(--k5A4320,#5A4320);color:#F2B866;font-size:13px;font-weight:600"><lc-icon name="bell-ring" size="17"></lc-icon><span style="flex:1">اقترب دورك · أمامك 3 مرضى</span><span style="font-size:11px;color:var(--kC9A66B,#C9A66B)">تعال قبل موعدك بـ 20 د</span></div>
+      <div style="background:var(--k1A8A91,#1A8A91);border-radius:28px;padding:20px;display:flex;flex-direction:column;gap:14px;color:#fff">
+        <div style="display:flex;align-items:center;gap:10px">
+          <div style="width:44px;height:44px;border-radius:14px;overflow:hidden;background:rgba(255,255,255,.2)"><image-slot id="doc-photo-saad" shape="rounded" radius="14" placeholder="د" style="width:44px;height:44px"></image-slot></div>
+          <div style="display:flex;flex-direction:column;flex:1"><span style="font-size:14px;font-weight:600">د. سعد الحيدري</span><span style="font-size:12px;color:#D2ECEC">عيادة الباطنية · الطابق 2</span></div>
+          <span style="display:flex;align-items:center;gap:4px;padding:4px 10px;border-radius:999px;background:rgba(255,255,255,.2);font-size:12px"><lc-icon name="hourglass" size="13"></lc-icon>لم تصل</span>
+        </div>
+        <div style="display:flex;align-items:center;justify-content:space-between">
+          <div style="display:flex;flex-direction:column"><span style="font-size:12px;color:#D2ECEC">رقم التذكرة</span><span style="font-family:'Space Grotesk';font-size:46px;font-weight:700;line-height:1">A-025</span><span style="display:flex;align-items:center;gap:5px;font-size:13px;color:#D2ECEC;margin-top:6px"><lc-icon name="clock" size="14"></lc-icon>الدخول <b style="font-family:'Space Grotesk';color:#fff">5:40 م</b></span></div>
+          <div style="width:96px;height:96px;border-radius:16px;background:var(--kFFFFFF,#fff);color:var(--kT0A3A40,#0A3A40);display:flex;align-items:center;justify-content:center"><lc-icon name="qr-code" size="76" stroke="1.3"></lc-icon></div>
+        </div>
+        <div style="display:flex;gap:4px"><span style="flex:1;height:6px;border-radius:999px;background:var(--kFFFFFF,#fff)"></span><span style="flex:1;height:6px;border-radius:999px;background:var(--kFFFFFF,#fff)"></span><span style="flex:1;height:6px;border-radius:999px;background:var(--kFFFFFF,#fff)"></span><span style="flex:1;height:6px;border-radius:999px;background:rgba(255,255,255,.3)"></span><span style="flex:1;height:6px;border-radius:999px;background:rgba(255,255,255,.3)"></span></div>
+        <span style="display:flex;align-items:center;gap:6px;font-size:13px"><lc-icon name="users" size="15"></lc-icon>ترتيبك <b style="font-family:'Space Grotesk'">4</b> · امسح الرمز عند الاستقبال</span>
+      </div>
+      <div style="background:var(--k0D2427,#0D2427);border:1px solid var(--k2A5A5E,#2A5A5E);border-radius:20px;padding:14px;display:flex;flex-direction:column;gap:10px">
+        <div style="display:flex;align-items:center;gap:8px"><lc-icon name="fast-forward" size="18" color="var(--k3FB8BE,#3FB8BE)"></lc-icon><span style="font-size:15px;font-weight:600;flex:1">دعوة للحضور المبكر</span><span style="display:flex;align-items:center;gap:4px;font-family:'Space Grotesk';font-size:12px;color:#F2B544"><lc-icon name="timer" size="13"></lc-icon>04:12</span></div>
+        <span style="font-size:13px;line-height:1.7;color:var(--k8FA8AB,#8FA8AB)">الطبيب متقدم على المواعيد. إن حضرت الآن يكون دورك جاهزاً عند وصولك. متى تصل؟</span>
+        <div style="display:flex;gap:6px"><sc-for list="{{ etaChips }}" as="e" hint-placeholder-count="3"><span style="flex:1;display:flex;align-items:center;justify-content:center;height:34px;border-radius:999px;border:1.5px solid {{ e.line }};background:{{ e.bg }};color:{{ e.fg }};font-family:'Space Grotesk';font-size:13px;font-weight:600">{{ e.ar }}</span></sc-for></div>
+        <div style="display:flex;gap:8px"><button style="flex:1;display:flex;align-items:center;justify-content:center;gap:6px;height:44px;border-radius:999px;border:0;background:var(--k3FB8BE,#3FB8BE);color:var(--kT062528,#062528);font-size:14px;font-weight:600"><lc-icon name="car" size="16"></lc-icon>في الطريق</button><button style="flex:1;display:flex;align-items:center;justify-content:center;gap:6px;height:44px;border-radius:999px;border:1px solid var(--k2A4A4E,#2A4A4E);background:transparent;color:#E6F1F1;font-size:14px"><lc-icon name="calendar-check" size="16"></lc-icon>سألتزم بموعدي</button></div>
+      </div>
+      <button style="display:flex;align-items:center;justify-content:center;gap:8px;height:46px;border-radius:999px;border:1px solid var(--k3A2A2A,#3A2A2A);background:transparent;color:var(--kF08A8D,#F08A8D);font-size:14px;margin-top:auto"><lc-icon name="calendar-x" size="17"></lc-icon>إلغاء الحجز</button>
+    </div>
+  </div>
+  <span style="font-size:13px;color:var(--k4F6368,#4F6368)">05 · التذكرة والتقديم الذكي (داكن)</span>
+  </div>
+
+  <div style="display:flex;flex-direction:column;gap:10px;align-items:center">
+  <div data-screen-label="05b Call Alert" style="width:360px;height:760px;background:var(--k0F7A82,#0F7A82);border-radius:44px;border:8px solid var(--k0A3A40,#0A3A40);overflow:hidden;display:flex;flex-direction:column;color:#fff;box-shadow:0 30px 60px -24px rgba(10,58,64,.5)">
+    <div style="padding:26px 20px 22px;display:flex;flex-direction:column;align-items:center;gap:14px;flex:1;text-align:center">
+      <span style="display:flex;align-items:center;gap:6px;padding:6px 12px;border-radius:999px;background:rgba(255,255,255,.16);font-size:12px;font-weight:600"><lc-icon name="volume-2" size="14"></lc-icon>تنبيه 2 من 3 · يتكرر كل دقيقة</span>
+      <div style="width:120px;height:120px;border-radius:999px;background:rgba(255,255,255,.12);display:flex;align-items:center;justify-content:center;margin-top:18px"><div style="width:88px;height:88px;border-radius:999px;background:var(--kFFFFFF,#fff);color:var(--k0F7A82,#0F7A82);display:flex;align-items:center;justify-content:center"><lc-icon name="megaphone" size="42"></lc-icon></div></div>
+      <span style="font-size:30px;font-weight:700">تفضل للدخول</span>
+      <span style="font-family:'Space Grotesk';font-size:64px;font-weight:700;line-height:1">A-025</span>
+      <div style="display:flex;flex-direction:column;gap:6px;padding:14px;border-radius:20px;background:rgba(255,255,255,.12);width:100%">
+        <span style="font-size:16px;font-weight:700">د. سعد الحيدري</span>
+        <span style="display:flex;align-items:center;justify-content:center;gap:6px;font-size:14px;color:#E6F6F6"><lc-icon name="door-open" size="15"></lc-icon>عيادة الباطنية · الطابق 2</span>
+      </div>
+      <button style="width:100%;margin-top:auto;display:flex;align-items:center;justify-content:center;gap:10px;height:62px;border-radius:999px;border:0;background:var(--kFFFFFF,#fff);color:var(--kT0A3A40,#0A3A40);font-size:19px;font-weight:700"><lc-icon name="footprints" size="22"></lc-icon>أنا قادم</button>
+      <span style="font-size:12px;line-height:1.6;color:#E6F6F6">يظهر "قادم" عند الطبيب والاستقبال. يتوقف التنبيه عند ضغطك أو دخولك الغرفة.</span>
+    </div>
+  </div>
+  <span style="font-size:13px;color:var(--k4F6368,#4F6368)">05b · تنبيه الاستدعاء المستمر</span>
+  </div>
+
+  <div style="display:flex;flex-direction:column;gap:10px;align-items:center">
+  <div data-screen-label="06 Results" style="width:360px;height:760px;background:var(--kF5F8F8,#F5F8F8);border-radius:44px;border:8px solid var(--kFFFFFF,#fff);overflow:hidden;display:flex;flex-direction:column;box-shadow:0 30px 60px -24px rgba(10,58,64,.35)">
+    <div style="padding:18px 16px 0;display:flex;flex-direction:column;gap:12px;flex:1;overflow:hidden">
+      <span style="font-size:19px;font-weight:700">نتائجي ووصفاتي</span>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:4px;padding:4px;border-radius:14px;background:var(--kFFFFFF,#fff)">
+        <span style="display:flex;align-items:center;justify-content:center;gap:5px;height:36px;border-radius:10px;background:var(--k0F7A82,#0F7A82);color:#fff;font-size:13px;font-weight:600"><lc-icon name="flask-conical" size="15"></lc-icon>تحاليل</span>
+        <span style="display:flex;align-items:center;justify-content:center;gap:5px;height:36px;font-size:13px;color:var(--k4F6368,#4F6368)"><lc-icon name="scan-line" size="15"></lc-icon>أشعة</span>
+        <span style="display:flex;align-items:center;justify-content:center;gap:5px;height:36px;font-size:13px;color:var(--k4F6368,#4F6368)"><lc-icon name="pill" size="15"></lc-icon>وصفات</span>
+      </div>
+      <div style="background:var(--kFFFFFF,#fff);border-radius:20px;padding:14px;display:flex;flex-direction:column;gap:10px">
+        <div style="display:flex;align-items:center;gap:10px"><span style="width:40px;height:40px;border-radius:12px;background:var(--kF1ECFC,#F1ECFC);color:var(--k7C4DDB,#7C4DDB);display:flex;align-items:center;justify-content:center"><lc-icon name="flask-conical" size="20"></lc-icon></span><div style="display:flex;flex-direction:column;flex:1"><span style="font-size:15px;font-weight:700">تحليل دم شامل CBC</span><span style="font-size:12px;color:var(--k4F6368,#4F6368);font-weight:600">2 نوفمبر · د. سعد الحيدري · مراجعتك 16-11</span></div><span style="display:flex;align-items:center;gap:4px;padding:4px 10px;border-radius:999px;background:var(--kE6F6EE,#E6F6EE);color:var(--k157A50,#157A50);font-size:12px"><lc-icon name="circle-check" size="13"></lc-icon>معتمدة</span></div>
+        <sc-for list="{{ results }}" as="r" hint-placeholder-count="3">
+          <div style="display:flex;align-items:center;gap:10px;padding:8px 10px;border-radius:12px;background:{{ r.bg }}">
+            <span dir="ltr" style="font-family:'Space Grotesk';font-size:14px;font-weight:600;width:48px;text-align:right">{{ r.code }}</span>
+            <div style="flex:1;height:6px;border-radius:999px;background:var(--kE3EBEC,#E3EBEC);position:relative"><span style="position:absolute;top:0;bottom:0;right:25%;left:25%;background:var(--kA6D8DA,#A6D8DA);border-radius:999px"></span><span style="position:absolute;top:-3px;right:{{ r.pos }};width:12px;height:12px;border-radius:999px;background:{{ r.dot }};border:2px solid var(--kFFFFFF,#fff)"></span></div>
+            <span style="font-family:'Space Grotesk';font-size:14px;font-weight:700;color:{{ r.c }};width:36px;text-align:left">{{ r.v }}</span>
+            <lc-icon name="{{ r.icon }}" size="16" color="{{ r.c }}"></lc-icon>
+          </div>
+        </sc-for>
+        <span style="display:flex;align-items:center;gap:6px;font-size:12px;color:var(--k0F7A82,#0F7A82);font-weight:600"><lc-icon name="file-down" size="15"></lc-icon>تحميل التقرير PDF</span>
+      </div>
+      <div style="background:var(--kFFFFFF,#fff);border-radius:20px;padding:14px;display:flex;align-items:center;gap:10px;border:1.5px dashed var(--kF6C9CA,#F6C9CA)">
+        <span style="width:40px;height:40px;border-radius:12px;background:var(--kFDECEC,#FDECEC);color:var(--kE5484D,#E5484D);display:flex;align-items:center;justify-content:center"><lc-icon name="lock" size="19"></lc-icon></span>
+        <div style="display:flex;flex-direction:column;flex:1"><span style="font-size:14px;font-weight:700">Lipid Profile</span><span style="font-size:12px;color:var(--kB4262B,#B4262B)">النتيجة جاهزة · ادفع لعرضها</span></div>
+        <button style="display:flex;align-items:center;gap:5px;padding:0 12px;height:36px;border-radius:999px;border:0;background:var(--k0F7A82,#0F7A82);color:#fff;font-size:13px;font-weight:600"><lc-icon name="credit-card" size="15"></lc-icon>22,000</button>
+      </div>
+      <div style="background:var(--kFFFFFF,#fff);border-radius:20px;padding:14px;display:flex;align-items:center;gap:10px">
+        <span style="width:40px;height:40px;border-radius:12px;background:var(--kFDEFE5,#FDEFE5);color:var(--kEF7A2E,#EF7A2E);display:flex;align-items:center;justify-content:center"><lc-icon name="pill" size="19"></lc-icon></span>
+        <div style="display:flex;flex-direction:column;flex:1"><span style="font-size:14px;font-weight:700">وصفة <span dir="ltr" style="font-family:'Space Grotesk'">RX-7KQ2M9</span></span><span style="font-size:12px;color:var(--k4F6368,#4F6368);font-weight:600">دواءان · صالحة حتى 02-12 في أي فرع</span></div>
+        <lc-icon name="scan-barcode" size="22" color="var(--kEF7A2E,#EF7A2E)"></lc-icon>
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);padding:10px 8px 14px;background:var(--kFFFFFF,#fff);border-top:1px solid var(--kEEF2F3,#EEF2F3)">
+      <sc-for list="{{ tabsResults }}" as="t" hint-placeholder-count="4">
+        <div style="display:flex;flex-direction:column;align-items:center;gap:3px;font-size:11px;color:{{ t.c }};font-weight:{{ t.w }}"><span style="width:44px;height:30px;border-radius:999px;background:{{ t.bg }};display:flex;align-items:center;justify-content:center"><lc-icon name="{{ t.icon }}" size="19"></lc-icon></span>{{ t.ar }}</div>
+      </sc-for>
+    </div>
+  </div>
+  <span style="font-size:13px;color:var(--k4F6368,#4F6368)">06 · النتائج والوصفات</span>
+  </div>
+
+  <div style="display:flex;flex-direction:column;gap:10px;align-items:center">
+  <div data-screen-label="07 Banned" style="width:360px;height:760px;background:var(--kFFFFFF,#fff);border-radius:44px;border:8px solid var(--kFFFFFF,#fff);overflow:hidden;display:flex;flex-direction:column;box-shadow:0 30px 60px -24px rgba(10,58,64,.35)">
+    <div style="padding:40px 22px 22px;display:flex;flex-direction:column;align-items:center;gap:16px;flex:1;text-align:center">
+      <div style="width:96px;height:96px;border-radius:999px;background:var(--kFDECEC,#FDECEC);color:var(--kE5484D,#E5484D);display:flex;align-items:center;justify-content:center"><lc-icon name="ban" size="48"></lc-icon></div>
+      <span style="font-size:22px;font-weight:700">الحجز موقوف مؤقتاً</span>
+      <span style="font-size:14px;line-height:1.8;color:var(--k4F6368,#4F6368)">تم إيقاف الحجز بسبب 3 حالات عدم حضور. ادفع عربوناً لفك الإيقاف، ويُخصم من أول فاتورة لك.</span>
+      <div style="display:flex;gap:8px">
+        <sc-for list="{{ strikes }}" as="s" hint-placeholder-count="3">
+          <div style="display:flex;flex-direction:column;align-items:center;gap:4px;padding:10px 12px;border-radius:14px;background:var(--kFDECEC,#FDECEC);color:var(--kB4262B,#B4262B)"><lc-icon name="user-x" size="18"></lc-icon><span style="font-family:'Space Grotesk';font-size:12px">{{ s.d }}</span></div>
+        </sc-for>
+      </div>
+      <div style="display:flex;align-items:center;gap:12px;width:100%;padding:14px;border-radius:18px;background:var(--kF5F8F8,#F5F8F8);margin-top:8px">
+        <lc-icon name="piggy-bank" size="24" color="var(--k0F7A82,#0F7A82)"></lc-icon>
+        <span style="flex:1;font-size:14px;text-align:right">عربون فك الإيقاف</span>
+        <span style="font-family:'Space Grotesk';font-size:20px;font-weight:700">10,000</span>
+      </div>
+      <button style="width:100%;margin-top:auto;display:flex;align-items:center;justify-content:center;gap:8px;height:54px;border-radius:999px;border:0;background:var(--k0F7A82,#0F7A82);color:#fff;font-size:16px;font-weight:600"><lc-icon name="lock-keyhole-open" size="18"></lc-icon>ادفع العربون وفك الإيقاف</button>
+      <span style="display:flex;align-items:center;gap:6px;font-size:12px;color:var(--k4F6368,#4F6368);font-weight:600"><lc-icon name="building-2" size="14"></lc-icon>أو ادفعه نقداً عند استقبال المجمع</span>
+    </div>
+  </div>
+  <span style="font-size:13px;color:var(--k4F6368,#4F6368)">07 · الحظر وفكه بالعربون</span>
+  </div>
+
+  <div style="display:flex;flex-direction:column;gap:10px;align-items:center">
+  <div data-screen-label="08 Notifications" style="width:360px;height:760px;background:var(--kF5F8F8,#F5F8F8);border-radius:44px;border:8px solid var(--kFFFFFF,#fff);overflow:hidden;display:flex;flex-direction:column;box-shadow:0 30px 60px -24px rgba(10,58,64,.35)">
+    <div style="padding:18px 16px;display:flex;flex-direction:column;gap:10px;flex:1;overflow:hidden">
+      <div style="display:flex;align-items:center;gap:10px"><span style="font-size:19px;font-weight:700;flex:1">الإشعارات</span><span style="font-size:12px;font-weight:600;color:var(--k0F7A82,#0F7A82)">تعليم الكل كمقروء</span></div>
+      <sc-for list="{{ notes }}" as="n" hint-placeholder-count="6">
+        <div style="display:flex;align-items:flex-start;gap:10px;padding:12px;border-radius:16px;background:{{ n.bg }}">
+          <span style="width:38px;height:38px;border-radius:12px;background:{{ n.ibg }};color:{{ n.ifg }};display:flex;align-items:center;justify-content:center;flex-shrink:0"><lc-icon name="{{ n.icon }}" size="18"></lc-icon></span>
+          <span style="display:flex;flex-direction:column;gap:2px;flex:1;min-width:0"><span style="font-size:14px;font-weight:700">{{ n.title }}</span><span style="font-size:12px;line-height:1.6;color:var(--k4F6368,#4F6368)">{{ n.msg }}</span></span>
+          <span style="display:flex;flex-direction:column;align-items:flex-end;gap:6px"><span style="font-family:'Space Grotesk';font-size:11px;color:var(--k4F6368,#4F6368);font-weight:600">{{ n.at }}</span><span style="width:8px;height:8px;border-radius:999px;background:{{ n.dot }}"></span></span>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+  <span style="font-size:13px;color:var(--k4F6368,#4F6368)">08 · الإشعارات</span>
+  </div>
+
+  <div style="display:flex;flex-direction:column;gap:10px;align-items:center">
+  <div data-screen-label="09 Account Family" style="width:360px;height:760px;background:var(--kF5F8F8,#F5F8F8);border-radius:44px;border:8px solid var(--kFFFFFF,#fff);overflow:hidden;display:flex;flex-direction:column;box-shadow:0 30px 60px -24px rgba(10,58,64,.35)">
+    <div style="padding:18px 16px 0;display:flex;flex-direction:column;gap:12px;flex:1;overflow:hidden">
+      <div style="display:flex;flex-direction:column;gap:2px"><span style="font-size:19px;font-weight:700">حسابي والعائلة</span><span style="display:flex;align-items:center;gap:6px;font-size:13px;color:var(--k4F6368,#4F6368)"><lc-icon name="phone" size="14"></lc-icon><span dir="ltr" style="font-family:'Space Grotesk'">0780 123 4567</span> · كل الملفات بنفس الرقم</span></div>
+      <sc-for list="{{ family }}" as="f" hint-placeholder-count="2">
+        <div style="display:flex;align-items:center;gap:10px;padding:12px;border-radius:18px;background:var(--kFFFFFF,#fff)">
+          <span style="width:44px;height:44px;border-radius:999px;background:var(--kEAF6F6,#EAF6F6);color:var(--k0F7A82,#0F7A82);display:flex;align-items:center;justify-content:center"><lc-icon name="{{ f.icon }}" size="20"></lc-icon></span>
+          <span style="display:flex;flex-direction:column;flex:1"><span style="font-size:15px;font-weight:700">{{ f.name }}</span><span style="font-size:12px;color:var(--k4F6368,#4F6368);font-weight:600"><span style="font-family:'Space Grotesk'">{{ f.file }}</span> · {{ f.age }}</span></span>
+          <span style="display:flex;align-items:center;gap:4px;padding:0 10px;height:30px;border-radius:999px;border:1px solid var(--kD5E0E1,#D5E0E1);font-size:12px;font-weight:600">{{ f.rel }}<lc-icon name="chevron-down" size="13"></lc-icon></span>
+        </div>
+      </sc-for>
+      <div style="display:flex;flex-direction:column;gap:10px;padding:14px;border-radius:18px;background:var(--kFFFFFF,#fff);border:1.5px dashed var(--kA6D8DA,#A6D8DA)">
+        <span style="display:flex;align-items:center;gap:6px;font-size:14px;font-weight:700;color:var(--k0F7A82,#0F7A82)"><lc-icon name="user-plus" size="16"></lc-icon>إضافة فرد بملف جديد</span>
+        <div style="display:flex;align-items:center;height:42px;padding:0 12px;border-radius:12px;border:1px solid var(--kD5E0E1,#D5E0E1);font-size:14px">علي حسن</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px"><div style="display:flex;align-items:center;gap:6px;height:42px;padding:0 12px;border-radius:12px;border:1px solid var(--kD5E0E1,#D5E0E1);font-size:13px"><lc-icon name="cake" size="14" color="var(--k6B7F84,#6B7F84)"></lc-icon><span style="font-family:'Space Grotesk'">15-01-2020</span></div><div style="display:flex;align-items:center;justify-content:center;gap:6px;height:42px;border-radius:12px;background:var(--kEAF6F6,#EAF6F6);color:var(--k0C5F67,#0C5F67);font-size:13px;font-weight:600">ذكر</div></div>
+        <div style="display:flex;gap:6px;flex-wrap:wrap"><sc-for list="{{ relChips }}" as="r" hint-placeholder-count="5"><span style="display:flex;align-items:center;padding:0 10px;height:30px;border-radius:999px;background:{{ r.bg }};color:{{ r.fg }};font-size:12px;font-weight:600">{{ r.ar }}</span></sc-for></div>
+        <button style="display:flex;align-items:center;justify-content:center;gap:6px;height:44px;border-radius:999px;border:0;background:var(--k0F7A82,#0F7A82);color:#fff;font-size:14px;font-weight:600"><lc-icon name="check" size="16"></lc-icon>إنشاء الملف وربطه</button>
+      </div>
+      <span style="display:flex;align-items:flex-start;gap:6px;font-size:12px;line-height:1.6;color:var(--k4F6368,#4F6368);font-weight:600"><lc-icon name="info" size="14"></lc-icon>الاسم والبيانات الطبية يعدلها الاستقبال. يمكنك تغيير صلة القرابة فقط.</span>
+      <button style="margin-top:auto;margin-bottom:14px;display:flex;align-items:center;justify-content:center;gap:8px;height:46px;border-radius:999px;border:1px solid var(--kF6C9CA,#F6C9CA);background:var(--kFFFFFF,#fff);color:var(--kB4262B,#B4262B);font-size:14px;font-weight:600"><lc-icon name="log-out" size="17"></lc-icon>تسجيل الخروج</button>
+    </div>
+  </div>
+  <span style="font-size:13px;color:var(--k4F6368,#4F6368)">09 · حسابي وأفراد العائلة</span>
+  </div>
+
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { day: 2 };
+  renderVals() {
+    const st = this.state;
+    const otp = ["4","8","2","9","",""].map((v,i)=>({v,line:i===4?"var(--k0F7A82,#0F7A82)":(v?"var(--kA6D8DA,#A6D8DA)":"var(--kE3EBEC,#E3EBEC)"),bg:v?"var(--kEAF6F6,#EAF6F6)":"var(--kFFFFFF,#fff)"}));
+    const specs = [["باطنية","stethoscope","var(--kEAF6F6,#EAF6F6)","var(--k0F7A82,#0F7A82)"],["قلبية","heart-pulse","var(--kFDECEC,#FDECEC)","var(--kE5484D,#E5484D)"],["أطفال","baby","var(--kFEF6E4,#FEF6E4)","var(--kB97D10,#B97D10)"],["عظام","bone","var(--kEAF1FD,#EAF1FD)","var(--k2F6FDB,#2F6FDB)"],["نسائية","flower-2","var(--kF1ECFC,#F1ECFC)","var(--k7C4DDB,#7C4DDB)"]].map(([ar,icon,bg,fg])=>({ar,icon,bg,fg}));
+    const docs = [
+      {name:"د. سعد الحيدري",spec:"باطنية",icon:"stethoscope",photo:"doc-photo-saad",avail:"اليوم · متاح 6",availC:"var(--k157A50,#157A50)",price:"25,000"},
+      {name:"د. هدى الربيعي",spec:"باطنية",icon:"stethoscope",photo:"doc-photo-huda",avail:"اليوم ممتلئ · غداً متاح",availC:"var(--k8A520B,#8A520B)",price:"25,000"},
+      {name:"د. علي الموسوي",spec:"قلبية",icon:"heart-pulse",photo:"doc-photo-ali",avail:"الأربعاء · متاح 11",availC:"var(--k157A50,#157A50)",price:"35,000"}];
+    const tab = (ar,icon,on)=>({ar,icon,c:on?"var(--k0F7A82,#0F7A82)":"var(--k8A9A9E,#8A9A9E)",w:on?600:400,bg:on?"var(--kD2ECEC,#D2ECEC)":"transparent"});
+    const tabsHome = [tab("الرئيسية","house",true),tab("حجوزاتي","calendar-check"),tab("النتائج","file-heart"),tab("حسابي","user-round")];
+    const tabsResults = [tab("الرئيسية","house"),tab("حجوزاتي","calendar-check"),tab("النتائج","file-heart",true),tab("حسابي","user-round")];
+    const D = [[31,"السبت","open"],[1,"الأحد","full"],[2,"الاثنين","open"],[3,"الثلاثاء","cancelled"],[4,"الأربعاء","open"]];
+    const days = D.map(([n,dn,s],i)=>{const on=st.day===n,dist=Math.abs(i-D.findIndex(x=>x[0]===st.day));return {n,dn:s==="full"?"ممتلئة":(s==="cancelled"?"ملغاة":dn),w:on?"62px":(dist===1?"52px":"44px"),h:on?"80px":(dist===1?"68px":"60px"),bg:on?"var(--k0F7A82,#0F7A82)":"var(--kF5F8F8,#F5F8F8)",fg:on?"#fff":(s==="open"?"var(--k4F6368,#4F6368)":"#B8C4C6"),ring:on?"0 8px 18px -8px rgba(15,122,130,.7)":"none",op:s==="open"||on?1:.7,go:()=>this.setState({day:n})};});
+    const sel = D.find(x=>x[0]===st.day)[2];
+    const sess = sel==="open" ? {icon:"calendar-clock",ic:"var(--k0F7A82,#0F7A82)",label:"الوجبة المسائية · تسلسلك",main:"#25 · 5:10 م",chip:"متاح 6",bg:"var(--kE6F6EE,#E6F6EE)",fg:"var(--k157A50,#157A50)"} :
+      sel==="full" ? {icon:"users",ic:"var(--kE9A23B,#E9A23B)",label:"الوجبة ممتلئة",main:"لا حجوزات أونلاين",chip:"ممتلئة",bg:"var(--kFDF3E2,#FDF3E2)",fg:"var(--k8A520B,#8A520B)"} :
+      {icon:"calendar-x",ic:"var(--kE5484D,#E5484D)",label:"الوجبة ملغاة",main:"إجازة الطبيب",chip:"ملغاة",bg:"var(--kFDECEC,#FDECEC)",fg:"var(--kB4262B,#B4262B)"};
+    const gateways = [{ar:"البوابة التجريبية",icon:"flask-round",bg:"var(--kFEF6E4,#FEF6E4)",fg:"var(--kB86E0A,#B86E0A)",line:"var(--k0F7A82,#0F7A82)",dot:"var(--k0F7A82,#0F7A82)"},{ar:"زين كاش · كي كارد · FIB · قريباً",icon:"wallet",bg:"var(--kF1ECFC,#F1ECFC)",fg:"var(--k7C4DDB,#7C4DDB)",line:"var(--kE3EBEC,#E3EBEC)",dot:"transparent"}];
+    const forWho = [["زينب (أنا)","user-round",true],["علي (ابني)","baby"]].map(([ar,icon,on])=>({ar,icon,bg:on?"var(--k0F7A82,#0F7A82)":"var(--kF5F8F8,#F5F8F8)",fg:on?"#fff":"var(--k4F6368,#4F6368)"}));
+    const payOpts = [["دفع كامل","credit-card","25,000"],["عربون","piggy-bank","5,000",true],["بالعيادة","banknote","عند الوصول"]].map(([ar,icon,amt,on])=>({ar,icon,amt,line:on?"var(--k0F7A82,#0F7A82)":"var(--kE3EBEC,#E3EBEC)",bg:on?"var(--kEAF6F6,#EAF6F6)":"var(--kFFFFFF,#fff)",fg:on?"var(--k0C5F67,#0C5F67)":"var(--k4F6368,#4F6368)"}));
+    const etaChips = [["10 د"],["20 د",true],["30 د"]].map(([ar,on])=>({ar,line:on?"var(--k3FB8BE,#3FB8BE)":"var(--k2A4A4E,#2A4A4E)",bg:on?"var(--k12302F,#12302F)":"transparent",fg:on?"#7FDBB2":"var(--k8FA8AB,#8FA8AB)"}));
+    const results = [
+      {code:"WBC",v:"7.5",pos:"50%",dot:"var(--k1FA971,#1FA971)",c:"var(--k157A50,#157A50)",icon:"circle-check",bg:"transparent"},
+      {code:"PLT",v:"420",pos:"18%",dot:"var(--kE9A23B,#E9A23B)",c:"var(--k8A520B,#8A520B)",icon:"arrow-up",bg:"transparent"},
+      {code:"HGB",v:"6.8",pos:"94%",dot:"var(--kE5484D,#E5484D)",c:"var(--kB4262B,#B4262B)",icon:"triangle-alert",bg:"var(--kFDECEC,#FDECEC)"}];
+    const strikes = [{d:"12-09"},{d:"03-10"},{d:"21-10"}];
+    const DP = {clinic:["stethoscope","var(--kEAF6F6,#EAF6F6)","var(--k0F7A82,#0F7A82)"],lab:["microscope","var(--kF1ECFC,#F1ECFC)","var(--k7C4DDB,#7C4DDB)"],radiology:["scan-line","var(--kEAF1FD,#EAF1FD)","var(--k2F6FDB,#2F6FDB)"],pharmacy:["pill","var(--kFDEFE5,#FDEFE5)","var(--kEF7A2E,#EF7A2E)"]};
+    const PB = [["الفرع الرئيسي","بغداد · شارع فلسطين","open","مفتوح الآن",["clinic","lab","radiology","pharmacy"],14],["فرع الكرادة","بغداد · شارع 62","closed","مغلق مؤقتاً · صيانة المبنى · يعود 05-11",["clinic","lab","radiology"],6],["فرع المنصور","بغداد · شارع 14 رمضان","closed","افتتاح قريباً",["clinic","lab"],1]];
+    const pBranches = PB.map(([name,addr,s,status,dp,docs],i)=>({name,addr,status,docs:String(docs),op:s==="open"?1:.75,line:i===0?"var(--k0F7A82,#0F7A82)":"transparent",icon:s==="open"?"building-2":"building",ibg:s==="open"?"var(--kEAF6F6,#EAF6F6)":"var(--kEEF2F3,#EEF2F3)",ifg:s==="open"?"var(--k0F7A82,#0F7A82)":"var(--k8A9A9E,#8A9A9E)",sBg:s==="open"?"var(--kE6F6EE,#E6F6EE)":"var(--kF0F3F4,#F0F3F4)",sFg:s==="open"?"var(--k157A50,#157A50)":"var(--k6B7F84,#6B7F84)",sIcon:s==="open"?"circle-check":(i===2?"construction":"lock"),depts:dp.map(k=>({icon:DP[k][0],bg:DP[k][1],fg:DP[k][2]}))}));
+    const CL = (name,floor,open,label)=>({name,floor:String(floor),st:open?"مفتوح اليوم":label,icon:open?"door-open":"door-closed",c:open?"var(--k157A50,#157A50)":"var(--k8A520B,#8A520B)"});
+    const pDepts = [["العيادات","clinic",[CL("عيادة الباطنية",2,false,"صيانة حتى 04-11"),CL("عيادة القلبية",2,true)]],["المختبر","lab",[CL("مختبر التحليلات",1,true)]],["الأشعة والسونار","radiology",[CL("قسم الأشعة والسونار",0,true)]]].map(([ar,k,clinics])=>({ar,icon:DP[k][0],fg:DP[k][2],clinics}));
+    const pSpecs = [["باطنية","stethoscope","2"],["قلبية","heart-pulse","1"],["نسائية","flower-2","2"],["أطفال","baby","1"]].map(([ar,icon,n])=>({ar,icon,n}));
+    const tabsBook = [tab("الرئيسية","house"),tab("حجوزاتي","calendar-check",true),tab("النتائج","file-heart"),tab("حسابي","user-round")];
+    const famChips = [["الكل",true],["زينب"],["علي"]].map(([ar,on])=>({ar,bg:on?"var(--kB0F2328,#0F2328)":"var(--kFFFFFF,#fff)",fg:on?"#fff":"var(--k4F6368,#4F6368)"}));
+    const myTickets = [
+      {no:"A-025",who:"زينب",doc:"د. سعد الحيدري",meta:"ترتيبك 4 · الدخول التقريبي 5:40 م · الطابق 2",st:"وصلت · بانتظار الاستدعاء",sc:"var(--k0C5F67,#0C5F67)",sIcon:"user-check",bg:"var(--k0F7A82,#0F7A82)",fg:"#fff"},
+      {no:"B-007",who:"علي",doc:"د. مريم الزبيدي",meta:"سُجّل من الاستقبال بدون حجز · أمامه 6",st:"حضور مباشر",sc:"var(--k2459B8,#2459B8)",sIcon:"footprints",bg:"var(--kEAF1FD,#EAF1FD)",fg:"var(--k1C468F,#1C468F)"}];
+    const myBookings = [
+      {day:"04",mon:"نوفمبر",doc:"د. علي الموسوي · قلبية",who:"زينب",seq:"#11 · 10:20 ص",pay:"عربون مدفوع · المتبقي 30,000",pIcon:"piggy-bank",pbg:"var(--kE6F6EE,#E6F6EE)",pfg:"var(--k157A50,#157A50)"},
+      {day:"16",mon:"نوفمبر",doc:"د. سعد الحيدري · مراجعة",who:"زينب",seq:"#08 · 4:40 م",pay:"الدفع بالعيادة",pIcon:"banknote",pbg:"var(--kF5F8F8,#F5F8F8)",pfg:"var(--k4F6368,#4F6368)"}];
+    const N2 = (title,msg,at,icon,ibg,ifg,unread)=>({title,msg,at,icon,ibg,ifg,bg:unread?"var(--kFFFFFF,#fff)":"transparent",dot:unread?"var(--k0F7A82,#0F7A82)":"transparent"});
+    const notes = [
+      N2("اقترب دورك","أمامك 3 مرضى عند د. سعد الحيدري.","17:31","bell-ring","var(--kFEF6E4,#FEF6E4)","var(--kB86E0A,#B86E0A)",true),
+      N2("تذكير بموعدك","موعدك بعد ساعة. يُرجى الحضور قبل موعدك بـ 20 دقيقة.","16:20","alarm-clock","var(--kEAF6F6,#EAF6F6)","var(--k0F7A82,#0F7A82)",true),
+      N2("نتيجة جاهزة","CBC · زينب علي. اضغط للعرض.","15:02","flask-conical","var(--kF1ECFC,#F1ECFC)","var(--k7C4DDB,#7C4DDB)",true),
+      N2("تم إرجاع مبلغ","أُرجع 30,000 د.ع نقداً عن تحليل Vitamin D.","أمس","undo-2","var(--kE6F6EE,#E6F6EE)","var(--k157A50,#157A50)"),
+      N2("أُضيف رصيد لحسابك","15,000 د.ع من إلغاء حجز مدفوع. يُخصم من فاتورتك القادمة.","أمس","piggy-bank","var(--kE6F6EE,#E6F6EE)","var(--k157A50,#157A50)"),
+      N2("أُلغي موعدك","أُغلقت عيادة الباطنية للصيانة. المبلغ المدفوع أصبح رصيداً.","30-10","calendar-x","var(--kFDECEC,#FDECEC)","var(--kE5484D,#E5484D)")];
+    const family = [{name:"زينب علي",file:"R1-004513",age:"أنثى · 35",rel:"أنا",icon:"user-round"},{name:"فاطمة حسن",file:"R1-004512",age:"أنثى · 61",rel:"أم",icon:"user-round"}];
+    const relChips = [["ابن/ابنة",true],["زوج/زوجة"],["أب/أم"],["آخر"]].map(([ar,on])=>({ar,bg:on?"var(--k0F7A82,#0F7A82)":"var(--kF5F8F8,#F5F8F8)",fg:on?"#fff":"var(--k4F6368,#4F6368)"}));
+    return {tabsBook,famChips,myTickets,myBookings,notes,family,relChips,forWho,payOpts,etaChips,pBranches,pDepts,pSpecs,otp,specs,docs,tabsHome,tabsResults,days,sess,gateways,results,strikes};
+  }
+}
+</script>
+</body>
+</html>

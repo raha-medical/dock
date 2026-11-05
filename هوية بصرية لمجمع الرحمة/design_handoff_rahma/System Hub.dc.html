@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="icon" type="image/svg+xml" href="./rahma-mark.svg">
+<script src="./theme.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<script src="./lucide-icon.js"></script>
+<style>
+body{margin:0;background:var(--kF5F8F8,#F5F8F8);font-family:'Readex Pro',sans-serif;color:var(--k0F2328,#0F2328);-webkit-font-smoothing:antialiased}
+a{color:var(--k0F7A82,#0F7A82);text-decoration:none}a:hover{color:var(--k0C5F67,#0C5F67)}
+*{box-sizing:border-box}
+</style>
+</helmet>
+<div dir="rtl" style="max-width:1240px;margin:0 auto;padding:40px 28px 80px;display:flex;flex-direction:column;gap:40px">
+  <header style="display:flex;align-items:center;gap:16px;flex-wrap:wrap">
+    <dc-import name="Rahma Mark" animate="{{ true }}" size="{{ 58 }}" hint-size="58px,58px"></dc-import>
+    <div style="display:flex;flex-direction:column;flex:1;min-width:240px"><span style="font-size:28px;font-weight:700">واجهات نظام مجمع الرحمة الطبي</span><span style="font-size:15px;color:var(--k6B7F84,#6B7F84)">كل دور له واجهة مستقلة حسب صلاحيات العقود v5 · الأيقونات من Lucide</span></div>
+    <theme-toggle label=""></theme-toggle>
+    <a href="Contract Coverage.dc.html" style="display:flex;align-items:center;gap:8px;padding:10px 16px;border-radius:999px;background:var(--kFFFFFF,#fff);border:1px solid var(--kE3EBEC,#E3EBEC);font-size:14px;font-weight:600;white-space:nowrap;flex-shrink:0"><lc-icon name="file-check-2" size="18"></lc-icon>مطابقة العقود</a>
+    <a href="Brand Identity v2.dc.html" style="display:flex;align-items:center;gap:8px;padding:10px 16px;border-radius:999px;background:var(--kFFFFFF,#fff);border:1px solid var(--kE3EBEC,#E3EBEC);font-size:14px;font-weight:600;white-space:nowrap;flex-shrink:0"><lc-icon name="palette" size="18"></lc-icon>دليل الهوية</a>
+  </header>
+
+  <section style="display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:14px">
+    <sc-for list="{{ roles }}" as="r" hint-placeholder-count="9">
+      <a href="{{ r.href }}" style="background:var(--kFFFFFF,#fff);border:1px solid var(--kE3EBEC,#E3EBEC);border-radius:24px;padding:22px;display:flex;flex-direction:column;gap:14px;color:var(--k0F2328,#0F2328);min-height:190px" style-hover="border-color:var(--k6FBFC3,#6FBFC3);box-shadow:0 8px 24px -6px rgba(10,58,64,.16)">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start">
+          <div style="width:48px;height:48px;border-radius:14px;background:{{ r.soft }};color:{{ r.hex }};display:flex;align-items:center;justify-content:center"><lc-icon name="{{ r.icon }}" size="24"></lc-icon></div>
+          <span dir="ltr" style="font-family:'Space Grotesk';font-size:12px;color:var(--k6B7F84,#6B7F84);font-weight:600">{{ r.key }}</span>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:4px"><span style="font-size:19px;font-weight:700">{{ r.ar }}</span><span style="font-size:14px;line-height:1.6;color:var(--k4F6368,#4F6368)">{{ r.desc }}</span></div>
+        <div style="display:flex;align-items:center;gap:6px;margin-top:auto;font-size:13px;font-weight:600;color:var(--k0F7A82,#0F7A82)">{{ r.device }}<lc-icon name="arrow-left" size="16"></lc-icon></div>
+      </a>
+    </sc-for>
+  </section>
+
+  <section style="display:flex;flex-direction:column;gap:16px">
+    <div style="display:flex;align-items:baseline;gap:12px"><span style="font-size:24px;font-weight:700">قاموس الأيقونات</span><span style="font-size:14px;color:var(--k6B7F84,#6B7F84)">اسم المكون في lucide-react بجانب كل معنى</span></div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(360px,1fr));gap:14px">
+      <sc-for list="{{ dict }}" as="g" hint-placeholder-count="8">
+        <div style="background:var(--kFFFFFF,#fff);border:1px solid var(--kE3EBEC,#E3EBEC);border-radius:20px;padding:18px;display:flex;flex-direction:column;gap:6px">
+          <span style="font-size:15px;font-weight:700;margin-bottom:6px">{{ g.ar }}</span>
+          <sc-for list="{{ g.items }}" as="i" hint-placeholder-count="6">
+            <div style="display:flex;align-items:center;gap:12px;padding:6px 0;border-bottom:1px solid var(--kF0F4F4,#F0F4F4)">
+              <div style="width:34px;height:34px;border-radius:10px;background:var(--kEAF6F6,#EAF6F6);color:var(--k0F7A82,#0F7A82);display:flex;align-items:center;justify-content:center"><lc-icon name="{{ i.icon }}" size="18"></lc-icon></div>
+              <span style="font-size:14px;flex:1">{{ i.ar }}</span>
+              <span dir="ltr" style="font-family:'Space Grotesk';font-size:12px;color:var(--k4F6368,#4F6368);font-weight:600">{{ i.comp }}</span>
+            </div>
+          </sc-for>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    const R = (key,ar,icon,hex,soft,href,desc,device)=>({key,ar,icon,hex,soft,href,desc,device});
+    const roles = [
+      R("receptionist","موظف الاستقبال","concierge-bell","var(--k0F7A82,#0F7A82)","var(--kEAF6F6,#EAF6F6)","Reception.dc.html","الطابور، الحضور، التحصيل والإيصالات، الفاتورة المباشرة بخصم، الاسترجاع، فك الحظر، الوردية ونقطة التحصيل، والمزامنة.","حاسوب"),
+      R("doctor","الطبيب","stethoscope","var(--k0F7A82,#0F7A82)","var(--kEAF6F6,#EAF6F6)","Doctor.dc.html","طابوري، المعاينة والوصفة، طلب التحاليل والأشعة، الملاحظات الخاصة، سجل المريض.","حاسوب · تابلت"),
+      R("lab_tech · radiologist","المختبر والأشعة","microscope","var(--k7C4DDB,#7C4DDB)","var(--kF1ECFC,#F1ECFC)","Diagnostics.dc.html","قوائم العمل، سحب العينة، إدخال النتائج والقيم الحرجة، جدولة الأشعة، التقارير ورفع الملفات.","تابلت"),
+      R("pharmacist","الصيدلي","pill","var(--kEF7A2E,#EF7A2E)","var(--kFDEFE5,#FDEFE5)","Pharmacy.dc.html","مسح كود الوصفة، صرف الأسطر مرة واحدة، توثيق البدائل وأسباب عدم الصرف.","تابلت"),
+      R("accountant","المحاسب العام","calculator","var(--kT102C44,#102C44)","var(--kE7EDF3,#E7EDF3)","Accountant.dc.html","لوحة الفروع، مطابقة الورديات، الاسترجاعات، الذمم الآجلة، الإيراد، أرباح الأطباء، الفواتير، المصاريف، تسويات الفروع، الغياب، وسجل التدقيق.","حاسوب"),
+      R("admin · branch_manager","الإدارة","shield-check","var(--kT102C44,#102C44)","var(--kE7EDF3,#E7EDF3)","Admin.dc.html","الفروع وحالتها، المستخدمون والصلاحيات، الأقسام والعيادات، الأطباء وجداولهم، الخدمات والأسعار، الدمج، الأجهزة، قوائم الاختيار، والإعدادات.","حاسوب"),
+      R("patient","تطبيق المريض","smartphone","var(--k2F6FDB,#2F6FDB)","var(--kEAF1FD,#EAF1FD)","Patient App.dc.html","الدخول برمز التحقق، الفروع وواجهة كل فرع، الحجز والدفع، التذكرة والتقديم الذكي، النتائج والوصفات، والحظر.","هاتف"),
+      R("staff","دخول الموظفين والتحقق","key-round","var(--kT102C44,#102C44)","var(--kE7EDF3,#E7EDF3)","Staff Login.dc.html","تسجيل الدخول والقفل، اختيار الفرع، تغيير كلمة المرور، والتحقق العام من الإيصال عبر QR","حاسوب · هاتف"),
+      R("landing","الموقع التعريفي","globe","var(--k17A07A,#17A07A)","var(--kE6F6EE,#E6F6EE)","Landing.dc.html","هوية المجمع، الخدمات، الفروع وأقسامها، الأطباء، رحلة المريض، وتحميل التطبيق.","ويب · هاتف"),
+      R("display","شاشة الانتظار","monitor","var(--k2F6FDB,#2F6FDB)","var(--kEAF1FD,#EAF1FD)","Public.dc.html","شاشة الانتظار العامة بدون أسماء.","تلفاز")];
+    const I = (ar,icon)=>({ar,icon,comp:"<"+icon.split("-").map(s=>s[0].toUpperCase()+s.slice(1)).join("")+" />"});
+    const dict = [
+      {ar:"الطابور",items:[I("الطابور الحي","list-ordered"),I("انتظار الوصول","hourglass"),I("وصل","user-check"),I("استدعاء","megaphone"),I("في الغرفة","door-open"),I("مكتمل","circle-check"),I("تخطي مؤقت","skip-forward"),I("غياب","user-x"),I("طوارئ","siren"),I("متأخر أُعيد إدراجه","alarm-clock"),I("التقديم الذكي","fast-forward")]},
+      {ar:"المال والتحصيل",items:[I("نقداً","banknote"),I("POS","credit-card"),I("أونلاين","globe"),I("رصيد / عربون","piggy-bank"),I("إيصال","receipt"),I("طباعة","printer"),I("درج النقود","archive"),I("استرجاع","undo-2"),I("دفع آجل","hand-coins"),I("خصم","percent"),I("الإغلاق الأعمى","eye-off")]},
+      {ar:"العيادة والسجل الطبي",items:[I("الطبيب","stethoscope"),I("المعاينة","clipboard-plus"),I("التشخيص ICD-10","file-search"),I("الوصفة","pill"),I("ملاحظات خاصة","lock-keyhole"),I("سجل المريض","history"),I("مراجعة بعد","calendar-clock"),I("إضافة ملحق","file-pen-line")]},
+      {ar:"المختبر والأشعة",items:[I("المختبر","flask-conical"),I("سحب العينة","test-tube"),I("باركود العينة","barcode"),I("قيمة حرجة","triangle-alert"),I("الأشعة","scan-line"),I("سونار","audio-waveform"),I("جدولة","calendar-range"),I("رفع ملف","file-up"),I("صورة","image"),I("تقرير PDF","file-text")]},
+      {ar:"الصيدلية",items:[I("مسح كود الوصفة","scan-barcode"),I("صُرف","package-check"),I("لم يُصرف","package-x"),I("بديل","replace"),I("منتهية","calendar-x")]},
+      {ar:"النظام والاتصال",items:[I("متصل","wifi"),I("أوفلاين","wifi-off"),I("مزامنة","refresh-cw"),I("تعارض","git-compare"),I("مرفوض","circle-x"),I("وكيل العتاد","plug-zap"),I("إشعارات","bell"),I("الفرع","building-2"),I("تبديل الفرع","arrow-left-right"),I("خروج","log-out")]},
+      {ar:"الإدارة",items:[I("المستخدمون","users"),I("الأدوار والصلاحيات","shield-check"),I("العيادات","hospital"),I("الخدمات والأسعار","tags"),I("جدول الطبيب","calendar-cog"),I("نسب الأطباء","percent"),I("دمج ملفين","git-merge"),I("سجل التدقيق","scroll-text"),I("التقارير","chart-column")]},
+      {ar:"المريض",items:[I("الرئيسية","house"),I("حجوزاتي","calendar-check"),I("النتائج","file-heart"),I("حسابي","user-round"),I("رمز التحقق","message-square-lock"),I("رمز الحضور","qr-code"),I("محظور","ban"),I("الهاتف","phone")]}];
+    return {roles,dict};
+  }
+}
+</script>
+</body>
+</html>

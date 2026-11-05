@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="icon" type="image/svg+xml" href="./rahma-mark.svg">
+<script src="./theme.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<script src="./lucide-icon.js"></script>
+<script src="./image-slot.js"></script>
+<style>
+body{margin:0;background:var(--kF5F8F8,#F5F8F8);font-family:'Readex Pro',sans-serif;color:var(--k0F2328,#0F2328);-webkit-font-smoothing:antialiased}
+a{color:var(--k0F7A82,#0F7A82);text-decoration:none}a:hover{color:var(--k0C5F67,#0C5F67)}
+*{box-sizing:border-box}
+button{font-family:inherit;cursor:pointer;white-space:nowrap}
+</style>
+</helmet>
+<div dir="rtl" style="min-height:100vh;display:grid;grid-template-columns:240px minmax(0,1fr);min-width:1280px">
+
+<aside style="background:var(--k0A3A40,#0A3A40);color:#fff;padding:22px 14px;display:flex;flex-direction:column;gap:18px;position:sticky;top:0;height:100vh">
+  <a href="System Hub.dc.html" style="display:flex;align-items:center;gap:10px;padding:0 6px;color:#fff">
+    <dc-import name="Rahma Mark" tone="dark" paper="#0A3A40" size="{{ 42 }}" hint-size="42px,42px"></dc-import>
+    <div style="display:flex;flex-direction:column"><span style="font-size:16px;font-weight:700">مجمع الرحمة</span><span style="font-size:12px;color:#A6D8DA">مساحة الطبيب</span></div>
+  </a>
+  <div style="display:flex;flex-direction:column;align-items:center;gap:10px;padding:18px 12px;border-radius:20px;background:rgba(255,255,255,.07)">
+    <div style="width:88px;height:88px;border-radius:24px;overflow:hidden;background:var(--k1A8A91,#1A8A91);border:3px solid rgba(255,255,255,.2)"><image-slot id="doc-photo-saad" shape="rounded" radius="22" placeholder="صورة" style="width:82px;height:82px"></image-slot></div>
+    <div style="display:flex;flex-direction:column;align-items:center"><span style="font-size:16px;font-weight:700">د. سعد الحيدري</span><span style="display:flex;align-items:center;gap:5px;font-size:12px;color:#A6D8DA"><lc-icon name="stethoscope" size="13"></lc-icon>باطنية · عيادة الطابق 2</span></div>
+    <div style="display:flex;align-items:center;gap:6px;padding:5px 12px;border-radius:999px;background:rgba(31,169,113,.18);color:#7FDBB2;font-size:12px"><lc-icon name="door-open" size="13"></lc-icon>الوجبة المسائية مفتوحة</div>
+  </div>
+  <nav style="display:flex;flex-direction:column;gap:3px;overflow:auto;min-height:0">
+    <sc-for list="{{ nav }}" as="n" hint-placeholder-count="4">
+      <button onClick="{{ n.go }}" style="display:flex;align-items:center;gap:12px;padding:11px 12px;border-radius:12px;border:0;background:{{ n.bg }};color:{{ n.c }};font-size:15px;font-weight:{{ n.w }};text-align:right">
+        <lc-icon name="{{ n.icon }}" size="19"></lc-icon><span style="flex:1">{{ n.ar }}</span>
+        <span style="font-family:'Space Grotesk';font-size:12px;padding:1px 7px;border-radius:999px;background:{{ n.badgeBg }}">{{ n.badge }}</span>
+      </button>
+    </sc-for>
+  </nav>
+  <div style="margin-top:auto;display:flex;align-items:center;gap:8px;padding:10px 12px;border-radius:12px;background:rgba(255,255,255,.06);color:#C9E4E5;font-size:13px"><lc-icon name="log-out" size="16"></lc-icon>تسجيل الخروج</div>
+</aside>
+
+<main style="display:flex;flex-direction:column;min-width:0">
+  <header style="display:flex;align-items:center;gap:14px;padding:16px 28px;background:var(--kFFFFFF,#fff);border-bottom:1px solid var(--kE3EBEC,#E3EBEC);position:sticky;top:0;z-index:2">
+    <div style="display:flex;flex-direction:column;flex:1"><span style="font-size:21px;font-weight:700">{{ title }}</span><span style="font-size:13px;color:var(--k4F6368,#4F6368);font-weight:600">{{ subtitle }}</span></div>
+    <theme-toggle></theme-toggle>
+    <div style="display:flex;align-items:center;gap:6px;padding:8px 12px;border-radius:999px;background:var(--kF5F8F8,#F5F8F8);font-size:13px;color:var(--k4F6368,#4F6368)"><lc-icon name="timer" size="16" color="var(--k0F7A82,#0F7A82)"></lc-icon>متوسطك اليوم <span style="font-family:'Space Grotesk';font-weight:600;color:var(--k0F2328,#0F2328)">11.5</span> د</div>
+    <div style="display:flex;align-items:center;gap:6px;padding:8px 12px;border-radius:999px;background:var(--kFDF3E2,#FDF3E2);font-size:13px;color:var(--k8A520B,#8A520B)"><lc-icon name="clock-alert" size="16"></lc-icon>تأخير <span style="font-family:'Space Grotesk';font-weight:600">+8</span> د</div>
+    <button onClick="{{ goAlerts }}" style="position:relative;width:42px;height:42px;border-radius:999px;border:0;background:var(--kFDECEC,#FDECEC);color:var(--kE5484D,#E5484D);display:flex;align-items:center;justify-content:center"><lc-icon name="bell-ring" size="19"></lc-icon><span style="position:absolute;top:-2px;left:-2px;min-width:18px;height:18px;border-radius:999px;background:var(--kE5484D,#E5484D);color:#fff;font-family:'Space Grotesk';font-size:11px;display:flex;align-items:center;justify-content:center">1</span></button>
+  </header>
+
+  <div style="padding:24px 28px 48px;display:flex;flex-direction:column;gap:18px">
+
+  <sc-if value="{{ isQueue }}" hint-placeholder-val="{{ true }}">
+    <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding:12px 16px;border-radius:16px;background:var(--kFFFFFF,#fff);border:1px solid var(--kE3EBEC,#E3EBEC);font-size:13px;color:var(--k4F6368,#4F6368)">
+      <lc-icon name="megaphone" size="17" color="var(--k0F7A82,#0F7A82)"></lc-icon><span style="font-weight:600;color:var(--k0F2328,#0F2328)">من يستدعي المرضى في هذا الفرع:</span>
+      <span style="display:flex;align-items:center;gap:5px;padding:4px 10px;border-radius:999px;background:var(--kEAF6F6,#EAF6F6);color:var(--k0C5F67,#0C5F67);font-weight:600"><lc-icon name="{{ policy.icon }}" size="14"></lc-icon>{{ policy.label }}</span>
+      <span style="display:flex;align-items:center;gap:5px;padding:4px 10px;border-radius:999px;background:var(--kF5F8F8,#F5F8F8)"><lc-icon name="{{ policy.autoIcon }}" size="14"></lc-icon>{{ policy.auto }}</span>
+      <span style="margin-inline-start:auto;display:flex;align-items:center;gap:6px;font-size:12px;color:var(--k4F6368,#4F6368);font-weight:600"><lc-icon name="settings-2" size="14"></lc-icon>يحددها مدير الفرع في الإعدادات</span>
+    </div>
+    <div style="display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:16px;align-items:start">
+      <div style="display:flex;flex-direction:column;gap:16px">
+        <div style="background:var(--k0F7A82,#0F7A82);color:#fff;border-radius:28px;padding:24px;display:flex;flex-direction:column;gap:18px">
+          <div style="display:flex;align-items:center;gap:8px;font-size:14px;color:#D2ECEC"><lc-icon name="door-open" size="17"></lc-icon>في الغرفة الآن · منذ 6 دقائق</div>
+          <div style="display:flex;align-items:center;gap:16px">
+            <div style="width:84px;height:84px;border-radius:22px;background:rgba(255,255,255,.15);display:flex;align-items:center;justify-content:center;font-family:'Space Grotesk';font-size:22px;font-weight:700">A-103</div>
+            <div style="display:flex;flex-direction:column;gap:4px;flex:1"><span style="font-size:26px;font-weight:700">حسين محمد</span><span style="font-size:14px;color:#D2ECEC"><span style="font-family:'Space Grotesk'">B1-004498</span> · ذكر · 47 سنة · مراجعة</span></div>
+          </div>
+          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px">
+            <div style="display:flex;flex-direction:column;gap:4px;padding:12px;border-radius:16px;background:rgba(255,255,255,.1)"><span style="display:flex;align-items:center;gap:5px;font-size:12px;color:#D2ECEC"><lc-icon name="history" size="13"></lc-icon>آخر زيارة</span><span style="font-size:14px;font-weight:600">قبل 14 يوماً</span></div>
+            <div style="display:flex;flex-direction:column;gap:4px;padding:12px;border-radius:16px;background:rgba(255,255,255,.1)"><span style="display:flex;align-items:center;gap:5px;font-size:12px;color:#D2ECEC"><lc-icon name="file-search" size="13"></lc-icon>آخر تشخيص</span><span style="font-size:14px;font-weight:600">ارتفاع ضغط الدم</span></div>
+            <div style="display:flex;flex-direction:column;gap:4px;padding:12px;border-radius:16px;background:rgba(255,255,255,.1)"><span style="display:flex;align-items:center;gap:5px;font-size:12px;color:#D2ECEC"><lc-icon name="flask-conical" size="13"></lc-icon>نتائج جديدة</span><span style="font-size:14px;font-weight:600">CBC · معتمدة</span></div>
+          </div>
+          <div style="display:flex;gap:10px">
+            <button onClick="{{ goConsult }}" style="flex:1;display:flex;align-items:center;justify-content:center;gap:8px;height:52px;border-radius:999px;border:0;background:var(--kFFFFFF,#fff);color:var(--kT0A3A40,#0A3A40);font-size:16px;font-weight:700"><lc-icon name="clipboard-plus" size="19"></lc-icon>فتح المعاينة</button>
+            <button onClick="{{ goHistory }}" style="display:flex;align-items:center;justify-content:center;gap:8px;height:52px;padding:0 20px;border-radius:999px;border:1.5px solid rgba(255,255,255,.4);background:transparent;color:#fff;font-size:15px;font-weight:600"><lc-icon name="history" size="18"></lc-icon>السجل</button>
+          </div>
+        </div>
+        <sc-if value="{{ canCall }}" hint-placeholder-val="{{ true }}">
+          <div style="display:flex;gap:10px">
+            <button style="flex:1;display:flex;align-items:center;justify-content:center;gap:10px;height:60px;border-radius:20px;border:0;background:var(--k0A3A40,#0A3A40);color:#fff;font-size:17px;font-weight:700"><lc-icon name="skip-forward" size="22"></lc-icon>إنهاء واستدعاء التالي · <span style="font-family:'Space Grotesk'">A-110</span></button>
+            <button style="display:flex;align-items:center;justify-content:center;gap:8px;height:60px;padding:0 18px;border-radius:20px;border:1px solid var(--kD5E0E1,#D5E0E1);background:var(--kFFFFFF,#fff);color:var(--k0F2328,#0F2328);font-size:15px;font-weight:600"><lc-icon name="circle-check" size="19"></lc-icon>إنهاء فقط</button>
+            <button style="display:flex;align-items:center;justify-content:center;gap:8px;height:60px;padding:0 18px;border-radius:20px;border:0;background:var(--kFDECEC,#FDECEC);color:var(--kB4262B,#B4262B);font-size:15px;font-weight:600"><lc-icon name="siren" size="20"></lc-icon>طوارئ</button>
+          </div>
+        </sc-if>
+        <sc-if value="{{ cannotCall }}" hint-placeholder-val="{{ false }}">
+          <div style="display:flex;gap:10px;align-items:center">
+            <button style="flex:1;display:flex;align-items:center;justify-content:center;gap:10px;height:60px;border-radius:20px;border:0;background:var(--k0A3A40,#0A3A40);color:#fff;font-size:17px;font-weight:700"><lc-icon name="circle-check" size="22"></lc-icon>إنهاء الزيارة</button>
+            <span style="flex:1;display:flex;align-items:center;gap:8px;padding:0 14px;height:60px;border-radius:20px;background:var(--kFDF3E2,#FDF3E2);color:var(--k8A520B,#8A520B);font-size:13px;font-weight:600;line-height:1.5"><lc-icon name="concierge-bell" size="18"></lc-icon>استدعاء المرضى من الاستقبال في هذا الفرع</span>
+          </div>
+        </sc-if>
+      </div>
+      <div style="background:var(--kFFFFFF,#fff);border-radius:20px;border:1px solid var(--kE3EBEC,#E3EBEC);padding:18px;display:flex;flex-direction:column;gap:8px">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:4px"><lc-icon name="list-ordered" size="20" color="var(--k0F7A82,#0F7A82)"></lc-icon><span style="font-size:17px;font-weight:700;flex:1">التالي في طابوري</span><span style="font-size:13px;color:var(--k4F6368,#4F6368);font-weight:600"><span style="font-family:'Space Grotesk'">12</span> متبقي</span><sc-if value="{{ canCall }}" hint-placeholder-val="{{ true }}"><button style="display:flex;align-items:center;gap:6px;padding:0 12px;height:34px;border-radius:999px;border:1.5px solid var(--k0F7A82,#0F7A82);background:var(--kFFFFFF,#fff);color:var(--k0F7A82,#0F7A82);font-size:13px;font-weight:600"><lc-icon name="megaphone" size="14"></lc-icon>استدعاء التالي</button></sc-if></div>
+        <sc-for list="{{ nextList }}" as="q" hint-placeholder-count="6">
+          <div style="display:flex;align-items:center;gap:12px;padding:10px 12px;border-radius:14px;background:{{ q.bg }};border:1px solid {{ q.line }}">
+            <span style="width:52px;font-family:'Space Grotesk';font-size:15px;font-weight:700;color:{{ q.tc }}">{{ q.t }}</span>
+            <span style="display:flex;flex-direction:column;flex:1;min-width:0"><span style="font-size:14px;font-weight:600">{{ q.name }}</span><span style="display:flex;align-items:center;gap:4px;font-size:12px;color:{{ q.subC }}"><lc-icon name="{{ q.subIcon }}" size="13"></lc-icon>{{ q.sub }}</span></span>
+            <span style="display:flex;flex-direction:column;align-items:flex-end;gap:4px"><span style="display:inline-flex;align-items:center;gap:5px;padding:4px 10px;border-radius:999px;background:{{ q.sbg }};color:{{ q.sfg }};font-size:12px"><lc-icon name="{{ q.sIcon }}" size="13"></lc-icon>{{ q.st }}</span><sc-if value="{{ q.hasTag }}" hint-placeholder-val="{{ false }}"><span style="display:inline-flex;align-items:center;gap:4px;font-size:12px;font-weight:600;color:{{ q.tagC }}"><lc-icon name="{{ q.tagIcon }}" size="13"></lc-icon>{{ q.tag }}</span></sc-if><sc-if value="{{ q.canStart }}" hint-placeholder-val="{{ false }}"><button style="display:flex;align-items:center;gap:4px;padding:0 10px;height:28px;border-radius:999px;border:0;background:var(--k0F7A82,#0F7A82);color:#fff;font-size:12px;font-weight:600"><lc-icon name="door-open" size="13"></lc-icon>دخل · بدء المعاينة</button></sc-if></span>
+            <span style="font-family:'Space Grotesk';font-size:13px;color:var(--k4F6368,#4F6368);width:40px;text-align:left">{{ q.eta }}</span>
+          </div>
+        </sc-for>
+        <div style="display:flex;align-items:center;gap:8px;margin-top:6px;font-size:12px;color:var(--k4F6368,#4F6368);font-weight:600"><lc-icon name="info" size="14"></lc-icon>غير المدفوعين لا يدخلون الغرفة عدا الطوارئ أو الاستثناء.</div>
+      </div>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ isConsult }}" hint-placeholder-val="{{ false }}">
+    <div style="display:grid;grid-template-columns:280px minmax(0,1fr);gap:16px;align-items:start">
+      <div style="display:flex;flex-direction:column;gap:12px;position:sticky;top:96px">
+        <div style="background:var(--kFFFFFF,#fff);border-radius:20px;border:1px solid var(--kE3EBEC,#E3EBEC);padding:18px;display:flex;flex-direction:column;gap:12px">
+          <div style="display:flex;align-items:center;gap:12px"><div style="width:52px;height:52px;border-radius:16px;background:var(--k0F7A82,#0F7A82);color:#fff;display:flex;align-items:center;justify-content:center;font-family:'Space Grotesk';font-weight:700">A-103</div><div style="display:flex;flex-direction:column"><span style="font-size:17px;font-weight:700">حسين محمد</span><span style="font-family:'Space Grotesk';font-size:12px;color:var(--k4F6368,#4F6368);font-weight:600">B1-004498</span></div></div>
+          <div style="display:flex;flex-direction:column;gap:8px;font-size:13px">
+            <div style="display:flex;align-items:center;gap:8px"><lc-icon name="user-round" size="15" color="var(--k6B7F84,#6B7F84)"></lc-icon><span style="flex:1;color:var(--k4F6368,#4F6368)">ذكر</span><span style="font-family:'Space Grotesk'">47</span></div>
+            <div style="display:flex;align-items:center;gap:8px"><lc-icon name="repeat" size="15" color="var(--k6B7F84,#6B7F84)"></lc-icon><span style="flex:1;color:var(--k4F6368,#4F6368)">نوع الزيارة</span><span>مراجعة</span></div>
+            <div style="display:flex;align-items:center;gap:8px"><lc-icon name="globe" size="15" color="var(--k6B7F84,#6B7F84)"></lc-icon><span style="flex:1;color:var(--k4F6368,#4F6368)">المصدر</span><span>أونلاين · مدفوع</span></div>
+          </div>
+        </div>
+        <div style="background:var(--kFFFFFF,#fff);border-radius:20px;border:1px solid var(--kE3EBEC,#E3EBEC);padding:18px;display:flex;flex-direction:column;gap:10px">
+          <span style="display:flex;align-items:center;gap:8px;font-size:15px;font-weight:700"><lc-icon name="history" size="17" color="var(--k0F7A82,#0F7A82)"></lc-icon>الزيارات السابقة</span>
+          <sc-for list="{{ pastShort }}" as="v" hint-placeholder-count="3">
+            <div style="display:flex;flex-direction:column;gap:2px;padding:8px 0;border-bottom:1px solid var(--kEEF2F3,#EEF2F3)"><span style="font-size:13px;font-weight:600">{{ v.dx }}</span><span style="font-size:12px;color:var(--k4F6368,#4F6368);font-weight:600"><span style="font-family:'Space Grotesk'">{{ v.date }}</span> · {{ v.rx }}</span></div>
+          </sc-for>
+          <div style="display:flex;align-items:center;gap:8px;padding:10px;border-radius:12px;background:var(--kF1ECFC,#F1ECFC);color:var(--k45238F,#45238F);font-size:13px"><lc-icon name="flask-conical" size="16"></lc-icon><span style="flex:1">CBC · 2 نوفمبر</span><span style="display:flex;align-items:center;gap:4px;color:var(--kB4262B,#B4262B);font-weight:600"><lc-icon name="triangle-alert" size="14"></lc-icon>HGB 6.8</span></div>
+        </div>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <div style="background:var(--kFFFFFF,#fff);border-radius:20px;border:1px solid var(--kE3EBEC,#E3EBEC);padding:20px;display:flex;flex-direction:column;gap:14px">
+          <span style="display:flex;align-items:center;gap:8px;font-size:16px;font-weight:700"><lc-icon name="file-search" size="19" color="var(--k0F7A82,#0F7A82)"></lc-icon>التشخيص</span>
+          <div style="display:grid;grid-template-columns:minmax(0,1fr) 140px;gap:10px">
+            <div style="display:flex;align-items:center;gap:8px;border:2px solid var(--k0F7A82,#0F7A82);border-radius:14px;padding:0 14px;height:48px"><span dir="ltr" style="font-size:15px;font-weight:600;flex:1;text-align:right">Acute Bronchitis</span></div>
+            <div style="display:flex;align-items:center;gap:8px;border:1px solid var(--kD5E0E1,#D5E0E1);border-radius:14px;padding:0 14px;height:48px;background:var(--kF5F8F8,#F5F8F8)"><span style="font-size:12px;color:var(--k4F6368,#4F6368);font-weight:600">ICD-10</span><span dir="ltr" style="font-family:'Space Grotesk';font-weight:600">J20.9</span></div>
+          </div>
+          <div style="display:flex;gap:6px;flex-wrap:wrap">
+            <span style="font-size:12px;color:var(--k4F6368,#4F6368);align-self:center;font-weight:600">مقترحات:</span>
+            <sc-for list="{{ icdSuggest }}" as="s" hint-placeholder-count="3"><span dir="ltr" style="padding:4px 10px;border-radius:999px;background:var(--kF5F8F8,#F5F8F8);border:1px solid var(--kE3EBEC,#E3EBEC);font-size:12px"><b style="font-family:'Space Grotesk'">{{ s.code }}</b> {{ s.name }}</span></sc-for>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:6px"><span style="font-size:14px;font-weight:500">الملاحظات السريرية</span><div style="border:1px solid var(--kD5E0E1,#D5E0E1);border-radius:14px;padding:12px 14px;min-height:64px;font-size:14px;line-height:1.7">سعال منذ 5 أيام، حرارة 38.2</div></div>
+        </div>
+
+        <div style="background:var(--kFFFFFF,#fff);border-radius:20px;border:1px solid var(--kE3EBEC,#E3EBEC);padding:20px;display:flex;flex-direction:column;gap:12px">
+          <div style="display:flex;align-items:center;gap:8px"><lc-icon name="pill" size="19" color="var(--kEF7A2E,#EF7A2E)"></lc-icon><span style="font-size:16px;font-weight:700;flex:1">الوصفة الطبية</span><button onClick="{{ addRx }}" style="display:flex;align-items:center;gap:6px;padding:0 14px;height:36px;border-radius:999px;border:1.5px solid var(--k0F7A82,#0F7A82);background:var(--kFFFFFF,#fff);color:var(--k0F7A82,#0F7A82);font-size:13px;font-weight:600"><lc-icon name="plus" size="15"></lc-icon>إضافة دواء</button></div>
+          <div style="display:grid;grid-template-columns:minmax(0,1.4fr) 90px minmax(0,1fr) 70px minmax(0,1fr) 32px;gap:8px;padding:0 4px;font-size:12px;color:var(--k4F6368,#4F6368);font-weight:600"><span>الدواء</span><span>الجرعة</span><span>التكرار</span><span>الأيام</span><span>التعليمات</span><span></span></div>
+          <sc-for list="{{ rx }}" as="r" hint-placeholder-count="2">
+            <div style="display:grid;grid-template-columns:minmax(0,1.4fr) 90px minmax(0,1fr) 70px minmax(0,1fr) 32px;gap:8px;align-items:center">
+              <div style="display:flex;align-items:center;gap:8px;border:1px solid var(--kD5E0E1,#D5E0E1);border-radius:12px;padding:0 10px;height:42px"><lc-icon name="pill" size="15" color="var(--kEF7A2E,#EF7A2E)"></lc-icon><span dir="ltr" style="font-size:14px;font-weight:600;flex:1;text-align:right">{{ r.drug }}</span></div>
+              <div style="display:flex;align-items:center;border:1px solid var(--kD5E0E1,#D5E0E1);border-radius:12px;padding:0 10px;height:42px;font-size:13px">{{ r.dose }}</div>
+              <div style="display:flex;align-items:center;border:1px solid var(--kD5E0E1,#D5E0E1);border-radius:12px;padding:0 10px;height:42px;font-size:13px">{{ r.freq }}</div>
+              <div style="display:flex;align-items:center;border:1px solid var(--kD5E0E1,#D5E0E1);border-radius:12px;padding:0 10px;height:42px;font-family:'Space Grotesk';font-size:14px">{{ r.days }}</div>
+              <div style="display:flex;align-items:center;border:1px solid var(--kD5E0E1,#D5E0E1);border-radius:12px;padding:0 10px;height:42px;font-size:13px">{{ r.inst }}</div>
+              <button onClick="{{ r.remove }}" style="width:32px;height:32px;border-radius:10px;border:0;background:var(--kFDECEC,#FDECEC);color:var(--kE5484D,#E5484D);display:flex;align-items:center;justify-content:center"><lc-icon name="trash-2" size="15"></lc-icon></button>
+            </div>
+          </sc-for>
+        </div>
+
+        <div style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:14px">
+          <div style="background:var(--kFFFFFF,#fff);border-radius:20px;border:1px solid var(--kE3EBEC,#E3EBEC);padding:18px;display:flex;flex-direction:column;gap:10px">
+            <span style="display:flex;align-items:center;gap:8px;font-size:16px;font-weight:700"><lc-icon name="flask-conical" size="19" color="var(--k7C4DDB,#7C4DDB)"></lc-icon>طلب تحاليل</span>
+            <div style="display:flex;flex-wrap:wrap;gap:8px">
+              <sc-for list="{{ labs }}" as="l" hint-placeholder-count="6">
+                <button onClick="{{ l.toggle }}" style="display:flex;align-items:center;gap:6px;padding:8px 12px;border-radius:12px;border:1.5px solid {{ l.line }};background:{{ l.bg }};color:{{ l.fg }};font-size:13px;font-weight:500"><lc-icon name="{{ l.icon }}" size="15"></lc-icon><span dir="ltr">{{ l.name }}</span><span style="font-family:'Space Grotesk';font-size:11px;opacity:.75">{{ l.price }}</span></button>
+              </sc-for>
+            </div>
+            <div style="display:flex;align-items:center;gap:6px;font-size:12px;color:var(--k4F6368,#4F6368);font-weight:600"><lc-icon name="sticky-note" size="14"></lc-icon>ملاحظة للمختبر: صائم</div>
+          </div>
+          <div style="background:var(--kFFFFFF,#fff);border-radius:20px;border:1px solid var(--kE3EBEC,#E3EBEC);padding:18px;display:flex;flex-direction:column;gap:10px">
+            <span style="display:flex;align-items:center;gap:8px;font-size:16px;font-weight:700"><lc-icon name="scan-line" size="19" color="var(--k2F6FDB,#2F6FDB)"></lc-icon>طلب أشعة وسونار</span>
+            <div style="display:flex;flex-wrap:wrap;gap:8px">
+              <sc-for list="{{ rads }}" as="l" hint-placeholder-count="5">
+                <button onClick="{{ l.toggle }}" style="display:flex;align-items:center;gap:6px;padding:8px 12px;border-radius:12px;border:1.5px solid {{ l.line }};background:{{ l.bg }};color:{{ l.fg }};font-size:13px;font-weight:500"><lc-icon name="{{ l.icon }}" size="15"></lc-icon>{{ l.name }}<span style="font-family:'Space Grotesk';font-size:11px;opacity:.75">{{ l.price }}</span></button>
+              </sc-for>
+            </div>
+            <div style="display:flex;align-items:center;gap:6px;font-size:12px;color:var(--k4F6368,#4F6368);font-weight:600"><lc-icon name="shopping-basket" size="14"></lc-icon>كل طلب يُضاف بنداً غير مدفوع في سلة المريض</div>
+          </div>
+        </div>
+
+        <div style="display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:14px">
+          <div style="background:var(--k0A3A40,#0A3A40);color:#fff;border-radius:20px;padding:18px;display:flex;flex-direction:column;gap:10px">
+            <span style="display:flex;align-items:center;gap:8px;font-size:15px;font-weight:700"><lc-icon name="lock-keyhole" size="18" color="#F2B544"></lc-icon>ملاحظات خاصة</span>
+            <div style="border:1px solid rgba(255,255,255,.18);border-radius:14px;padding:12px 14px;min-height:60px;font-size:14px;background:rgba(255,255,255,.06)">متابعة ضغط الدم في الزيارة القادمة</div>
+            <span style="display:flex;align-items:center;gap:6px;font-size:12px;color:#A6D8DA"><lc-icon name="eye-off" size="14"></lc-icon>لا تظهر للمريض ولا للصيدلية أبداً</span>
+          </div>
+          <div style="background:var(--kFFFFFF,#fff);border-radius:20px;border:1px solid var(--kE3EBEC,#E3EBEC);padding:18px;display:flex;flex-direction:column;gap:12px">
+            <span style="display:flex;align-items:center;gap:8px;font-size:15px;font-weight:700"><lc-icon name="calendar-clock" size="18" color="var(--k0F7A82,#0F7A82)"></lc-icon>المراجعة بعد</span>
+            <div style="display:flex;align-items:center;gap:12px">
+              <button onClick="{{ fuDec }}" style="width:40px;height:40px;border-radius:999px;border:1px solid var(--kD5E0E1,#D5E0E1);background:var(--kFFFFFF,#fff);color:var(--k4F6368,#4F6368);display:flex;align-items:center;justify-content:center"><lc-icon name="minus" size="17"></lc-icon></button>
+              <span style="font-family:'Space Grotesk';font-size:28px;font-weight:700;flex:1;text-align:center">{{ followUp }}</span>
+              <button onClick="{{ fuInc }}" style="width:40px;height:40px;border-radius:999px;border:0;background:var(--k0F7A82,#0F7A82);color:#fff;display:flex;align-items:center;justify-content:center"><lc-icon name="plus" size="17"></lc-icon></button>
+            </div>
+            <span style="font-size:12px;color:var(--k4F6368,#4F6368);text-align:center;font-weight:600">يوماً</span>
+          </div>
+        </div>
+
+        <div style="display:flex;align-items:center;gap:12px;padding:14px 18px;border-radius:20px;background:var(--kFFFFFF,#fff);border:1px solid var(--kE3EBEC,#E3EBEC);position:sticky;bottom:16px;box-shadow:0 12px 32px -12px rgba(10,58,64,.25)">
+          <button onClick="{{ toggleDefer }}" style="display:flex;align-items:center;gap:10px;padding:0 14px;height:44px;border-radius:14px;border:1.5px solid {{ deferLine }};background:{{ deferBg }};color:{{ deferFg }};font-size:14px;font-weight:600"><lc-icon name="hand-coins" size="18"></lc-icon>تنفيذ الطلبات قبل الدفع</button>
+          <span style="flex:1;font-size:13px;color:var(--k4F6368,#4F6368)">طلبات: <b style="font-family:'Space Grotesk'">{{ orderCount }}</b> · المجموع على المريض <b style="font-family:'Space Grotesk'">{{ orderTotal }}</b> د.ع</span>
+          <button style="display:flex;align-items:center;gap:8px;padding:0 18px;height:48px;border-radius:999px;border:1px solid var(--kD5E0E1,#D5E0E1);background:var(--kFFFFFF,#fff);color:var(--k4F6368,#4F6368);font-size:14px;font-weight:600"><lc-icon name="save" size="17"></lc-icon>حفظ</button>
+          <sc-if value="{{ canCall }}" hint-placeholder-val="{{ true }}">
+            <button onClick="{{ toggleCallNext }}" style="display:flex;align-items:center;gap:8px;padding:0 14px;height:48px;border-radius:14px;border:1.5px solid {{ cnLine }};background:{{ cnBg }};color:{{ cnFg }};font-size:13px;font-weight:600"><lc-icon name="{{ cnIcon }}" size="17"></lc-icon>واستدعاء التالي</button>
+          </sc-if>
+          <button style="display:flex;align-items:center;gap:8px;padding:0 22px;height:48px;border-radius:999px;border:0;background:var(--k0F7A82,#0F7A82);color:#fff;font-size:15px;font-weight:700"><lc-icon name="circle-check" size="18"></lc-icon>حفظ وإنهاء</button>
+        </div>
+        <div style="display:flex;align-items:center;gap:10px;padding:12px 16px;border-radius:16px;background:var(--kF5F8F8,#F5F8F8);font-size:13px;color:var(--k4F6368,#4F6368)">
+          <lc-icon name="qr-code" size="18" color="var(--kEF7A2E,#EF7A2E)"></lc-icon><span>بعد الإنهاء تصدر الوصفة بكود <b dir="ltr" style="font-family:'Space Grotesk';color:var(--k0F2328,#0F2328)">RX-7KQ2M9</b> للصيدلية وتطبيق المريض</span>
+          <span style="margin-inline-start:auto;display:flex;align-items:center;gap:6px"><lc-icon name="file-clock" size="15"></lc-icon>قابلة للتعديل حتى <b style="font-family:'Space Grotesk';color:var(--k0F2328,#0F2328)">17:08</b> غداً، وبعدها بملحق</span>
+        </div>
+      </div>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ isHistory }}" hint-placeholder-val="{{ false }}">
+    <div style="display:flex;align-items:center;gap:12px;padding:16px 18px;border-radius:20px;background:var(--kFFFFFF,#fff);border:1px solid var(--kE3EBEC,#E3EBEC)">
+      <div style="width:46px;height:46px;border-radius:999px;background:var(--kD2ECEC,#D2ECEC);color:var(--k0C5F67,#0C5F67);display:flex;align-items:center;justify-content:center"><lc-icon name="user-round" size="22"></lc-icon></div>
+      <div style="display:flex;flex-direction:column;flex:1"><span style="font-size:17px;font-weight:700">حسين محمد</span><span style="font-size:13px;color:var(--k4F6368,#4F6368);font-weight:600"><span style="font-family:'Space Grotesk'">B1-004498</span> · 6 زيارات · ملف موحد لكل الفروع</span></div>
+      <span style="display:flex;align-items:center;gap:6px;font-size:13px;color:var(--k8A520B,#8A520B)"><lc-icon name="lock-keyhole" size="15"></lc-icon>الملاحظات الخاصة تظهر للأطباء فقط</span>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:0">
+      <sc-for list="{{ visits }}" as="v" hint-placeholder-count="3">
+        <div style="display:grid;grid-template-columns:110px 36px minmax(0,1fr);gap:12px">
+          <div style="display:flex;flex-direction:column;align-items:flex-end;padding-top:16px"><span style="font-family:'Space Grotesk';font-size:15px;font-weight:600">{{ v.date }}</span><span style="font-size:12px;color:var(--k4F6368,#4F6368);font-weight:600">{{ v.branch }}</span></div>
+          <div style="display:flex;flex-direction:column;align-items:center"><span style="width:2px;height:16px;background:var(--kD5E0E1,#D5E0E1)"></span><span style="width:36px;height:36px;border-radius:999px;background:var(--k0F7A82,#0F7A82);color:#fff;display:flex;align-items:center;justify-content:center"><lc-icon name="stethoscope" size="17"></lc-icon></span><span style="width:2px;flex:1;background:var(--kD5E0E1,#D5E0E1)"></span></div>
+          <div style="background:var(--kFFFFFF,#fff);border-radius:20px;border:1px solid var(--kE3EBEC,#E3EBEC);padding:16px 18px;margin:10px 0;display:flex;flex-direction:column;gap:10px">
+            <div style="display:flex;align-items:center;gap:10px"><span style="font-size:16px;font-weight:700;flex:1">{{ v.dx }}</span><span dir="ltr" style="font-family:'Space Grotesk';font-size:12px;padding:3px 8px;border-radius:6px;background:var(--kF5F8F8,#F5F8F8)">{{ v.icd }}</span><span style="font-size:13px;color:var(--k4F6368,#4F6368);font-weight:600">{{ v.doc }}</span></div>
+            <div style="display:flex;align-items:center;gap:8px;font-size:13px;color:var(--k4F6368,#4F6368)"><lc-icon name="notebook-text" size="15" color="var(--k6B7F84,#6B7F84)"></lc-icon>{{ v.notes }}</div>
+            <div style="display:flex;align-items:center;gap:8px;font-size:13px;color:var(--k4F6368,#4F6368)"><lc-icon name="pill" size="15" color="var(--kEF7A2E,#EF7A2E)"></lc-icon><span dir="ltr">{{ v.rx }}</span></div>
+            <div style="display:flex;gap:8px;flex-wrap:wrap">
+              <sc-for list="{{ v.orders }}" as="o" hint-placeholder-count="1">
+                <span style="display:inline-flex;align-items:center;gap:6px;padding:5px 10px;border-radius:10px;background:{{ o.bg }};color:{{ o.fg }};font-size:12px;font-weight:500"><lc-icon name="{{ o.icon }}" size="14"></lc-icon><span dir="ltr">{{ o.name }}</span> · {{ o.st }}</span>
+              </sc-for>
+            </div>
+            <div style="display:flex;align-items:center;gap:8px;padding:8px 12px;border-radius:10px;background:var(--kFEF6E4,#FEF6E4);color:var(--k8A520B,#8A520B);font-size:13px"><lc-icon name="lock-keyhole" size="14"></lc-icon>{{ v.private }}</div>
+            <sc-for list="{{ v.addenda }}" as="ad" hint-placeholder-count="0">
+              <div style="display:flex;align-items:center;gap:8px;padding:8px 12px;border-radius:10px;background:var(--kF5F8F8,#F5F8F8);font-size:13px"><lc-icon name="file-pen-line" size="14" color="var(--k0F7A82,#0F7A82)"></lc-icon><span style="flex:1">ملحق: {{ ad.text }}</span><span style="font-size:12px;color:var(--k4F6368,#4F6368);font-weight:600">{{ ad.by }} · <span style="font-family:'Space Grotesk'">{{ ad.at }}</span></span></div>
+            </sc-for>
+            <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;padding-top:10px;border-top:1px solid var(--kEEF2F3,#EEF2F3)">
+              <span style="display:flex;align-items:center;gap:6px;font-size:12px;font-weight:600;color:{{ v.winC }};flex:1"><lc-icon name="{{ v.winIcon }}" size="14"></lc-icon>{{ v.win }}</span>
+              <sc-for list="{{ v.btns }}" as="b" hint-placeholder-count="1">
+                <button style="display:flex;align-items:center;gap:6px;padding:0 12px;height:34px;border-radius:999px;border:1.5px solid var(--k0F7A82,#0F7A82);background:var(--kFFFFFF,#fff);color:var(--k0F7A82,#0F7A82);font-size:13px;font-weight:600"><lc-icon name="{{ b.icon }}" size="14"></lc-icon>{{ b.ar }}</button>
+              </sc-for>
+            </div>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ isAlerts }}" hint-placeholder-val="{{ false }}">
+    <div style="display:flex;flex-direction:column;gap:10px;max-width:820px">
+      <sc-for list="{{ alerts }}" as="a" hint-placeholder-count="4">
+        <div style="display:flex;align-items:center;gap:14px;padding:16px 18px;border-radius:18px;background:{{ a.bg }};border:1px solid {{ a.line }}">
+          <div style="width:46px;height:46px;border-radius:14px;background:{{ a.ibg }};color:{{ a.ifg }};display:flex;align-items:center;justify-content:center"><lc-icon name="{{ a.icon }}" size="22"></lc-icon></div>
+          <div style="display:flex;flex-direction:column;flex:1;gap:2px"><span style="font-size:15px;font-weight:700;color:{{ a.tc }}">{{ a.title }}</span><span style="font-size:14px">{{ a.msg }}</span></div>
+          <span style="font-family:'Space Grotesk';font-size:13px;color:var(--k4F6368,#4F6368);font-weight:600">{{ a.at }}</span>
+          <lc-icon name="chevron-left" size="18" color="var(--k8A9A9E,#8A9A9E)"></lc-icon>
+        </div>
+      </sc-for>
+    </div>
+  </sc-if>
+
+  </div>
+</main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;callPolicy&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;both&quot;,&quot;doctor&quot;,&quot;reception&quot;],&quot;default&quot;:&quot;both&quot;,&quot;tsType&quot;:&quot;'both'|'doctor'|'reception'&quot;,&quot;section&quot;:&quot;سياسة الطابور (queue.call_next_by)&quot;},&quot;autoCallNext&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;سياسة الطابور (queue.call_next_by)&quot;}}">
+class Component extends DCLogic {
+  state = { screen: "queue", labs: { CBC: true }, rads: { usg: true }, rxCount: 2, followUp: 14, defer: false, callNext: true };
+  renderVals() {
+    const st = this.state, set = p => this.setState(p);
+    const pol = this.props.callPolicy ?? "both", canCall = pol !== "reception", autoNext = !!this.props.autoCallNext;
+    const policy = {label:{both:"الطبيب والاستقبال",doctor:"الطبيب فقط",reception:"الاستقبال فقط"}[pol],icon:{both:"users",doctor:"stethoscope",reception:"concierge-bell"}[pol],auto:autoNext?"الاستدعاء التلقائي بعد الإنهاء: مفعّل":"الاستدعاء التلقائي بعد الإنهاء: مطفأ",autoIcon:autoNext?"zap":"zap-off"};
+    const cnOn = canCall && st.callNext;
+    const fmt = n => n.toLocaleString("en-US");
+    const screens = [["queue","طابوري","list-ordered","12","الوجبة المسائية · 16:00 – 21:00"],["consult","المعاينة","clipboard-plus","","A-103 · حسين محمد"],["history","سجل المريض","history","","الزيارات والوصفات والنتائج"],["alerts","الإشعارات","bell","1","قيم حرجة ونتائج جاهزة"]];
+    const cur = screens.find(s=>s[0]===st.screen);
+    const nav = screens.map(([k,ar,icon,badge])=>{const on=k===st.screen;return {ar,icon,badge,badgeBg:badge?(on?"rgba(255,255,255,.25)":(k==="alerts"?"var(--kE5484D,#E5484D)":"rgba(255,255,255,.12)")):"transparent",bg:on?"var(--k1A8A91,#1A8A91)":"transparent",c:on?"#fff":"#C9E4E5",w:on?600:400,go:()=>set({screen:k})};});
+    const S = {called:["تم الاستدعاء","var(--kFDF3E2,#FDF3E2)","var(--k8A520B,#8A520B)","megaphone"],arrived:["وصل","var(--kEAF6F6,#EAF6F6)","var(--k0C5F67,#0C5F67)","user-check"],waiting:["لم يصل","var(--kEAF1FD,#EAF1FD)","var(--k2459B8,#2459B8)","hourglass"]};
+    const TG = {ack:["قادم · أكّد 17:07","var(--k157A50,#157A50)","footprints"],onway:["في الطريق · خلال 20 د","var(--k2459B8,#2459B8)","car"]};
+    const N = (t,name,s,eta,sub,subIcon,subC,em,tg)=>{const m=S[s],g=TG[tg];return {t,name,eta,sub,subIcon,subC,st:m[0],sbg:m[1],sfg:m[2],sIcon:m[3],bg:em?"var(--kFFF7F7,#FFF7F7)":"var(--kFFFFFF,#fff)",line:em?"var(--kF6C9CA,#F6C9CA)":"var(--kEEF2F3,#EEF2F3)",tc:em?"var(--kB4262B,#B4262B)":"var(--kT0A3A40,#0A3A40)",hasTag:!!g,canStart:s==="called",tag:g?g[0]:"",tagC:g?g[1]:"",tagIcon:g?g[2]:"circle"};};
+    const nextList = [
+      N("A-110","كاظم جبار","called","5:06","طوارئ · ضيق تنفس حاد","siren","var(--kB4262B,#B4262B)",true,"ack"),
+      N("A-104","أحمد علي","arrived","5:12","كشف جديد · مدفوع","circle-check","var(--k157A50,#157A50)"),
+      N("A-105","مريم جاسم","arrived","5:24","غير مدفوع بعد","circle-dollar-sign","var(--kB4262B,#B4262B)"),
+      N("A-101","نور حيدر","arrived","5:36","متأخر · أُعيد إدراجه","alarm-clock","var(--k8A520B,#8A520B)"),
+      N("A-106","سجاد كريم","waiting","5:48","أونلاين · مدفوع","globe","var(--k6B7F84,#6B7F84)",false,"onway"),
+      N("A-107","رقية سالم","waiting","6:00","أونلاين · غير مدفوع","globe","var(--k6B7F84,#6B7F84)")];
+    const pastShort = [{dx:"ارتفاع ضغط الدم",date:"19-10-2026",rx:"Amlodipine 5mg"},{dx:"التهاب بلعوم",date:"02-08-2026",rx:"Azithromycin"},{dx:"فحص دوري",date:"11-05-2026",rx:"—"}];
+    const icdSuggest = [{code:"J20.9",name:"Acute bronchitis"},{code:"J06.9",name:"URTI"},{code:"J45.9",name:"Asthma"}];
+    const allRx = [
+      {drug:"Augmentin 1g",dose:"1 حبة",freq:"مرتين يومياً",days:"7",inst:"بعد الأكل"},
+      {drug:"Panadol 500mg",dose:"1 حبة",freq:"3 مرات يومياً",days:"5",inst:"عند الحاجة"},
+      {drug:"Ventolin Inhaler",dose:"بختان",freq:"عند الضيق",days:"10",inst:"—"}];
+    const rx = allRx.slice(0, st.rxCount).map((r)=>({...r,remove:()=>set({rxCount:Math.max(0,st.rxCount-1)})}));
+    const T = (key,name,price,icon,map,hex,soft,ink)=>{const on=!!st[map][key];return {name,price:fmt(price),priceN:price,on,icon:on?"check":icon,line:on?hex:"var(--kE3EBEC,#E3EBEC)",bg:on?soft:"var(--kFFFFFF,#fff)",fg:on?ink:"var(--k4F6368,#4F6368)",toggle:()=>set({[map]:{...st[map],[key]:!on}})};};
+    const labs = [["CBC","CBC",30000],["FBS","FBS",8000],["HbA1c","HbA1c",20000],["CRP","CRP",15000],["LFT","LFT",25000],["Lipid","Lipid Profile",22000]].map(([k,n,p])=>T(k,n,p,"test-tube","labs","var(--k7C4DDB,#7C4DDB)","var(--kF1ECFC,#F1ECFC)","var(--k45238F,#45238F)"));
+    const rads = [["xr","أشعة صدر",20000,"scan-line"],["usg","سونار بطن",35000,"audio-waveform"],["ct","مفراس صدر",90000,"scan"],["mri","رنين",150000,"magnet"],["echo","إيكو قلب",40000,"heart-pulse"]].map(([k,n,p,ic])=>T(k,n,p,ic,"rads","var(--k2F6FDB,#2F6FDB)","var(--kEAF1FD,#EAF1FD)","var(--k1C468F,#1C468F)"));
+    const chosen = [...labs,...rads].filter(x=>x.on);
+    const OPEN = {win:"قابلة للتعديل حتى 17:08 غداً",winC:"var(--k157A50,#157A50)",winIcon:"file-clock",btns:[{ar:"تعديل المعاينة",icon:"pencil"},{ar:"إضافة تحليل أو أشعة",icon:"plus"},{ar:"إضافة ملحق",icon:"file-pen-line"}]};
+    const CLOSED = {win:"انتهت مدة التعديل · الإضافة بملحق فقط",winC:"var(--k6B7F84,#6B7F84)",winIcon:"lock",btns:[{ar:"إضافة ملحق",icon:"file-pen-line"}]};
+    const visits = [
+      {date:"02-11-2026",branch:"الفرع الرئيسي",dx:"Acute Bronchitis",icd:"J20.9",doc:"د. سعد الحيدري",notes:"سعال منذ 5 أيام، حرارة 38.2",rx:"Augmentin 1g · مرتين يومياً · 7 أيام",private:"متابعة ضغط الدم في الزيارة القادمة",addenda:[],...OPEN,
+        orders:[{name:"CBC",st:"معتمدة · قيمة حرجة",icon:"triangle-alert",bg:"var(--kFDECEC,#FDECEC)",fg:"var(--kB4262B,#B4262B)"},{name:"سونار بطن",st:"مدفوع · بانتظار التنفيذ",icon:"scan-line",bg:"var(--kEAF1FD,#EAF1FD)",fg:"var(--k1C468F,#1C468F)"}]},
+      {date:"19-10-2026",branch:"الفرع الرئيسي",dx:"ارتفاع ضغط الدم",icd:"I10",doc:"د. سعد الحيدري",notes:"ضغط 150/95 في قياسين",rx:"Amlodipine 5mg · 1 × يومياً · 30 يوم",private:"متابعة ضغط الدم في الزيارة القادمة",...CLOSED,
+        addenda:[{text:"المريض اتصل وأفاد بتحسن الضغط",by:"د. سعد الحيدري",at:"22-10 18:30"}],
+        orders:[{name:"CBC",st:"معتمدة",icon:"flask-conical",bg:"var(--kE6F6EE,#E6F6EE)",fg:"var(--k157A50,#157A50)"},{name:"Lipid Profile",st:"غير مدفوع · النتيجة مقفلة",icon:"lock",bg:"var(--kFDECEC,#FDECEC)",fg:"var(--kB4262B,#B4262B)"}]},
+      {date:"02-08-2026",branch:"فرع كربلاء",dx:"التهاب بلعوم",icd:"J02.9",doc:"د. هدى الربيعي",notes:"ألم بلع وحرارة منذ يومين",rx:"Azithromycin 500mg · 1 × يومياً · 3 أيام",private:"حساسية محتملة من البنسلين",addenda:[],...CLOSED,
+        orders:[{name:"أشعة صدر",st:"التقرير معتمد",icon:"scan-line",bg:"var(--kEAF1FD,#EAF1FD)",fg:"var(--k1C468F,#1C468F)"}]}];
+    const alerts = [
+      {title:"قيمة حرجة",msg:"HGB = 6.8 للمريضة فاطمة حسن",at:"17:40",icon:"triangle-alert",bg:"var(--kFDECEC,#FDECEC)",line:"var(--kF6C9CA,#F6C9CA)",ibg:"var(--kE5484D,#E5484D)",ifg:"#fff",tc:"var(--kB4262B,#B4262B)"},
+      {title:"نتيجة جاهزة",msg:"CBC · حسين محمد",at:"17:12",icon:"flask-conical",bg:"var(--kFFFFFF,#fff)",line:"var(--kE3EBEC,#E3EBEC)",ibg:"var(--kF1ECFC,#F1ECFC)",ifg:"var(--k7C4DDB,#7C4DDB)",tc:"var(--k0F2328,#0F2328)"},
+      {title:"تقرير أشعة جاهز",msg:"سونار بطن · نور حيدر",at:"16:50",icon:"scan-line",bg:"var(--kFFFFFF,#fff)",line:"var(--kE3EBEC,#E3EBEC)",ibg:"var(--kEAF1FD,#EAF1FD)",ifg:"var(--k2F6FDB,#2F6FDB)",tc:"var(--k0F2328,#0F2328)"},
+      {title:"مريض جديد في الطابور",msg:"A-107 · رقية سالم",at:"16:41",icon:"user-plus",bg:"var(--kFFFFFF,#fff)",line:"var(--kE3EBEC,#E3EBEC)",ibg:"var(--kEAF6F6,#EAF6F6)",ifg:"var(--k0F7A82,#0F7A82)",tc:"var(--k0F2328,#0F2328)"}];
+    return {nav,title:cur[1],subtitle:cur[4],isQueue:st.screen==="queue",isConsult:st.screen==="consult",isHistory:st.screen==="history",isAlerts:st.screen==="alerts",
+      goConsult:()=>set({screen:"consult"}),goHistory:()=>set({screen:"history"}),goAlerts:()=>set({screen:"alerts"}),
+      nextList,pastShort,icdSuggest,rx,addRx:()=>set({rxCount:Math.min(3,st.rxCount+1)}),labs,rads,
+      followUp:st.followUp,fuInc:()=>set({followUp:st.followUp+1}),fuDec:()=>set({followUp:Math.max(0,st.followUp-1)}),
+      orderCount:chosen.length,orderTotal:fmt(chosen.reduce((a,x)=>a+x.priceN,0)),
+      toggleDefer:()=>set({defer:!st.defer}),deferLine:st.defer?"var(--k2F6FDB,#2F6FDB)":"var(--kD5E0E1,#D5E0E1)",deferBg:st.defer?"var(--kEAF1FD,#EAF1FD)":"var(--kFFFFFF,#fff)",deferFg:st.defer?"var(--k1C468F,#1C468F)":"var(--k4F6368,#4F6368)",
+      visits,alerts,policy,canCall,cannotCall:!canCall,
+      toggleCallNext:()=>set({callNext:!st.callNext}),cnLine:cnOn?"var(--k0F7A82,#0F7A82)":"var(--kD5E0E1,#D5E0E1)",cnBg:cnOn?"var(--kEAF6F6,#EAF6F6)":"var(--kFFFFFF,#fff)",cnFg:cnOn?"var(--k0C5F67,#0C5F67)":"var(--k6B7F84,#6B7F84)",cnIcon:cnOn?"square-check":"square"};
+  }
+}
+</script>
+</body>
+</html>

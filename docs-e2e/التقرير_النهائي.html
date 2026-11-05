@@ -1,0 +1,340 @@
+<title>مجمع الرحمة: التقرير النهائي</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600&family=Readex+Pro:wght@500;600;700&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+/* Layout: one reading column with a sticky question index on wide screens; clinic teal on cool off-white, navy for structure. */
+:root{
+  --bg:#F3F6F6; --surface:#FFFFFF; --ink:#13262F; --muted:#56707A; --line:#D6E1E2;
+  --teal:#0E6E6C; --teal-soft:#DDEFEE; --navy:#14324A;
+  --ok:#1D7A46; --ok-soft:#E1F2E8; --warn:#9A5B00; --warn-soft:#FBEFD9; --bad:#A3322A; --bad-soft:#F8E3E1;
+  --f-display:"Readex Pro","IBM Plex Sans Arabic",Tahoma,sans-serif;
+  --f-body:"IBM Plex Sans Arabic",Tahoma,"Segoe UI",sans-serif;
+  --f-mono:"IBM Plex Mono",Consolas,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0E1719; --surface:#152226; --ink:#E4EEEF; --muted:#94AAB0; --line:#27393E;
+  --teal:#4FC0BB; --teal-soft:#16393A; --navy:#A9C7DA;
+  --ok:#5FCB8B; --ok-soft:#173527; --warn:#E8B45A; --warn-soft:#3A2D14; --bad:#F08A80; --bad-soft:#3C1E1B; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0E1719; --surface:#152226; --ink:#E4EEEF; --muted:#94AAB0; --line:#27393E;
+  --teal:#4FC0BB; --teal-soft:#16393A; --navy:#A9C7DA;
+  --ok:#5FCB8B; --ok-soft:#173527; --warn:#E8B45A; --warn-soft:#3A2D14; --bad:#F08A80; --bad-soft:#3C1E1B; color-scheme:dark}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.8;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.wrap{max-width:1100px;margin:0 auto;padding-block:40px 80px;display:grid;grid-template-columns:230px minmax(0,1fr);gap:40px}
+nav.toc{position:sticky;top:calc(env(safe-area-inset-top,0px) + 24px);align-self:start;display:flex;flex-direction:column;gap:2px;font-size:14px}
+nav.toc a{color:var(--muted);text-decoration:none;padding:5px 12px;border-inline-start:2px solid var(--line)}
+nav.toc a:hover,nav.toc a:focus-visible{color:var(--teal);border-color:var(--teal);outline:none}
+main{min-width:0;display:flex;flex-direction:column;gap:52px}
+header.top{display:flex;flex-direction:column;gap:12px}
+.eyebrow{font-family:var(--f-display);font-size:13px;letter-spacing:.04em;color:var(--teal);font-weight:600}
+h1{font-family:var(--f-display);font-size:clamp(28px,4vw,40px);line-height:1.3;margin:0;text-wrap:balance;color:var(--navy)}
+h2{font-family:var(--f-display);font-size:23px;margin:0;color:var(--navy);text-wrap:balance}
+h3{font-family:var(--f-display);font-size:17px;margin:0;color:var(--ink)}
+p{margin:0;max-width:70ch}
+.lede{color:var(--muted);font-size:17px}
+.meta{font-size:14px;color:var(--muted)}
+section{display:flex;flex-direction:column;gap:16px;scroll-margin-top:24px}
+.q{font-size:14px;color:var(--muted);border-inline-start:3px solid var(--teal);padding-inline-start:12px}
+.verdict{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px 20px;display:flex;flex-direction:column;gap:6px}
+.verdict b.v{font-family:var(--f-display);font-size:17px}
+.verdict.ok b.v{color:var(--ok)} .verdict.warn b.v{color:var(--warn)} .verdict.bad b.v{color:var(--bad)}
+.status{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.st{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:14px 16px;display:flex;flex-direction:column;gap:4px}
+.st b{font-family:var(--f-display);font-size:21px;font-variant-numeric:tabular-nums}
+.st span{font-size:13px;color:var(--muted)}
+.st.ok b{color:var(--ok)} .st.warn b{color:var(--warn)}
+.pill{display:inline-block;font-size:12.5px;font-weight:600;padding:1px 10px;border-radius:999px;white-space:nowrap}
+.pill.ok{background:var(--ok-soft);color:var(--ok)} .pill.warn{background:var(--warn-soft);color:var(--warn)} .pill.bad{background:var(--bad-soft);color:var(--bad)} .pill.info{background:var(--teal-soft);color:var(--teal)}
+.tbl{overflow-x:auto;border:1px solid var(--line);border-radius:10px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;font-size:14.5px;min-width:600px}
+th,td{text-align:start;padding:10px 14px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-family:var(--f-display);font-weight:600;font-size:13px;color:var(--muted);background:var(--bg)}
+tr:last-child td{border-bottom:0}
+code,.mono{font-family:var(--f-mono);font-size:.86em;direction:ltr;unicode-bidi:isolate;background:var(--teal-soft);color:var(--teal);padding:0 5px;border-radius:4px}
+.cols{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.box{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px 20px;display:flex;flex-direction:column;gap:10px;min-width:0}
+.box h3{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+ul.pts{margin:0;padding-inline-start:20px;display:flex;flex-direction:column;gap:5px}
+ul.pts li{max-width:72ch}
+.box.plus{border-top:3px solid var(--ok)} .box.minus{border-top:3px solid var(--bad)}
+ol.steps{margin:0;padding-inline-start:22px;display:flex;flex-direction:column;gap:6px}
+.rec{background:var(--teal-soft);border-radius:10px;padding:12px 16px;font-size:15px;display:flex;flex-direction:column;gap:6px}
+.rec b{color:var(--teal);font-family:var(--f-display)}
+pre{margin:0;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:14px 16px;overflow-x:auto;font-family:var(--f-mono);font-size:13.5px;line-height:1.7;direction:ltr;text-align:left}
+@media (max-width:880px){.wrap{grid-template-columns:minmax(0,1fr)}nav.toc{display:none}.status{grid-template-columns:repeat(2,minmax(0,1fr))}.cols{grid-template-columns:minmax(0,1fr)}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+
+<div dir="rtl" lang="ar">
+<div class="wrap">
+<nav class="toc" aria-label="أقسام التقرير">
+  <a href="#result">النتيجة النهائية</a>
+  <a href="#env">إصلاح البيئة</a>
+  <a href="#qr">رموز QR</a>
+  <a href="#checkin">تثبيت الحضور</a>
+  <a href="#rx">صرف العلاج والوصفة</a>
+  <a href="#outside">الشراء من خارج المجمع</a>
+  <a href="#branches">الفروع والصلاحيات</a>
+  <a href="#files">المرفقات</a>
+  <a href="#money">الأموال والمحاسب</a>
+  <a href="#displays">شاشات الانتظار</a>
+  <a href="#roles">الأدوار</a>
+  <a href="#next">ما بقي</a>
+</nav>
+
+<main>
+<header class="top" id="result">
+  <div class="eyebrow">مجمع الرحمة الطبي · 4 نوفمبر 2026</div>
+  <h1>التقرير النهائي: البيئة، ودراسة تصميم النظام</h1>
+  <p class="lede">الجزء الأول نتيجة إصلاح بيئة التشغيل على حاسبة التطوير. الجزء الثاني إجابات أسئلة التصميم العشرة، كل إجابة مبنية على الكود والعقد الفعليين لا على الوثائق وحدها، مع ما يحله كل قرار وما يسببه.</p>
+  <div class="status">
+    <div class="st ok"><b id="tests-num">84 / 84</b><span>اختبار آلي نجح على .NET 8 (كان 4 فقط)</span></div>
+    <div class="st ok"><b>تلقائي</b><span>السكربتات تجد PostgreSQL ومنفذه بنفسها</span></div>
+    <div class="st ok"><b>أُصلح</b><span>رفع المرفقات كان معطلاً بخطأ في الواجهة</span></div>
+    <div class="st warn"><b>ينتظرك</b><span>تشغيل خدمة تخزين الملفات أول مرة</span></div>
+  </div>
+</header>
+
+<section id="env">
+  <h2>إصلاح البيئة</h2>
+  <div class="tbl"><table>
+    <thead><tr><th>المشكلة</th><th>ما عُمل</th><th>الحالة</th></tr></thead>
+    <tbody>
+      <tr><td>الاختبارات الآلية تفشل (80 من 84) لأن الحاسبة عليها .NET 10 فقط</td><td>تثبيت .NET 8 SDK (8.0.427) من مصدر Microsoft الرسمي عبر winget. <code>run-tests.bat</code> صار يتحقق من وجوده ويخبر بطريقة تثبيته.</td><td id="tests-row"><span class="pill ok">84 من 84 نجح</span></td></tr>
+      <tr><td><code>start-native.bat</code> و<code>run-tests.bat</code> مثبتان على PostgreSQL 16 والمنفذ 5432، والحاسبة عليها 15 على 5433 و9.6 القديم على 5432</td><td>ملف جديد <code>pg-env.bat</code> يجد أحدث PostgreSQL من 17 إلى 13 ويقرأ منفذه من إعداداته، ويتجاهل 9.6. للتجاوز اليدوي: <code>local-env.bat</code> (نموذجه <code>local-env.example.bat</code>). جُرّب على الحاسبة: وجد 15 على 5433.</td><td><span class="pill ok">أُصلح</span></td></tr>
+      <tr><td>رفع المرفقات وصور الأطباء يحتاج تخزين ملفات (MinIO) غير موجود</td><td>MinIO أوقف نشر نسخ ويندوز المجانية (الروابط الرسمية ترد «410 Gone»، حتى عبر winget). البديل: SeaweedFS 4.48، مفتوح المصدر ومتوافق مع S3، نُزّل من GitHub الرسمي وطابق توقيع MD5. أُعد في <code>tools/s3</code> بنفس بيانات المشروع، و<code>start-native.bat</code> يشغله ويمرر إعداداته للخادم تلقائياً. الخادم لا يحتاج أي تعديل لأنه يتكلم S3.</td><td><span class="pill warn">ينتظر موافقتك</span></td></tr>
+      <tr><td>زر «إرفاق ملف» في المختبر والأشعة لا يعمل أبداً</td><td>الواجهة كانت ترسل غرضاً اسمه <code>result_attachment</code> والخادم يقبل <code>lab</code> أو <code>radiology</code> فقط، فيرفض كل رفع بـ 422. صُحح، وأُضيف دعم ملفات DICOM للأشعة، وصار فشل تأكيد الرفع يظهر للموظف بدل أن يُتجاهل.</td><td><span class="pill ok">أُصلح</span></td></tr>
+      <tr><td>لا يوجد <code>.gitignore</code> في المجلد الرئيسي</td><td>أُضيف يستثني <code>local-env.bat</code> و<code>DEV_ACCOUNTS.local.txt</code> و<code>DB/</code> وبيانات التخزين والسجلات.</td><td><span class="pill ok">أُصلح</span></td></tr>
+      <tr><td>النسخ الاحتياطي (pgBackRest)</td><td>pgBackRest لا يعمل على ويندوز أصلاً. يبقى للنشر على خادم لينكس بـ Docker كما في <code>docker-compose.yml</code>. على حاسبة التطوير يكفي <code>pg_dump</code>.</td><td><span class="pill info">ليس للتطوير</span></td></tr>
+    </tbody>
+  </table></div>
+  <div class="rec"><b>لماذا لم يُشغَّل التخزين بعد</b><span>تشغيل برنامج نُزّل من الإنترنت أوقفه فحص الأمان في هذه الجلسة، وهو قرار يعود لك. البرنامج موجود ومطابق للتوقيع الرسمي، وتشغيله أول مرة بأمر واحد مذكور في آخر التقرير، أو بالموافقة لأشغله أنا.</span></div>
+</section>
+
+<section id="qr">
+  <h2>رموز QR: أين تُستخدم، ماذا تحل، وماذا قد تسبب</h2>
+  <p class="q">ما فائدة QR في قسم المريض والاستقبال والصيدلية؟</p>
+  <p>في النظام ثلاثة رموز مختلفة، لكل منها وظيفة واحدة:</p>
+  <div class="tbl"><table>
+    <thead><tr><th>الرمز</th><th>أين يظهر</th><th>من يمسحه</th><th>ماذا يحمل</th><th>النتيجة</th></tr></thead>
+    <tbody>
+      <tr><td>رمز الحجز</td><td>تطبيق المريض ← حجوزاتي</td><td>الاستقبال</td><td><code>booking:</code> ومعرف الحجز</td><td>تثبيت الحضور بمسح واحد، وإن كان مدفوعاً لا تحصيل</td></tr>
+      <tr><td>رمز الوصفة</td><td>تطبيق المريض ← نتائجي</td><td>الصيدلية في أي فرع</td><td>كود الوصفة مثل <code>RX-5PBZ23</code></td><td>تظهر الأدوية للصرف، والصرف مرة واحدة فقط</td></tr>
+      <tr><td>رمز الإيصال</td><td>كل إيصال مطبوع</td><td>أي شخص بكاميرا هاتفه</td><td>رابط <code>/verify/</code> ورمز التحقق</td><td>«إيصال صحيح» بالمبلغ والفرع والتاريخ، أو «غير صحيح»</td></tr>
+    </tbody>
+  </table></div>
+  <div class="cols">
+    <div class="box plus"><h3><span class="pill ok">يحل</span>المشاكل التي تُحل</h3>
+      <ul class="pts">
+        <li><b>طابور الاستقبال:</b> المحجوز لا يعيد ذكر اسمه وهاتفه. ثانية واحدة بدل دقيقة بحث.</li>
+        <li><b>أخطاء الكتابة:</b> لا يُختار مريض خطأ بتشابه الأسماء، ولا يُصرف دواء لوصفة غير المقصودة.</li>
+        <li><b>الصرف المكرر:</b> الوصفة نفسها مرفوضة في الصرف الثاني في كل الفروع (جُرّب في الفحص).</li>
+        <li><b>الإيصالات المزورة:</b> أي إيصال يدوي أو معدّل يظهر «غير صحيح» عند المسح، وهذه حماية حقيقية للنقد.</li>
+        <li><b>العمل أوفلاين:</b> المسح لا يحتاج إنترنت عند الاستقبال، ويُزامن لاحقاً.</li>
+      </ul>
+    </div>
+    <div class="box minus"><h3><span class="pill bad">يسبب</span>المشاكل المحتملة</h3>
+      <ul class="pts">
+        <li><b>مريض بلا هاتف ذكي أو بلا تطبيق:</b> لا رمز حجز ولا رمز وصفة عنده. الحجز يُعالج بالبحث بالاسم أو الهاتف، أما الوصفة فلا حل لها الآن (انظر قسم الصرف).</li>
+        <li><b>لقطة شاشة مشتركة:</b> رمز الحجز لا يحمل توقيعاً ولا صلاحية زمنية قصيرة، فمن يملك اللقطة يثبت حضوراً باسم صاحبها. الاستقبال يرى الاسم، فالخطر تشغيلي لا تقني.</li>
+        <li><b>العدسات والأجهزة:</b> مسح الكاميرا من المتصفح يعمل على أندرويد فقط (ميزة BarcodeDetector)، لا على آيفون ولا على حاسبات ويندوز. الاستقبال يحتاج قارئ باركود USB، وهو ما يفترضه التصميم.</li>
+        <li><b>الكتابة اليدوية عند تعطل القارئ:</b> رمز الحجز طويل (معرف UUID) ولا يُكتب يدوياً. البديل الموجود: البحث بالاسم، والنظام يعرض «للمريض حجز» ويثبته به.</li>
+        <li><b>سطوع الشاشة والكسر:</b> شاشة هاتف معتمة أو مكسورة تفشل في المسح. البديل نفسه: البحث.</li>
+        <li><b>خصوصية الوصفة:</b> كود الوصفة يكشف للصيدلي الاسم والتشخيص. مقبول لأنه موظف مصرح، والكود عشوائي من 6 رموز يصعب تخمينه.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="rec"><b>التوصية</b><span>1) طباعة كود الوصفة وQR على ورقة للمريض (أهم نقص). 2) عرض رقم حجز قصير يُقرأ ويُكتب (مثل رقم الدور مع التاريخ) بجانب QR. 3) قارئ باركود USB لكل استقبال وصيدلية بدل الكاميرا.</span></div>
+</section>
+
+<section id="checkin">
+  <h2>تثبيت الحضور: الآلية، وهل تناسب كل الحالات</h2>
+  <p class="q">ما الآلية المعتمدة؟ وهل تناسب جميع الحالات؟</p>
+  <p><b>الآلية:</b> نقطة واحدة <code>POST /queue/check-in</code> تقبل أحد ثلاثة: رمز الحجز الممسوح، أو معرف الحجز، أو المريض والطبيب للحضور المباشر. الخادم يحدد نوع الكشف (جديد أو مراجعة) ويُنشئ الفاتورة تلقائياً، ويعطي الدور. المريض غير المدفوع يُسجل حضوره لكنه لا يدخل الغرفة.</p>
+  <div class="tbl"><table>
+    <thead><tr><th>الحالة</th><th>كيف تُعالج</th><th>تناسب؟</th></tr></thead>
+    <tbody>
+      <tr><td>حجز من التطبيق ومعه الهاتف</td><td>مسح QR، والمدفوع لا يمر بالتحصيل</td><td><span class="pill ok">نعم</span></td></tr>
+      <tr><td>حجز من التطبيق لكن الهاتف فارغ البطارية أو نسيه</td><td>البحث بالاسم أو الهاتف أو رقم الملف. النظام يقول «للمريض حجز في هذه الوجبة» مع زر التثبيت به</td><td><span class="pill ok">نعم</span></td></tr>
+      <tr><td>حجز هاتفي عن طريق الاستقبال</td><td>الاستقبال يحجز من نفس الشاشة، والدفع في العيادة، ثم يثبت بالبحث</td><td><span class="pill ok">نعم</span></td></tr>
+      <tr><td>بدون حجز</td><td>مريض جديد أو بحث، يأخذ أول رقم متاح ضمن حصة الحضور المباشر، أو يملأ فجوة قبل الموعد التالي</td><td><span class="pill ok">نعم</span></td></tr>
+      <tr><td>عائلة بهاتف واحد</td><td>«إبقاء الرقم لتسجيل فرد آخر» وزر فرد جديد على نفس الهاتف</td><td><span class="pill ok">نعم</span></td></tr>
+      <tr><td>وصل متأخراً عن موعده</td><td>زر «وصل متأخراً» يعيد ترتيبه حسب مهلة التأخر (20 دقيقة قابلة للتعديل لكل طبيب)</td><td><span class="pill ok">نعم</span></td></tr>
+      <tr><td>طوارئ</td><td>زر «طوارئ» يقدمه، ويدخل حتى قبل الدفع</td><td><span class="pill ok">نعم</span></td></tr>
+      <tr><td>الوجبة ممتلئة</td><td>يُعرض «إضافي فوق السعة» بتأكيد إن كان الطبيب يقبل الإضافي</td><td><span class="pill ok">نعم</span></td></tr>
+      <tr><td>انقطاع الإنترنت</td><td>التذكرة تُنشأ محلياً وتُطبع، والإيصال من كتلة أرقام موقعة، ثم تُزامن. المحجوز يُدمج مع حجزه</td><td><span class="pill ok">نعم</span></td></tr>
+      <tr><td>محظور بسبب الغياب المتكرر</td><td>شاشة «فك الحظر» بعربون أو إعفاء من المدير</td><td><span class="pill ok">نعم</span></td></tr>
+      <tr><td>حجز ليوم آخر أو فرع آخر</td><td>يُرفض بـ «الحجز ليس اليوم». يُلغى ويُحجز من جديد أو يُعامل حضوراً مباشراً</td><td><span class="pill warn">جزئياً</span></td></tr>
+      <tr><td>مراجع لنفس الطبيب جاء مرتين في اليوم</td><td>يُرفض «موجود في الطابور» حتى ينتهي الأول. مقصود</td><td><span class="pill ok">نعم</span></td></tr>
+      <tr><td>مريض يريد المختبر أو الأشعة فقط بلا طبيب</td><td>لا يمر بالطابور أصلاً: «طلب مباشر» في الاستقبال بورقة طبيب خارجي</td><td><span class="pill ok">نعم</span></td></tr>
+      <tr><td>طفل أو مسن يحضر عنه مرافق</td><td>الحضور يُثبت بالمريض لا بمن جاء. لا يوجد حقل «المرافق»</td><td><span class="pill warn">جزئياً</span></td></tr>
+    </tbody>
+  </table></div>
+  <div class="verdict ok"><b class="v">الحكم: تناسب الغالبية العظمى من الحالات</b><p>البحث بالاسم هو الشبكة الآمنة لكل فشل في المسح. النقص الوحيد الملموس هو حالة الحجز ليوم أو فرع آخر، وتحتاج زر «نقل الحجز لليوم» بدل الإلغاء وإعادة الحجز.</p></div>
+</section>
+
+<section id="rx">
+  <h2>صرف العلاج، وكيف يرى المريض وصفته</h2>
+  <p class="q">كيف يتم الصرف؟ وكيف يرى المريض الوصفة؟</p>
+  <div class="cols">
+    <div class="box"><h3>مسار الوصفة</h3>
+      <ol class="steps">
+        <li>الطبيب يكتب الأدوية (الاسم، الجرعة، التكرار، الأيام، التعليمات) ضمن المعاينة.</li>
+        <li>النظام يولد كوداً فريداً <code>RX-XXXXXX</code> صالحاً 30 يوماً (قابل للتعديل من الإعدادات).</li>
+        <li>الصيدلي يمسح الكود أو يكتبه في أي فرع.</li>
+        <li>لكل دواء: «صُرف»، أو «صُرف بديل» مع اسم البديل، أو «لم يُصرف» مع سبب إلزامي (غير متوفر، رفض المريض، بديل غير مناسب، سعر مرتفع).</li>
+        <li>تأكيد الصرف يقفل الوصفة نهائياً، ويُسجل الصيدلي والوقت في التدقيق.</li>
+      </ol>
+    </div>
+    <div class="box"><h3>ما يراه المريض</h3>
+      <ul class="pts">
+        <li>في التطبيق ← «نتائجي»: التشخيص، موعد المراجعة، كل دواء بجرعته وتكراره ومدته.</li>
+        <li>حالة الوصفة: «صُرفت» أو «لم تُصرف» أو منتهية.</li>
+        <li>QR الوصفة ما دامت غير مصروفة، ليعرضه على أي صيدلية في المجمع.</li>
+        <li>لا يرى الملاحظات السريرية ولا الخاصة ولا رمز ICD-10 (تأكد في الفحص).</li>
+      </ul>
+    </div>
+  </div>
+  <div class="verdict bad"><b class="v">نقص مهم: لا توجد وصفة مطبوعة</b><p>بحثت في الكود كله: لا يوجد زر طباعة وصفة عند الطبيب ولا عند الاستقبال. كود الوصفة يظهر على شاشة الطبيب فقط. مريض بلا تطبيق يخرج بلا أي شيء يحمل وصفته، والصيدلي لا يستطيع البحث باسم المريض. في السوق العراقي حيث نسبة كبيرة من كبار السن بلا تطبيق، هذه فجوة تشغيلية حقيقية.</p></div>
+  <div class="rec"><b>التوصية</b><span>زر «طباعة الوصفة» عند الطبيب وفي الاستقبال: ورقة A5 بالأدوية والتعليمات وQR الكود عبر الوكيل الحالي. والسماح للصيدلي بالبحث برقم الملف أو الهاتف لعرض الوصفات غير المصروفة.</span></div>
+</section>
+
+<section id="outside">
+  <h2>المريض لا يشتري العلاج أو التحاليل من المجمع</h2>
+  <p class="q">هل هذه الحالة مدروسة في النظام؟</p>
+  <div class="verdict ok"><b class="v">مدروسة جزئياً، والأساس سليم</b><p>العقد ينص صراحة على أن التصميم «للواقع العراقي: المريض قد يأخذ طلب التحليل لمختبر آخر أو يؤجله». القرار المعتمد هو «ادفع حيث تُخدم».</p></div>
+  <div class="tbl"><table>
+    <thead><tr><th>الحالة</th><th>ما يحدث في النظام</th><th>التقييم</th></tr></thead>
+    <tbody>
+      <tr><td>الطبيب طلب تحليلاً والمريض سيعمله خارج المجمع</td><td>الطلب يبقى بنداً غير مدفوع في سلة المريض. لا يُطالب به عند الخروج، ولا يحتاج استرجاعاً لأنه لم يُدفع، والاستقبال يستطيع إلغاءه</td><td><span class="pill ok">مدروس</span></td></tr>
+      <tr><td>المريض اشترى الدواء من صيدلية خارجية</td><td>الوصفة تبقى «لم تُصرف» حتى تنتهي بعد 30 يوماً. لا أثر مالي لأن الصيدلية في المرحلة الأولى بلا أسعار</td><td><span class="pill ok">مدروس</span></td></tr>
+      <tr><td>صرف جزئي (بعض الأدوية فقط)</td><td>كل دواء له حالة وسبب، والسبب يُسجل للإحصاء</td><td><span class="pill ok">مدروس</span></td></tr>
+      <tr><td>المريض يحتاج ورقة الطلب ليأخذها لمختبر خارجي</td><td>لا توجد طباعة لطلب التحاليل أو الأشعة</td><td><span class="pill bad">غير مدروس</span></td></tr>
+      <tr><td>المريض عاد بنتيجة من مختبر خارجي</td><td>الطبيب لا يستطيع إرفاق ملف، والرفع مسموح للمختبر والأشعة على طلب داخلي فقط. تبقى في الملاحظات نصاً</td><td><span class="pill bad">غير مدروس</span></td></tr>
+      <tr><td>البنود غير المدفوعة تتراكم</td><td>لا توجد مهمة تنهي صلاحية الطلبات القديمة، فتبقى في السلة إلى أن تُلغى يدوياً</td><td><span class="pill warn">ناقص</span></td></tr>
+      <tr><td>تقارير: كم مريضاً يذهب للخارج؟</td><td>أسباب «لم يُصرف» مسجلة، لكن لا تقرير يجمعها. ولا تقرير للطلبات غير المنفذة</td><td><span class="pill warn">ناقص</span></td></tr>
+    </tbody>
+  </table></div>
+  <div class="rec"><b>التوصية</b><span>طباعة طلب التحاليل والأشعة، وإنهاء صلاحية الطلب غير المدفوع بعد مدة (مثل صلاحية الوصفة)، ورفع «نتيجة خارجية» من الطبيب على ملف المريض، وتقرير «التسرب» للإدارة: الوصفات غير المصروفة والطلبات غير المنفذة لكل طبيب.</span></div>
+</section>
+
+<section id="branches">
+  <h2>الفروع: الصلاحيات والعمل المستقل</h2>
+  <p class="q">هل يمكن أن يعمل كل فرع بصلاحياته وبصورة مستقلة؟</p>
+  <div class="verdict ok"><b class="v">نعم، والعزل مطبق في الخادم لا في الواجهة فقط</b><p>الفرع الحالي يُقرأ من توكن الدخول، وكل شاشة تعمل على فرع المستخدم. طلب بيانات فرع آخر يُرفض بـ 403.</p></div>
+  <div class="cols">
+    <div class="box"><h3>مستقل لكل فرع</h3>
+      <ul class="pts">
+        <li>العيادات والمختبرات والأشعة والصيدليات.</li>
+        <li>الخدمات وأسعارها، وجداول الأطباء ونسبهم.</li>
+        <li>الإعدادات: كل قيمة عامة يمكن تخصيصها للفرع (حد الغياب، مدة المراجعة، حد الاسترجاع…).</li>
+        <li>سياسة استدعاء المرضى (الطبيب، الاستقبال، أو الاثنان).</li>
+        <li>الأجهزة والشاشات، والورديات والأدراج، والإغلاق المؤقت.</li>
+        <li>مدير الفرع: يدير موظفي فرعه فقط، ولا ينشئ مديراً عاماً، ولا يمنح صلاحية لا يملكها.</li>
+      </ul>
+    </div>
+    <div class="box"><h3>مشترك بين الفروع عن قصد</h3>
+      <ul class="pts">
+        <li>ملف المريض واحد، والبحث «في كل الفروع»، ورقم الملف بحرف الفرع.</li>
+        <li>الوصفة تُصرف في أي فرع.</li>
+        <li>رصيد المريض (عربون، إلغاء مدفوع) يُستخدم في أي فرع، مع تقرير «تسويات الفروع» بينها.</li>
+        <li>قوائم الاختيار (الاختصاصات، أسباب الإغلاق، تصنيفات المصاريف) يديرها المدير العام فقط.</li>
+        <li>الموظف يمكن إسناده لأكثر من فرع، ويختار الفرع عند الدخول. التبديل ممنوع وورديته مفتوحة.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="files">
+  <h2>المرفقات في المختبر والأشعة والسونار</h2>
+  <p class="q">هل الرفع والاعتماد المباشر للمرفقات معتمد في النظام؟</p>
+  <div class="verdict warn"><b class="v">مصمم ومنفذ في الخادم، لكنه لم يكن يعمل من الواجهة، وأُصلح</b><p>السونار جزء من قسم الأشعة (نوع الجهاز «سونار»)، فله نفس المسار.</p></div>
+  <ol class="steps">
+    <li>الفني أو الأخصائي يضغط «إرفاق ملف» داخل الطلب: صور JPG وPNG، أو PDF، أو DICOM للأشعة، حتى 200MB للملف.</li>
+    <li>الخادم يعطي رابط رفع مؤقتاً (15 دقيقة)، والملف يذهب من المتصفح إلى التخزين مباشرة دون أن يمر بالخادم، فلا يُبطئه ملف أشعة كبير.</li>
+    <li>الخادم يتأكد أن الملف وصل وأن حجمه صحيح.</li>
+    <li>المرفقات تُحفظ مع النتيجة أو التقرير. <b>الاعتماد واحد للنتيجة ومرفقاتها معاً</b>، لا اعتماد منفصل لكل ملف.</li>
+    <li>الطبيب والمريض يريانها في «النتيجة» و«نتائجي» بروابط مؤقتة (5 دقائق)، ولا تُحفظ روابط دائمة.</li>
+    <li>تعديل نتيجة معتمدة (ومنه المرفقات) يحتاج سبباً، ويُسجل في التدقيق، ويُشعر الطبيب.</li>
+  </ol>
+  <div class="tbl"><table>
+    <thead><tr><th>ما وُجد</th><th>الأثر</th><th>الحالة</th></tr></thead>
+    <tbody>
+      <tr><td>الواجهة ترسل غرضاً لا يعرفه الخادم (<code>result_attachment</code>)</td><td>كل رفع مرفوض بـ 422 في المختبر والأشعة. تحققت بطلب مباشر للخادم</td><td><span class="pill ok">أُصلح</span></td></tr>
+      <tr><td>فشل «تأكيد الرفع» كان يُتجاهل بصمت</td><td>المرفق يبدو مرفوعاً ثم يُرفض عند حفظ النتيجة</td><td><span class="pill ok">أُصلح</span></td></tr>
+      <tr><td>ملفات DICOM بلا نوع من المتصفح</td><td>تُرفض رغم أن العقد يقبلها</td><td><span class="pill ok">أُصلح</span></td></tr>
+      <tr><td>الخادم بلا إعدادات تخزين يرد 500 غامض</td><td>الموظف يرى «خطأ غير متوقع» بدل «التخزين غير مضبوط»</td><td><span class="pill warn">مقترح</span></td></tr>
+      <tr><td>لا يوجد عارض DICOM</td><td>صورة الأشعة الطبية تُنزل كملف ويحتاج الطبيب برنامجاً لفتحها</td><td><span class="pill info">مرحلة لاحقة</span></td></tr>
+      <tr><td>لا رفع مباشر من جهاز السونار أو الأشعة (PACS)</td><td>الأخصائي يحفظ الصورة من الجهاز ثم يرفعها يدوياً</td><td><span class="pill info">مرحلة لاحقة</span></td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<section id="money">
+  <h2>الأموال: هل يمكن إضافة محاسب لكل فرع؟</h2>
+  <div class="verdict ok"><b class="v">نعم، دون أي تعديل</b><p>المحاسب يُنشأ من «المستخدمون» ويُسند لفرع واحد أو أكثر. الخادم يحصر كل تقاريره في فروعه المسندة فقط، وطلب فرع غيره يُرفض. المدير العام وحده يرى كل الفروع.</p></div>
+  <div class="tbl"><table>
+    <thead><tr><th>النموذج</th><th>كيف يُضبط</th></tr></thead>
+    <tbody>
+      <tr><td>محاسب لكل فرع</td><td>دور «محاسب» مع فرع واحد. يرى ورديات فرعه وإيراده ومصاريفه فقط</td></tr>
+      <tr><td>محاسب عام لكل الفروع</td><td>دور «محاسب» مع إسناد كل الفروع. لوحة الفروع تجمعها في جدول واحد</td></tr>
+      <tr><td>مدير الفرع يراجع بنفسه</td><td>مدير الفرع يملك مطابقة الورديات واعتماد الاسترجاع وتقارير المال لفرعه</td></tr>
+      <tr><td>موظف استقبال بصلاحية مالية إضافية</td><td>«صلاحيات إضافية» للموظف، مثل فك الحظر أو منح الخصم</td></tr>
+    </tbody>
+  </table></div>
+  <p>كل نقطة تحصيل (استقبال العيادة، المختبر، الأشعة) لها درج وإغلاق أعمى مستقل، والمحاسب يرى النقاط كلها في تقرير واحد. نتيجة المطابقة (مطابق، عجز، زيادة) لا يراها إلا المحاسب ويصله إشعار فوري.</p>
+  <p class="meta">ملاحظة تسمية: الدور اسمه في النظام «محاسب عام»، وهو مضلل لأنه قد يكون محاسب فرع. يُقترح تسميته «محاسب» فقط.</p>
+</section>
+
+<section id="displays">
+  <h2>شاشات الانتظار: كيف تعمل</h2>
+  <p class="q">آلية الشاشات والعرض لم تكن واضحة.</p>
+  <ol class="steps">
+    <li><b>التسجيل:</b> المدير ← «الأجهزة والشاشات» ← جهاز جديد من نوع «شاشة انتظار» مربوط بعيادة. النظام يعطي رمز الجهاز ومفتاحاً سرياً يظهر مرة واحدة.</li>
+    <li><b>التشغيل:</b> أي تلفاز ذكي أو حاسبة صغيرة بمتصفح يفتح الرابط <code>/display?display_id=…&amp;key=…</code> مرة واحدة. الشاشة تحفظ المفتاح وتحذفه من شريط العنوان، وبعدها يكفي فتح <code>/display</code>.</li>
+    <li><b>ما تعرضه:</b> لوحة لكل طبيب يعمل اليوم في تلك العيادة: الرقم الحالي، والأرقام الخمسة التالية، والساعة. <b>بلا أسماء مرضى</b> حفاظاً على الخصوصية.</li>
+    <li><b>عند الاستدعاء:</b> يظهر الرقم كبيراً مع اسم الطبيب لمدة 12 ثانية، مع نغمة تنبيه. في نفس اللحظة تصل المريضَ رسالة «تفضل للدخول».</li>
+    <li><b>التحديث:</b> لحظي عبر اتصال مباشر بالخادم، ومعه تحديث احتياطي كل 20 ثانية، وإعادة اتصال تلقائية إذا انقطعت الشبكة.</li>
+    <li><b>إن سُرق المفتاح:</b> «مفتاح جديد» من شاشة الأجهزة يوقف القديم فوراً.</li>
+  </ol>
+  <div class="cols">
+    <div class="box"><h3>ما يعمل الآن</h3><ul class="pts"><li>شاشة لكل عيادة، وعدة أطباء في نفس الشاشة بحرف لكل طبيب (A، B…).</li><li>جُربت في الفحص بمفتاحها وظهرت بلا أسماء.</li></ul></div>
+    <div class="box"><h3>حدود يجب معرفتها</h3><ul class="pts"><li>المتصفحات تمنع الصوت قبل أول لمسة على الصفحة. التلفاز يحتاج ضغطة واحدة بعد تشغيله وإلا تعمل الشاشة بلا نغمة.</li><li>لا شاشات للمختبر والأشعة والصيدلية، لأنها بلا طابور أرقام. الشاشة تُربط بعيادة طبيب فقط.</li><li>لا نطق صوتي للرقم، ولا عرض رقم الغرفة إلا إن أُرسل مع الاستدعاء.</li></ul></div>
+  </div>
+</section>
+
+<section id="roles">
+  <h2>الأدوار: هل يمكن إضافة أدوار؟</h2>
+  <div class="verdict warn"><b class="v">الأدوار ثابتة، والصلاحيات قابلة للتوسعة لكل موظف</b><p>الأدوار الثمانية (مدير عام، مدير فرع، طبيب، استقبال، محاسب، مختبر، أشعة، صيدلي) مكتوبة في الكود وفي قيد قاعدة البيانات. لا توجد شاشة لإنشاء دور جديد.</p></div>
+  <div class="cols">
+    <div class="box"><h3>ما يمكن الآن بلا برمجة</h3><ul class="pts"><li>إضافة صلاحية لموظف بعينه فوق صلاحيات دوره (17 صلاحية متاحة)، مثل «فك الحظر» لموظف استقبال أو «الخصم».</li><li>إسناد الموظف لعدة فروع وعيادات.</li><li>كل منح يُسجل باسم من منحه ووقته.</li></ul></div>
+    <div class="box"><h3>ما يحتاج برمجة</h3><ul class="pts"><li>دور جديد مثل «ممرض» أو «سكرتير مختبر» أو «مدقق جودة»: تعديل في 4 أماكن (الكود، قيد قاعدة البيانات، صلاحيات الدور، قوائم الواجهة).</li><li>إزالة صلاحية من دور لموظف واحد غير ممكنة، الصلاحيات الإضافية تضيف فقط.</li></ul></div>
+  </div>
+  <div class="rec"><b>التوصية</b><span>للتوسع: جدول أدوار في قاعدة البيانات مع صلاحياته، وشاشة «الأدوار» في الإدارة، والخادم يتحقق بالصلاحية لا باسم الدور، وهذا مطبق في أغلب الكود أصلاً. الأدوار الثمانية تبقى كأدوار نظام لا تُحذف. والأهم أن الصلاحيات الدقيقة الموجودة تغطي معظم الحاجات الآن.</span></div>
+</section>
+
+<section id="next">
+  <h2>ما بقي، وأين التعديلات</h2>
+  <div class="tbl"><table>
+    <thead><tr><th>البند</th><th>من يقرر</th></tr></thead>
+    <tbody>
+      <tr><td>تشغيل خدمة التخزين أول مرة لتجربة رفع المرفقات فعلياً</td><td>أنت: بالموافقة أو بالأمر أدناه</td></tr>
+      <tr><td>طباعة الوصفة وطلب التحاليل للمريض</td><td>أهم نقص وظيفي وُجد</td></tr>
+      <tr><td>إنهاء صلاحية الطلبات غير المدفوعة، ورفع النتائج الخارجية، وتقرير التسرب</td><td>تحسينات</td></tr>
+      <tr><td>نقل حجز ليوم أو فرع آخر، رسالة واضحة حين لا يُضبط التخزين، جدول الأدوار</td><td>تحسينات</td></tr>
+    </tbody>
+  </table></div>
+  <p><b>الملفات المعدلة في هذه المرحلة:</b> <code>start-native.bat</code>، <code>run-tests.bat</code>، والجديدة <code>pg-env.bat</code> و<code>local-env.example.bat</code> و<code>.gitignore</code> و<code>tools/s3/s3.json</code>، وفي الواجهة <code>components/diagnostics/shared.tsx</code> و<code>lab.tsx</code> و<code>radiology.tsx</code> و<code>lib/api/clinical.ts</code>. فحص الأنواع للواجهة كاملة بلا أخطاء.</p>
+  <p>تشغيل التخزين يدوياً أول مرة، من مجلد <code>tools\s3</code>:</p>
+<pre>weed.exe server -ip=127.0.0.1 -dir=data -master.port=9333 -volume.port=18080 -filer.port=8888 -s3 -s3.port=9000 -s3.config=s3.json</pre>
+  <p>ومرة واحدة فقط، من نافذة ثانية، لإنشاء حاوية الملفات (الخادم لا ينشئها):</p>
+<pre>echo s3.bucket.create -name medical | weed.exe shell -master=127.0.0.1:9333</pre>
+  <p>بعدها يكفي <code>start-native.bat</code>، فهو يشغل التخزين والخادم والواجهة والمحاكي معاً. التفاصيل في <code>tools/s3/README.md</code>.</p>
+</section>
+</main>
+</div>
+</div>

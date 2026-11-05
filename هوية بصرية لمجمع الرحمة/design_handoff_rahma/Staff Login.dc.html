@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="icon" type="image/svg+xml" href="./rahma-mark.svg">
+<script src="./theme.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<script src="./lucide-icon.js"></script>
+<style>
+body{margin:0;background:var(--kEEF3F3,#EEF3F3);font-family:'Readex Pro',sans-serif;color:var(--k0F2328,#0F2328);-webkit-font-smoothing:antialiased}
+a{color:var(--k0F7A82,#0F7A82);text-decoration:none}a:hover{color:var(--k0C5F67,#0C5F67)}
+*{box-sizing:border-box}
+button{font-family:inherit;cursor:pointer;white-space:nowrap}
+</style>
+</helmet>
+<div dir="rtl" style="padding:36px;display:flex;flex-direction:column;gap:24px">
+  <div style="display:flex;align-items:center;gap:14px">
+    <a href="System Hub.dc.html" style="width:48px;height:48px;border-radius:14px;background:var(--k102C44,#102C44);color:#fff;display:flex;align-items:center;justify-content:center"><lc-icon name="key-round" size="22"></lc-icon></a>
+    <div style="display:flex;flex-direction:column"><span style="font-size:24px;font-weight:700">دخول الموظفين والتحقق من الإيصال</span><span style="font-size:14px;color:var(--k4F6368,#4F6368)">تسجيل الدخول، تغيير كلمة المرور، اختيار الفرع، وصفحة الـ QR العامة</span></div>
+    <div style="margin-inline-start:auto"><theme-toggle label=""></theme-toggle></div>
+  </div>
+  <div style="display:flex;gap:24px;flex-wrap:wrap;align-items:flex-start">
+
+  <div data-screen-label="01 Login" style="width:880px;height:560px;border-radius:28px;overflow:hidden;display:grid;grid-template-columns:minmax(0,1fr) 420px;background:var(--kFFFFFF,#fff);box-shadow:0 30px 60px -30px rgba(10,58,64,.35)">
+    <div style="background:var(--k102C44,#102C44);color:#fff;padding:36px;display:flex;flex-direction:column;gap:16px;position:relative">
+      <dc-import name="Rahma Mark" tone="dark" paper="#102C44" animate="{{ true }}" size="{{ 72 }}" hint-size="72px,72px"></dc-import>
+      <span style="font-size:28px;font-weight:700;margin-top:auto">مجمع الرحمة الطبي</span>
+      <span style="font-size:15px;color:var(--k9FB4C6,#9FB4C6);line-height:1.7">نظام التشغيل الداخلي للاستقبال والأطباء والأقسام والمحاسبة</span>
+      <div style="display:flex;gap:8px;flex-wrap:wrap"><sc-for list="{{ roles }}" as="r" hint-placeholder-count="5"><span style="display:flex;align-items:center;gap:5px;padding:5px 10px;border-radius:999px;background:rgba(255,255,255,.08);font-size:12px;color:#C6D3DF"><lc-icon name="{{ r.icon }}" size="13"></lc-icon>{{ r.ar }}</span></sc-for></div>
+    </div>
+    <div style="padding:36px;display:flex;flex-direction:column;gap:14px;justify-content:center">
+      <span style="font-size:22px;font-weight:700">تسجيل الدخول</span>
+      <div style="display:flex;flex-direction:column;gap:6px"><span style="font-size:13px;color:var(--k4F6368,#4F6368)">اسم المستخدم</span><div style="display:flex;align-items:center;gap:8px;border:1.5px solid var(--kD5E0E1,#D5E0E1);border-radius:14px;padding:0 14px;height:50px"><lc-icon name="at-sign" size="17" color="var(--k8A9A9E,#8A9A9E)"></lc-icon><span dir="ltr" style="flex:1;text-align:right;font-family:'Space Grotesk';font-size:15px">reception_internal_b1</span></div></div>
+      <div style="display:flex;flex-direction:column;gap:6px"><span style="font-size:13px;color:var(--k4F6368,#4F6368)">كلمة المرور</span><div style="display:flex;align-items:center;gap:8px;border:1.5px solid {{ pwLine }};border-radius:14px;padding:0 14px;height:50px"><lc-icon name="lock-keyhole" size="17" color="var(--k8A9A9E,#8A9A9E)"></lc-icon><span style="flex:1;font-size:18px;letter-spacing:.2em">••••••••••</span><lc-icon name="eye" size="17" color="var(--k8A9A9E,#8A9A9E)"></lc-icon></div></div>
+      <sc-if value="{{ isError }}" hint-placeholder-val="{{ false }}"><div style="display:flex;gap:8px;padding:10px 12px;border-radius:12px;background:var(--kFDECEC,#FDECEC);color:var(--kB4262B,#B4262B);font-size:13px"><lc-icon name="circle-alert" size="16"></lc-icon><span>اسم المستخدم أو كلمة المرور غير صحيحة. بقيت محاولتان قبل قفل الحساب 15 دقيقة.</span></div></sc-if>
+      <sc-if value="{{ isLocked }}" hint-placeholder-val="{{ false }}"><div style="display:flex;gap:8px;padding:10px 12px;border-radius:12px;background:var(--kFDF3E2,#FDF3E2);color:var(--k8A520B,#8A520B);font-size:13px"><lc-icon name="timer" size="16"></lc-icon><span>الحساب مقفل مؤقتاً بعد 5 محاولات. حاول بعد <b style="font-family:'Space Grotesk'">12:40</b></span></div></sc-if>
+      <button style="display:flex;align-items:center;justify-content:center;gap:8px;height:52px;border-radius:999px;border:0;background:var(--k0F7A82,#0F7A82);color:#fff;font-size:16px;font-weight:600"><lc-icon name="log-in" size="18"></lc-icon>دخول</button>
+      <div style="display:flex;gap:4px;padding:4px;border-radius:12px;background:var(--kF5F8F8,#F5F8F8);align-self:flex-start"><sc-for list="{{ loginStates }}" as="s" hint-placeholder-count="3"><button onClick="{{ s.go }}" style="padding:0 10px;height:28px;border-radius:8px;border:0;background:{{ s.bg }};color:{{ s.fg }};font-size:12px;font-weight:600">{{ s.ar }}</button></sc-for></div>
+    </div>
+  </div>
+
+  <div data-screen-label="02 Branch picker" style="width:420px;border-radius:28px;background:var(--kFFFFFF,#fff);padding:28px;display:flex;flex-direction:column;gap:12px;box-shadow:0 30px 60px -30px rgba(10,58,64,.35)">
+    <span style="display:flex;align-items:center;gap:8px;font-size:19px;font-weight:700"><lc-icon name="building-2" size="20" color="var(--k0F7A82,#0F7A82)"></lc-icon>اختر الفرع للعمل عليه</span>
+    <span style="font-size:13px;color:var(--k4F6368,#4F6368);font-weight:600">أنت مسند لأكثر من فرع. لا يمكن التبديل مع وردية مفتوحة.</span>
+    <sc-for list="{{ branchPick }}" as="b" hint-placeholder-count="3"><button onClick="{{ b.go }}" style="display:flex;align-items:center;gap:12px;padding:14px;border-radius:16px;border:1.5px solid {{ b.line }};background:{{ b.bg }};text-align:right;color:var(--k0F2328,#0F2328);opacity:{{ b.op }}"><lc-icon name="{{ b.icon }}" size="20" color="{{ b.ic }}"></lc-icon><span style="display:flex;flex-direction:column;flex:1"><span style="font-size:15px;font-weight:700">{{ b.name }}</span><span style="font-size:12px;color:{{ b.sc }}">{{ b.st }}</span></span><lc-icon name="{{ b.check }}" size="18" color="var(--k0F7A82,#0F7A82)"></lc-icon></button></sc-for>
+  </div>
+
+  <div data-screen-label="03 Change password" style="width:420px;border-radius:28px;background:var(--kFFFFFF,#fff);padding:28px;display:flex;flex-direction:column;gap:12px;box-shadow:0 30px 60px -30px rgba(10,58,64,.35)">
+    <span style="display:flex;align-items:center;gap:8px;font-size:19px;font-weight:700"><lc-icon name="key-round" size="20" color="var(--k0F7A82,#0F7A82)"></lc-icon>تغيير كلمة المرور</span>
+    <div style="display:flex;gap:8px;padding:10px 12px;border-radius:12px;background:var(--kEAF1FD,#EAF1FD);color:var(--k1F56B5,#1F56B5);font-size:13px"><lc-icon name="info" size="16"></lc-icon><span>تدخل بكلمة مرور مؤقتة. غيّرها للمتابعة.</span></div>
+    <sc-for list="{{ pwFields }}" as="f" hint-placeholder-count="3"><div style="display:flex;flex-direction:column;gap:6px"><span style="font-size:13px;color:var(--k4F6368,#4F6368)">{{ f.ar }}</span><div style="display:flex;align-items:center;gap:8px;border:1.5px solid {{ f.line }};border-radius:14px;padding:0 14px;height:48px"><lc-icon name="{{ f.icon }}" size="16" color="var(--k8A9A9E,#8A9A9E)"></lc-icon><span style="flex:1;font-size:17px;letter-spacing:.2em">{{ f.v }}</span></div></div></sc-for>
+    <div style="display:flex;flex-direction:column;gap:6px"><div style="display:grid;grid-template-columns:repeat(4,1fr);gap:4px"><span style="height:5px;border-radius:9px;background:var(--k1FA971,#1FA971)"></span><span style="height:5px;border-radius:9px;background:var(--k1FA971,#1FA971)"></span><span style="height:5px;border-radius:9px;background:var(--k1FA971,#1FA971)"></span><span style="height:5px;border-radius:9px;background:var(--kE3EBEC,#E3EBEC)"></span></div><span style="display:flex;align-items:center;gap:6px;font-size:12px;color:var(--k157A50,#157A50)"><lc-icon name="circle-check" size="13"></lc-icon>10 أحرف على الأقل</span></div>
+    <button style="display:flex;align-items:center;justify-content:center;gap:8px;height:50px;border-radius:999px;border:0;background:var(--k0F7A82,#0F7A82);color:#fff;font-size:15px;font-weight:600"><lc-icon name="shield-check" size="17"></lc-icon>حفظ كلمة المرور</button>
+  </div>
+
+  <div data-screen-label="04 Receipt verify" style="width:360px;height:720px;background:var(--kF5F8F8,#F5F8F8);border-radius:44px;border:8px solid var(--kFFFFFF,#fff);overflow:hidden;display:flex;flex-direction:column;box-shadow:0 30px 60px -24px rgba(10,58,64,.35)">
+    <div style="padding:16px;display:flex;align-items:center;gap:8px;background:var(--kFFFFFF,#fff)"><dc-import name="Rahma Mark" size="{{ 26 }}" hint-size="26px,26px"></dc-import><span style="font-size:15px;font-weight:700;flex:1">التحقق من الإيصال</span><span dir="ltr" style="font-family:'Space Grotesk';font-size:11px;color:var(--k6B7F84,#6B7F84);font-weight:600">verify.alrahma</span></div>
+    <div style="padding:22px 18px;display:flex;flex-direction:column;align-items:center;gap:14px;flex:1;text-align:center">
+      <div style="width:96px;height:96px;border-radius:999px;background:{{ vr.bg }};color:{{ vr.fg }};display:flex;align-items:center;justify-content:center;margin-top:16px"><lc-icon name="{{ vr.icon }}" size="48"></lc-icon></div>
+      <span style="font-size:22px;font-weight:700;color:{{ vr.fg }}">{{ vr.title }}</span>
+      <span style="font-size:13px;color:var(--k4F6368,#4F6368);line-height:1.7">{{ vr.sub }}</span>
+      <sc-if value="{{ vr.found }}" hint-placeholder-val="{{ true }}">
+        <div style="width:100%;background:var(--kFFFFFF,#fff);border-radius:20px;padding:16px;display:flex;flex-direction:column;gap:10px;text-align:right">
+          <sc-for list="{{ vRows }}" as="r" hint-placeholder-count="5"><div style="display:flex;align-items:center;gap:8px;font-size:13px"><lc-icon name="{{ r.icon }}" size="15" color="var(--k8A9A9E,#8A9A9E)"></lc-icon><span style="flex:1;color:var(--k6B7F84,#6B7F84)">{{ r.ar }}</span><span style="font-family:'Space Grotesk';font-weight:600">{{ r.v }}</span></div></sc-for>
+        </div>
+        <span style="display:flex;align-items:center;gap:6px;font-size:12px;color:var(--k4F6368,#4F6368);font-weight:600"><lc-icon name="eye-off" size="13"></lc-icon>لا تُعرض بيانات المريض في هذه الصفحة</span>
+      </sc-if>
+      <div style="margin-top:auto;display:flex;gap:4px;padding:4px;border-radius:12px;background:var(--kE8EEEF,#E8EEEF)"><sc-for list="{{ vStates }}" as="s" hint-placeholder-count="4"><button onClick="{{ s.go }}" style="padding:0 9px;height:28px;border-radius:8px;border:0;background:{{ s.bg }};color:{{ s.fg }};font-size:11px;font-weight:600">{{ s.ar }}</button></sc-for></div>
+    </div>
+  </div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { login: "idle", br: "b1", v: "valid" };
+  renderVals() {
+    const st = this.state, set = p => this.setState(p);
+    const roles = [["الاستقبال","concierge-bell"],["الأطباء","stethoscope"],["المختبر","microscope"],["الأشعة","scan-line"],["الصيدلية","pill"],["المحاسبة","calculator"]].map(([ar,icon])=>({ar,icon}));
+    const loginStates = [["idle","عادي"],["error","خطأ"],["locked","مقفل"]].map(([k,ar])=>{const on=st.login===k;return {ar,bg:on?"var(--kFFFFFF,#fff)":"transparent",fg:on?"var(--k0F2328,#0F2328)":"var(--k6B7F84,#6B7F84)",go:()=>set({login:k})};});
+    const branchPick = [["b1","الفرع الرئيسي","مفتوح","open"],["b2","فرع الكرادة","مغلق مؤقتاً · صيانة حتى 05-11","closed"],["b3","فرع المنصور","مغلق مؤقتاً · افتتاح قريباً","closed"]].map(([k,name,stt,s])=>{const on=st.br===k;return {name,st:stt,sc:s==="open"?"var(--k157A50,#157A50)":(s==="closed"?"var(--k8A520B,#8A520B)":"var(--k8A9A9E,#8A9A9E)"),icon:s==="inactive"?"building":"building-2",ic:s==="open"?"var(--k0F7A82,#0F7A82)":"var(--k8A9A9E,#8A9A9E)",op:s==="inactive"?.55:1,line:on?"var(--k0F7A82,#0F7A82)":"var(--kE3EBEC,#E3EBEC)",bg:on?"var(--kEAF6F6,#EAF6F6)":"var(--kFFFFFF,#fff)",check:on?"circle-check":"circle",go:()=>{ if(s!=="inactive") set({br:k}); }};});
+    const pwFields = [["كلمة المرور الحالية","lock-keyhole","••••••••","var(--kD5E0E1,#D5E0E1)"],["كلمة المرور الجديدة","key-round","••••••••••••","var(--k0F7A82,#0F7A82)"],["تأكيد كلمة المرور","key-round","••••••••••••","var(--kD5E0E1,#D5E0E1)"]].map(([ar,icon,v,line])=>({ar,icon,v,line}));
+    const V = {valid:{icon:"badge-check",bg:"var(--kE6F6EE,#E6F6EE)",fg:"var(--k157A50,#157A50)",title:"إيصال صحيح",sub:"صادر من نظام مجمع الرحمة ولم يُسترجع.",found:true},partially_refunded:{icon:"badge-minus",bg:"var(--kFDF3E2,#FDF3E2)",fg:"var(--k8A520B,#8A520B)",title:"صحيح · مسترجع جزئياً",sub:"جزء من مبلغ الإيصال أُعيد للمريض.",found:true},refunded:{icon:"undo-2",bg:"var(--kEAF1FD,#EAF1FD)",fg:"var(--k1F56B5,#1F56B5)",title:"صحيح · مسترجع بالكامل",sub:"المبلغ أُعيد للمريض بالكامل.",found:true},invalid:{icon:"shield-x",bg:"var(--kFDECEC,#FDECEC)",fg:"var(--kB4262B,#B4262B)",title:"إيصال غير صحيح",sub:"لم نجد هذا الإيصال في النظام. لا يُعتد بأي إيصال يدوي.",found:false}};
+    const vr = V[st.v];
+    const vRows = [["رقم الإيصال","B1-R-000915","hash"],["النوع","إيصال قبض","receipt"],["المبلغ","55,000 د.ع","banknote"],["الفرع","الفرع الرئيسي","building-2"],["تاريخ الإصدار","2026-11-02 · 20:20","calendar-clock"]].map(([ar,v,icon])=>({ar,v,icon}));
+    const vStates = [["valid","صحيح"],["partially_refunded","جزئي"],["refunded","مسترجع"],["invalid","غير صحيح"]].map(([k,ar])=>{const on=st.v===k;return {ar,bg:on?"var(--kFFFFFF,#fff)":"transparent",fg:on?"var(--k0F2328,#0F2328)":"var(--k6B7F84,#6B7F84)",go:()=>set({v:k})};});
+    return {roles,loginStates,isError:st.login==="error",isLocked:st.login==="locked",pwLine:st.login==="error"?"var(--kE5484D,#E5484D)":"var(--kD5E0E1,#D5E0E1)",branchPick,pwFields,vr,vRows,vStates};
+  }
+}
+</script>
+</body>
+</html>
