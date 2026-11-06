@@ -82,7 +82,21 @@ if defined STORAGE_ON (
   set "Storage__SecretKey=alrahma_dev_minio"
   set "Storage__Bucket=medical-staging"
 )
+REM Gemini assistant (STAGING TESTING ONLY): put  set "GEMINI_API_KEY=..."  in local-env.bat (never in a repo, .env or appsettings).
+REM Before any real patient the key MUST come from a Google Cloud project with billing enabled: on the free tier Google uses
+REM prompts and replies to improve its products. Model: GEMINI_MODEL in local-env.bat, default gemini-3.5-flash-lite.
+REM The key reaches the API window only (the API reads GEMINI_API_KEY when Assistant__ApiKey is empty) and is cleared
+REM before the agent and frontend windows start, like PGPASSWORD. It is never printed.
+set "Assistant__Provider="
+set "Assistant__Model="
+if not defined GEMINI_MODEL set "GEMINI_MODEL=gemini-3.5-flash-lite"
+if defined GEMINI_API_KEY set "Assistant__Provider=gemini"
+if defined GEMINI_API_KEY set "Assistant__Model=%GEMINI_MODEL%"
+if defined GEMINI_API_KEY (echo  Assistant: Gemini, model %GEMINI_MODEL%) else (echo  Assistant: sandbox ^(no GEMINI_API_KEY in local-env.bat^))
 start "Al-Rahma STAGING API :8089" cmd /k "cd /d %~dp0backend && dotnet run --project src\AlRahma.Api --urls http://localhost:8089"
+set "GEMINI_API_KEY="
+set "Assistant__Provider="
+set "Assistant__Model="
 set "PGPASSWORD="
 set "ConnectionStrings__Default="
 start "Al-Rahma STAGING Agent Simulator :9444" cmd /k "cd /d %~dp0dock\tools\agent-simulator && set AGENT_PORT=9444&& set API_URL=http://localhost:8089&& set AGENT_ORIGINS=http://localhost:3001,http://127.0.0.1:3001&& node agent-sim.mjs"
