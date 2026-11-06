@@ -150,7 +150,7 @@
 | `هوية بصرية لمجمع الرحمة/uploads/` | 2.9 MB | صور مرفوعة لتصاميم الهوية |
 | `هوية بصرية لمجمع الرحمة/tmp/` | 872 KB | لقطات وملاحظات مؤقتة (`dbg.jpg`, `notes.md`, …) |
 | `alrahma-database-and-api/` | 304 KB | **نسخة قديمة** من المخطط والترحيلات (تنقصها 007–011 وما بعدها) والعقود. النسخة الحالية في `alrahma-backend-final/database` |
-| `api_contracts_v5.md` (الجذر) | 192 KB | **مكرر** مطابق بايتاً بنسخة `alrahma-database-and-api/…/api_contracts_v5.md` (وهي النسخة الأقدم). النسخة الأحدث موجودة مرتين متطابقتين في `alrahma-backend-final/docs/` و `alrahma-frontend/docs/backend/` |
+| `api_contracts.md` (الجذر) | 192 KB | **مكرر** مطابق بايتاً بنسخة `alrahma-database-and-api/…/api_contracts.md` (وهي النسخة الأقدم). النسخة الأحدث موجودة مرتين متطابقتين في `alrahma-backend-final/docs/` و `alrahma-frontend/docs/backend/` |
 | `docs-e2e/` | 132 KB | تقارير فحص سابقة (توثيق) |
 | `_removed_assets/` | 38 KB | رسومات SVG أُزيلت من الواجهة |
 | `tools/agent-simulator/state.json` | 4 KB | ملف حالة للمحاكي |
@@ -222,5 +222,5 @@
 ## 8. قرارات مطلوبة منك قبل المرحلة 2
 
 1. **git:** لا يوجد مستودع. هل أنشئ مستودعاً جديداً (`git init` + أول commit بالوضع الحالي، مع احترام `.gitignore`) ثم الفرع `chore/cleanup`؟ أم أتخطى خطوة الفرع؟
-2. **عناصر (ب):** اذكر بالاسم ما توافق على حذفه، مثلاً: `_sync/`، `هوية بصرية…/tmp/`، `alrahma-database-and-api/`، `api_contracts_v5.md` (الجذر)، `_removed_assets/`، `weed.exe`.
+2. **عناصر (ب):** اذكر بالاسم ما توافق على حذفه، مثلاً: `_sync/`، `هوية بصرية…/tmp/`، `alrahma-database-and-api/`، `api_contracts.md` (الجذر)، `_removed_assets/`، `weed.exe`.
 3. **التحقق:** اختبارات الخادم (`run-tests.bat`) تحتاج .NET 8 و PostgreSQL محلياً وكلمة مرور PostgreSQL (`PGPASSWORD`). الواجهة لا تملك اختبارات، فسأشغّل `npm run build` و `npm run typecheck` لها.

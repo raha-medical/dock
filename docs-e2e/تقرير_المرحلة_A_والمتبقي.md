@@ -183,7 +183,7 @@ TEST_DATABASE_URL="Host=localhost;Port=5433;Username=postgres;Password=<PGPASSWO
 
 ## 4. قواعد العمل للمحادثة القادمة
 - وكيل واحد فقط، بلا وكلاء فرعيين، وبلا مراجعات متكررة. ما نجح لا يُعاد فحصه.
-- العقد أولاً، ونسختاه (`alrahma-backend-final/docs/api_contracts_v5.md` و`alrahma-frontend/docs/backend/api_contracts_v5.md`) متطابقتان بايت ببايت.
+- العقد أولاً، ونسختاه (`alrahma-backend-final/docs/api_contracts.md` و`alrahma-frontend/docs/backend/api_contracts.md`) متطابقتان بايت ببايت.
 - تغييرات القاعدة بترحيلات مرقمة قابلة للتكرار، مع سكربت في `database/migrations/down/`، ومدمجة في `schema_v5.sql`. pg_dump قبل كل تطبيق، ولا تُحذف `alrahma_db`.
 - الاختبارات الكاملة في المرحلة E فقط. قبلها الاختبارات الجديدة والمتأثرة بـ `--filter` مع `tsc`.
 - كل ميزة باك اند باختبار تكامل. عزل الفرع في كل استعلام، والمدير العام وحده يرى الكل. الصلاحيات من الكتالوج الحالي.

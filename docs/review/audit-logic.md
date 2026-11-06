@@ -475,7 +475,7 @@
 | `backend/docker-compose.yml:74-82` | `Drawer__KeyFile` والحجم `drawerkeys` |
 | `backend/.gitignore:489` | تجاهل ملف المفتاح |
 | `backend/tests/AlRahma.Api.Tests/{AdminFinanceTests,BillingTests,ConcurrencyTests,OfflineTimeTests,Part2Tests,TestApp}.cs` | اختبارات تعتمد على توكن الدرج |
-| `backend/README.md` و`backend/docs/api_contracts_v5.md` | توثيق |
+| `backend/README.md` و`backend/docs/api_contracts.md` | توثيق |
 
 ### الواجهة (Frontend)
 | الملف | ماذا يفعل |
