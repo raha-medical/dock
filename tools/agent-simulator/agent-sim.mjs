@@ -11,6 +11,7 @@
  *   AGENT_KEY=...                       إن ضُبط يُشترط X-Agent-Key مطابق (بدونه يُقبل أي طلب من الأصل المسموح)
  *   AGENT_ORIGINS=http://localhost:3000,http://127.0.0.1:3000
  *   PRINTER=offline | paper_out         لمحاكاة أعطال الطابعة
+ *   CASH_DRAWER=on                      يعيد درج النقود (افتراضياً موقوف بقرار المالك 7.1-أ: الطابعة فقط، وأي طلب فتح يُتجاهل ويُعد)
  * بدون مكتبات خارجية (Node 18+).
  */
 import http from "node:http";
@@ -18,6 +19,8 @@ import crypto from "node:crypto";
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+const DRAWER_ON = process.env.CASH_DRAWER === "on";
+let drawerIgnored = 0; // يظهر في GET /status (drawer_requests_ignored) للتحقق أن أحداً لم يطلب الدرج
 
 const DIR = path.dirname(fileURLToPath(import.meta.url));
 const OUT = path.join(DIR, "out");
@@ -157,7 +160,7 @@ const server = http.createServer(async (req, res) => {
           agent_version: VERSION,
           device_id: state.block?.device_code ?? "unbound",
           printer: { connected: PRINTER !== "offline", model: "Simulator (HTML files)", paper: PRINTER === "paper_out" ? "out" : "ok" },
-          drawer: { connected: true, state: "closed" },
+          drawer: { connected: DRAWER_ON, state: "closed" }, drawer_requests_ignored: drawerIgnored,
           pending_events: state.events.length,
           receipt_block: state.block ? { ...state.block, last_used: state.last_used } : null,
           public_key_id: publicKeyId,
@@ -184,6 +187,7 @@ const server = http.createServer(async (req, res) => {
         const body = await readJson(req);
         const p = body?.print_payload;
         if (!p || !p.receipt_number) return fail(res, 400, "VALIDATION_ERROR", "print_payload.receipt_number مطلوب");
+        if (body.open_drawer && !DRAWER_ON) { drawerIgnored++; log(`طلب فتح درج تُجوهل (الدرج موقوف) للإيصال ${p.receipt_number}`); body.open_drawer = false; }
         // التحقق قبل الطباعة: لا درج بدون إذن صالح
         if (body.open_drawer) {
           if (body.drawer_token) {
