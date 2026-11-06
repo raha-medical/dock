@@ -50,7 +50,16 @@ set "Bootstrap__AdminUsername=admin"
 set "Bootstrap__AdminPassword=CHANGE_ME"
 set "Payments__PublicBaseUrl=http://localhost:3000"
 set "Receipts__VerifyBaseUrl=http://localhost:3000/verify/"
-set "Backup__Enabled=false"
+REM Backup (no Docker): the API itself runs pg_dump daily at the time chosen on /staff/admin/backups (default 03:00 Baghdad).
+REM pg_dump is found like psql (PGBIN from pg-env.bat). The DB password comes from local-env.bat via the connection string only.
+REM Optional in local-env.bat: set "BACKUP_PATH=D:\AlRahmaBackups"  and  set "BACKUP_OFFSITE_PATH=E:\AlRahmaBackups"
+set "Backup__Enabled=true"
+set "Backup__Mode=native"
+set "Backup__PgBin=%PGBIN%"
+if not defined BACKUP_PATH set "BACKUP_PATH=D:\AlRahmaBackups"
+set "Backup__Path=%BACKUP_PATH%"
+if defined BACKUP_OFFSITE_PATH set "Backup__OffsitePath=%BACKUP_OFFSITE_PATH%"
+set "Backup__FilesPath=%~dp0tools\s3\data"
 set "Swagger__Enabled=true"
 REM Sandbox OTP: no SMS provider yet, so the patient app shows the login code in a "Sandbox" box.
 REM The API refuses this setting outside Development/Testing (Program.cs), so it can never reach production.
