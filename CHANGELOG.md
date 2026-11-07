@@ -1,5 +1,11 @@
 # سجل التغييرات (dock)
 
+## v1.3-handoff (2026-11-07)
+- فحص الإشعارات وشاشات العرض: `docs/review/notifications-displays-audit.md` ولقطات `docs/review/screens/displays/`.
+- متطلبات الواجهات UI-136 إلى UI-141 (الإشعارات، «حان دورك»، شارة الاستقبال، المهلة) في `docs/handoff/ui-requirements-handoff.md`، ومساراتها في `docs/handoff/frontend-handoff-v1.1.md`.
+- `accounts.md`: دور «المتابعة والإشعارات» صار من الترحيل 027.
+- تقرير المكتمل محدث (الإشعارات، «حان دورك»، تأخر الطبيب).
+
 ## v1.2-handoff (2026-11-07)
 
 ### خريطة الفروع وإحصائياتها
